@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/title_screen.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/bg_title.svg" id="2_bg"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TitleLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 120.0
+offset_right = 1130.0
+offset_bottom = 270.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 108
+theme_override_constants/outline_size = 40
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+scroll_active = false
+text = "[center]IRON-MARIO[/center]"
+
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 340.0
+offset_right = 740.0
+offset_bottom = 560.0
+theme_override_constants/separation = 20
+
+[node name="StartButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 60)
+text = "START"
+
+[node name="SettingsButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 60)
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 60)
+text = "QUIT"
+
+[connection signal="pressed" from="MenuButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]

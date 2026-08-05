@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/minigame_2.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
+[ext_resource type="PackedScene" path="res://scenes/themed_timer.tscn" id="3_timer"]
+[ext_resource type="Texture2D" path="res://assets/target.svg" id="4_target"]
+
+[node name="Minigame2" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScoreLabel" type="RichTextLabel" parent="HUD"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 90.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 48
+theme_override_constants/outline_size = 20
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+scroll_active = false
+text = "HITS: 0 / 5"
+
+[node name="HintLabel" type="RichTextLabel" parent="HUD"]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 20.0
+offset_right = 840.0
+offset_bottom = 90.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 48
+theme_override_constants/outline_size = 20
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+scroll_active = false
+text = "CLICK THE TARGET!"
+
+[node name="Target" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 312.0
+offset_right = 688.0
+offset_bottom = 408.0
+mouse_filter = 2
+texture = ExtResource("4_target")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ThemedTimer" parent="." instance=ExtResource("3_timer")]
+
+[node name="RepositionTimer" type="Timer" parent="."]
+wait_time = 0.6

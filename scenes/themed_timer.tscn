@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/themed_timer.gd" id="1_script"]
+
+[node name="ThemedTimer" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="TimerLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 20.0
+offset_right = 760.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 64
+theme_override_constants/outline_size = 24
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+scroll_active = false
+text = "TIME: 10.0"

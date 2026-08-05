@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b132b"/>
+      <stop offset="1" stop-color="#1c1030"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.6">
+      <stop offset="0" stop-color="#f2b705" stop-opacity="0.55"/>
+      <stop offset="0.4" stop-color="#d9262a" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#0b132b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#sky)"/>
+  <rect width="1280" height="720" fill="url(#glow)"/>
+  <g stroke="#f2b705" stroke-width="2" opacity="0.18">
+    <line x1="0" y1="120" x2="1280" y2="120"/>
+    <line x1="0" y1="240" x2="1280" y2="240"/>
+    <line x1="0" y1="360" x2="1280" y2="360"/>
+    <line x1="0" y1="480" x2="1280" y2="480"/>
+    <line x1="0" y1="600" x2="1280" y2="600"/>
+    <line x1="213" y1="0" x2="213" y2="720"/>
+    <line x1="426" y1="0" x2="426" y2="720"/>
+    <line x1="640" y1="0" x2="640" y2="720"/>
+    <line x1="853" y1="0" x2="853" y2="720"/>
+    <line x1="1066" y1="0" x2="1066" y2="720"/>
+  </g>
+  <path d="M0 640 L1280 640 L1280 720 L0 720 Z" fill="#0d0d1a"/>
+  <g fill="#f2b705" opacity="0.25">
+    <circle cx="120" cy="150" r="5"/>
+    <circle cx="1150" cy="100" r="4"/>
+    <circle cx="980" cy="260" r="6"/>
+    <circle cx="260" cy="320" r="4"/>
+    <circle cx="640" cy="520" r="5"/>
+    <circle cx="80" cy="420" r="3"/>
+    <circle cx="1220" cy="380" r="3"/>
+  </g>
+</svg>

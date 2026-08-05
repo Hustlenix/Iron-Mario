@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scenes/minigame_1.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
+[ext_resource type="PackedScene" path="res://scenes/collectible.tscn" id="3_collectible"]
+[ext_resource type="PackedScene" path="res://scenes/minigame_1_player.tscn" id="4_player"]
+[ext_resource type="PackedScene" path="res://scenes/themed_timer.tscn" id="5_timer"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1280, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
+size = Vector2(160, 24)
+
+[node name="Minigame1" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Ground"]
+offset_left = 0.0
+offset_top = 672.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.35, 0.4, 0.5, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(640, 696)
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+position = Vector2(400, 560)
+
+[node name="ColorRect" type="ColorRect" parent="Platform1"]
+offset_left = -80.0
+offset_top = -12.0
+offset_right = 80.0
+offset_bottom = 12.0
+color = Color(0.5, 0.55, 0.65, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(650, 460)
+
+[node name="ColorRect" type="ColorRect" parent="Platform2"]
+offset_left = -80.0
+offset_top = -12.0
+offset_right = 80.0
+offset_bottom = 12.0
+color = Color(0.5, 0.55, 0.65, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(900, 560)
+
+[node name="ColorRect" type="ColorRect" parent="Platform3"]
+offset_left = -80.0
+offset_top = -12.0
+offset_right = 80.0
+offset_bottom = 12.0
+color = Color(0.5, 0.55, 0.65, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Collectibles" type="Node2D" parent="."]
+
+[node name="Collectible" parent="Collectibles" instance=ExtResource("3_collectible")]
+position = Vector2(430, 510)
+
+[node name="Collectible2" parent="Collectibles" instance=ExtResource("3_collectible")]
+position = Vector2(680, 410)
+
+[node name="Collectible3" parent="Collectibles" instance=ExtResource("3_collectible")]
+position = Vector2(930, 510)
+
+[node name="Player" parent="." instance=ExtResource("4_player")]
+position = Vector2(150, 620)
+
+[node name="ThemedTimer" parent="." instance=ExtResource("5_timer")]

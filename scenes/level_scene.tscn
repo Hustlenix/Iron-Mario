@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/timer_screen.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
+[ext_resource type="Texture2D" path="res://assets/reactor.svg" id="3_reactor"]
+
+[node name="LevelScene" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="LivesContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 90.0
+offset_right = 840.0
+offset_bottom = 138.0
+theme_override_constants/separation = 12
+
+[node name="Reactor1" type="TextureRect" parent="LivesContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(48, 48)
+texture = ExtResource("3_reactor")
+
+[node name="Reactor2" type="TextureRect" parent="LivesContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(48, 48)
+texture = ExtResource("3_reactor")
+
+[node name="Reactor3" type="TextureRect" parent="LivesContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(48, 48)
+texture = ExtResource("3_reactor")
+
+[node name="Reactor4" type="TextureRect" parent="LivesContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(48, 48)
+texture = ExtResource("3_reactor")
+
+[node name="Reactor5" type="TextureRect" parent="LivesContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(48, 48)
+texture = ExtResource("3_reactor")
+
+[node name="LevelLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 220.0
+offset_right = 790.0
+offset_bottom = 290.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 48
+theme_override_constants/outline_size = 20
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+scroll_active = false
+text = "LEVEL 1"
+
+[node name="TimerLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 320.0
+offset_right = 790.0
+offset_bottom = 410.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 64
+theme_override_constants/outline_size = 20
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+scroll_active = false
+text = "TIME: 5.0"
