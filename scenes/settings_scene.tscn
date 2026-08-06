@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/settings_scene.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
+
+[node name="SettingsScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="TitleLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(600, 90)
+mouse_filter = 2
+theme_override_font_sizes/font_size = 72
+theme_override_constants/outline_size = 20
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+scroll_active = false
+text = "[center]SETTINGS[/center]"
+
+[node name="VolumeRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="CenterContainer/VBoxContainer/VolumeRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+theme_override_constants/outline_size = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "VOLUME"
+
+[node name="VolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VolumeRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(360, 48)
+max_value = 100.0
+value = 80.0
+
+[node name="ControlsLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(640, 130)
+mouse_filter = 2
+theme_override_font_sizes/font_size = 32
+theme_override_constants/outline_size = 10
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+scroll_active = false
+text = "[center]CONTROLS\nLEFT: A / LEFT ARROW\nRIGHT: D / RIGHT ARROW\nJUMP: SPACE / W[/center]"
+
+[node name="StatusLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(600, 40)
+mouse_filter = 2
+theme_override_font_sizes/font_size = 28
+theme_override_constants/outline_size = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.5, 1, 0.6, 1)
+bbcode_enabled = true
+scroll_active = false
+visible = false
+text = "[center]PROGRESS RESET (SAVED)[/center]"
+
+[node name="ResetButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 60)
+text = "RESET PROGRESS"
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 60)
+text = "BACK"
+
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/VolumeRow/VolumeSlider" to="." method="_on_volume_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
