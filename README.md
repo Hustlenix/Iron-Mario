@@ -1,6 +1,6 @@
 # IRON-MARIO
 
-A WarioWare-style microgame gauntlet starring Mario's armored twin — a red-and-gold hero thrown into one absurd ten-second challenge after another. Collect arc-reactor shards, whack teleporting targets, and keep your reactors burning through a back-to-back gauntlet where every failure costs a life. Clear both microgames with power left and you win; run out and the suit powers down.
+A WarioWare-style microgame gauntlet starring Mario's armored twin — a red-and-gold hero thrown into one absurd ten-second challenge after another. Collect arc-reactor shards, whack teleporting targets, dodge sweeping laser beams, and keep your reactors burning through a back-to-back gauntlet where every failure costs a life. Clear all three microgames with power left and you win; run out and the suit powers down.
 
 Built with [Godot 4.7.1](https://godotengine.org/) (1280x720).
 
@@ -12,7 +12,7 @@ Inspired by the rapid-fire microgame genre (WarioWare Inc.): zero tutorials, zer
 - Pickups are **gold arc-reactor shards**.
 - The hero is a tiny armored Mario, tinted in the suit's red and gold.
 
-**Core loop:** Title (**START / SETTINGS / QUIT**) → intermission (reactors + level + 5s countdown) → microgame (10s clock) → intermission → microgame → **YOU WIN!** or **GAME OVER**.
+**Core loop:** Title (**START / SETTINGS / QUIT**) → intermission (reactors + level + 5s countdown) → microgame (10s clock) → intermission → microgame → intermission → microgame → **YOU WIN!** or **GAME OVER**.
 
 Fail a microgame and you lose a reactor — the failed mission replays. Survive every microgame with at least one reactor intact to win. **PLAY AGAIN** resets the gauntlet.
 
@@ -30,6 +30,7 @@ Fail a microgame and you lose a reactor — the failed mission replays. Survive 
 
 1. **The Platformer Gauntlet** — Move and jump around a three-level platform course and snag **3 gold arc-reactor shards** before the 10s timer runs out.
 2. **Reactor Tag** — Click the teleporting gold target **5 times** before time runs out. The target moves when hit — and on its own every 0.6s — so it never stays still.
+3. **Dodge the Lasers** — Survive **10 seconds** as three red laser bars sweep the arena; move with arrows/WASD, jump with Space/W. Every brush with a beam costs a reactor.
 
 ## How to Run
 
@@ -50,7 +51,7 @@ Playable prototype: the complete title → intermission → microgame → win/lo
 | 1 | Made in Godot | Done (Godot 4.7.1) |
 | 2 | Minigames respond to player input | Done (keyboard + mouse) |
 | 3 | Minimum 5 hours spent coding | Tracked via Hackatime |
-| 4 | Minimum 2 minigames | Done (platformer + clicker) |
+| 4 | Minimum 2 minigames | Done (platformer + clicker + dodge = 3) |
 | 5 | Implement your own assets | Done (original SVGs in `assets/`) |
 | 6 | A well-written README | This file |
 | 7 | None to minimal AI usage | See note below |
@@ -60,7 +61,7 @@ Playable prototype: the complete title → intermission → microgame → win/lo
 
 ## Next Steps
 
-- More microgames to keep the gauntlet sprinting (dodge, timing, etc.)
+- More microgames to keep the gauntlet sprinting (timing, memory, etc.)
 - Snappy audio stingers (countdown, pickup, game over)
 - A settings scene with volume/controls (current button is a fullscreen toggle)
 - Polish the SVG art (shading, animation, backgrounds)

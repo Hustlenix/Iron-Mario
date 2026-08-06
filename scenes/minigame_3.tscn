@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scenes/minigame_3.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
+[ext_resource type="PackedScene" path="res://scenes/minigame_1_player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://scenes/themed_timer.tscn" id="4_timer"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1280, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_laser"]
+size = Vector2(30, 300)
+
+[node name="Minigame3" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Player" parent="." instance=ExtResource("3_player")]
+position = Vector2(150, 620)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Ground"]
+offset_left = 0.0
+offset_top = 672.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.35, 0.4, 0.5, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(640, 696)
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="Laser1" type="Area2D" parent="Hazards"]
+collision_layer = 4
+collision_mask = 2
+groups = ["hazard"]
+position = Vector2(-100, 200)
+
+[node name="ColorRect" type="ColorRect" parent="Hazards/Laser1"]
+offset_left = -15.0
+offset_top = -150.0
+offset_right = 15.0
+offset_bottom = 150.0
+color = Color(1, 0.1, 0.1, 0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Laser1"]
+shape = SubResource("RectangleShape2D_laser")
+
+[node name="Laser2" type="Area2D" parent="Hazards"]
+collision_layer = 4
+collision_mask = 2
+groups = ["hazard"]
+position = Vector2(-100, 350)
+
+[node name="ColorRect" type="ColorRect" parent="Hazards/Laser2"]
+offset_left = -15.0
+offset_top = -150.0
+offset_right = 15.0
+offset_bottom = 150.0
+color = Color(1, 0.1, 0.1, 0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Laser2"]
+shape = SubResource("RectangleShape2D_laser")
+
+[node name="Laser3" type="Area2D" parent="Hazards"]
+collision_layer = 4
+collision_mask = 2
+groups = ["hazard"]
+position = Vector2(-100, 500)
+
+[node name="ColorRect" type="ColorRect" parent="Hazards/Laser3"]
+offset_left = -15.0
+offset_top = -150.0
+offset_right = 15.0
+offset_bottom = 150.0
+color = Color(1, 0.1, 0.1, 0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Laser3"]
+shape = SubResource("RectangleShape2D_laser")
+
+[node name="ThemedTimer" parent="." instance=ExtResource("4_timer")]

@@ -24,7 +24,7 @@ func countdown() -> void:
 		time_left = maxf(time_left - 0.1, 0.0)
 	if Global.lives <= 0:
 		get_tree().change_scene_to_file("res://scenes/death_scene.tscn")
-	elif Global.minigames_done < 2:
+	elif Global.minigames_done < 3:
 		Global.minigames_done += 1
 		get_tree().change_scene_to_file("res://scenes/minigame_%d.tscn" % Global.minigames_done)
 	else:
