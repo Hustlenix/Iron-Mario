@@ -3,6 +3,7 @@ extends Node2D
 func _ready() -> void:
 	$Bgm.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	$Bgm.play()
+	$StreakLabel.text = "[center]BEST STREAK: %d[/center]" % Global.best_streak
 
 func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
