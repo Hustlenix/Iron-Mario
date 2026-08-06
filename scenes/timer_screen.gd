@@ -23,9 +23,13 @@ func countdown() -> void:
 		await get_tree().create_timer(0.1).timeout
 		time_left = maxf(time_left - 0.1, 0.0)
 	if Global.lives <= 0:
+		$SfxFail.play()
+		await get_tree().create_timer(0.45).timeout
 		get_tree().change_scene_to_file("res://scenes/death_scene.tscn")
-	elif Global.minigames_done < 3:
+	elif Global.minigames_done < 4:
 		Global.minigames_done += 1
 		get_tree().change_scene_to_file("res://scenes/minigame_%d.tscn" % Global.minigames_done)
 	else:
+		$SfxWin.play()
+		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_file("res://scenes/winner_scene.tscn")

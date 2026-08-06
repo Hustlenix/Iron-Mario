@@ -14,9 +14,13 @@ var finished := false
 func _ready() -> void:
 	_reposition_target()
 	reposition_timer.timeout.connect(_reposition_target)
+	reposition_timer.wait_time = maxf(0.35, 0.6 - 0.05 * Global.loop)
 	reposition_timer.start()
-	await $ThemedTimer.countdown(TIME_LIMIT)
+	await $ThemedTimer.countdown(_time_limit())
 	_finish(false)
+
+func _time_limit() -> float:
+	return maxf(5.0, TIME_LIMIT - Global.loop)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if finished:
@@ -42,8 +46,14 @@ func _finish(win: bool) -> void:
 		return
 	finished = true
 	if win:
+		$SfxWin.play()
+		await get_tree().create_timer(0.5).timeout
+		Global.win()
 		get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
 	else:
+		$SfxFail.play()
+		await get_tree().create_timer(0.45).timeout
+		Global.lose()
 		Global.minigames_done -= 1
 		Global.lives -= 1
 		if Global.lives <= 0:

@@ -49,6 +49,17 @@ bbcode_enabled = true
 scroll_active = false
 text = "[center]GAME OVER[/center]"
 
+[node name="BestStreakLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(600, 40)
+mouse_filter = 2
+theme_override_font_sizes/font_size = 28
+theme_override_constants/outline_size = 10
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+scroll_active = false
+text = "[center]BEST STREAK: 0[/center]"
+
 [node name="SubLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 custom_minimum_size = Vector2(600, 50)

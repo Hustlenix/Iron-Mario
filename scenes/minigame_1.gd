@@ -11,8 +11,11 @@ var finished := false
 func _ready() -> void:
 	for child in collectibles.get_children():
 		child.collectible_collected.connect(_on_collectible_collected)
-	await $ThemedTimer.countdown(TIME_LIMIT)
+	await $ThemedTimer.countdown(_time_limit())
 	_finish(false)
+
+func _time_limit() -> float:
+	return maxf(5.0, TIME_LIMIT - Global.loop)
 
 func _on_collectible_collected() -> void:
 	collectible_count += 1
@@ -24,8 +27,14 @@ func _finish(win: bool) -> void:
 		return
 	finished = true
 	if win:
+		$SfxWin.play()
+		await get_tree().create_timer(0.5).timeout
+		Global.win()
 		get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
 	else:
+		$SfxFail.play()
+		await get_tree().create_timer(0.45).timeout
+		Global.lose()
 		Global.minigames_done -= 1
 		Global.lives -= 1
 		if Global.lives <= 0:

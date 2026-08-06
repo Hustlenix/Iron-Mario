@@ -13,8 +13,11 @@ var finished := false
 func _ready() -> void:
 	player_area.area_entered.connect(_on_hazard_hit)
 	_setup_laser_sweeps()
-	await $ThemedTimer.countdown(TIME_LIMIT)
+	await $ThemedTimer.countdown(_time_limit())
 	_finish(true)
+
+func _time_limit() -> float:
+	return maxf(5.0, TIME_LIMIT - Global.loop)
 
 func _setup_laser_sweeps() -> void:
 	# Stagger each laser's start so the beams never align.
@@ -25,7 +28,8 @@ func _setup_laser_sweeps() -> void:
 		index += 1
 
 func _start_sweep(laser: Area2D) -> void:
-	var duration := randf_range(SWEEP_DURATION_MIN, SWEEP_DURATION_MAX)
+	var speed_factor := 1.0 + 0.15 * Global.loop
+	var duration := randf_range(SWEEP_DURATION_MIN, SWEEP_DURATION_MAX) / speed_factor
 	var tween := create_tween()
 	tween.set_loops(-1)
 	tween.set_trans(Tween.TRANS_SINE)
@@ -42,8 +46,14 @@ func _finish(win: bool) -> void:
 		return
 	finished = true
 	if win:
+		$SfxWin.play()
+		await get_tree().create_timer(0.5).timeout
+		Global.win()
 		get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
 	else:
+		$SfxFail.play()
+		await get_tree().create_timer(0.45).timeout
+		Global.lose()
 		Global.minigames_done -= 1
 		Global.lives -= 1
 		if Global.lives <= 0:
