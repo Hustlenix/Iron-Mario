@@ -5,20 +5,29 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    container:
+      image: barichello/godot-ci:4.7.1
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Godot
-        uses: chickensoft-games/setup-godot@v2
-        with:
-          version: 4.7.1
-          use-dotnet: false
-          include-templates: true
       - name: Import
         run: godot --headless --import --path .
       - name: Export Web
         run: godot --headless --path . --export-release "Web" "build/web/index.html"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: build/web
+          if-no-files-found: error
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: web-build
+          path: ./build/web
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
