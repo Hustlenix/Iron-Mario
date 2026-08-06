@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://scenes/minigame_3.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
 [ext_resource type="PackedScene" path="res://scenes/minigame_1_player.tscn" id="3_player"]
 [ext_resource type="PackedScene" path="res://scenes/themed_timer.tscn" id="4_timer"]
+[ext_resource type="AudioStreamWAV" path="res://assets/audio/win.wav" id="5_win"]
+[ext_resource type="AudioStreamWAV" path="res://assets/audio/fail.wav" id="6_fail"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(1280, 48)
@@ -93,3 +95,9 @@ color = Color(1, 0.1, 0.1, 0.6)
 shape = SubResource("RectangleShape2D_laser")
 
 [node name="ThemedTimer" parent="." instance=ExtResource("4_timer")]
+
+[node name="SfxWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_win")
+
+[node name="SfxFail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fail")
