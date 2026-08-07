@@ -20,4 +20,6 @@ func collect() -> void:
 	collected = true
 	anim.stop()
 	hide()
+	Juice.burst(get_parent(), global_position, Color(1, 0.85, 0.25), 10, 220.0)
+	Juice.text(get_parent(), "+1", global_position + Vector2(0, -30), Color(1, 0.9, 0.3), 34)
 	collectible_collected.emit()

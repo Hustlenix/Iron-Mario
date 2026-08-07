@@ -1,10 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <circle cx="24" cy="24" r="21" fill="#0b132b" stroke="#f2b705" stroke-width="4"/>
-  <circle cx="24" cy="24" r="13" fill="none" stroke="#f2b705" stroke-width="2"/>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd34d"/>
+      <stop offset="1" stop-color="#c98d00"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7ee8ff" stop-opacity="0.8"/>
+      <stop offset="0.6" stop-color="#4fd1ff" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#4fd1ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="24" cy="24" r="23" fill="url(#glow)"/>
+  <circle cx="24" cy="24" r="21" fill="#0b132b" stroke="url(#gold)" stroke-width="4"/>
+  <circle cx="24" cy="24" r="13" fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.85"/>
   <circle cx="24" cy="24" r="7" fill="#d9262a"/>
-  <circle cx="24" cy="24" r="3" fill="#ffd34d"/>
-  <line x1="24" y1="3" x2="24" y2="9" stroke="#f2b705" stroke-width="2.5"/>
-  <line x1="24" y1="39" x2="24" y2="45" stroke="#f2b705" stroke-width="2.5"/>
-  <line x1="3" y1="24" x2="9" y2="24" stroke="#f2b705" stroke-width="2.5"/>
-  <line x1="39" y1="24" x2="45" y2="24" stroke="#f2b705" stroke-width="2.5"/>
+  <circle cx="24" cy="24" r="3" fill="#9ff0ff"/>
+  <circle cx="24" cy="24" r="1.5" fill="#ffffff"/>
+  <g stroke="url(#gold)" stroke-width="2.5" stroke-linecap="round">
+    <line x1="24" y1="3" x2="24" y2="9"/>
+    <line x1="24" y1="39" x2="24" y2="45"/>
+    <line x1="3" y1="24" x2="9" y2="24"/>
+    <line x1="39" y1="24" x2="45" y2="24"/>
+  </g>
 </svg>

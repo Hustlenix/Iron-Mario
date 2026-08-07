@@ -12,6 +12,7 @@ var finished := false
 @onready var reposition_timer: Timer = $RepositionTimer
 
 func _ready() -> void:
+	SceneFade.fade_in(self)
 	_reposition_target()
 	reposition_timer.timeout.connect(_reposition_target)
 	reposition_timer.wait_time = maxf(0.35, 0.6 - 0.05 * Global.loop)
@@ -29,9 +30,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		if target.get_global_rect().has_point(event.position):
 			clicks += 1
 			score_label.text = "HITS: %d / %d" % [clicks, CLICKS_REQUIRED]
+			Juice.shake(self, 0.2)
+			Juice.burst(self, target.get_global_rect().get_center(), Color(1, 0.85, 0.25), 10, 220.0)
+			Juice.text(self, "HIT x%d" % clicks, target.get_global_rect().get_center() + Vector2(0, -50), Color(1, 0.9, 0.3), 36)
 			_reposition_target()
 			if clicks >= CLICKS_REQUIRED:
 				_finish(true)
+		else:
+			Juice.text(self, "MISS", event.position, Color(1, 0.35, 0.35), 30)
 
 func _reposition_target() -> void:
 	var vp_size: Vector2 = get_viewport_rect().size
@@ -47,16 +53,24 @@ func _finish(win: bool) -> void:
 	finished = true
 	if win:
 		$SfxWin.play()
+		Juice.hit_stop(self)
+		Juice.shake(self, 0.5)
+		Juice.burst(self, target.get_global_rect().get_center(), Color(1, 0.85, 0.25), 26, 320.0)
 		await get_tree().create_timer(0.5).timeout
 		Global.win()
+		await SceneFade.fade_out(self)
 		get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
 	else:
 		$SfxFail.play()
+		Juice.shake(self, 0.6)
+		Juice.burst(self, target.get_global_rect().get_center(), Color(1, 0.3, 0.3), 18, 280.0)
 		await get_tree().create_timer(0.45).timeout
 		Global.lose()
 		Global.minigames_done -= 1
 		Global.lives -= 1
 		if Global.lives <= 0:
+			await SceneFade.fade_out(self)
 			get_tree().change_scene_to_file("res://scenes/death_scene.tscn")
 		else:
+			await SceneFade.fade_out(self)
 			get_tree().change_scene_to_file("res://scenes/level_scene.tscn")

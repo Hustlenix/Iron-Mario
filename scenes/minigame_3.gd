@@ -11,6 +11,7 @@ var finished := false
 @onready var player_area: Area2D = $Player/PlayerArea
 
 func _ready() -> void:
+	SceneFade.fade_in(self)
 	player_area.area_entered.connect(_on_hazard_hit)
 	_setup_laser_sweeps()
 	await $ThemedTimer.countdown(_time_limit())
@@ -24,8 +25,16 @@ func _setup_laser_sweeps() -> void:
 	var index := 0
 	for laser: Area2D in $Hazards.get_children():
 		var delay := index * 0.45
-		get_tree().create_timer(delay).timeout.connect(_start_sweep.bind(laser))
+		get_tree().create_timer(delay).timeout.connect(_arm_sweep.bind(laser))
 		index += 1
+
+func _arm_sweep(laser: Area2D) -> void:
+	laser.modulate = Color(1, 0.4, 0.4)
+	var warn := create_tween()
+	warn.tween_property(laser, "modulate", Color(1, 0.15, 0.15), 0.35)
+	await warn.finished
+	laser.modulate = Color.WHITE
+	_start_sweep(laser)
 
 func _start_sweep(laser: Area2D) -> void:
 	var speed_factor := 1.0 + 0.15 * Global.loop
@@ -39,6 +48,7 @@ func _start_sweep(laser: Area2D) -> void:
 
 func _on_hazard_hit(area: Area2D) -> void:
 	if area.is_in_group("hazard"):
+		Juice.text(self, "REACTOR DOWN", $Player.global_position + Vector2(0, -60), Color(1, 0.35, 0.35), 34)
 		_finish(false)
 
 func _finish(win: bool) -> void:
@@ -47,16 +57,24 @@ func _finish(win: bool) -> void:
 	finished = true
 	if win:
 		$SfxWin.play()
+		Juice.shake(self, 0.5)
+		Juice.burst(self, $Player.global_position, Color(1, 0.85, 0.25), 26, 320.0)
 		await get_tree().create_timer(0.5).timeout
 		Global.win()
+		await SceneFade.fade_out(self)
 		get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
 	else:
 		$SfxFail.play()
+		Juice.hit_stop(self)
+		Juice.shake(self, 0.9)
+		Juice.burst(self, $Player.global_position, Color(1, 0.3, 0.3), 24, 320.0)
 		await get_tree().create_timer(0.45).timeout
 		Global.lose()
 		Global.minigames_done -= 1
 		Global.lives -= 1
 		if Global.lives <= 0:
+			await SceneFade.fade_out(self)
 			get_tree().change_scene_to_file("res://scenes/death_scene.tscn")
 		else:
+			await SceneFade.fade_out(self)
 			get_tree().change_scene_to_file("res://scenes/level_scene.tscn")

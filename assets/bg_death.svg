@@ -2,32 +2,47 @@
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#16080a"/>
+      <stop offset="0.6" stop-color="#3a0c12"/>
       <stop offset="1" stop-color="#4a0f14"/>
     </linearGradient>
+    <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.75">
+      <stop offset="0" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="0.65" stop-color="#000000" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.8"/>
+    </radialGradient>
+    <radialGradient id="ember" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff5a5f" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#d9262a" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#d9262a" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#vignette)"/>
   <g>
-    <polygon points="0,90 100,0 200,0 100,90" fill="#d9262a" opacity="0.5"/>
-    <polygon points="160,90 260,0 360,0 260,90" fill="#d9262a" opacity="0.5"/>
-    <polygon points="320,90 420,0 520,0 420,90" fill="#d9262a" opacity="0.5"/>
-    <polygon points="480,90 580,0 680,0 580,90" fill="#d9262a" opacity="0.5"/>
-    <polygon points="640,90 740,0 840,0 740,90" fill="#d9262a" opacity="0.5"/>
-    <polygon points="800,90 900,0 1000,0 900,90" fill="#d9262a" opacity="0.5"/>
-    <polygon points="960,90 1060,0 1160,0 1060,90" fill="#d9262a" opacity="0.5"/>
-    <polygon points="1120,90 1220,0 1280,0 1280,90 1180,90" fill="#d9262a" opacity="0.5"/>
-    <polygon points="80,720 180,630 280,720" fill="#d9262a" opacity="0.5"/>
-    <polygon points="240,720 340,630 440,720" fill="#d9262a" opacity="0.5"/>
-    <polygon points="400,720 500,630 600,720" fill="#d9262a" opacity="0.5"/>
-    <polygon points="560,720 660,630 760,720" fill="#d9262a" opacity="0.5"/>
-    <polygon points="720,720 820,630 920,720" fill="#d9262a" opacity="0.5"/>
-    <polygon points="880,720 980,630 1080,720" fill="#d9262a" opacity="0.5"/>
-    <polygon points="1040,720 1140,630 1240,720" fill="#d9262a" opacity="0.5"/>
+    <polygon points="0,90 100,0 200,0 100,90" fill="#d9262a" opacity="0.55"/>
+    <polygon points="160,90 260,0 360,0 260,90" fill="#d9262a" opacity="0.55"/>
+    <polygon points="320,90 420,0 520,0 420,90" fill="#d9262a" opacity="0.55"/>
+    <polygon points="480,90 580,0 680,0 580,90" fill="#d9262a" opacity="0.55"/>
+    <polygon points="640,90 740,0 840,0 740,90" fill="#d9262a" opacity="0.55"/>
+    <polygon points="800,90 900,0 1000,0 900,90" fill="#d9262a" opacity="0.55"/>
+    <polygon points="960,90 1060,0 1160,0 1060,90" fill="#d9262a" opacity="0.55"/>
+    <polygon points="1120,90 1220,0 1280,0 1280,90 1180,90" fill="#d9262a" opacity="0.55"/>
+    <polygon points="80,720 180,630 280,720" fill="#d9262a" opacity="0.55"/>
+    <polygon points="240,720 340,630 440,720" fill="#d9262a" opacity="0.55"/>
+    <polygon points="400,720 500,630 600,720" fill="#d9262a" opacity="0.55"/>
+    <polygon points="560,720 660,630 760,720" fill="#d9262a" opacity="0.55"/>
+    <polygon points="720,720 820,630 920,720" fill="#d9262a" opacity="0.55"/>
+    <polygon points="880,720 980,630 1080,720" fill="#d9262a" opacity="0.55"/>
+    <polygon points="1040,720 1140,630 1240,720" fill="#d9262a" opacity="0.55"/>
   </g>
-  <g fill="#d9262a" opacity="0.35">
-    <circle cx="200" cy="200" r="8"/>
-    <circle cx="1080" cy="160" r="10"/>
-    <circle cx="500" cy="520" r="6"/>
-    <circle cx="900" cy="560" r="7"/>
-    <circle cx="120" cy="480" r="5"/>
+  <g>
+    <circle cx="200" cy="200" r="16" fill="url(#ember)"/>
+    <circle cx="1080" cy="160" r="20" fill="url(#ember)"/>
+    <circle cx="500" cy="520" r="12" fill="url(#ember)"/>
+    <circle cx="900" cy="560" r="14" fill="url(#ember)"/>
+    <circle cx="120" cy="480" r="10" fill="url(#ember)"/>
+    <circle cx="660" cy="300" r="14" fill="url(#ember)"/>
+    <circle cx="360" cy="380" r="10" fill="url(#ember)"/>
+    <circle cx="1120" cy="480" r="12" fill="url(#ember)"/>
   </g>
 </svg>

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://scenes/minigame_4.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" path="res://assets/parry_zone.svg" id="5_zone"]
 [ext_resource type="AudioStreamWAV" path="res://assets/audio/win.wav" id="6_win"]
 [ext_resource type="AudioStreamWAV" path="res://assets/audio/fail.wav" id="7_fail"]
+[ext_resource type="Script" path="res://scripts/juice/screen_shake.gd" id="8_shake"]
 
 [node name="Minigame4" type="Node2D"]
 script = ExtResource("1_script")
@@ -87,3 +88,6 @@ stream = ExtResource("6_win")
 
 [node name="SfxFail" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fail")
+
+[node name="ShakeCam" type="Camera2D" parent="."]
+script = ExtResource("8_shake")
