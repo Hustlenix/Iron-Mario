@@ -13,6 +13,8 @@ func countdown(start_time: float) -> void:
 			last_whole = whole
 			tick_player.play()
 		await get_tree().create_timer(0.10).timeout
+		if not is_instance_valid(self) or not is_inside_tree():
+			return
 		time_left = maxf(time_left - 0.10, 0.0)
 	timer_label.text = "TIME: 0.0"
 	timer_label.visible = false

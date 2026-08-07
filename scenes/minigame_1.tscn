@@ -13,7 +13,7 @@
 size = Vector2(1280, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
-size = Vector2(160, 24)
+size = Vector2(200, 24)
 
 [node name="Minigame1" type="Node2D"]
 script = ExtResource("1_script")
@@ -55,9 +55,10 @@ color = Color(0.5, 0.55, 0.65, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
 shape = SubResource("RectangleShape2D_plat")
+one_way_collision = true
 
 [node name="Platform2" type="StaticBody2D" parent="."]
-position = Vector2(650, 460)
+position = Vector2(610, 460)
 
 [node name="ColorRect" type="ColorRect" parent="Platform2"]
 offset_left = -80.0
@@ -68,9 +69,10 @@ color = Color(0.5, 0.55, 0.65, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
 shape = SubResource("RectangleShape2D_plat")
+one_way_collision = true
 
 [node name="Platform3" type="StaticBody2D" parent="."]
-position = Vector2(900, 560)
+position = Vector2(880, 560)
 
 [node name="ColorRect" type="ColorRect" parent="Platform3"]
 offset_left = -80.0
@@ -81,6 +83,7 @@ color = Color(0.5, 0.55, 0.65, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
 shape = SubResource("RectangleShape2D_plat")
+one_way_collision = true
 
 [node name="Collectibles" type="Node2D" parent="."]
 
@@ -88,10 +91,10 @@ shape = SubResource("RectangleShape2D_plat")
 position = Vector2(430, 510)
 
 [node name="Collectible2" parent="Collectibles" instance=ExtResource("3_collectible")]
-position = Vector2(680, 410)
+position = Vector2(640, 410)
 
 [node name="Collectible3" parent="Collectibles" instance=ExtResource("3_collectible")]
-position = Vector2(930, 510)
+position = Vector2(910, 510)
 
 [node name="Player" parent="." instance=ExtResource("4_player")]
 position = Vector2(150, 620)
