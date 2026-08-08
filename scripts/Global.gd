@@ -5,6 +5,7 @@ var minigames_done: int = 0
 var loop: int = 0
 var streak: int = 0
 var best_streak: int = 0
+var flappy_best: int = 0
 var volume: float = 80.0
 
 const SAVE_PATH := "user://save.dat"
@@ -34,7 +35,7 @@ func save() -> void:
 	if file == null:
 		push_warning("Could not open save file: %s" % FileAccess.get_open_error())
 		return
-	file.store_string(JSON.stringify({"best_streak": best_streak, "volume": volume}))
+	file.store_string(JSON.stringify({"best_streak": best_streak, "volume": volume, "flappy_best": flappy_best}))
 
 func load_save() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
@@ -47,3 +48,4 @@ func load_save() -> void:
 	if data is Dictionary:
 		best_streak = int(data.get("best_streak", 0))
 		volume = float(data.get("volume", 80.0))
+		flappy_best = int(data.get("flappy_best", 0))
