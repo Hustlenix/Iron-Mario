@@ -46,6 +46,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 60)
 text = "START"
 
+[node name="FlappyButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 60)
+text = "FLAPPY  BEST: 0"
+
 [node name="SettingsButton" type="Button" parent="MenuButtons"]
 layout_mode = 2
 custom_minimum_size = Vector2(200, 60)
@@ -57,6 +62,7 @@ custom_minimum_size = Vector2(200, 60)
 text = "QUIT"
 
 [connection signal="pressed" from="MenuButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuButtons/FlappyButton" to="." method="_on_flappy_button_pressed"]
 [connection signal="pressed" from="MenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]
 

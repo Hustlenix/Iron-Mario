@@ -5,6 +5,7 @@ func _ready() -> void:
 	$Bgm.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	$Bgm.play()
 	$StreakLabel.text = "[center]BEST STREAK: %d[/center]" % Global.best_streak
+	$MenuButtons/FlappyButton.text = "FLAPPY  BEST: %d" % Global.flappy_best
 	_build_hero()
 	_pulse_logo()
 
@@ -42,3 +43,7 @@ func _on_settings_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+func _on_flappy_button_pressed() -> void:
+	await SceneFade.fade_out(self)
+	get_tree().change_scene_to_file("res://scenes/flappy_bird.tscn")
