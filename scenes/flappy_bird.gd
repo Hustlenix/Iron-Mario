@@ -86,7 +86,30 @@ func flap() -> void:
 			_do_flap_visuals()
 
 func build_sounds() -> void:
-	pass
+	sfx_flap.stream = _make_beep(620.0, 0.07, 0.5)
+	sfx_score.stream = _make_beep(880.0, 0.09, 0.45)
+	sfx_hit.stream = _make_beep(160.0, 0.3, 0.7, 1.2)
+	sfx_pickup.stream = _make_beep(1040.0, 0.1, 0.5)
+	sfx_win.stream = _make_beep(660.0, 0.4, 0.6, 0.4)
+
+func _make_beep(freq: float, duration: float, volume: float, wobble := 0.0) -> AudioStreamWAV:
+	var sr := 22050
+	var n := int(sr * duration)
+	var data := PackedByteArray()
+	data.resize(n * 2)
+	var slide := 1.0 + wobble
+	for i in n:
+		var t := float(i) / float(sr)
+		var env := minf(t / 0.01, 1.0) * maxf(1.0 - t / duration, 0.0)
+		var f := freq * (1.0 + (slide - 1.0) * t / duration)
+		var s := sin(TAU * f * t) * env * volume
+		data.encode_s16(i * 2, int(clampf(s, -1.0, 1.0) * 32767.0))
+	var wav := AudioStreamWAV.new()
+	wav.format = AudioStreamWAV.FORMAT_16_BITS
+	wav.mix_rate = sr
+	wav.stereo = false
+	wav.data = data
+	return wav
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

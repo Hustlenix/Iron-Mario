@@ -7,7 +7,9 @@ func _initialize() -> void:
 	flappy = scene.instantiate()
 	root.add_child(flappy)
 	var args := OS.get_cmdline_user_args()
-	if args.has("--feather"):
+	if args.has("--over"):
+		await _test_over()
+	elif args.has("--feather"):
 		await _test_feather()
 	elif args.has("--medal"):
 		await _test_medal()
@@ -42,6 +44,27 @@ func _test_ramp() -> void:
 			quit(0)
 			return
 	print("RAMP TEST FAIL: speed %f -> %f" % [ramp_0, ramp_25])
+	quit(1)
+
+func _test_over() -> void:
+	await process_frame
+	flappy.flap()
+	_run_frames(60)
+	flappy.set("bird_y", 700.0)
+	flappy.set("velocity", 900.0)
+	for i in 600:
+		await process_frame
+		if flappy.get_state() == "game_over":
+			break
+	if flappy.get_state() == "game_over":
+		var flap_stream: AudioStreamWAV = flappy.get_node("SfxFlap").stream
+		if flap_stream != null:
+			print("GAME OVER TEST OK")
+			quit(0)
+			return
+		print("GAME OVER TEST FAIL: no synthesized flap stream")
+		quit(1)
+	print("GAME OVER TEST FAIL: state=%s" % flappy.get_state())
 	quit(1)
 
 func _test_feather() -> void:
