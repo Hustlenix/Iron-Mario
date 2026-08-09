@@ -249,8 +249,17 @@ func _place_pair(pair: Node2D, center: float, use_gap: float) -> void:
 	pair.visible = true
 	_pipe_meta[pair] = {"gap_y": center, "gap": use_gap, "scored": false}
 
-func _spawn_pickup_if_due(_center: float, _use_gap: float) -> void:
-	pass
+func _spawn_pickup_if_due(center: float, use_gap: float) -> void:
+	if _spawned <= 3 or _spawned != feather_next_spawn:
+		return
+	var pickup := TextureRect.new()
+	pickup.texture = load("res://assets/web_orb.svg") as Texture2D
+	pickup.custom_minimum_size = Vector2(40.0, 40.0)
+	pickup.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	pickup.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	pickup.position = Vector2(1400.0, center - 20.0)
+	pickups_node.add_child(pickup)
+	feather_next_spawn = _spawned + randi_range(feather_every_min, feather_every_max)
 
 func _collides() -> bool:
 	var bird_rect := Rect2(BIRD_X + BIRD_SIZE * HITBOX_SHRINK, bird_y + BIRD_SIZE * HITBOX_SHRINK, BIRD_SIZE * (1.0 - 2.0 * HITBOX_SHRINK), BIRD_SIZE * (1.0 - 2.0 * HITBOX_SHRINK))
@@ -335,6 +344,7 @@ func _restart() -> void:
 	bird.rotation = 0.0
 	bird.modulate.a = 1.0
 	score_label.text = "0"
+	score_label.remove_theme_color_override("font_color")
 	best_label.text = "BEST: %d" % best
 	medal_label.text = ""
 	medal_icon.visible = false
