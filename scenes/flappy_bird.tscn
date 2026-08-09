@@ -1,0 +1,146 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scenes/flappy_bird.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/flappy_bg.svg" id="2_bg"]
+[ext_resource type="Texture2D" path="res://assets/flappy_hero.svg" id="3_hero"]
+[ext_resource type="Texture2D" path="res://assets/web_orb.svg" id="4_shard"]
+[ext_resource type="AudioStreamWAV" path="res://assets/audio/bgm.wav" id="5_bgm"]
+[ext_resource type="Script" path="res://scripts/juice/screen_shake.gd" id="6_shake"]
+
+[node name="FlappyBird" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScoreLabel" type="RichTextLabel" parent="HUD"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 90.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 48
+theme_override_constants/outline_size = 20
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+scroll_active = false
+text = "0"
+
+[node name="BestLabel" type="RichTextLabel" parent="HUD"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 92.0
+offset_right = 320.0
+offset_bottom = 140.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 26
+theme_override_constants/outline_size = 10
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+scroll_active = false
+text = "BEST: 0"
+
+[node name="MedalLabel" type="RichTextLabel" parent="HUD"]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 20.0
+offset_right = 1280.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 34
+theme_override_constants/outline_size = 14
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+scroll_active = false
+text = ""
+
+[node name="MedalIcon" type="TextureRect" parent="HUD"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 20.0
+offset_right = 948.0
+offset_bottom = 68.0
+mouse_filter = 2
+visible = false
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FeatherIcon" type="TextureRect" parent="HUD"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 150.0
+offset_right = 68.0
+offset_bottom = 198.0
+mouse_filter = 2
+visible = false
+texture = ExtResource("4_shard")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HintLabel" type="RichTextLabel" parent="HUD"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 330.0
+offset_right = 1040.0
+offset_bottom = 400.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 18
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+scroll_active = false
+text = "TAP / SPACE TO FLAP"
+
+[node name="Pipes" type="Node2D" parent="."]
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="Trail" type="Node2D" parent="."]
+
+[node name="Bird" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 300.0
+offset_right = 270.0
+offset_bottom = 370.0
+mouse_filter = 2
+texture = ExtResource("3_hero")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SfxFlap" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+
+[node name="SfxScore" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+
+[node name="SfxHit" type="AudioStreamPlayer" parent="."]
+volume_db = -4.0
+
+[node name="SfxPickup" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+
+[node name="SfxWin" type="AudioStreamPlayer" parent="."]
+volume_db = -4.0
+
+[node name="Bgm" type="AudioStreamPlayer" parent="."]
+volume_db = -14.0
+stream = ExtResource("5_bgm")
+
+[node name="ShakeCam" type="Camera2D" parent="."]
+script = ExtResource("6_shake")
