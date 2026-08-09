@@ -7,4 +7,5 @@ Task 5: complete (commit 9a35fef, review PASS; ramp test 240@0 / 330@25 verified
 Task 6: complete (commit b7283f7, review PASS; Minors: restart gold-bleed → FIXED in Task 7, medal icon clear cosmetic, sfx reuse until Task 8)
 Task 7: complete (commit 73b1533, review PASS; test rewritten as poll-based — headless frame timing unreliable; restart gold-bleed fix included)
 Task 8: complete (commit 6f14810, review PASS; synthesized SFX; poll-based game-over test; Minors: ObjectDB leak noise, poll flake risk theoretical)
+Task 9: complete (commit e78edc7 + 2658c56; 7/7 E2E modes PASS; harness deleted; import+boot clean; pushed 5a5e742..2658c56; exports rebuilt exe 109MB/wasm 39.5MB/zip 10.8MB; CI Deploy Web success; live site 200)
 Task 2: complete (commit 3adb4af + restyle 3259f17; FLAPPY button verified inside restyled title screen; headless boot clean).

@@ -38,8 +38,6 @@ var feather_every_max := 12
 var _pipe_meta := {}
 var _spawn_timer := 0.0
 var _spawned := 0
-var _first_delay := 0.0
-var _score_flash := 0.0
 var _trail_index := 0
 var _trail_timer := 0.0
 
@@ -379,7 +377,7 @@ func _build_trail() -> void:
 	for i in TRAIL_COUNT:
 		var node := TextureRect.new()
 		node.texture = load("res://assets/flappy_hero.svg") as Texture2D
-		node.custom_minimum_size = Vector2(BIRD_SIZE, BIRD_SIZE)
+		node.size = Vector2(BIRD_SIZE, BIRD_SIZE)
 		node.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		node.modulate = Color(0.31, 0.82, 1.0, 0.0)
