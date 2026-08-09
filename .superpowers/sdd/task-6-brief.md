@@ -5,7 +5,7 @@
 - Modify: `C:\Users\LalithReddy.b\Iron-Mario\test_flappy.gd`
 
 **Interfaces:**
-- Consumes: `_score()` (Task 4), `medal_label`, `sfx_win`, `best`, `new_best_fired`, `medals`
+- Consumes: `_score()` (Task 4), `medal_label`, `medal_icon`, `sfx_win`, `best`, `new_best_fired`, `medals`; tinted medal icons `assets/medal_bronze.svg` / `medal_silver.svg` / `medal_gold.svg` / `medal_platinum.svg`
 - Produces: `_MEDALS` const (ordered array), `_check_medal()` called from `_score()`, `_check_new_best()` called from `_score()`
 
 - [ ] **Step 1: Add the failing test**
@@ -59,10 +59,10 @@ Add after the consts block in `scenes/flappy_bird.gd`:
 
 ```gdscript
 const _MEDALS := [
-	{"score": 5, "name": "BRONZE", "color": Color(0.72, 0.45, 0.22)},
-	{"score": 10, "name": "SILVER", "color": Color(0.8, 0.8, 0.85)},
-	{"score": 20, "name": "GOLD", "color": Color(1.0, 0.84, 0.3)},
-	{"score": 40, "name": "PLATINUM", "color": Color(0.55, 0.9, 1.0)},
+	{"score": 5, "name": "BRONZE", "color": Color(0.72, 0.45, 0.22), "icon": "res://assets/medal_bronze.svg"},
+	{"score": 10, "name": "SILVER", "color": Color(0.8, 0.8, 0.85), "icon": "res://assets/medal_silver.svg"},
+	{"score": 20, "name": "GOLD", "color": Color(1.0, 0.84, 0.3), "icon": "res://assets/medal_gold.svg"},
+	{"score": 40, "name": "PLATINUM", "color": Color(0.55, 0.9, 1.0), "icon": "res://assets/medal_platinum.svg"},
 ]
 ```
 
@@ -81,6 +81,8 @@ func _check_medal() -> void:
 		if score >= int(medal.score) and not medals.has(medal.name):
 			medals[medal.name] = true
 			medal_label.text = medal.name
+			medal_icon.texture = load(medal.icon) as Texture2D
+			medal_icon.visible = true
 			medal_label.add_theme_color_override("font_color", medal.color)
 			Juice.burst(self, Vector2(1100.0, 60.0), medal.color, 16, 260.0)
 			Juice.text(self, medal.name, Vector2(1180.0, 90.0), medal.color, 34)

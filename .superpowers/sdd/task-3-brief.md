@@ -6,8 +6,8 @@
 - Create: `C:\Users\LalithReddy.b\Iron-Mario\test_flappy.gd` (headless driver, boot mode)
 
 **Interfaces:**
-- Consumes: `assets/bg_game.svg`, `assets/hero.svg`, `assets/shard.svg`, `assets/audio/bgm.wav`, `scripts/juice/screen_shake.gd`, `scripts/juice/scene_fade.gd` (class_name `SceneFade`), `scripts/juice/juice.gd` (class_name `Juice`)
-- Produces (used by later tasks): scene node paths `$Pipes`, `$Pickups`, `$Trail`, `$Bird`, `$HUD/ScoreLabel`, `$HUD/BestLabel`, `$HUD/MedalLabel`, `$HUD/FeatherIcon`, `$HUD/HintLabel`, `$SfxFlap`, `$SfxScore`, `$SfxHit`, `$SfxPickup`, `$SfxWin`, `$Bgm`, `$ShakeCam`; script API `get_state() -> String` returning `"title" | "playing" | "game_over"`, `flap()` method, tunable vars `feather_every_min`, `feather_every_max`, `feather_next_spawn` (all `var` so the driver can `set()` them)
+- Consumes: `assets/flappy_bg.svg`, `assets/flappy_hero.svg`, `assets/web_orb.svg`, `assets/pipe_body_red.svg`, `assets/pipe_rim_red.svg`, `assets/pipe_body_blue.svg`, `assets/pipe_rim_blue.svg` (consumed by Task 4's pipe pool), `assets/audio/bgm.wav`, `scripts/juice/screen_shake.gd`, `scripts/juice/scene_fade.gd` (class_name `SceneFade`), `scripts/juice/juice.gd` (class_name `Juice`)
+- Produces (used by later tasks): scene node paths `$Pipes`, `$Pickups`, `$Trail`, `$Bird`, `$HUD/ScoreLabel`, `$HUD/BestLabel`, `$HUD/MedalLabel`, `$HUD/MedalIcon`, `$HUD/FeatherIcon`, `$HUD/HintLabel`, `$SfxFlap`, `$SfxScore`, `$SfxHit`, `$SfxPickup`, `$SfxWin`, `$Bgm`, `$ShakeCam`; script API `get_state() -> String` returning `"title" | "playing" | "game_over"`, `flap()` method, tunable vars `feather_every_min`, `feather_every_max`, `feather_next_spawn` (all `var` so the driver can `set()` them)
 
 - [ ] **Step 1: Write the scene file**
 
@@ -17,9 +17,9 @@
 [gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scenes/flappy_bird.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
-[ext_resource type="Texture2D" path="res://assets/hero.svg" id="3_hero"]
-[ext_resource type="Texture2D" path="res://assets/shard.svg" id="4_shard"]
+[ext_resource type="Texture2D" path="res://assets/flappy_bg.svg" id="2_bg"]
+[ext_resource type="Texture2D" path="res://assets/flappy_hero.svg" id="3_hero"]
+[ext_resource type="Texture2D" path="res://assets/web_orb.svg" id="4_shard"]
 [ext_resource type="AudioStreamWAV" path="res://assets/audio/bgm.wav" id="5_bgm"]
 [ext_resource type="Script" path="res://scripts/juice/screen_shake.gd" id="6_shake"]
 
@@ -85,6 +85,17 @@ theme_override_constants/outline_size = 14
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 scroll_active = false
 text = ""
+
+[node name="MedalIcon" type="TextureRect" parent="HUD"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 20.0
+offset_right = 948.0
+offset_bottom = 68.0
+mouse_filter = 2
+visible = false
+expand_mode = 1
+stretch_mode = 5
 
 [node name="FeatherIcon" type="TextureRect" parent="HUD"]
 layout_mode = 0
@@ -166,8 +177,6 @@ const BIRD_SIZE := 70.0
 const GROUND_Y := 620.0
 const PIPE_WIDTH := 110.0
 const PIPE_RIM := 16.0
-const PIPE_BODY_COLOR := Color(0.07, 0.12, 0.25)
-const PIPE_RIM_COLOR := Color(0.31, 0.82, 1.0)
 const GAP_MIN_CENTER := 200.0
 const GAP_MAX_CENTER := 560.0
 const PIPE_POOL := 6
@@ -203,6 +212,7 @@ var _trail_timer := 0.0
 @onready var score_label: RichTextLabel = $HUD/ScoreLabel
 @onready var best_label: RichTextLabel = $HUD/BestLabel
 @onready var medal_label: RichTextLabel = $HUD/MedalLabel
+@onready var medal_icon: TextureRect = $HUD/MedalIcon
 @onready var feather_icon: TextureRect = $HUD/FeatherIcon
 @onready var hint_label: RichTextLabel = $HUD/HintLabel
 @onready var sfx_flap: AudioStreamPlayer = $SfxFlap

@@ -5,7 +5,7 @@
 - Modify: `C:\Users\LalithReddy.b\Iron-Mario\test_flappy.gd`
 
 **Interfaces:**
-- Consumes: Task 3 skeleton, node paths, `get_state()`, `flap()`
+- Consumes: Task 3 skeleton, node paths, `get_state()`, `flap()`; themed pipe art (`assets/pipe_body_red.svg`, `assets/pipe_rim_red.svg`, `assets/pipe_body_blue.svg`, `assets/pipe_rim_blue.svg`) for the pooled pairs; `assets/flappy_hero.svg` for the trail afterimages
 - Produces: `_process` state machine (`title` â†’ first flap â†’ `playing`; ground/pipe hit â†’ `dying` 0.45s â†’ `game_over`), pipe pool spawning/movement/recycling, gap-center stored per pair in `_pipe_meta` keyed by pair instance, `_collides() -> bool`, `_die()`, `_restart()`, `_score()`
 
 - [ ] **Step 1: Add the failing test to the driver**
@@ -139,27 +139,35 @@ func _apply_bird() -> void:
 	bird.scale.x = lerpf(bird.scale.x, 1.0 / maxf(stretch, 0.01), 0.1)
 
 func _build_pipe_pool() -> void:
+	var bodies := [
+		load("res://assets/pipe_body_red.svg") as Texture2D,
+		load("res://assets/pipe_body_blue.svg") as Texture2D,
+	]
+	var rims := [
+		load("res://assets/pipe_rim_red.svg") as Texture2D,
+		load("res://assets/pipe_rim_blue.svg") as Texture2D,
+	]
 	for i in PIPE_POOL:
 		var pair := Node2D.new()
-		var top_body := ColorRect.new()
-		top_body.color = PIPE_BODY_COLOR
+		var top_body := TextureRect.new()
+		top_body.texture = bodies[i % 2]
 		top_body.size = Vector2(PIPE_WIDTH, 1000.0)
 		top_body.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		pair.add_child(top_body)
-		var top_rim := ColorRect.new()
-		top_rim.color = PIPE_RIM_COLOR
+		var top_rim := TextureRect.new()
+		top_rim.texture = rims[i % 2]
 		top_rim.size = Vector2(PIPE_WIDTH, PIPE_RIM)
 		top_rim.position = Vector2(0.0, 1000.0 - PIPE_RIM)
 		top_rim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		pair.add_child(top_rim)
-		var bottom_body := ColorRect.new()
-		bottom_body.color = PIPE_BODY_COLOR
+		var bottom_body := TextureRect.new()
+		bottom_body.texture = bodies[i % 2]
 		bottom_body.size = Vector2(PIPE_WIDTH, 1000.0)
 		bottom_body.position = Vector2(0.0, 1024.0)
 		bottom_body.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		pair.add_child(bottom_body)
-		var bottom_rim := ColorRect.new()
-		bottom_rim.color = PIPE_RIM_COLOR
+		var bottom_rim := TextureRect.new()
+		bottom_rim.texture = rims[i % 2]
 		bottom_rim.size = Vector2(PIPE_WIDTH, PIPE_RIM)
 		bottom_rim.position = Vector2(0.0, 1024.0)
 		bottom_rim.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -216,11 +224,11 @@ func _spawn_pair() -> void:
 
 func _place_pair(pair: Node2D, center: float, use_gap: float) -> void:
 	pair.position = Vector2(1400.0, 0.0)
-	for child in pair.get_children():
-		if child.position.y < 512.0:
-			child.position.y = center - use_gap * 0.5 - 1000.0
-		else:
-			child.position.y = center + use_gap * 0.5
+	var children := pair.get_children()
+	children[0].position.y = center - use_gap * 0.5 - 1000.0
+	children[1].position.y = center - use_gap * 0.5 - PIPE_RIM
+	children[2].position.y = center + use_gap * 0.5
+	children[3].position.y = center + use_gap * 0.5
 	pair.visible = true
 	_pipe_meta[pair] = {"gap_y": center, "gap": use_gap, "scored": false}
 
@@ -286,6 +294,7 @@ func _restart() -> void:
 	score_label.text = "0"
 	best_label.text = "BEST: %d" % best
 	medal_label.text = ""
+	medal_icon.visible = false
 	hint_label.visible = false
 	state = "title"
 	flap()
@@ -293,7 +302,7 @@ func _restart() -> void:
 func _build_trail() -> void:
 	for i in TRAIL_COUNT:
 		var node := TextureRect.new()
-		node.texture = load("res://assets/hero.svg") as Texture2D
+		node.texture = load("res://assets/flappy_hero.svg") as Texture2D
 		node.custom_minimum_size = Vector2(BIRD_SIZE, BIRD_SIZE)
 		node.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		node.mouse_filter = Control.MOUSE_FILTER_IGNORE

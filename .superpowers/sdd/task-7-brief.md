@@ -6,7 +6,7 @@
 
 **Interfaces:**
 - Consumes: `_spawn_pair` (calls `_spawn_pickup_if_due`), `_move_pickups`, `_collides` (shield-pop branch), `pickups_node`, `feather_icon`, `feather_next_spawn`, `feather_every_min/max`, `_spawned`
-- Produces: full `_spawn_pickup_if_due(center, use_gap)` that spawns a 40x40 `shard.svg` TextureRect at the gap center when `_spawned > 3 and _spawned == feather_next_spawn`, then sets `feather_next_spawn = _spawned + randi_range(min,max)`
+- Produces: full `_spawn_pickup_if_due(center, use_gap)` that spawns a 40x40 `web_orb.svg` TextureRect at the gap center when `_spawned > 3 and _spawned == feather_next_spawn`, then sets `feather_next_spawn = _spawned + randi_range(min,max)`
 
 - [ ] **Step 1: Add the failing test**
 
@@ -74,7 +74,7 @@ func _spawn_pickup_if_due(center: float, use_gap: float) -> void:
 	if _spawned <= 3 or _spawned != feather_next_spawn:
 		return
 	var pickup := TextureRect.new()
-	pickup.texture = load("res://assets/shard.svg") as Texture2D
+	pickup.texture = load("res://assets/web_orb.svg") as Texture2D
 	pickup.custom_minimum_size = Vector2(40.0, 40.0)
 	pickup.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	pickup.mouse_filter = Control.MOUSE_FILTER_IGNORE

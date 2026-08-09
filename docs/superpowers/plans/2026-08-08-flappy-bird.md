@@ -6,7 +6,7 @@
 
 **Architecture:** One new scene `scenes/flappy_bird.tscn` with all gameplay in `flappy_bird.gd` (manual physics, pooled pipes, no physics engine). Entry via a new FLAPPY button on the title screen. Best score persists through the existing `Global` JSON save (`user://save.dat`), following the codebase's existing save pattern (a refinement of the spec's standalone ConfigFile — one save file, existing load path, `Global.flappy_best` readable by the title screen). Verification via a headless SceneTree driver script that grows task-by-task.
 
-**Tech Stack:** Godot 4.7.1 (GDScript), existing SVG assets (`hero.svg`, `bg_game.svg`, `shard.svg`), existing `Juice`/`SceneFade` classes, `AudioStreamWAV` synthesized in code.
+**Tech Stack:** Godot 4.7.1 (GDScript), new themed SVG assets (`flappy_hero.svg`, `flappy_bg.svg`, `web_orb.svg`, `pipe_body_red.svg`, `pipe_rim_red.svg`, `pipe_body_blue.svg`, `pipe_rim_blue.svg`, `medal_*.svg`), existing `Juice`/`SceneFade` classes, `AudioStreamWAV` synthesized in code.
 
 ## Global Constraints
 
@@ -18,7 +18,7 @@
 - Feather pickup: every 8–12 pipes (never in first 3), one held max, shield-pop on next hit + 1s invulnerability (collisions fully ignored while blinking)
 - Collision hitboxes shrunk 15%; best score persisted via `Global.flappy_best` in `user://save.dat`
 - Code style: GDScript 4, tabs, snake_case, NO comments in code
-- No new art files; no changes to minigame flow (`Global.minigames_done` untouched)
+- New themed art is part of this plan (see the Art Direction section in the design spec); NO gameplay constants may change; no changes to minigame flow (`Global.minigames_done` untouched)
 - Commit after every task; push + export + CI only in the final task
 
 ---
@@ -131,8 +131,8 @@ git commit -m "feat(flappy): FLAPPY button on title screen"
 - Create: `C:\Users\LalithReddy.b\Iron-Mario\test_flappy.gd` (headless driver, boot mode)
 
 **Interfaces:**
-- Consumes: `assets/bg_game.svg`, `assets/hero.svg`, `assets/shard.svg`, `assets/audio/bgm.wav`, `scripts/juice/screen_shake.gd`, `scripts/juice/scene_fade.gd` (class_name `SceneFade`), `scripts/juice/juice.gd` (class_name `Juice`)
-- Produces (used by later tasks): scene node paths `$Pipes`, `$Pickups`, `$Trail`, `$Bird`, `$HUD/ScoreLabel`, `$HUD/BestLabel`, `$HUD/MedalLabel`, `$HUD/FeatherIcon`, `$HUD/HintLabel`, `$SfxFlap`, `$SfxScore`, `$SfxHit`, `$SfxPickup`, `$SfxWin`, `$Bgm`, `$ShakeCam`; script API `get_state() -> String` returning `"title" | "playing" | "game_over"`, `flap()` method, tunable vars `feather_every_min`, `feather_every_max`, `feather_next_spawn` (all `var` so the driver can `set()` them)
+- Consumes: `assets/flappy_bg.svg`, `assets/flappy_hero.svg`, `assets/web_orb.svg`, `assets/pipe_body_red.svg`, `assets/pipe_rim_red.svg`, `assets/pipe_body_blue.svg`, `assets/pipe_rim_blue.svg` (consumed by Task 4's pipe pool), `assets/audio/bgm.wav`, `scripts/juice/screen_shake.gd`, `scripts/juice/scene_fade.gd` (class_name `SceneFade`), `scripts/juice/juice.gd` (class_name `Juice`)
+- Produces (used by later tasks): scene node paths `$Pipes`, `$Pickups`, `$Trail`, `$Bird`, `$HUD/ScoreLabel`, `$HUD/BestLabel`, `$HUD/MedalLabel`, `$HUD/MedalIcon`, `$HUD/FeatherIcon`, `$HUD/HintLabel`, `$SfxFlap`, `$SfxScore`, `$SfxHit`, `$SfxPickup`, `$SfxWin`, `$Bgm`, `$ShakeCam`; script API `get_state() -> String` returning `"title" | "playing" | "game_over"`, `flap()` method, tunable vars `feather_every_min`, `feather_every_max`, `feather_next_spawn` (all `var` so the driver can `set()` them)
 
 - [ ] **Step 1: Write the scene file**
 
@@ -142,9 +142,9 @@ git commit -m "feat(flappy): FLAPPY button on title screen"
 [gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scenes/flappy_bird.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
-[ext_resource type="Texture2D" path="res://assets/hero.svg" id="3_hero"]
-[ext_resource type="Texture2D" path="res://assets/shard.svg" id="4_shard"]
+[ext_resource type="Texture2D" path="res://assets/flappy_bg.svg" id="2_bg"]
+[ext_resource type="Texture2D" path="res://assets/flappy_hero.svg" id="3_hero"]
+[ext_resource type="Texture2D" path="res://assets/web_orb.svg" id="4_shard"]
 [ext_resource type="AudioStreamWAV" path="res://assets/audio/bgm.wav" id="5_bgm"]
 [ext_resource type="Script" path="res://scripts/juice/screen_shake.gd" id="6_shake"]
 
@@ -210,6 +210,17 @@ theme_override_constants/outline_size = 14
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 scroll_active = false
 text = ""
+
+[node name="MedalIcon" type="TextureRect" parent="HUD"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 20.0
+offset_right = 948.0
+offset_bottom = 68.0
+mouse_filter = 2
+visible = false
+expand_mode = 1
+stretch_mode = 5
 
 [node name="FeatherIcon" type="TextureRect" parent="HUD"]
 layout_mode = 0
@@ -291,8 +302,6 @@ const BIRD_SIZE := 70.0
 const GROUND_Y := 620.0
 const PIPE_WIDTH := 110.0
 const PIPE_RIM := 16.0
-const PIPE_BODY_COLOR := Color(0.07, 0.12, 0.25)
-const PIPE_RIM_COLOR := Color(0.31, 0.82, 1.0)
 const GAP_MIN_CENTER := 200.0
 const GAP_MAX_CENTER := 560.0
 const PIPE_POOL := 6
@@ -328,6 +337,7 @@ var _trail_timer := 0.0
 @onready var score_label: RichTextLabel = $HUD/ScoreLabel
 @onready var best_label: RichTextLabel = $HUD/BestLabel
 @onready var medal_label: RichTextLabel = $HUD/MedalLabel
+@onready var medal_icon: TextureRect = $HUD/MedalIcon
 @onready var feather_icon: TextureRect = $HUD/FeatherIcon
 @onready var hint_label: RichTextLabel = $HUD/HintLabel
 @onready var sfx_flap: AudioStreamPlayer = $SfxFlap
@@ -416,7 +426,7 @@ git commit -m "feat(flappy): scene skeleton + headless test driver"
 - Modify: `C:\Users\LalithReddy.b\Iron-Mario\test_flappy.gd`
 
 **Interfaces:**
-- Consumes: Task 3 skeleton, node paths, `get_state()`, `flap()`
+- Consumes: Task 3 skeleton, node paths, `get_state()`, `flap()`; themed pipe art (`assets/pipe_body_red.svg`, `assets/pipe_rim_red.svg`, `assets/pipe_body_blue.svg`, `assets/pipe_rim_blue.svg`) for the pooled pairs; `assets/flappy_hero.svg` for the trail afterimages
 - Produces: `_process` state machine (`title` → first flap → `playing`; ground/pipe hit → `dying` 0.45s → `game_over`), pipe pool spawning/movement/recycling, gap-center stored per pair in `_pipe_meta` keyed by pair instance, `_collides() -> bool`, `_die()`, `_restart()`, `_score()`
 
 - [ ] **Step 1: Add the failing test to the driver**
@@ -550,27 +560,35 @@ func _apply_bird() -> void:
 	bird.scale.x = lerpf(bird.scale.x, 1.0 / maxf(stretch, 0.01), 0.1)
 
 func _build_pipe_pool() -> void:
+	var bodies := [
+		load("res://assets/pipe_body_red.svg") as Texture2D,
+		load("res://assets/pipe_body_blue.svg") as Texture2D,
+	]
+	var rims := [
+		load("res://assets/pipe_rim_red.svg") as Texture2D,
+		load("res://assets/pipe_rim_blue.svg") as Texture2D,
+	]
 	for i in PIPE_POOL:
 		var pair := Node2D.new()
-		var top_body := ColorRect.new()
-		top_body.color = PIPE_BODY_COLOR
+		var top_body := TextureRect.new()
+		top_body.texture = bodies[i % 2]
 		top_body.size = Vector2(PIPE_WIDTH, 1000.0)
 		top_body.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		pair.add_child(top_body)
-		var top_rim := ColorRect.new()
-		top_rim.color = PIPE_RIM_COLOR
+		var top_rim := TextureRect.new()
+		top_rim.texture = rims[i % 2]
 		top_rim.size = Vector2(PIPE_WIDTH, PIPE_RIM)
 		top_rim.position = Vector2(0.0, 1000.0 - PIPE_RIM)
 		top_rim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		pair.add_child(top_rim)
-		var bottom_body := ColorRect.new()
-		bottom_body.color = PIPE_BODY_COLOR
+		var bottom_body := TextureRect.new()
+		bottom_body.texture = bodies[i % 2]
 		bottom_body.size = Vector2(PIPE_WIDTH, 1000.0)
 		bottom_body.position = Vector2(0.0, 1024.0)
 		bottom_body.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		pair.add_child(bottom_body)
-		var bottom_rim := ColorRect.new()
-		bottom_rim.color = PIPE_RIM_COLOR
+		var bottom_rim := TextureRect.new()
+		bottom_rim.texture = rims[i % 2]
 		bottom_rim.size = Vector2(PIPE_WIDTH, PIPE_RIM)
 		bottom_rim.position = Vector2(0.0, 1024.0)
 		bottom_rim.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -627,11 +645,11 @@ func _spawn_pair() -> void:
 
 func _place_pair(pair: Node2D, center: float, use_gap: float) -> void:
 	pair.position = Vector2(1400.0, 0.0)
-	for child in pair.get_children():
-		if child.position.y < 512.0:
-			child.position.y = center - use_gap * 0.5 - 1000.0
-		else:
-			child.position.y = center + use_gap * 0.5
+	var children := pair.get_children()
+	children[0].position.y = center - use_gap * 0.5 - 1000.0
+	children[1].position.y = center - use_gap * 0.5 - PIPE_RIM
+	children[2].position.y = center + use_gap * 0.5
+	children[3].position.y = center + use_gap * 0.5
 	pair.visible = true
 	_pipe_meta[pair] = {"gap_y": center, "gap": use_gap, "scored": false}
 
@@ -697,6 +715,7 @@ func _restart() -> void:
 	score_label.text = "0"
 	best_label.text = "BEST: %d" % best
 	medal_label.text = ""
+	medal_icon.visible = false
 	hint_label.visible = false
 	state = "title"
 	flap()
@@ -704,7 +723,7 @@ func _restart() -> void:
 func _build_trail() -> void:
 	for i in TRAIL_COUNT:
 		var node := TextureRect.new()
-		node.texture = load("res://assets/hero.svg") as Texture2D
+		node.texture = load("res://assets/flappy_hero.svg") as Texture2D
 		node.custom_minimum_size = Vector2(BIRD_SIZE, BIRD_SIZE)
 		node.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -886,10 +905,10 @@ Add after the consts block in `scenes/flappy_bird.gd`:
 
 ```gdscript
 const _MEDALS := [
-	{"score": 5, "name": "BRONZE", "color": Color(0.72, 0.45, 0.22)},
-	{"score": 10, "name": "SILVER", "color": Color(0.8, 0.8, 0.85)},
-	{"score": 20, "name": "GOLD", "color": Color(1.0, 0.84, 0.3)},
-	{"score": 40, "name": "PLATINUM", "color": Color(0.55, 0.9, 1.0)},
+	{"score": 5, "name": "BRONZE", "color": Color(0.72, 0.45, 0.22), "icon": "res://assets/medal_bronze.svg"},
+	{"score": 10, "name": "SILVER", "color": Color(0.8, 0.8, 0.85), "icon": "res://assets/medal_silver.svg"},
+	{"score": 20, "name": "GOLD", "color": Color(1.0, 0.84, 0.3), "icon": "res://assets/medal_gold.svg"},
+	{"score": 40, "name": "PLATINUM", "color": Color(0.55, 0.9, 1.0), "icon": "res://assets/medal_platinum.svg"},
 ]
 ```
 
@@ -908,6 +927,8 @@ func _check_medal() -> void:
 		if score >= int(medal.score) and not medals.has(medal.name):
 			medals[medal.name] = true
 			medal_label.text = medal.name
+			medal_icon.texture = load(medal.icon) as Texture2D
+			medal_icon.visible = true
 			medal_label.add_theme_color_override("font_color", medal.color)
 			Juice.burst(self, Vector2(1100.0, 60.0), medal.color, 16, 260.0)
 			Juice.text(self, medal.name, Vector2(1180.0, 90.0), medal.color, 34)
@@ -948,7 +969,7 @@ git commit -m "feat(flappy): milestone medals + NEW BEST moment"
 
 **Interfaces:**
 - Consumes: `_spawn_pair` (calls `_spawn_pickup_if_due`), `_move_pickups`, `_collides` (shield-pop branch), `pickups_node`, `feather_icon`, `feather_next_spawn`, `feather_every_min/max`, `_spawned`
-- Produces: full `_spawn_pickup_if_due(center, use_gap)` that spawns a 40x40 `shard.svg` TextureRect at the gap center when `_spawned > 3 and _spawned == feather_next_spawn`, then sets `feather_next_spawn = _spawned + randi_range(min,max)`
+- Produces: full `_spawn_pickup_if_due(center, use_gap)` that spawns a 40x40 `web_orb.svg` TextureRect at the gap center when `_spawned > 3 and _spawned == feather_next_spawn`, then sets `feather_next_spawn = _spawned + randi_range(min,max)`
 
 - [ ] **Step 1: Add the failing test**
 
@@ -1016,7 +1037,7 @@ func _spawn_pickup_if_due(center: float, use_gap: float) -> void:
 	if _spawned <= 3 or _spawned != feather_next_spawn:
 		return
 	var pickup := TextureRect.new()
-	pickup.texture = load("res://assets/shard.svg") as Texture2D
+	pickup.texture = load("res://assets/web_orb.svg") as Texture2D
 	pickup.custom_minimum_size = Vector2(40.0, 40.0)
 	pickup.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	pickup.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -1261,3 +1282,5 @@ Summarize: feature list, test results, commit hash, export sizes, live URL, CI s
 - Trail cast: `as TextureRect` on pooled trail children (typed-var safety, found in pre-flight review).
 - Driver tests are deterministic: no reliance on random scoring or pipe geometry — they set score/state/positions directly and call internal methods.
 - Type consistency: `_ramp_speed()`/`_ramp_gap()`/`_ramp_interval()` defined in T4 and used consistently; `_pipe_meta` stores `gap_y` + `gap` per pair; `feather_next_spawn` initialized in T3 skeleton and reset in `_restart()`; `medals` dict reset in `_restart()`.
+- Pipe rims: `_place_pair` uses child-index placement (0..3 = top body, top rim, bottom body, bottom rim) so the gap-facing caps render on BOTH pipes (fixes the old y<512 discriminator bug — the top pipe previously rendered rimless; visual only, no gameplay change).
+- Themed art: flappy scene uses the Iron-Slinger assets (flappy_hero/flappy_bg/web_orb/pipe_*/medal_*); gameplay constants, ramp values, medal thresholds and persistence are untouched.
