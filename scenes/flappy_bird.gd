@@ -14,6 +14,13 @@ const PIPE_POOL := 6
 const TRAIL_COUNT := 10
 const HITBOX_SHRINK := 0.075
 
+const _MEDALS := [
+	{"score": 5, "name": "BRONZE", "color": Color(0.72, 0.45, 0.22), "icon": "res://assets/medal_bronze.svg"},
+	{"score": 10, "name": "SILVER", "color": Color(0.8, 0.8, 0.85), "icon": "res://assets/medal_silver.svg"},
+	{"score": 20, "name": "GOLD", "color": Color(1.0, 0.84, 0.3), "icon": "res://assets/medal_gold.svg"},
+	{"score": 40, "name": "PLATINUM", "color": Color(0.55, 0.9, 1.0), "icon": "res://assets/medal_platinum.svg"},
+]
+
 var state := "title"
 var score := 0
 var velocity := 0.0
@@ -265,6 +272,32 @@ func _score() -> void:
 	sfx_score.play()
 	Juice.text(self, "+1", Vector2(BIRD_X + 40.0, bird_y), Color(0.6, 1.0, 0.65), 30)
 	Juice.shake(self, 0.05)
+	_check_medal()
+	_check_new_best()
+
+func _check_medal() -> void:
+	for medal in _MEDALS:
+		if score >= int(medal.score) and not medals.has(medal.name):
+			medals[medal.name] = true
+			medal_label.text = medal.name
+			medal_icon.texture = load(medal.icon) as Texture2D
+			medal_icon.visible = true
+			medal_label.add_theme_color_override("font_color", medal.color)
+			Juice.burst(self, Vector2(1100.0, 60.0), medal.color, 16, 260.0)
+			Juice.text(self, medal.name, Vector2(1180.0, 90.0), medal.color, 34)
+			sfx_score.play()
+
+func _check_new_best() -> void:
+	if not new_best_fired and score > best:
+		new_best_fired = true
+		best = score
+		Global.flappy_best = best
+		Global.save()
+		best_label.text = "BEST: %d" % best
+		score_label.add_theme_color_override("font_color", Color(1.0, 0.84, 0.3))
+		sfx_win.play()
+		Juice.burst(self, Vector2(BIRD_X, bird_y), Color(1.0, 0.84, 0.3), 22, 320.0)
+		Juice.text(self, "NEW BEST!", Vector2(BIRD_X + 30.0, bird_y - 30.0), Color(1.0, 0.84, 0.3), 38)
 
 func _die() -> void:
 	state = "dying"
