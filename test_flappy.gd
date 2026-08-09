@@ -19,6 +19,7 @@ func _initialize() -> void:
 			quit(1)
 
 func _test_flap() -> void:
+	await process_frame
 	flappy.flap()
 	await process_frame
 	_run_frames(30)
