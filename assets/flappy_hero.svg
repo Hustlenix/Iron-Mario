@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <radialGradient id="eyeGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4fd1ff" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#4fd1ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="chestGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4fd1ff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#4fd1ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="92" cy="44" r="36" fill="url(#eyeGlow)"/>
+  <circle cx="78" cy="60" r="12" fill="url(#chestGlow)"/>
+  <path d="M 34 44 C 60 58, 92 88, 122 116" fill="none" stroke="#eaf9ff" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 122 116 l 4 -7 M 122 116 l 7 3" stroke="#eaf9ff" stroke-width="1.5" stroke-linecap="round"/>
+  <g stroke="#1a1a1a" stroke-width="1.5">
+    <path d="M 20 46 L 38 41 M 24 58 L 40 53" stroke="#eaf9ff" stroke-width="1.5" opacity="0.5"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="3">
+    <rect x="36" y="50" width="16" height="7" rx="3.5" transform="rotate(18 44 53)" fill="#8c1014"/>
+    <rect x="27" y="55" width="8" height="8" rx="2.5" transform="rotate(18 31 59)" fill="#c98d00"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="3">
+    <rect x="44" y="82" width="8" height="18" rx="4" transform="rotate(14 48 91)" fill="#8c1014"/>
+    <rect x="38" y="96" width="11" height="8" rx="3" transform="rotate(14 43 100)" fill="#c98d00"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="3">
+    <rect x="34" y="80" width="9" height="22" rx="4.5" transform="rotate(30 38 91)" fill="#d9262a"/>
+    <rect x="28" y="98" width="12" height="8" rx="3" transform="rotate(30 34 102)" fill="#ffd34d"/>
+    <rect x="28" y="103" width="12" height="3" rx="1.5" transform="rotate(30 34 104)" fill="#c98d00"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="3">
+    <rect x="50" y="56" width="30" height="22" rx="6" transform="rotate(35 65 67)" fill="#d9262a"/>
+    <rect x="72" y="56" width="8" height="22" rx="4" transform="rotate(35 76 67)" fill="#8c1014"/>
+    <rect x="50" y="56" width="5" height="22" rx="2.5" transform="rotate(35 52 67)" fill="#e8403f"/>
+    <g transform="rotate(35 65 67)" stroke="#0b132b" stroke-width="1.2" fill="none" opacity="0.75">
+      <circle cx="63" cy="66" r="6"/>
+      <circle cx="63" cy="66" r="3"/>
+      <line x1="63" y1="58" x2="63" y2="54" transform="rotate(0 63 66)"/>
+    </g>
+    <rect x="50" y="72" width="30" height="4" rx="2" transform="rotate(35 65 74)" fill="#ffd34d"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="3">
+    <circle cx="72" cy="52" r="7" fill="#ffd34d"/>
+    <path d="M 66 48 a 7 7 0 0 1 10 0" fill="none" stroke="#ffe89c" stroke-width="1.5"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="2.5">
+    <circle cx="78" cy="60" r="5" fill="#0b132b" stroke="#ffd34d" stroke-width="2"/>
+    <circle cx="78" cy="60" r="2.2" fill="#9ff0ff"/>
+    <circle cx="78" cy="60" r="1" fill="#ffffff"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="3">
+    <rect x="72" y="40" width="20" height="8" rx="4" transform="rotate(20 82 44)" fill="#d9262a"/>
+    <rect x="90" y="38" width="10" height="10" rx="3" transform="rotate(20 95 43)" fill="#ffd34d"/>
+    <rect x="92" y="41" width="6" height="4" rx="1.5" transform="rotate(20 95 43)" fill="#ffe89c"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="3">
+    <ellipse cx="90" cy="46" rx="15" ry="11" transform="rotate(-18 90 46)" fill="#d9262a"/>
+    <ellipse cx="95" cy="44" rx="9" ry="5.5" transform="rotate(-18 95 44)" fill="#ffffff"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="1.5">
+    <rect x="80" y="32" width="19" height="3.5" rx="1.75" transform="rotate(-18 89 34)" fill="#ffd34d"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="2">
+    <circle cx="97" cy="43" r="3.2" fill="#0b132b" stroke="#ffd34d" stroke-width="1.5"/>
+    <circle cx="97" cy="43" r="1.6" fill="#9ff0ff"/>
+    <circle cx="97" cy="43" r="0.7" fill="#ffffff"/>
+  </g>
+  <g fill="#d9262a" opacity="0.25">
+    <circle cx="18" cy="112" r="1.8"/>
+    <circle cx="26" cy="118" r="1.8"/>
+    <circle cx="34" cy="110" r="1.8"/>
+    <circle cx="22" cy="102" r="1.8"/>
+    <circle cx="12" cy="106" r="1.8"/>
+    <circle cx="29" cy="121" r="1.8"/>
+  </g>
+</svg>

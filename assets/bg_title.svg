@@ -28,6 +28,66 @@
     <circle cx="500" cy="90" r="2"/>
     <circle cx="760" cy="150" r="2.5"/>
   </g>
+  <g stroke="#ffd34d" stroke-width="2" fill="none" opacity="0.45">
+    <circle cx="90" cy="110" r="20"/>
+    <circle cx="90" cy="110" r="40"/>
+    <circle cx="90" cy="110" r="60"/>
+    <circle cx="90" cy="110" r="80"/>
+  </g>
+  <g stroke="#ffd34d" stroke-width="1.5" opacity="0.4">
+    <line x1="90" y1="110" x2="170" y2="110"/>
+    <line x1="90" y1="110" x2="155" y2="157"/>
+    <line x1="90" y1="110" x2="90" y2="190"/>
+    <line x1="90" y1="110" x2="25" y2="157"/>
+    <line x1="90" y1="110" x2="10" y2="110"/>
+    <line x1="90" y1="110" x2="25" y2="63"/>
+    <line x1="90" y1="110" x2="90" y2="30"/>
+    <line x1="90" y1="110" x2="155" y2="63"/>
+  </g>
+  <line x1="60" y1="150" x2="60" y2="180" stroke="#ffd34d" stroke-width="1" opacity="0.5"/>
+  <g stroke="#1a1a1a" stroke-width="1.5">
+    <ellipse cx="60" cy="180" rx="3.5" ry="4.5" fill="#0b132b"/>
+    <circle cx="60" cy="174" r="2.2" fill="#0b132b"/>
+  </g>
+  <g stroke="#0b132b" stroke-width="1">
+    <line x1="60" y1="177" x2="54" y2="172"/>
+    <line x1="60" y1="177" x2="66" y2="172"/>
+    <line x1="60" y1="179" x2="52" y2="180"/>
+    <line x1="60" y1="179" x2="68" y2="180"/>
+    <line x1="60" y1="182" x2="54" y2="187"/>
+    <line x1="60" y1="182" x2="66" y2="187"/>
+  </g>
+  <g stroke="#ffd34d" stroke-width="2" fill="none" opacity="0.4">
+    <circle cx="1190" cy="95" r="18"/>
+    <circle cx="1190" cy="95" r="36"/>
+    <circle cx="1190" cy="95" r="54"/>
+  </g>
+  <g stroke="#ffd34d" stroke-width="1.5" opacity="0.35">
+    <line x1="1190" y1="95" x2="1244" y2="95"/>
+    <line x1="1190" y1="95" x2="1232" y2="136"/>
+    <line x1="1190" y1="95" x2="1190" y2="149"/>
+    <line x1="1190" y1="95" x2="1148" y2="136"/>
+    <line x1="1190" y1="95" x2="1136" y2="95"/>
+    <line x1="1190" y1="95" x2="1148" y2="54"/>
+    <line x1="1190" y1="95" x2="1190" y2="41"/>
+    <line x1="1190" y1="95" x2="1232" y2="54"/>
+  </g>
+  <g fill="#ffd34d" opacity="0.2">
+    <circle cx="320" cy="205" r="2"/>
+    <circle cx="332" cy="196" r="2"/>
+    <circle cx="342" cy="206" r="2"/>
+    <circle cx="326" cy="216" r="2"/>
+    <circle cx="338" cy="214" r="2"/>
+    <circle cx="350" cy="200" r="2"/>
+  </g>
+  <g fill="#ffd34d" opacity="0.2">
+    <circle cx="958" cy="184" r="2"/>
+    <circle cx="968" cy="174" r="2"/>
+    <circle cx="980" cy="186" r="2"/>
+    <circle cx="962" cy="196" r="2"/>
+    <circle cx="974" cy="194" r="2"/>
+    <circle cx="988" cy="178" r="2"/>
+  </g>
   <g fill="url(#skyline)" opacity="0.9">
     <rect x="0" y="540" width="110" height="180"/>
     <rect x="118" y="570" width="90" height="150"/>
