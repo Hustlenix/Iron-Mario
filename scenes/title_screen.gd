@@ -11,9 +11,9 @@ func _ready() -> void:
 
 func _build_hero() -> void:
 	var hero := TextureRect.new()
-	hero.texture = load("res://assets/hero.svg") as Texture2D
-	hero.position = Vector2(300, 380)
-	hero.custom_minimum_size = Vector2(150, 150)
+	hero.texture = load("res://assets/title_hero.svg") as Texture2D
+	hero.position = Vector2(120, 276)
+	hero.custom_minimum_size = Vector2(240, 360)
 	hero.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	hero.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(hero)
@@ -21,8 +21,8 @@ func _build_hero() -> void:
 	tween.set_loops(-1)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(hero, "position:y", 430.0, 1.1)
-	tween.tween_property(hero, "position:y", 380.0, 1.1)
+	tween.tween_property(hero, "position:y", 296.0, 1.1)
+	tween.tween_property(hero, "position:y", 276.0, 1.1)
 
 func _pulse_logo() -> void:
 	var tween := create_tween()
