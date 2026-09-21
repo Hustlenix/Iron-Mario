@@ -94,3 +94,5 @@ The game structure, design, and art were built as a learning exercise with AI as
 ## Credits
 
 WarioWare-style microgame genre; game loop and intermission design based on the "How to Make Your First WarioWare-style Game" tutorial — rethemed as an Iron Man + Mario crossover. Built for the Stardance Challenge.
+
+The GitHub workflow pins official Godot 4.4.1, builds all three platforms, runs mechanics and every scene on Linux and Windows, then publishes the browser build. Godot 4.7.1 remains a target, not a claimed tested version. Legacy four-game scenes remain in the repository for compatibility; PLAY uses the new shared seven-game gauntlet.

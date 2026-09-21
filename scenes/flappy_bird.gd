@@ -59,6 +59,11 @@ var _trail_timer := 0.0
 @onready var bgm: AudioStreamPlayer = $Bgm
 
 func _ready() -> void:
+	for visual in [$Background, $HUD, bird, pipes_node, pickups_node, trail_node]:
+		visual.modulate = Color.TRANSPARENT
+	bird.modulate = Color.WHITE
+	bird.self_modulate = Color.TRANSPARENT
+	add_child(preload("res://scripts/ui/FlappyPaint.gd").new())
 	SceneFade.fade_in(self)
 	best = Global.flappy_best
 	best_label.text = "BEST: %d" % best
@@ -110,11 +115,12 @@ func _make_beep(freq: float, duration: float, volume: float, wobble := 0.0) -> A
 	return wav
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			Input.action_press("jump")
-		else:
-			Input.action_release("jump")
+	if event.is_action_pressed("click"):
+		if state == "game_over":
+			_restart()
+		elif state in ["title", "playing"]:
+			flap()
+		get_viewport().set_input_as_handled()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -318,12 +324,14 @@ func _check_medal() -> void:
 			sfx_score.play()
 
 func _check_new_best() -> void:
-	if not new_best_fired and score > best:
-		new_best_fired = true
+	if score > best:
 		best = score
 		Global.flappy_best = best
 		Global.save()
 		best_label.text = "BEST: %d" % best
+		if new_best_fired:
+			return
+		new_best_fired = true
 		score_label.add_theme_color_override("font_color", Color(1.0, 0.84, 0.3))
 		sfx_win.play()
 		Juice.burst(self, Vector2(BIRD_X, bird_y), Color(1.0, 0.84, 0.3), 22, 320.0)
@@ -409,5 +417,5 @@ func _move_pickups(delta: float) -> void:
 			pickup.queue_free()
 
 func _go_menu() -> void:
-	await SceneFade.fade_out(self)
+	await SceneFade.fade_out(self).finished
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")

@@ -9,3 +9,6 @@ Thumbs.db
 *.tmp
 build/
 exports/
+
+__pycache__/
+*.pyc

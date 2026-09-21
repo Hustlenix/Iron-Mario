@@ -1,40 +1,109 @@
-name: Deploy Web
+name: Build, test, and publish
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: iron-mario-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GODOT_VERSION: 4.4.1
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: barichello/godot-ci:4.7.1
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Import
-        run: godot --headless --import --path .
-      - name: Export Web
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install official Godot editor and templates
+        shell: bash
         run: |
-          mkdir -p build/web
-          # GitHub Actions sets HOME=/github/home, but godot-ci installs the
-          # export templates under /root — make them visible to Godot.
-          mkdir -p "$HOME/.local/share/godot"
-          cp -r /root/.local/share/godot/export_templates "$HOME/.local/share/godot/"
-          godot --headless --path . --export-release "Web" "build/web/index.html"
+          base="https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}-stable"
+          curl -fL --retry 3 "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" -o /tmp/editor.zip
+          unzip -q /tmp/editor.zip -d /tmp/godot
+          chmod +x /tmp/godot/Godot*
+          echo "/tmp/godot" >> "$GITHUB_PATH"
+          curl -fL --retry 3 "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz" -o /tmp/templates.tpz
+          target="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
+          mkdir -p "$target"
+          unzip -j -q /tmp/templates.tpz 'templates/windows_release_x86_64.exe' 'templates/linux_release.x86_64' 'templates/web_nothreads_release.zip' 'templates/version.txt' -d "$target"
+      - name: Validate source, controls, saves, transitions, and every scene
+        run: |
+          python tools/validate_project.py
+          python tools/check_engine.py "Godot_v${GODOT_VERSION}-stable_linux.x86_64"
+      - name: Export standard Windows, Linux, and Web packages
+        run: |
+          mkdir -p build/windows build/linux build/web
+          godot="Godot_v${GODOT_VERSION}-stable_linux.x86_64"
+          "$godot" --headless --path . --export-release "Windows Desktop" build/windows/Iron-Mario.exe
+          "$godot" --headless --path . --export-release "Linux" build/linux/Iron-Mario.x86_64
+          "$godot" --headless --path . --export-release "Web" build/web/index.html
+          cp docs/WINDOWS_README.txt build/windows/README.txt
+          chmod +x build/linux/Iron-Mario.x86_64
+          python tools/check_engine.py build/linux/Iron-Mario.x86_64 --exported
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Iron-Mario-Windows
+          path: build/windows/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Iron-Mario-Linux
+          path: build/linux/
+          if-no-files-found: error
       - uses: actions/upload-artifact@v4
         with:
           name: web-build
-          path: build/web
+          path: build/web/
           if-no-files-found: error
+
+  windows-test:
+    needs: build
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: Iron-Mario-Windows
+          path: build/windows
+      - name: Install official Windows editor
+        shell: pwsh
+        run: |
+          $url = "https://github.com/godotengine/godot-builds/releases/download/$env:GODOT_VERSION-stable/Godot_v$env:GODOT_VERSION-stable_win64.exe.zip"
+          Invoke-WebRequest $url -OutFile "$env:RUNNER_TEMP/editor.zip"
+          Expand-Archive "$env:RUNNER_TEMP/editor.zip" "$env:RUNNER_TEMP/godot"
+      - name: Test source and every exported scene on real Windows
+        shell: pwsh
+        run: |
+          $editor = Get-ChildItem "$env:RUNNER_TEMP/godot/*console.exe" | Select-Object -First 1
+          python tools/check_engine.py $editor.FullName
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python tools/check_engine.py build/windows/Iron-Mario.exe --exported
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
   deploy:
+    needs: [build, windows-test]
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: build
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: web-build
-          path: ./build/web
-      - name: Deploy to gh-pages
+          path: build/web
+      - name: Publish tested Godot web preview
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

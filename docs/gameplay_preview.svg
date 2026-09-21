@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" shape-rendering="crispEdges">
+  <rect width="1280" height="720" fill="#08162d"/>
+  <g stroke="#15335c" stroke-width="2" opacity=".85">
+    <path d="M0 155h1280M0 217h1280M0 279h1280M0 341h1280M0 403h1280M0 465h1280M0 527h1280M0 589h1280M0 651h1280"/>
+    <path d="M80 135v585M160 135v585M240 135v585M320 135v585M400 135v585M480 135v585M560 135v585M640 135v585M720 135v585M800 135v585M880 135v585M960 135v585M1040 135v585M1120 135v585M1200 135v585"/>
+  </g>
+  <rect x="18" y="16" width="1244" height="88" fill="#081633" stroke="#050914" stroke-width="5"/>
+  <text x="42" y="51" fill="#ffe171" font-family="sans-serif" font-size="24" font-weight="700">TARGET LOCK</text>
+  <text x="42" y="82" fill="#f5f8ff" font-family="sans-serif" font-size="18" font-weight="700">CLICK THE FLYING TARGETS!</text>
+  <text x="800" y="49" fill="#ffffff" font-family="sans-serif" font-size="18">SCORE 00475</text>
+  <text x="800" y="79" fill="#72eaff" font-family="sans-serif" font-size="18">STREAK x4</text>
+  <text x="1080" y="79" fill="#ffffff" font-family="sans-serif" font-size="18">4 / 7</text>
+  <g fill="#65eaff" stroke="#050914" stroke-width="5"><circle cx="1060" cy="43" r="13"/><circle cx="1104" cy="43" r="13"/><circle cx="1148" cy="43" r="13"/></g>
+  <rect x="20" y="111" width="1240" height="18" fill="#050914"/><rect x="24" y="115" width="825" height="10" fill="#5be8ff"/>
+  <text x="520" y="181" fill="#ffffff" font-family="sans-serif" font-size="30" font-weight="700">TARGETS  3 / 5</text>
+  <g stroke="#050914" stroke-width="9">
+    <g transform="translate(285 310)"><circle r="43" fill="#d73540"/><circle r="26" fill="#f4b83d"/><circle r="12" fill="#70eaff"/><path d="M-62-5h25M37-5h25" stroke="#efffff" stroke-width="8"/></g>
+    <g transform="translate(760 270)"><circle r="43" fill="#d73540"/><circle r="26" fill="#f4b83d"/><circle r="12" fill="#70eaff"/><path d="M-62-5h25M37-5h25" stroke="#efffff" stroke-width="8"/></g>
+    <g transform="translate(1005 515)"><circle r="43" fill="#d73540"/><circle r="26" fill="#f4b83d"/><circle r="12" fill="#70eaff"/><path d="M-62-5h25M37-5h25" stroke="#efffff" stroke-width="8"/></g>
+  </g>
+  <g transform="translate(520 480) scale(1.7)" stroke="#050914" stroke-width="5">
+    <path d="M-18-23h36l6 15-10 22h-28L-24-8z" fill="#d8333d"/><rect x="-14" y="-14" width="28" height="9" fill="#f2b83e"/>
+    <rect x="-15" y="18" width="30" height="34" fill="#d8333d"/><circle cx="0" cy="29" r="8" fill="#70eaff"/>
+    <rect x="-25" y="22" width="10" height="30" fill="#d8333d"/><rect x="15" y="22" width="10" height="30" fill="#d8333d"/>
+    <rect x="-15" y="50" width="11" height="15" fill="#f2b83e"/><rect x="4" y="50" width="11" height="15" fill="#f2b83e"/>
+  </g>
+  <text x="20" y="700" fill="#9eb5d3" font-family="sans-serif" font-size="14">STATIC VISUAL PREVIEW • ORIGINAL PROCEDURAL ART</text>
+</svg>
+

@@ -6,13 +6,14 @@ const LIFETIME := 0.9
 
 func setup(text: String, color: Color, font_size: int) -> void:
 	z_index = 60
-	var label := Label.new()
+	var label := preload("res://scripts/ui/PaintLabel.gd").new()
 	label.text = text
 	label.modulate = color
 	label.add_theme_font_size_override("font_size", font_size)
 	label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
 	label.add_theme_constant_override("outline_size", 6)
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.font_size = font_size
+	label.size = Vector2(300, 70)
 	add_child(label)
 	var tween := create_tween()
 	tween.set_parallel(true)

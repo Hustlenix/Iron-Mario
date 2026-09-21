@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" shape-rendering="crispEdges">
+<path d="M3 5L125 2 123 126 2 122Z" fill="#fff6dc" stroke="#202022" stroke-width="4"/>
+<path d="M31 23L91 20 104 50 88 69 36 68 25 47Z" fill="#e34838" stroke="#202022" stroke-width="6"/>
+<path d="M40 36L85 33 83 49 38 48Z" fill="#ffd13c"/>
+<path d="M44 41L56 40 56 45 43 45M69 40L79 40 80 45 70 45" fill="#fff6dc"/>
+<path d="M38 72L89 73 86 113 38 111Z" fill="#e34838" stroke="#202022" stroke-width="5"/>
+<path d="M62 78L74 82 78 94 68 102 55 99 49 89 54 81Z" fill="#7bd9df" stroke="#202022" stroke-width="5"/>
+<path d="M14 29L21 35M99 14L104 24M109 74L118 70M13 102L24 98" stroke="#202022" stroke-width="3" fill="none"/>
+</svg>
