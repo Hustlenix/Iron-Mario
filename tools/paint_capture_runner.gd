@@ -9,10 +9,16 @@ func _ready() -> void:
 func capture_node(node: Node) -> void:
 	if node is CanvasItem and not node.is_visible_in_tree():
 		return
+	if node.name == "RepairParts":
+		node.get_parent().call("_draw_parts")
 	if node.has_method("_draw"):
 		node.call("_draw")
 	var ordered := node.get_children()
-	ordered.sort_custom(func(a,b): return (a.z_index if a is CanvasItem else 0) < (b.z_index if b is CanvasItem else 0))
+	ordered.sort_custom(func(a,b):
+		var az: int = a.z_index if a is CanvasItem else 0
+		var bz: int = b.z_index if b is CanvasItem else 0
+		return a.get_index() < b.get_index() if az == bz else az < bz
+	)
 	for child in ordered:
 		capture_node(child)
 

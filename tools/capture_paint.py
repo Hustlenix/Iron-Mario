@@ -1,9 +1,10 @@
 """Render scene draw commands to SVG in a disposable copy. Not a GPU screenshot."""
 from pathlib import Path
-import shutil, subprocess, tempfile, sys
+import shutil, subprocess, tempfile, sys, os
 root = Path(__file__).resolve().parents[1]
 with tempfile.TemporaryDirectory(prefix='iron-paint-') as tmp:
     copy = Path(tmp)
+    capture_env = dict(os.environ, XDG_DATA_HOME=str(copy / "userdata"), APPDATA=str(copy / "userdata"))
     for name in ['scripts', 'scenes', 'assets', 'tools']:
         shutil.copytree(root / name, copy / name)
     shutil.copy2(root / 'project.godot', copy / 'project.godot')
@@ -18,7 +19,7 @@ with tempfile.TemporaryDirectory(prefix='iron-paint-') as tmp:
         content = content.replace(old, new)
     paint.write_text(content)
     engine = sys.argv[1] if len(sys.argv) > 1 else 'godot'
-    subprocess.run([engine, '--headless', '--editor', '--path', tmp, '--quit'], check=True, timeout=30, stdout=subprocess.DEVNULL)
-    subprocess.run([engine, '--headless', '--path', tmp, 'tools/paint_capture_runner.tscn'], check=True, timeout=30)
+    subprocess.run([engine, '--headless', '--editor', '--path', tmp, '--quit'], env=capture_env, check=True, timeout=30, stdout=subprocess.DEVNULL)
+    subprocess.run([engine, '--headless', '--path', tmp, 'tools/paint_capture_runner.tscn'], env=capture_env, check=True, timeout=30)
     for svg in (copy / 'docs').glob('paint_*.svg'):
         shutil.copy2(svg, root / 'docs' / svg.name)
