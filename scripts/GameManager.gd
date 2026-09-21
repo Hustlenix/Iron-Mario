@@ -72,13 +72,13 @@ func get_upcoming_game() -> Dictionary:
 		return MINIGAMES[0]
 	return MINIGAMES[round_order[clampi(round_index, 0, round_order.size() - 1)]]
 
-func launch_current_minigame() -> void:
+func launch_current_minigame(prepared: PackedScene = null) -> void:
 	if round_order.is_empty():
 		start_run(false)
 		return
 	Global.current_minigame = round_index + 1
 	transition_locked = true
-	_change_scene(String(get_upcoming_game()["scene"]))
+	_change_scene(String(get_upcoming_game()["scene"]), prepared)
 
 func resolve_round(won: bool) -> void:
 	if transition_locked:
@@ -99,6 +99,8 @@ func resolve_round(won: bool) -> void:
 	if won:
 		round_index += 1
 	if Global.completed_minigames >= MINIGAMES.size():
+		Global.total_wins += 1
+		Global.save_data()
 		_change_scene(WINNER_SCENE)
 	else:
 		_change_scene(INTERMISSION_SCENE)
@@ -115,9 +117,9 @@ func return_to_title() -> void:
 	transition_locked = true
 	_change_scene(TITLE_SCENE)
 
-func _change_scene(path: String) -> void:
+func _change_scene(path: String, prepared: PackedScene = null) -> void:
 	scene_path = path
-	var error := get_tree().change_scene_to_file(path)
+	var error := get_tree().change_scene_to_packed(prepared) if prepared != null else get_tree().change_scene_to_file(path)
 	if error != OK:
 		push_error("Iron-Mario could not open scene: %s (error %s)" % [path, error])
 		transition_locked = false

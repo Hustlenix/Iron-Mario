@@ -23,10 +23,7 @@ func _ready() -> void:
 	var reset := Buttons.make("RESET PROGRESS", Vector2(450, 390), Vector2(440, 55), Paint.GOLD)
 	add_child(reset)
 	reset.pressed.connect(func():
-		Global.best_streak = 0
-		Global.flappy_best = 0
-		Global.reset_run()
-		Global.save_data()
+		Global.reset_records()
 		status = "PROGRESS RESET AND SAVED"
 		queue_redraw()
 	)

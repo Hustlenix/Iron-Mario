@@ -4,8 +4,6 @@ static var items: Array[String] = []
 
 static func matrix(canvas: CanvasItem) -> String:
 	var m := canvas.get_global_transform()
-	if canvas.get_script().resource_path.ends_with("IronHero.gd"):
-		m = m * Transform2D(Vector2(0.8,0), Vector2(0,0.727), Vector2(0,-15.3))
 	return 'matrix(%f %f %f %f %f %f)' % [m.x.x,m.x.y,m.y.x,m.y.y,m.origin.x,m.origin.y]
 
 static func points(value: PackedVector2Array) -> String:

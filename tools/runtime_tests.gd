@@ -197,6 +197,7 @@ func run_tests() -> void:
 	var bonus = load("res://scenes/flappy_bird.tscn").instantiate()
 	add_child(bonus)
 	bonus.set_process(false)
+	bonus.set_physics_process(false)
 	bonus._unhandled_input(click(Vector2(500, 300)))
 	check(bonus.state == "playing" and bonus.velocity < 0, "Bonus Flappy starts and flaps with mouse input")
 	bonus.score = 43
@@ -204,7 +205,47 @@ func run_tests() -> void:
 	bonus.score = 44
 	bonus._check_new_best()
 	check(Global.flappy_best == 44, "Bonus record tracks every new point, not just the first")
+	var bounded_gaps := true
+	var last_center: float = bonus.last_gap_center
+	for sample in range(100):
+		for pair in bonus.pipes_node.get_children():
+			pair.visible = false
+		bonus._spawn_pair()
+		for pair in bonus.pipes_node.get_children():
+			if pair.visible:
+				var meta: Dictionary = bonus._pipe_meta[pair]
+				bounded_gaps = bounded_gaps and meta.gap_y-meta.gap/2 >= 90.0 and meta.gap_y+meta.gap/2 <= bonus.GROUND_Y-36.0 and absf(meta.gap_y-last_center) <= 95.01
+				last_center = meta.gap_y
+	check(bounded_gaps, "Flappy: 100 generated gaps stay above floor and within reachable vertical steps")
+	bonus._restart()
+	bonus.velocity = 0
+	bonus._unhandled_input(key("jump"))
+	check(bonus.velocity == bonus.FLAP_VELOCITY, "Flappy: keyboard and mouse share immediate flap input")
+	bonus.state = "game_over"
+	bonus._unhandled_input(key("restart"))
+	check(bonus.state == "playing" and bonus.score == 0 and bonus._spawned == 0, "Flappy: R cleanly resets a finished flight")
+	bonus.bird_y = bonus.GROUND_Y - bonus.BIRD_SIZE - 1
+	bonus.velocity = 100
+	bonus.feathers = 1
+	bonus._physics_process(1.0/60.0)
+	check(bonus.state == "dying", "Flappy: shield cannot allow flight below floor")
 	bonus.free()
+	Global.update_profile("  ace-42  ", 2)
+	Global.pilot_name = "UNSAVED"
+	Global.reactor_style = 0
+	Global.load_data()
+	check(Global.pilot_name == "ACE-42" and Global.reactor_style == 2, "Profile: callsign and reactor color persist")
+	var old_total := Global.total_clears
+	Global.record_success()
+	Global.load_data()
+	check(Global.total_clears == old_total+1 and Global.high_score >= Global.score, "Profile: mission and score records persist")
+	var profile = load("res://scenes/profile_scene.tscn").instantiate()
+	add_child(profile)
+	profile.name_edit.text = "test pilot"
+	profile.selected_style = 1
+	profile._save_profile()
+	check(Global.pilot_name == "TEST PILOT" and Global.reactor_style == 1, "Profile screen: save button applies entered data")
+	profile.free()
 	Global.reset_run(true)
 	check(Global.current_loop == 2 and Global.difficulty > 1.0, "Harder mode increments loop and difficulty")
 	# Keep this test runner alive while testing actual scene transitions.
@@ -214,6 +255,12 @@ func run_tests() -> void:
 	await get_tree().create_timer(0.1).timeout
 	check(get_tree().current_scene.scene_file_path == GameManager.INTERMISSION_SCENE, "Play starts the countdown")
 	check(GameManager.round_order.size() == 7, "Run queues all seven missions")
+	var briefing = get_tree().current_scene
+	for tick in range(180):
+		if briefing.prepared != null:
+			break
+		await get_tree().process_frame
+	check(briefing.prepared != null and briefing.load_progress == 1.0 and not briefing.launched, "Briefing loads scene before countdown completes")
 	GameManager.launch_current_minigame()
 	await get_tree().create_timer(0.1).timeout
 	var scene_before: String = get_tree().current_scene.scene_file_path

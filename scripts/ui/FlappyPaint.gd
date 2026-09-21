@@ -3,13 +3,22 @@ extends Node2D
 const Paint = preload("res://scripts/ui/Paint.gd")
 var game: Node2D
 var hero: Node2D
+var scenery_offset := 0.0
 
 func _ready() -> void:
 	game = get_parent()
 	hero = preload("res://scripts/ui/IronHero.gd").new()
 	add_child(hero)
+	hero.position = Vector2(game.BIRD_X+35,game.bird_y+35)
+	hero.pose = "jump"
+	hero.scale = Vector2(1.5,1.0)
+	var back := preload("res://scripts/ui/PixelButton.gd").make("MENU",Vector2(1070,647),Vector2(175,55),Paint.CYAN)
+	add_child(back)
+	back.pressed.connect(game._go_menu)
 
 func _process(_delta: float) -> void:
+	if game.state == "playing":
+		scenery_offset += _delta * 25.0
 	hero.position = Vector2(game.BIRD_X + 35, game.bird_y + 35)
 	hero.rotation = game.bird.rotation
 	hero.scale = game.bird.scale * Vector2(1.5, 1.0)
@@ -21,6 +30,14 @@ func _draw() -> void:
 	if not is_instance_valid(game):
 		return
 	Paint.background(self, "city")
+	for index in range(9):
+		var x := index*170-fposmod(scenery_offset,170)
+		var height := 90+(index*41)%140
+		Paint.rect(self,Rect2(x,620-height,135,height),Color("83b5c4"))
+		Paint.rect(self,Rect2(x,620-height,135,height),Color("608eaa"),false,3)
+		for y in range(640-height,610,30):
+			for dx in [20,58,96]:
+				Paint.rect(self,Rect2(x+dx,y,14,10),Color("dfecce"))
 	for pair in game.pipes_node.get_children():
 		if not pair.visible:
 			continue

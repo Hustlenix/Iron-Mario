@@ -8,7 +8,7 @@ Production builds now come from the official Godot 4.4.1 export templates. The W
 
 ## Automated coverage
 
-`tools/check_engine.py` fails on script/resource errors even if Godot exits with code zero. It uses an isolated save directory, imports the editor project, runs the mechanics suite, starts F5's configured title scene, and launches all 21 scene files (including the original bonus and legacy scenes).
+`tools/check_engine.py` fails on script/resource errors even if Godot exits with code zero. It uses an isolated save directory, imports the editor project, runs the mechanics suite, starts F5's configured title scene, and launches all 22 scene files (including the original bonus and legacy scenes).
 
 The runtime suite checks:
 - All seven success paths, keyboard movement and jump requests, mouse target clicks and chip drops.
@@ -16,7 +16,8 @@ The runtime suite checks:
 - Lives, score, streak, loop difficulty, failed-round retry, restart, seven-clear Winner, power-down ending, and title routing.
 - Correct script wiring for the painted title and both endings.
 - Saved mute/volume/bonus records and migration from the original JSON save.
-- Bonus Flappy mouse input and consecutive best-score updates.
+- Bonus Flappy mouse/keyboard input, consecutive best-score updates, 100 bounded pipe gaps, restart cleanup, and floor/shield behavior.
+- Callsign/reactor persistence, profile UI save, lifetime records, and scene readiness during briefing.
 
 The original five-life design is preserved. Original four-game scenes remain available for compatibility; the title PLAY button launches the new seven-game manager.
 

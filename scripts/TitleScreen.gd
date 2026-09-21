@@ -64,6 +64,8 @@ func _build_ui() -> void:
 		SoundFX.play_click()
 	)
 
+	var profile := _make_button("PROFILE: " + Global.pilot_name, Vector2(825,350),Vector2(335,56),Paint.CYAN)
+	profile.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/profile_scene.tscn"))
 	var settings := _make_button("SETTINGS", Vector2(825, 420), Vector2(335, 56), Paint.CYAN)
 	settings.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/settings_scene.tscn"))
 	var bonus := _make_button("BONUS: FLAPPY", Vector2(825, 490), Vector2(335, 56), Paint.CYAN)

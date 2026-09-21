@@ -14,6 +14,35 @@ var difficulty: float = 1.0
 var muted: bool = false
 var volume: float = 80.0
 var flappy_best: int = 0
+var pilot_name := "PILOT"
+var reactor_style := 0
+var total_clears := 0
+var total_wins := 0
+var high_score := 0
+var highest_loop := 1
+const REACTOR_COLORS := [Color("b7faff"), Color("ffe48c"), Color("b8efa1")]
+
+func update_profile(value: String, style: int) -> void:
+	var cleaned := ""
+	for character in value.strip_edges().to_upper():
+		if "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -_".contains(character):
+			cleaned += character
+	pilot_name = cleaned.substr(0, 16).strip_edges()
+	if pilot_name.is_empty():
+		pilot_name = "PILOT"
+	reactor_style = clampi(style, 0, REACTOR_COLORS.size() - 1)
+	save_data()
+
+func reset_records() -> void:
+	best_streak = 0
+	flappy_best = 0
+	total_clears = 0
+	total_wins = 0
+	high_score = 0
+	highest_loop = 1
+	reset_run()
+	save_data()
+
 
 # Compatibility for the original scenes and their save data.
 var loop: int:
@@ -73,6 +102,9 @@ func record_success() -> void:
 	best_streak = maxi(best_streak, streak)
 	score += 100 + (streak - 1) * 25 + (current_loop - 1) * 50
 	completed_minigames += 1
+	total_clears += 1
+	high_score = maxi(high_score, score)
+	highest_loop = maxi(highest_loop, current_loop)
 	save_data()
 
 func record_failure() -> void:
@@ -92,6 +124,10 @@ func save_data() -> void:
 	config.set_value("settings", "muted", muted)
 	config.set_value("settings", "volume", volume)
 	config.set_value("progress", "flappy_best", flappy_best)
+	config.set_value("profile", "name", pilot_name)
+	config.set_value("profile", "reactor_style", reactor_style)
+	for key in ["total_clears", "total_wins", "high_score", "highest_loop"]:
+		config.set_value("progress", key, get(key))
 	if config.save(SAVE_PATH) != OK:
 		push_warning("Could not save Iron-Mario progress.")
 
@@ -99,6 +135,10 @@ func load_data() -> void:
 	var config := ConfigFile.new()
 	if config.load(SAVE_PATH) == OK:
 		best_streak = int(config.get_value("progress", "best_streak", 0))
+		pilot_name = str(config.get_value("profile", "name", "PILOT")).substr(0, 16)
+		reactor_style = clampi(int(config.get_value("profile", "reactor_style", 0)), 0, 2)
+		for key in ["total_clears", "total_wins", "high_score", "highest_loop"]:
+			set(key, maxi(0, int(config.get_value("progress", key, 1 if key == "highest_loop" else 0))))
 		muted = bool(config.get_value("settings", "muted", false))
 		volume = clampf(float(config.get_value("settings", "volume", 80.0)), 0.0, 100.0)
 		flappy_best = maxi(0, int(config.get_value("progress", "flappy_best", 0)))

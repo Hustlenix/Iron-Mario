@@ -38,6 +38,8 @@ var feather_every_max := 12
 var _pipe_meta := {}
 var _spawn_timer := 0.0
 var _spawned := 0
+var last_gap_center := 300.0
+var leaving := false
 var _trail_index := 0
 var _trail_timer := 0.0
 
@@ -115,29 +117,28 @@ func _make_beep(freq: float, duration: float, volume: float, wobble := 0.0) -> A
 	return wav
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("click"):
+	if event.is_echo() or leaving:
+		return
+	if event.is_action_pressed("ui_cancel"):
+		_go_menu()
+	elif event.is_action_pressed("restart") and state == "game_over":
+		_restart()
+	elif event.is_action_pressed("click") or event.is_action_pressed("jump"):
 		if state == "game_over":
 			_restart()
 		elif state in ["title", "playing"]:
 			flap()
-		get_viewport().set_input_as_handled()
+	else:
+		return
+	get_viewport().set_input_as_handled()
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		_go_menu()
+func _physics_process(delta: float) -> void:
+	if leaving or state == "title":
 		return
-	if state == "title":
-		if Input.is_action_just_pressed("jump"):
-			flap()
-		return
-	if Input.is_action_just_pressed("jump"):
-		if state == "game_over":
-			_restart()
-		else:
-			flap()
+
 	if state == "dying":
 		velocity = minf(velocity + GRAVITY * delta, MAX_FALL)
-		bird_y += velocity * delta
+		bird_y = minf(GROUND_Y - BIRD_SIZE, bird_y + velocity * delta)
 		_apply_bird()
 		return
 	if state == "game_over":
@@ -156,6 +157,9 @@ func _process(delta: float) -> void:
 	_move_pipes(delta)
 	_move_pickups(delta)
 	_update_trail(delta)
+	if bird_y + BIRD_SIZE >= GROUND_Y:
+		_die()
+		return
 	if invuln_timer <= 0.0 and _collides():
 		if feathers > 0:
 			feathers -= 1
@@ -262,7 +266,10 @@ func _spawn_pair() -> void:
 		return
 	_spawned += 1
 	var use_gap := _ramp_gap() if _spawned > 3 else maxf(_ramp_gap(), 280.0)
-	var center := randf_range(GAP_MIN_CENTER, GAP_MAX_CENTER)
+	var low := maxf(90.0 + use_gap * 0.5, last_gap_center - 95.0)
+	var high := minf(GROUND_Y - 36.0 - use_gap * 0.5, last_gap_center + 95.0)
+	var center := clampf(300.0, low, high) if _spawned == 1 else randf_range(low, high)
+	last_gap_center = center
 	_place_pair(pair, center, use_gap)
 	_spawn_pickup_if_due(center, use_gap)
 
@@ -338,6 +345,8 @@ func _check_new_best() -> void:
 		Juice.text(self, "NEW BEST!", Vector2(BIRD_X + 30.0, bird_y - 30.0), Color(1.0, 0.84, 0.3), 38)
 
 func _die() -> void:
+	if state != "playing":
+		return
 	state = "dying"
 	sfx_hit.play()
 	Juice.hit_stop(self)
@@ -366,6 +375,11 @@ func _restart() -> void:
 	medals = {}
 	new_best_fired = false
 	_spawned = 0
+	last_gap_center = 300.0
+	_trail_index = 0
+	_trail_timer = 0.0
+	for ghost in trail_node.get_children():
+		ghost.modulate.a = 0.0
 	_spawn_timer = randf_range(1.6, 2.4)
 	feather_next_spawn = feather_every_min
 	bird_y = 300.0
@@ -417,5 +431,11 @@ func _move_pickups(delta: float) -> void:
 			pickup.queue_free()
 
 func _go_menu() -> void:
+	if leaving:
+		return
+	leaving = true
 	await SceneFade.fade_out(self).finished
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+
+func _exit_tree() -> void:
+	Engine.time_scale = 1.0
