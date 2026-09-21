@@ -17,6 +17,12 @@ func _ready() -> void:
 	hero.pose = "victory"
 	add_child(hero)
 	_build_ui()
+	var music := AudioStreamPlayer.new()
+	music.stream = load("res://assets/audio/bgm.wav")
+	music.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	music.volume_db = -8.0
+	add_child(music)
+	music.play()
 	queue_redraw()
 
 func _process(delta: float) -> void:
@@ -62,6 +68,10 @@ func _build_ui() -> void:
 	settings.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/settings_scene.tscn"))
 	var bonus := _make_button("BONUS: FLAPPY", Vector2(825, 490), Vector2(335, 56), Paint.CYAN)
 	bonus.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/flappy_bird.tscn"))
+
+	if not OS.has_feature("web"):
+		var quit_button := _make_button("QUIT", Vector2(825, 560), Vector2(335, 56), Paint.CYAN)
+		quit_button.pressed.connect(func(): get_tree().quit())
 
 func _show_controls() -> void:
 	if is_instance_valid(controls_panel):

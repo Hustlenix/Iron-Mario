@@ -29,4 +29,3 @@ Add one row after each real development session.
 - Confirm the actual-time total from the session record.
 - Record the Godot version used for the final export.
 - Record the exported build name and the platform tested.
-
