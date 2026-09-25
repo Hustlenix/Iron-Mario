@@ -198,6 +198,10 @@ func run_tests() -> void:
 	add_child(bonus)
 	bonus.set_process(false)
 	bonus.set_physics_process(false)
+	bonus.get_node("ShakeCam").force_update_scroll()
+	var canvas: Transform2D = bonus.get_canvas_transform()
+	check((canvas * Vector2.ZERO).is_equal_approx(Vector2.ZERO), "Flappy: camera shows the full 1280 x 720 playfield without shifting it")
+	check(get_viewport().get_visible_rect().has_point(canvas * Vector2(1150, 675)), "Flappy: bottom menu remains on screen")
 	bonus._unhandled_input(click(Vector2(500, 300)))
 	check(bonus.state == "playing" and bonus.velocity < 0, "Bonus Flappy starts and flaps with mouse input")
 	bonus.score = 43
@@ -221,9 +225,25 @@ func run_tests() -> void:
 	bonus.velocity = 0
 	bonus._unhandled_input(key("jump"))
 	check(bonus.velocity == bonus.FLAP_VELOCITY, "Flappy: keyboard and mouse share immediate flap input")
+	var tap := InputEventScreenTouch.new()
+	tap.position = Vector2(500, 300)
+	tap.pressed = true
+	bonus.velocity = 0
+	bonus._unhandled_input(tap)
+	check(bonus.velocity == bonus.FLAP_VELOCITY, "Flappy: a real touch flaps without mouse emulation")
+	bonus.velocity = 123
+	var emulated := click(tap.position)
+	emulated.device = InputEvent.DEVICE_ID_EMULATION
+	bonus._unhandled_input(emulated)
+	tap.pressed = false
+	bonus._unhandled_input(tap)
+	check(bonus.velocity == 123, "Flappy: emulated clicks and touch releases do not add another flap")
+	bonus.bird.scale = Vector2(1.25, 0.75)
+	bonus.bird.position.y = 550
 	bonus.state = "game_over"
 	bonus._unhandled_input(key("restart"))
 	check(bonus.state == "playing" and bonus.score == 0 and bonus._spawned == 0, "Flappy: R cleanly resets a finished flight")
+	check(bonus.bird.scale == Vector2.ONE and bonus.bird.position == Vector2(bonus.BIRD_X, bonus.bird_y), "Flappy: retry immediately restores hero position and scale")
 	bonus.bird_y = bonus.GROUND_Y - bonus.BIRD_SIZE - 1
 	bonus.velocity = 100
 	bonus.feathers = 1

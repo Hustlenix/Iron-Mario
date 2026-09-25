@@ -15,6 +15,18 @@ const assert = require('node:assert/strict');
  await page.waitForTimeout(1800);
  fs.mkdirSync('docs/screenshots',{recursive:true});
  await page.screenshot({path:'docs/screenshots/title.png'});
+ await page.mouse.click(1000,535); // Bonus Flappy
+ await page.waitForTimeout(900);
+ await page.screenshot({path:'docs/screenshots/flappy-ready.png'});
+ await page.keyboard.press('Space');
+ await page.waitForTimeout(200);
+ await page.screenshot({path:'docs/screenshots/flappy-flight.png'});
+ await page.waitForTimeout(2200); // Let the hero reach the floor.
+ await page.screenshot({path:'docs/screenshots/flappy-game-over.png'});
+ await page.keyboard.press('r');
+ await page.waitForTimeout(150);
+ await page.mouse.click(1150,675); // Must be visible and clickable after camera fix.
+ await page.waitForTimeout(1000);
  await page.mouse.click(1000,367);
  await page.waitForTimeout(800);
  for(let i=0;i<9;i++){
@@ -49,6 +61,16 @@ const assert = require('node:assert/strict');
  await tap(635,640);
  await tap(1000,640);
  await phone.waitForTimeout(400);
+ await tap(1000,535);
+ await phone.waitForTimeout(900);
+ await tap(500,300);
+ await phone.waitForTimeout(200);
+ await phone.screenshot({path:'docs/screenshots/mobile-flappy-flight.png'});
+ await phone.waitForTimeout(2200);
+ await tap(500,300); // Retry using a real touch, not keyboard input.
+ await phone.waitForTimeout(150);
+ await tap(1150,675);
+ await phone.waitForTimeout(1000);
  await tap(600,365);
  await phone.waitForTimeout(1300);
  await phone.screenshot({path:'docs/screenshots/mobile-briefing.png'});

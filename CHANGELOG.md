@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — Flappy repair
+
+- Centred Flappy's camera on the playfield so the hero, floor, instructions, and Menu button remain visible.
+- Added direct touch handling and ignored duplicate emulated mouse clicks.
+- Stopped overlapping flap tweens and reset the hero's position and scale immediately on retry.
+- Added camera, touch, and retry regression checks plus desktop/mobile Flappy screenshot coverage.
+
 ## 2.0.0 — Super-Micro Heroes
 
 - Renamed the game and export packages; retained the repository address and old save folders.

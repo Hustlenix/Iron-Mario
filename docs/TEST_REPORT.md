@@ -1,5 +1,13 @@
 # Super-Micro Heroes verification
 
+## Flappy repair
+
+Five additional runtime assertions cover the camera transform, on-screen Menu
+position, direct touch flapping, duplicate/release input rejection, and immediate
+retry position/scale reset. The browser script also exercises desktop start,
+floor collision, retry and Menu, then repeats the touch flow on a mobile viewport.
+Browser screenshot coverage is distinct from the headless assertions below.
+
 ## 2.0.0 coverage
 
 Local Godot 4.4.1 validation passed 46 existing gameplay assertions, 44 new

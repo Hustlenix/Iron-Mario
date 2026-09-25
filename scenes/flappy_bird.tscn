@@ -143,4 +143,5 @@ volume_db = -14.0
 stream = ExtResource("5_bgm")
 
 [node name="ShakeCam" type="Camera2D" parent="."]
+position = Vector2(640, 360)
 script = ExtResource("6_shake")

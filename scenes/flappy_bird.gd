@@ -42,6 +42,7 @@ var last_gap_center := 300.0
 var leaving := false
 var _trail_index := 0
 var _trail_timer := 0.0
+var _flap_tween: Tween
 
 @onready var pipes_node: Node2D = $Pipes
 @onready var pickups_node: Node2D = $Pickups
@@ -120,11 +121,15 @@ func _make_beep(freq: float, duration: float, volume: float, wobble := 0.0) -> A
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_echo() or leaving:
 		return
+	# Handle real touches once; Godot also emits an emulated mouse click.
+	if event is InputEventMouse and event.device == InputEvent.DEVICE_ID_EMULATION:
+		return
+	var touch_pressed: bool = event is InputEventScreenTouch and event.pressed and not event.canceled
 	if event.is_action_pressed("ui_cancel"):
 		_go_menu()
 	elif event.is_action_pressed("restart") and state == "game_over":
 		_restart()
-	elif event.is_action_pressed("click") or event.is_action_pressed("jump"):
+	elif touch_pressed or event.is_action_pressed("click") or event.is_action_pressed("jump"):
 		if state == "game_over":
 			_restart()
 		elif state in ["title", "playing"]:
@@ -175,9 +180,11 @@ func _physics_process(delta: float) -> void:
 func _do_flap_visuals() -> void:
 	sfx_flap.play()
 	Juice.burst(self, Vector2(BIRD_X - 24.0, bird_y + 30.0), Color(0.31, 0.82, 1.0), 3, 160.0)
-	var tween := create_tween()
-	tween.tween_property(bird, "scale", Vector2(1.25, 0.75), 0.09)
-	tween.tween_property(bird, "scale", Vector2.ONE, 0.16)
+	if _flap_tween:
+		_flap_tween.kill()
+	_flap_tween = create_tween()
+	_flap_tween.tween_property(bird, "scale", Vector2(1.25, 0.75), 0.09)
+	_flap_tween.tween_property(bird, "scale", Vector2.ONE, 0.16)
 
 func _apply_bird() -> void:
 	bird.position.y = bird_y
@@ -365,6 +372,8 @@ func _show_game_over() -> void:
 	best_label.text = "BEST: %d" % best
 
 func _restart() -> void:
+	if _flap_tween:
+		_flap_tween.kill()
 	for pair in pipes_node.get_children():
 		pair.visible = false
 	for pickup in pickups_node.get_children():
@@ -386,6 +395,8 @@ func _restart() -> void:
 	bird_y = 300.0
 	velocity = 0.0
 	bird.rotation = 0.0
+	bird.scale = Vector2.ONE
+	bird.position = Vector2(BIRD_X, bird_y)
 	bird.modulate.a = 1.0
 	score_label.text = "0"
 	score_label.remove_theme_color_override("font_color")
