@@ -1,6 +1,6 @@
 # Super-Micro Heroes
 
-Nine homemade heroes, seven quick missions, and five lives to keep your adventure going. Built in Godot, with an intentionally rough MS-Paint look.
+Nine homemade heroes and seven quick games: play any one, or take on the five-life Tournament. Built in Godot, with an intentionally rough MS-Paint look.
 
 Formerly **Iron-Mario**. The repository URL and existing save locations stay the same.
 
@@ -14,7 +14,7 @@ Formerly **Iron-Mario**. The repository URL and existing save locations stay the
 
 **Windows:** download the Windows ZIP from Releases, extract **everything**, and open `Super-Micro-Heroes.exe`. Keep `Super-Micro-Heroes.pck` in the same folder. You do not need Godot installed. Requires 64-bit Windows 10+ and an OpenGL 3.3-capable graphics driver. [Troubleshooting](docs/WINDOWS_README.txt).
 
-**Browser / phones:** open the play link above and press PLAY. Turn phones sideways. Movement and jump buttons support multiple fingers; tap targets and arrow tiles, or drag repair chips. The mission pauses when the phone is upright or the app loses focus. FULL SCREEN is optional and depends on the browser.
+**Browser / phones:** open the play link above and press PLAY. Turn phones sideways. Use your left thumb to slide the movement pad and your right thumb to jump. Tap targets and arrow tiles; tap a repair chip and then its socket (dragging also works). The mission pauses when the phone is upright or the app loses focus. FULL SCREEN is optional and depends on the browser.
 
 The browser version needs WebGL 2. There is no APK or App Store installation in this update. Phone support is delivered through the Web build.
 
@@ -22,7 +22,9 @@ The browser version needs WebGL 2. There is no APK or App Store installation in 
 
 ## How a run works
 
-Press **PLAY**. A three-second briefing shows the next mission's background, one-line objective, and preparation bar. The game loads the scene during that briefing and starts only when both the countdown and loading are complete.
+The home screen displays **all seven games**, a separate **TOURNAMENT** card, and **BONUS: FLAPPY**. Pick a game for one quick round, followed by **PLAY AGAIN** and **HOME**. Single-game results do not change Tournament records.
+
+Choose **TOURNAMENT** for the original gauntlet. A three-second briefing shows the next mission's background, one-line objective, and preparation bar. The game loads the scene during that briefing and starts only when both the countdown and loading are complete.
 
 Win to earn score and build your streak. A failed mission costs one reactor and stays in the queue for another attempt. Clear all seven to reach the ending; lose all five lives and the suit powers down. **HARDER MODE** starts another loop with faster hazards, tighter windows, or longer patterns.
 
@@ -38,16 +40,15 @@ The original project's five-life system is preserved.
 | Aim or drag parts | Left mouse button |
 | Restart a mission | R |
 | Select menus | Tab / arrows, then Enter |
-| Start from title | E |
 | Flappy thrust | W / Space / Up or left click |
 | Flappy retry after a crash | R, jump, or left click |
 | Leave Flappy | Escape |
-| Phone movement | Hold LEFT / RIGHT |
-| Phone jump / timing | Tap JUMP / PARRY |
+| Phone movement | Left thumb: slide the pad left/right; centre stops |
+| Phone jump / timing | Right thumb: large JUMP / PARRY button |
 | Phone targets / memory | Tap drones / arrow tiles |
-| Phone repair | Drag a chip with one finger |
+| Phone repair | Tap chip, then matching socket; or drag |
 | Phone Flappy | Tap the play area |
-| Phone menu / restart | MENU / RETRY buttons |
+| Phone menu / replay | HOME during play; PLAY AGAIN after a single game |
 
 ## The seven missions
 
@@ -136,7 +137,7 @@ Each hero has an original instrumental loop with its own motif, tempo, and music
 | `scenes/flappy_bird.gd` | Bonus flight mechanics |
 | `tools/` | Runtime checks and preview generation |
 
-The original four-game scenes remain for compatibility and reference. The title's Play button uses the shared seven-game system.
+The original four-game scenes remain for compatibility and reference. Home cards use the shared manager for single games; Tournament queues all seven. `SingleResult.gd` handles the standalone replay/home screen.
 
 ## Build and test
 

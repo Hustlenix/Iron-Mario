@@ -66,6 +66,17 @@ func run_tests() -> void:
 	check(game.motor.velocity.x > 0 and game.motor.velocity.y < 0, "Two fingers move and jump simultaneously")
 	pad._input(touch(Vector2(1140,650),1,false))
 	check(Input.is_action_pressed("move_right") and not Input.is_action_pressed("jump"), "Releasing jump keeps movement held")
+	var slide := InputEventScreenDrag.new()
+	slide.index = 0
+	slide.position = Vector2(90,590)
+	pad._input(slide)
+	check(Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"), "Thumb slide changes direction without lifting")
+	slide.position = Vector2(180,590)
+	pad._input(slide)
+	check(not Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"), "Thumb pad dead zone stops movement")
+	slide.position = Vector2(400,500)
+	pad._input(slide)
+	check(Input.is_action_pressed("move_right"), "Thumb stays captured when drifting outside pad")
 	pad._notification(NOTIFICATION_APPLICATION_FOCUS_OUT)
 	check(not Input.is_action_pressed("move_right"), "Focus loss releases all touch actions")
 	pad._input(touch(Vector2(90,650),0))
@@ -99,6 +110,18 @@ func run_tests() -> void:
 		game._unhandled_input(drag)
 		game._unhandled_input(touch(destination,0,false))
 	check(game.placed_count == 3 and game.ended, "Touch drag repairs all three sockets")
+	game.free()
+
+	game = fresh(4)
+	for index in range(3):
+		var source: Vector2 = game.chips[index]["position"]
+		var destination: Vector2 = game.sockets[index]["position"]
+		game._unhandled_input(touch(source,0))
+		game._unhandled_input(touch(source,0,false))
+		check(game.selected == index and game.dragging == -1, "Repair chip remains selected after tap")
+		game._unhandled_input(touch(destination,1))
+		game._unhandled_input(touch(destination,1,false))
+	check(game.placed_count == 3 and game.ended, "Two-thumb tap-chip then tap-socket completes repair")
 	game.free()
 
 	game = fresh(3)

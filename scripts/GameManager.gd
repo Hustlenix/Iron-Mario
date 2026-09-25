@@ -49,6 +49,8 @@ var transition_locked := false
 var rng := RandomNumberGenerator.new()
 var scene_path := TITLE_SCENE
 var run_generation := 0
+var single_game := false
+var single_won := false
 
 func _ready() -> void:
 	rng.randomize()
@@ -56,6 +58,7 @@ func _ready() -> void:
 func start_run(harder: bool = false) -> void:
 	if transition_locked:
 		return
+	single_game = false
 	Global.reset_run(harder)
 	run_generation += 1
 	round_order.clear()
@@ -66,6 +69,21 @@ func start_run(harder: bool = false) -> void:
 	transition_locked = true
 	SoundFX.play_start()
 	_change_scene(INTERMISSION_SCENE)
+
+func start_single(index: int) -> void:
+	if transition_locked or index < 0 or index >= MINIGAMES.size():
+		return
+	single_game = true
+	single_won = false
+	Global.reset_run()
+	run_generation += 1
+	round_order.assign([index])
+	round_index = 0
+	transition_locked = true
+	_change_scene(INTERMISSION_SCENE)
+
+func replay_single() -> void:
+	start_single(round_order[0] if not round_order.is_empty() else 0)
 
 func get_upcoming_game() -> Dictionary:
 	if round_order.is_empty():
@@ -85,12 +103,19 @@ func resolve_round(won: bool) -> void:
 		return
 	transition_locked = true
 	var generation := run_generation
-	if won:
+	if single_game:
+		single_won = won
+		Global.score = 100 if won else 0
+		Global.completed_minigames = 1 if won else 0
+	elif won:
 		Global.record_success()
 	else:
 		Global.record_failure()
 	await get_tree().create_timer(0.8).timeout
 	if generation != run_generation:
+		return
+	if single_game:
+		_change_scene("res://scenes/single_result.tscn")
 		return
 	if Global.lives <= 0:
 		_change_scene(DEATH_SCENE)

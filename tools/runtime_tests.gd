@@ -313,6 +313,31 @@ func run_tests() -> void:
 	GameManager.return_to_title()
 	await get_tree().create_timer(0.1).timeout
 	check(get_tree().current_scene.scene_file_path == GameManager.TITLE_SCENE, "Back to title returns correctly")
+	var saved_wins := Global.total_wins
+	var saved_clears := Global.total_clears
+	check(get_tree().current_scene.has_node("Game0") and get_tree().current_scene.has_node("Game8"), "Home exposes seven games, Tournament and Flappy")
+	for index in range(7):
+		GameManager.start_single(index)
+		await get_tree().create_timer(0.1).timeout
+		check(GameManager.single_game and GameManager.round_order == [index], "Single selection queues only game %d" % (index+1))
+		GameManager.launch_current_minigame()
+		await get_tree().create_timer(0.1).timeout
+		check(get_tree().current_scene.scene_file_path == GameManager.MINIGAMES[index]["scene"], "Home launches chosen game %d" % (index+1))
+		get_tree().current_scene.set_physics_process(false)
+		get_tree().current_scene.finish(index%2 == 0)
+		await get_tree().create_timer(0.9).timeout
+		check(get_tree().current_scene.scene_file_path == "res://scenes/single_result.tscn", "Single win/loss ends at replay screen %d" % (index+1))
+		GameManager.replay_single()
+		await get_tree().create_timer(0.1).timeout
+		check(GameManager.round_order == [index] and Global.score == 0, "Replay retains selection and resets score %d" % (index+1))
+		GameManager.return_to_title()
+		await get_tree().create_timer(0.1).timeout
+	check(Global.total_wins == saved_wins and Global.total_clears == saved_clears, "Single games leave tournament records unchanged")
+	GameManager.start_run(false)
+	await get_tree().create_timer(0.1).timeout
+	check(not GameManager.single_game and GameManager.round_order.size() == 7, "Tournament remains a separate seven-game run")
+	GameManager.return_to_title()
+	await get_tree().create_timer(0.1).timeout
 	if had_config:
 		var file := FileAccess.open(Global.SAVE_PATH, FileAccess.WRITE)
 		file.store_string(saved_config)

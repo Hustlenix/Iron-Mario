@@ -4,6 +4,8 @@ var chips: Array[Dictionary] = []
 var sockets: Array[Dictionary] = []
 var dragging := -1
 var placed_count := 0
+var selected := -1
+var drag_moved := false
 var pieces_canvas: Node2D
 
 func _init() -> void:
@@ -12,6 +14,9 @@ func _init() -> void:
 	duration = 11.0
 
 func setup_game() -> void:
+	if Global.uses_touch():
+		instruction = "TAP A CHIP, THEN ITS MATCHING SOCKET!"
+		hud.instruction_text = instruction
 	var colors := [Color("ff5058"), Color("63e7ff"), Color("ffd75e")]
 	var chip_positions := [Vector2(185, 275), Vector2(185, 420), Vector2(185, 565)]
 	var socket_positions := [Vector2(935, 395), Vector2(1030, 485), Vector2(900, 570)]
@@ -41,17 +46,28 @@ func update_game(_delta: float) -> void:
 func handle_game_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_action("click"):
 		if event.pressed:
+			if Global.uses_touch() and selected >= 0 and event.position.distance_to(sockets[selected]["position"]) <= 72.0:
+				dragging = selected
+				chips[dragging]["position"] = event.position
+				_drop_chip()
+				return
 			for index in range(chips.size() - 1, -1, -1):
 				if not bool(chips[index]["placed"]) and event.position.distance_to(chips[index]["position"]) <= 42.0:
 					dragging = index
+					selected = index
+					drag_moved = false
 					SoundFX.play_click()
 					get_viewport().set_input_as_handled()
 					break
 		elif dragging >= 0:
+			if Global.uses_touch() and not drag_moved and event.position.distance_to(chips[dragging]["home"]) < 48.0:
+				dragging = -1
+				return
 			chips[dragging]["position"] = event.position
 			_drop_chip()
 			get_viewport().set_input_as_handled()
 	elif event is InputEventMouseMotion and dragging >= 0:
+		drag_moved = true
 		chips[dragging]["position"] = event.position
 		get_viewport().set_input_as_handled()
 
@@ -70,6 +86,7 @@ func _drop_chip() -> void:
 		chips[dragging]["position"] = chips[dragging]["home"]
 		penalize_time(0.3)
 	dragging = -1
+	selected = -1
 	pieces_canvas.queue_redraw()
 
 func _draw() -> void:
@@ -80,6 +97,9 @@ func _draw() -> void:
 	pixel_text("REPAIRS  %d / 3" % placed_count, Vector2(385, 178), 28, Color("7bd9df"), 300, HORIZONTAL_ALIGNMENT_CENTER)
 
 func _draw_parts() -> void:
+	if selected >= 0 and not chips[selected]["placed"]:
+		Paint.circle(pieces_canvas,chips[selected]["position"],48,Paint.GOLD,false,5)
+		Paint.circle(pieces_canvas,sockets[selected]["position"],48,Paint.GOLD,false,5)
 	for index in range(sockets.size()):
 		_draw_piece(sockets[index]["position"], int(sockets[index]["shape"]), Color(sockets[index]["color"], 0.3), true)
 	for chip in chips:

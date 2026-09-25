@@ -1,5 +1,9 @@
 # Super-Micro Heroes verification
 
+## Home and two-thumb controls
+
+New runtime checks open each of seven Home selections, finish single rounds with wins and losses, replay the same game, return Home, and verify that single play preserves Tournament records. Touch checks cover direction changes, the neutral zone, captured thumb drags, and tap-chip/tap-socket repair. The browser flow covers simultaneous two-finger move/jump, single-game results, replay/Home, and Tournament entry.
+
 ## Flappy repair
 
 Five additional runtime assertions cover the camera transform, on-screen Menu
@@ -36,7 +40,7 @@ Production builds now come from the official Godot 4.4.1 export templates. The W
 
 ## Automated coverage
 
-`tools/check_engine.py` fails on script/resource errors even if Godot exits with code zero. It uses an isolated save directory, imports the editor project, runs the mechanics suite, starts F5's configured title scene, and launches all 22 scene files (including the original bonus and legacy scenes).
+`tools/check_engine.py` fails on script/resource errors even if Godot exits with code zero. It uses an isolated save directory, imports the editor project, runs the mechanics suite, starts F5's configured title scene, and launches all 23 scene files (including the original bonus and legacy scenes).
 
 The runtime suite checks:
 - All seven success paths, keyboard movement and jump requests, mouse target clicks and chip drops.
@@ -47,7 +51,7 @@ The runtime suite checks:
 - Bonus Flappy mouse/keyboard input, consecutive best-score updates, 100 bounded pipe gaps, restart cleanup, and floor/shield behavior.
 - Callsign and legacy reactor persistence, hero selection, lifetime records, and scene readiness during briefing.
 
-The original five-life design is preserved. Original four-game scenes remain available for compatibility; the title PLAY button launches the new seven-game manager.
+The original five-life design is preserved. Original four-game scenes remain available for compatibility; Home offers standalone games and a separate Tournament using the same manager.
 
 ## Build validation
 

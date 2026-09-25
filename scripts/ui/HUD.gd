@@ -48,8 +48,9 @@ func _draw() -> void:
 	Paint.string(self, font, Vector2(42, 82), instruction_text, HORIZONTAL_ALIGNMENT_LEFT, 700, 18, Color("f5f8ff"))
 	Paint.string(self, font, Vector2(800, 48), "SCORE %05d" % Global.score, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color("f5f8ff"))
 	Paint.string(self, font, Vector2(800, 78), "STREAK x%d" % Global.streak, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color("72eaff"))
-	Paint.string(self, font, Vector2(1054, 78), "%d / 7" % Global.current_minigame, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color("f5f8ff"))
-	_draw_lives(Vector2(1055, 30))
+	Paint.string(self, font, Vector2(1054, 78), "SINGLE" if GameManager.single_game else "%d / 7" % Global.current_minigame, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color("f5f8ff"))
+	if not GameManager.single_game:
+		_draw_lives(Vector2(1055, 30))
 	var ratio := clampf(time_left / total_time, 0.0, 1.0)
 	Paint.rect(self, Rect2(20, 111, 1240, 18), Color("202022"))
 	Paint.rect(self, Rect2(24, 115, 1232.0 * ratio, 10), Color(Global.hero_data()["light"]) if ratio > 0.3 else Color("ff4d4d"))

@@ -49,3 +49,16 @@ Add one row after each real development session.
 - Confirm the actual-time total from the session record.
 - Record the Godot version used for the final export.
 - Record the exported build name and the platform tested.
+
+
+## Home and phone controls update
+
+**What did you make?** A home screen where each of the seven games can be played on its own. Tournament has its own card, and Flappy stays available as a bonus. Single games now end with replay and home options.
+
+**What was challenging?** The original manager assumed every game belonged to a tournament. Single-game results needed their own route without awarding Tournament records. Touch movement also needed to stay held while the other thumb jumps, even when a finger slides outside the pad.
+
+**What changed for testing?** Slide the left pad and tap Jump with the right thumb. In Repair, tap a chip, lift, then tap its matching socket; dragging still works. Test each Home card, replay, return Home, and then start Tournament.
+
+**What am I proud of?** This update makes the games easier to find and lets players practise a favourite without waiting for random selection.
+
+Implementation and automated test work used AI assistance. Actual coding time for this update: **not yet recorded**. Physical phone feedback is still needed.

@@ -1,6 +1,13 @@
 # Changelog
 
-## Unreleased — Flappy repair
+## 2.1.0 — Pick a game and two-thumb controls
+
+- Added seven standalone game cards, a separate Tournament card, and bonus Flappy on Home.
+- Added a single-game result screen with Play Again and Home, keeping Tournament records separate.
+- Replaced phone movement buttons with a sliding thumb pad and enlarged jump/parry.
+- Added tap-chip, tap-socket repair alongside dragging; retained tap targets, memory tiles, and Flappy.
+
+### Flappy repair
 
 - Centred Flappy's camera on the playfield so the hero, floor, instructions, and Menu button remain visible.
 - Added direct touch handling and ignored duplicate emulated mouse clicks.

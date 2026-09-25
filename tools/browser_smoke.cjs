@@ -27,7 +27,7 @@ const assert = require('node:assert/strict');
  await page.waitForTimeout(150);
  await page.mouse.click(1150,675); // Must be visible and clickable after camera fix.
  await page.waitForTimeout(1000);
- await page.mouse.click(1000,367);
+ await page.mouse.click(200,675);
  await page.waitForTimeout(800);
  for(let i=0;i<9;i++){
    await page.mouse.click(565+(i%3)*248,260+Math.floor(i/3)*94);
@@ -53,7 +53,7 @@ const assert = require('node:assert/strict');
  await phone.waitForTimeout(1000);
  // Godot keeps the 16:9 viewport centered inside the landscape browser.
  const tap = async(x,y)=>phone.touchscreen.tap((844-390*1280/720)/2+x*390/720,y*390/720);
- await tap(1000,367);
+ await tap(200,675);
  await phone.waitForTimeout(500);
  await tap(805,450); // Prism Weaver
  await phone.waitForTimeout(300);
@@ -71,7 +71,22 @@ const assert = require('node:assert/strict');
  await phone.waitForTimeout(150);
  await tap(1150,675);
  await phone.waitForTimeout(1000);
- await tap(600,365);
+ await tap(180,220); // Single Arc Reactor Dash
+ await phone.waitForTimeout(3600);
+ await phone.screenshot({path:'docs/screenshots/mobile-single-game.png'});
+ const cdp=await mobile.newCDPSession(phone);
+ const point=(x,y,id)=>({x:(844-390*1280/720)/2+x*390/720,y:y*390/720,id});
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point(260,640,0),point(1140,640,1)]});
+ await phone.waitForTimeout(150);
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+ await phone.waitForTimeout(12000);
+ await phone.screenshot({path:'docs/screenshots/mobile-single-result.png'});
+ await tap(600,545); // Play Again
+ await phone.waitForTimeout(3600);
+ await tap(90,175); // Home
+ await phone.waitForTimeout(700);
+ await phone.screenshot({path:'docs/screenshots/mobile-home.png'});
+ await tap(600,535);
  await phone.waitForTimeout(1300);
  await phone.screenshot({path:'docs/screenshots/mobile-briefing.png'});
  await phone.waitForTimeout(2200);
