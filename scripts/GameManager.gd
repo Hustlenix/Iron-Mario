@@ -163,6 +163,8 @@ func _perform_scene_change(path: String, prepared: PackedScene = null) -> void:
 
 func _unlock_transition() -> void:
 	transition_locked = false
+	if OS.has_feature("web"):
+		print("SCENE_READY " + scene_path)
 
 func register_preview(path: String) -> void:
 	# F6 must restart the scene being previewed, not always the first mission.

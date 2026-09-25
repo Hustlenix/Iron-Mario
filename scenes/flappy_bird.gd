@@ -84,6 +84,8 @@ func flap() -> void:
 	match state:
 		"title":
 			state = "playing"
+			if OS.has_feature("web"):
+				print("FLAPPY_STATE playing")
 			hint_label.visible = false
 			_spawn_timer = randf_range(1.6, 2.4)
 			velocity = FLAP_VELOCITY
@@ -367,6 +369,8 @@ func _die() -> void:
 	_show_game_over()
 
 func _show_game_over() -> void:
+	if OS.has_feature("web"):
+		print("FLAPPY_STATE game_over")
 	hint_label.text = "SCORE %d   BEST %d\nTAP / SPACE TO RETRY   ESC FOR MENU" % [score, best]
 	hint_label.visible = true
 	best_label.text = "BEST: %d" % best
