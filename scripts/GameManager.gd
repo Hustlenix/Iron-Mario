@@ -117,8 +117,18 @@ func return_to_title() -> void:
 	transition_locked = true
 	_change_scene(TITLE_SCENE)
 
+func open_menu(path: String) -> void:
+	if transition_locked:
+		return
+	transition_locked = true
+	_change_scene(path)
+
 func _change_scene(path: String, prepared: PackedScene = null) -> void:
 	scene_path = path
+	# A pressed button must finish its GUI event before its scene is removed.
+	_perform_scene_change.call_deferred(path, prepared)
+
+func _perform_scene_change(path: String, prepared: PackedScene = null) -> void:
 	var error := get_tree().change_scene_to_packed(prepared) if prepared != null else get_tree().change_scene_to_file(path)
 	if error != OK:
 		push_error("Iron-Mario could not open scene: %s (error %s)" % [path, error])

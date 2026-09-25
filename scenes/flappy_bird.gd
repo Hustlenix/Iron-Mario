@@ -436,7 +436,7 @@ func _go_menu() -> void:
 		return
 	leaving = true
 	await SceneFade.fade_out(self).finished
-	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+	GameManager.return_to_title()
 
 func _exit_tree() -> void:
 	Engine.time_scale = 1.0

@@ -61,11 +61,11 @@ func _build_ui() -> void:
 	)
 
 	var profile := _make_button("HERO / " + Global.pilot_name, Vector2(825,330),Vector2(335,74),Paint.CYAN)
-	profile.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/profile_scene.tscn"))
+	profile.pressed.connect(func(): GameManager.open_menu("res://scenes/profile_scene.tscn"))
 	var settings := _make_button("SETTINGS", Vector2(825, 420), Vector2(335, 74), Paint.CYAN)
-	settings.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/settings_scene.tscn"))
+	settings.pressed.connect(func(): GameManager.open_menu("res://scenes/settings_scene.tscn"))
 	var bonus := _make_button("BONUS: FLAPPY", Vector2(825, 510), Vector2(335, 74), Paint.CYAN)
-	bonus.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/flappy_bird.tscn"))
+	bonus.pressed.connect(func(): GameManager.open_menu("res://scenes/flappy_bird.tscn"))
 
 	if not OS.has_feature("web"):
 		var quit_button := _make_button("QUIT", Vector2(825, 600), Vector2(335, 74), Paint.CYAN)
