@@ -34,7 +34,7 @@ jobs:
           curl -fL --retry 3 "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz" -o /tmp/templates.tpz
           target="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
           mkdir -p "$target"
-          unzip -j -q /tmp/templates.tpz 'templates/windows_release_x86_64.exe' 'templates/linux_release.x86_64' 'templates/web_nothreads_release.zip' 'templates/version.txt' -d "$target"
+          unzip -j -q /tmp/templates.tpz 'templates/windows_*_x86_64.exe' 'templates/linux_*.x86_64' 'templates/web_nothreads_*.zip' 'templates/version.txt' -d "$target"
       - name: Validate source, controls, saves, transitions, and every scene
         run: |
           python tools/validate_project.py
@@ -43,20 +43,20 @@ jobs:
         run: |
           mkdir -p build/windows build/linux build/web
           godot="Godot_v${GODOT_VERSION}-stable_linux.x86_64"
-          "$godot" --headless --path . --export-release "Windows Desktop" build/windows/Iron-Mario.exe
-          "$godot" --headless --path . --export-release "Linux" build/linux/Iron-Mario.x86_64
+          "$godot" --headless --path . --export-release "Windows Desktop" build/windows/Super-Micro-Heroes.exe
+          "$godot" --headless --path . --export-release "Linux" build/linux/Super-Micro-Heroes.x86_64
           "$godot" --headless --path . --export-release "Web" build/web/index.html
           cp docs/WINDOWS_README.txt build/windows/README.txt
-          chmod +x build/linux/Iron-Mario.x86_64
-          python tools/check_engine.py build/linux/Iron-Mario.x86_64 --exported
+          chmod +x build/linux/Super-Micro-Heroes.x86_64
+          python tools/check_engine.py build/linux/Super-Micro-Heroes.x86_64 --exported
       - uses: actions/upload-artifact@v4
         with:
-          name: Iron-Mario-Windows
+          name: Super-Micro-Heroes-Windows
           path: build/windows/
           if-no-files-found: error
       - uses: actions/upload-artifact@v4
         with:
-          name: Iron-Mario-Linux
+          name: Super-Micro-Heroes-Linux
           path: build/linux/
           if-no-files-found: error
       - uses: actions/upload-artifact@v4
@@ -76,7 +76,7 @@ jobs:
           python-version: '3.12'
       - uses: actions/download-artifact@v4
         with:
-          name: Iron-Mario-Windows
+          name: Super-Micro-Heroes-Windows
           path: build/windows
       - name: Install official Windows editor
         shell: pwsh
@@ -90,11 +90,36 @@ jobs:
           $editor = Get-ChildItem "$env:RUNNER_TEMP/godot/*console.exe" | Select-Object -First 1
           python tools/check_engine.py $editor.FullName
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          python tools/check_engine.py build/windows/Iron-Mario.exe --exported
+          python tools/check_engine.py build/windows/Super-Micro-Heroes.exe --exported
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+  browser-test:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          name: web-build
+          path: build/web
+      - name: Test the exported browser game with desktop and mobile touch
+        run: |
+          npm install --no-save --package-lock=false playwright@1.51.1
+          npx playwright install --with-deps chromium
+          python3 -m http.server 8765 --directory build/web > /tmp/preview.log 2>&1 &
+          node tools/browser_smoke.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Browser-screenshots
+          path: docs/screenshots/
+
   deploy:
-    needs: [build, windows-test]
+    needs: [build, windows-test, browser-test]
     runs-on: ubuntu-latest
     permissions:
       contents: write

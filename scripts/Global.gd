@@ -2,6 +2,9 @@ extends Node
 
 const SAVE_PATH := "user://iron_mario_save.cfg"
 const DEFAULT_LIVES := 5
+const Heroes = preload("res://scripts/HeroCatalog.gd")
+var hero_id := "ember"
+var touch_controls := false
 
 var lives: int = DEFAULT_LIVES
 var score: int = 0
@@ -21,6 +24,16 @@ var total_wins := 0
 var high_score := 0
 var highest_loop := 1
 const REACTOR_COLORS := [Color("b7faff"), Color("ffe48c"), Color("b8efa1")]
+
+func save_hero_profile(value: String, selected_hero: String) -> void:
+	hero_id = Heroes.valid_id(selected_hero)
+	update_profile(value, reactor_style)
+
+func hero_data() -> Dictionary:
+	return Heroes.get_hero(hero_id)
+
+func uses_touch() -> bool:
+	return touch_controls or DisplayServer.is_touchscreen_available() or OS.has_feature("mobile")
 
 func update_profile(value: String, style: int) -> void:
 	var cleaned := ""
@@ -126,6 +139,8 @@ func save_data() -> void:
 	config.set_value("progress", "flappy_best", flappy_best)
 	config.set_value("profile", "name", pilot_name)
 	config.set_value("profile", "reactor_style", reactor_style)
+	config.set_value("profile", "hero_id", hero_id)
+	config.set_value("settings", "touch_controls", touch_controls)
 	for key in ["total_clears", "total_wins", "high_score", "highest_loop"]:
 		config.set_value("progress", key, get(key))
 	if config.save(SAVE_PATH) != OK:
@@ -134,6 +149,8 @@ func save_data() -> void:
 func load_data() -> void:
 	var config := ConfigFile.new()
 	if config.load(SAVE_PATH) == OK:
+		hero_id = Heroes.valid_id(str(config.get_value("profile", "hero_id", "ember")))
+		touch_controls = bool(config.get_value("settings", "touch_controls", false))
 		best_streak = int(config.get_value("progress", "best_streak", 0))
 		pilot_name = str(config.get_value("profile", "name", "PILOT")).substr(0, 16)
 		reactor_style = clampi(int(config.get_value("profile", "reactor_style", 0)), 0, 2)

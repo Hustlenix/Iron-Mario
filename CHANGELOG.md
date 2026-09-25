@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.0 — Super-Micro Heroes
+
+- Renamed the game and export packages; retained the repository address and old save folders.
+- Replaced reactor-colour selection with nine original heroes, equipment, poses, and world previews.
+- Added nine character environments across briefings, gameplay, and endings.
+- Composed nine original instrumental music loops with preview crossfades and mission/ending moods.
+- Added simultaneous touch movement and jump, parry buttons, tap targets, finger-owned repair dragging, and tappable sequence tiles.
+- Added mobile launch/fullscreen UI, download progress, portrait guidance, and focus/orientation pause.
+- Added 44 hero/save/touch assertions alongside the 46 existing gameplay checks.
+- Added desktop/mobile Chromium export checks and screenshot artifacts to the publication gate.
+- Updated art previews, controls, Windows instructions, and README.
+
 ## 1.2.0 — Flight, suit, and profile update
 
 - Fixed Flappy gaps extending below the floor, render-frame-dependent simulation, floor/shield behavior, and incomplete restart cleanup.

@@ -242,9 +242,11 @@ func run_tests() -> void:
 	var profile = load("res://scenes/profile_scene.tscn").instantiate()
 	add_child(profile)
 	profile.name_edit.text = "test pilot"
-	profile.selected_style = 1
+	profile._select_hero("prism")
 	profile._save_profile()
-	check(Global.pilot_name == "TEST PILOT" and Global.reactor_style == 1, "Profile screen: save button applies entered data")
+	Global.hero_id = "ember"
+	Global.load_data()
+	check(Global.pilot_name == "TEST PILOT" and Global.hero_id == "prism", "Profile screen: callsign and selected hero persist")
 	profile.free()
 	Global.reset_run(true)
 	check(Global.current_loop == 2 and Global.difficulty > 1.0, "Harder mode increments loop and difficulty")
@@ -297,4 +299,8 @@ func run_tests() -> void:
 	else:
 		DirAccess.remove_absolute(Global.SAVE_PATH)
 	print("RUNTIME TESTS: %d failures" % failures.size())
+	Music.stop_music()
+	await get_tree().create_timer(0.5).timeout
+	await get_tree().process_frame
+	await get_tree().process_frame
 	get_tree().quit(0 if failures.is_empty() else 1)

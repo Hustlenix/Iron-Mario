@@ -73,7 +73,8 @@ func _ready() -> void:
 	_build_pipe_pool()
 	_build_trail()
 	bgm.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
-	bgm.play()
+	bgm.stop()
+	Music.play_theme(Global.hero_id, "mission")
 
 func get_state() -> String:
 	return state

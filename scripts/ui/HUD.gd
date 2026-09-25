@@ -52,7 +52,7 @@ func _draw() -> void:
 	_draw_lives(Vector2(1055, 30))
 	var ratio := clampf(time_left / total_time, 0.0, 1.0)
 	Paint.rect(self, Rect2(20, 111, 1240, 18), Color("202022"))
-	Paint.rect(self, Rect2(24, 115, 1232.0 * ratio, 10), Color("5be8ff") if ratio > 0.3 else Color("ff4d4d"))
+	Paint.rect(self, Rect2(24, 115, 1232.0 * ratio, 10), Color(Global.hero_data()["light"]) if ratio > 0.3 else Color("ff4d4d"))
 	Paint.string(self, font, Vector2(600, 126), "%0.1f" % time_left, HORIZONTAL_ALIGNMENT_CENTER, 80, 16, Color("ffffff"))
 	if not feedback_text.is_empty():
 		var flash_alpha := maxf(0.0, 0.18 - feedback_age * 0.12)
@@ -66,7 +66,7 @@ func _draw_lives(at: Vector2) -> void:
 	for index in range(Global.DEFAULT_LIVES):
 		var center := at + Vector2(index * 44, 0)
 		var active := index < Global.lives
-		var fill := Color("7bd9df") if active else Color("b4b0a1")
+		var fill := Color(Global.hero_data()["light"]) if active else Color("b4b0a1")
 		Paint.circle(self, center, 14, Color("202022"))
 		Paint.circle(self, center, 10, fill)
 		Paint.line(self, center + Vector2(-6, 0), center + Vector2(6, 0), Color("ffffff") if active else Color("53617a"), 3.0)

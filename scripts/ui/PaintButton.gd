@@ -3,6 +3,10 @@ extends Button
 const Paint = preload("res://scripts/ui/Paint.gd")
 var paint_color := Paint.GOLD
 
+func focus_when_ready() -> void:
+	if is_inside_tree() and not is_queued_for_deletion():
+		grab_focus()
+
 func _ready() -> void:
 	for state in ["normal", "hover", "pressed", "focus", "disabled", "hover_pressed"]:
 		add_theme_stylebox_override(state, StyleBoxEmpty.new())

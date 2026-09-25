@@ -10,6 +10,7 @@ var elapsed := 0.0
 var flicker := true
 
 func _ready() -> void:
+	Music.play_theme(Global.hero_id, "death")
 	hero = Hero.new()
 	hero.pose = "damaged"
 	hero.scale = Vector2(2.7, 2.7)
@@ -19,7 +20,7 @@ func _ready() -> void:
 	var retry := PixelButton.make("TRY AGAIN", Vector2(390, 610), Vector2(230, 64), Color("f4a090"))
 	retry.pressed.connect(func() -> void: GameManager.start_run(false))
 	add_child(retry)
-	retry.grab_focus.call_deferred()
+	retry.focus_when_ready.call_deferred()
 	var title := PixelButton.make("BACK TO TITLE", Vector2(660, 610), Vector2(230, 64), Color("a4d5df"))
 	title.pressed.connect(func() -> void: GameManager.return_to_title())
 	add_child(title)

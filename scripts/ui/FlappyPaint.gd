@@ -63,9 +63,9 @@ func _draw() -> void:
 	Paint.text(self, "FLAPPY  SCORE %d" % game.score, Vector2(35,54), 26)
 	Paint.text(self, "BEST %d  SHIELD %d" % [game.best, game.feathers], Vector2(35,88), 20)
 	Paint.text(self, game.medal_label.text, Vector2(1010,55), 24)
-	Paint.text(self, "SPACE / W / CLICK TO FLY    ESC TO TITLE", Vector2(265,681), 25)
+	Paint.text(self, "TAP TO FLY" if Global.uses_touch() else "SPACE / W / CLICK TO FLY    ESC TO TITLE", Vector2(265,681), 25)
 	if game.state in ["title", "game_over"]:
 		Paint.rect(self, Rect2(360,270,730,165), Paint.PAPER)
 		Paint.rect(self, Rect2(360,270,730,165), Paint.INK, false, 4)
 		Paint.text(self, "FLY THROUGH THE GAPS!" if game.state == "title" else "SUIT NEEDS A BREAK!", Vector2(400,325), 33)
-		Paint.text(self, "SPACE / W / CLICK TO " + ("START" if game.state == "title" else "RETRY"), Vector2(400,389), 26)
+		Paint.text(self, ("TAP TO " if Global.uses_touch() else "SPACE / W / CLICK TO ") + ("START" if game.state == "title" else "RETRY"), Vector2(400,389), 26)

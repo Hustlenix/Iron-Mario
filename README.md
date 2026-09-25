@@ -1,18 +1,22 @@
-# Iron-Mario
+# Super-Micro Heroes
 
-Seven quick missions, five reactor lives, and a handmade armored hero who has to keep moving.
+Nine homemade heroes, seven quick missions, and five lives to keep your adventure going. Built in Godot, with an intentionally rough MS-Paint look.
+
+Formerly **Iron-Mario**. The repository URL and existing save locations stay the same.
 
 [Play in your browser](https://hustlenix.github.io/Iron-Mario/) · [Download a release](https://github.com/Hustlenix/Iron-Mario/releases/latest) · [Build status](https://github.com/Hustlenix/Iron-Mario/actions)
 
-![Iron-Mario title screen artwork](docs/paint_title_screen.png)
+![Super-Micro Heroes title screen artwork](docs/paint_title_screen.png)
 
 *The images here are rendered from the game's drawing commands. They are visual previews, not live gameplay screenshots.*
 
 ## Play
 
-**Windows:** download the Windows ZIP from Releases, extract **everything**, and open `Iron-Mario.exe`. Keep `Iron-Mario.pck` in the same folder. You do not need Godot installed. Requires 64-bit Windows 10+ and an OpenGL 3.3-capable graphics driver. [Troubleshooting](docs/WINDOWS_README.txt).
+**Windows:** download the Windows ZIP from Releases, extract **everything**, and open `Super-Micro-Heroes.exe`. Keep `Super-Micro-Heroes.pck` in the same folder. You do not need Godot installed. Requires 64-bit Windows 10+ and an OpenGL 3.3-capable graphics driver. [Troubleshooting](docs/WINDOWS_README.txt).
 
-**Browser:** open the play link above and click once to enable audio. Keyboard and mouse are recommended.
+**Browser / phones:** open the play link above and press PLAY. Turn phones sideways. Movement and jump buttons support multiple fingers; tap targets and arrow tiles, or drag repair chips. The mission pauses when the phone is upright or the app loses focus. FULL SCREEN is optional and depends on the browser.
+
+The browser version needs WebGL 2. There is no APK or App Store installation in this update. Phone support is delivered through the Web build.
 
 **From source:** import `project.godot` in Godot and press **F5**. The main scene is `scenes/title_screen.tscn`. Godot **4.4.1** is the tested build baseline; 4.7.1 remains a compatibility target, not a claimed test result.
 
@@ -38,6 +42,12 @@ The original project's five-life system is preserved.
 | Flappy thrust | W / Space / Up or left click |
 | Flappy retry after a crash | R, jump, or left click |
 | Leave Flappy | Escape |
+| Phone movement | Hold LEFT / RIGHT |
+| Phone jump / timing | Tap JUMP / PARRY |
+| Phone targets / memory | Tap drones / arrow tiles |
+| Phone repair | Drag a chip with one finger |
+| Phone Flappy | Tap the play area |
+| Phone menu / restart | MENU / RETRY buttons |
 
 ## The seven missions
 
@@ -61,25 +71,43 @@ Flight runs on the physics tick. Pipe openings remain above the floor, and conse
 
 ## Your pilot profile
 
-Open **PROFILE** on the title screen to set a callsign and choose an arc-blue, solar-gold, or ion-green reactor. The profile shows your high score, best streak, missions cleared, runs won, highest loop with a clear, and Flappy record. Rank advances from Cadet to Defender to Ace as missions are cleared.
+Open **HERO** on the title screen to set a callsign and preview the nine characters. Each card changes the outfit, background, and music immediately. Press **SAVE PROFILE** to equip it. Every character uses the same movement, collision size, and mission rules.
+
+| Hero | World |
+| --- | --- |
+| Ember Rig | Spark Foundry |
+| Moon Scout | Lunar Observatory |
+| Sun Courier | Floating Islands |
+| Tide Warden | Sea Citadel |
+| Neon Comet | Comet Launch Port |
+| Thread Runner | Garden Rooftops |
+| Cipher Fox | Midnight Rail Yard |
+| Prism Weaver | Crystal Caverns |
+| Copper Guard | Clockwork Fortress |
+
+The profile shows high score, best streak, missions cleared, runs won, highest loop with a clear, and Flappy record. Rank advances from Cadet to Defender to Ace as missions are cleared.
 
 Everything is stored **locally on your device**. There is no sign-in or online leaderboard. Profiles and settings use `user://iron_mario_save.cfg`; existing best-streak, volume, and Flappy records migrate from the older `user://save.dat` without deleting it. New lifetime counters begin at zero because old saves did not record them. Browser and desktop profiles are separate.
 
-Settings includes volume, mute, and **RESET PROGRESS**. Reset clears records while keeping your callsign, reactor color, and audio preferences.
+Old saves select Ember Rig and retain their records. Desktop save locations remain in the original Godot/app_userdata/Iron-Mario folder (lowercase godot on Linux); the rename does not start a new profile.
+
+Settings includes volume, mute, **TOUCH: AUTO / ON**, and **RESET PROGRESS**. ON lets a desktop user try the visible touch controls. Reset clears records while keeping the callsign, equipped hero, and preferences.
 
 ![Local pilot profile](docs/paint_profile_scene.png)
 
 ## Art and loading screens
 
-The suit has a gold faceplate, two illuminated eye slits, segmented red armor, shoulder plates, boot jets, palm repulsors, and a chest reactor. Idle, flight, damaged, and victory poses share the same drawing code.
+The cast has different silhouettes and equipment: hoods, goggles, a courier bag, an energy pack, utility gear, crystal rings, and shields. Idle, flight, damaged, and victory poses share the same drawing code. The equipped character appears in the title, briefings, missions with a player character, Flappy, repair display, and endings.
 
-The artwork keeps its MS Paint look: flat fills, uneven dark outlines, angular shapes, and handmade lettering. It is drawn programmatically, not claimed to be human-painted in Microsoft Paint. This is an unofficial fan-style game; Marvel's Iron Man and Nintendo's Mario belong to their respective owners. No official logos, extracted sprites, downloaded artwork, or asset packs are included.
+The artwork keeps its MS Paint look: flat fills, uneven dark outlines, angular shapes, and handmade lettering. It is drawn programmatically, not claimed to be human-painted in Microsoft Paint. These are original characters; no official franchise logos, extracted sprites, downloaded artwork, or asset packs are included.
 
 Every mission has a different briefing backdrop: rooftops and shards, drone radar, a laser corridor, a reactor chamber, a repair bench, rescue-pod skies, or a sequence circuit. The bar measures **mission preparation**: both the three-second briefing and real resource readiness. It is not a fake download percentage.
 
 ![Mission briefing artwork](docs/paint_loading_reactor_parry.png)
 
-Sounds are original synthesized effects. The original generated title music and bonus audio are retained; the WAV generator is `tools/gen_audio.ps1`.
+Each hero has an original instrumental loop with its own motif, tempo, and musical palette. Music crossfades between previews and changes intensity for missions and endings. These are project compositions, not Marvel recordings or recreated film themes. The generator is `tools/generate_hero_music.py` (NumPy required to regenerate; the WAV files are included). Effects and bonus audio remain available.
+
+![Prism Weaver and the character roster](docs/paint_hero_prism.png)
 
 ## Endings
 
@@ -96,7 +124,12 @@ Sounds are original synthesized effects. The original generated title music and 
 | `scripts/MiniGameBase.gd` | Shared timer, HUD, win/loss signals, restart |
 | `scripts/Intermission.gd` | Threaded scene preparation, countdown, progress display |
 | `scripts/ui/MissionBackdrop.gd` | Seven briefing environments |
-| `scripts/ProfileScene.gd` | Editable callsign, reactor choice, saved records |
+| `scripts/ProfileScene.gd` | Editable callsign, hero previews, saved records |
+| `scripts/HeroCatalog.gd` | Stable hero IDs, outfits, colors, and world names |
+| `scripts/Music.gd` | Persistent music, transitions, and mood |
+| `scripts/ui/TouchControls.gd` | Multiple fingers, action buttons, release cleanup |
+| `scripts/MobileSession.gd` | Focus and portrait pause |
+| `web/mobile_shell.html` | Phone-friendly loading, launch, fullscreen, and rotate prompt |
 | `scripts/ui/IronHero.gd` | Shared suit artwork and poses |
 | `scripts/ui/Paint.gd` | Drawing style and stroke lettering |
 | `scripts/minigames/` | Seven mission implementations |
@@ -112,8 +145,8 @@ Install the matching Godot export templates. On Windows PowerShell, from the pro
 ```powershell
 godot --path .
 New-Item -ItemType Directory -Force build/windows, build/linux, build/web
-godot --headless --path . --export-release "Windows Desktop" build/windows/Iron-Mario.exe
-godot --headless --path . --export-release "Linux" build/linux/Iron-Mario.x86_64
+godot --headless --path . --export-release "Windows Desktop" build/windows/Super-Micro-Heroes.exe
+godot --headless --path . --export-release "Linux" build/linux/Super-Micro-Heroes.x86_64
 godot --headless --path . --export-release "Web" build/web/index.html
 python -m http.server 8000 --directory build/web
 ```
@@ -123,10 +156,10 @@ Open `http://localhost:8000` for the exported browser version. Serve it over HTT
 ```text
 python tools/validate_project.py
 python tools/check_engine.py /path/to/godot
-python tools/check_engine.py build/windows/Iron-Mario.exe --exported
+python tools/check_engine.py build/windows/Super-Micro-Heroes.exe --exported
 ```
 
-GitHub Actions runs mechanics and scene checks on Linux and Windows, tests the exported executables, and publishes the Web preview only after the checks pass. [Verification scope](docs/TEST_REPORT.md). Headless tests do not claim human audio, keyboard, or graphics-driver validation.
+GitHub Actions runs mechanics and scene checks on Linux and Windows, tests the exported executables, and tests the Web game in Chromium with desktop and mobile touch emulation. The browser job saves screenshots. Web publication waits for all jobs. [Verification scope](docs/TEST_REPORT.md). Emulation and headless checks do not claim physical Android/iPhone, audio, or graphics-driver validation.
 
 ## Development log
 

@@ -17,12 +17,7 @@ func _ready() -> void:
 	hero.pose = "victory"
 	add_child(hero)
 	_build_ui()
-	var music := AudioStreamPlayer.new()
-	music.stream = load("res://assets/audio/bgm.wav")
-	music.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
-	music.volume_db = -8.0
-	add_child(music)
-	music.play()
+	Music.play_theme(Global.hero_id)
 	queue_redraw()
 
 func _process(delta: float) -> void:
@@ -44,35 +39,36 @@ func _draw() -> void:
 	Paint.rect(self, Rect2(55,521,230,44), Paint.PAPER)
 	Paint.text(self, "HOME-MADE HERO!", Vector2(70,550), 20)
 	var font := ThemeDB.fallback_font
-	Paint.string(self, font, Vector2(440, 188), "IRON-MARIO", HORIZONTAL_ALIGNMENT_LEFT, -1, 72, Color("ffd13c"))
-	Paint.string(self, font, Vector2(443, 232), "MICROGAME GAUNTLET", HORIZONTAL_ALIGNMENT_LEFT, -1, 25, Color("6fe8ff"))
-	Paint.string(self, font, Vector2(443, 276), "7 MISSIONS. 5 REACTORS. MOVE FAST.", HORIZONTAL_ALIGNMENT_LEFT, -1, 20, Color("f5f7ff"))
+	Paint.rect(self,Rect2(425,114,795,187),Paint.PAPER)
+	Paint.text(self, "SUPER-MICRO HEROES",Vector2(443,178),62,Paint.INK,748)
+	Paint.text(self,Global.hero_data()["name"] + " / " + Global.hero_data()["place"],Vector2(443,226),22,Paint.INK,740)
+	Paint.text(self,"7 MISSIONS. 9 HEROES. 5 LIVES.",Vector2(443,272),24)
 	Paint.rect(self, Rect2(430,586,335,52), Paint.PAPER)
 	Paint.string(self, font, Vector2(445, 622), "BEST STREAK  %02d" % Global.best_streak, HORIZONTAL_ALIGNMENT_LEFT, -1, 20, Color("a9bbd8"))
 
 func _build_ui() -> void:
 	var play := _make_button("PLAY", Vector2(445, 330), Vector2(330, 70), Color("d9363e"))
-	play.grab_focus.call_deferred()
+	play.focus_when_ready.call_deferred()
 	play.pressed.connect(func() -> void: GameManager.start_run(false))
-	var controls := _make_button("CONTROLS", Vector2(445, 415), Vector2(330, 56), Color("214a79"))
+	var controls := _make_button("CONTROLS", Vector2(445, 415), Vector2(330, 74), Color("214a79"))
 	controls.pressed.connect(_show_controls)
 	var mute_text := "SOUND: OFF" if Global.muted else "SOUND: ON"
-	var mute := _make_button(mute_text, Vector2(445, 485), Vector2(330, 56), Color("214a79"))
+	var mute := _make_button(mute_text, Vector2(445, 505), Vector2(330, 74), Color("214a79"))
 	mute.pressed.connect(func() -> void:
 		var is_muted := Global.toggle_mute()
 		mute.text = "SOUND: OFF" if is_muted else "SOUND: ON"
 		SoundFX.play_click()
 	)
 
-	var profile := _make_button("PROFILE: " + Global.pilot_name, Vector2(825,350),Vector2(335,56),Paint.CYAN)
+	var profile := _make_button("HERO / " + Global.pilot_name, Vector2(825,330),Vector2(335,74),Paint.CYAN)
 	profile.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/profile_scene.tscn"))
-	var settings := _make_button("SETTINGS", Vector2(825, 420), Vector2(335, 56), Paint.CYAN)
+	var settings := _make_button("SETTINGS", Vector2(825, 420), Vector2(335, 74), Paint.CYAN)
 	settings.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/settings_scene.tscn"))
-	var bonus := _make_button("BONUS: FLAPPY", Vector2(825, 490), Vector2(335, 56), Paint.CYAN)
+	var bonus := _make_button("BONUS: FLAPPY", Vector2(825, 510), Vector2(335, 74), Paint.CYAN)
 	bonus.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/flappy_bird.tscn"))
 
 	if not OS.has_feature("web"):
-		var quit_button := _make_button("QUIT", Vector2(825, 560), Vector2(335, 56), Paint.CYAN)
+		var quit_button := _make_button("QUIT", Vector2(825, 600), Vector2(335, 74), Paint.CYAN)
 		quit_button.pressed.connect(func(): get_tree().quit())
 
 func _show_controls() -> void:
@@ -93,6 +89,8 @@ func _show_controls() -> void:
 	add_child(container)
 	var label := preload("res://scripts/ui/PaintLabel.gd").new()
 	label.text = "CONTROLS\n\nMOVE    A / D OR LEFT / RIGHT\nJUMP    W / SPACE / UP\nDOWN    S / DOWN (SEQUENCE)\nRESTART R\nMOUSE   CLICK / DRAG\n\nONE MISSION. ONE SHORT ORDER."
+	if Global.uses_touch():
+		label.text = "TOUCH CONTROLS\n\nHOLD LEFT / RIGHT TO MOVE\nTAP JUMP OR PARRY\nTAP DRONES AND ARROW TILES\nDRAG CHIPS INTO SOCKETS\nTAP ANYWHERE IN FLAPPY\n\nTURN PHONE SIDEWAYS TO PLAY"
 	label.position = Vector2(18, 16)
 	label.size = Vector2(375, 260)
 	container.add_child(label)

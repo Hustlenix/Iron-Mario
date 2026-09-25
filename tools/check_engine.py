@@ -37,6 +37,7 @@ with tempfile.TemporaryDirectory(prefix="iron-mario-test-") as temp:
     if not args.exported:
         run("editor import", ["--editor", "--import"], 180)
         run("mechanics and transitions", ["tools/runtime_tests.tscn"], expected="RUNTIME TESTS: 0 failures")
+        run("hero profiles and touch input", ["tools/mobile_tests.tscn"], expected="MOBILE TESTS: 0 failures")
     run("F5 title startup", ["--quit-after", "60"])
     scenes = sorted((root / "scenes").rglob("*.tscn"))
     for scene in scenes:

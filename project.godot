@@ -2,18 +2,23 @@ config_version=5
 
 [application]
 
-config/name="Iron-Mario"
-boot_splash/image="res://assets/paint_splash.png"
+config/name="Super-Micro Heroes"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Godot/app_userdata/Iron-Mario"
+config/custom_user_dir_name.linux="godot/app_userdata/Iron-Mario"
+boot_splash/image="res://assets/hero_splash.png"
 boot_splash/bg_color=Color(1, 0.965, 0.863, 1)
 run/main_scene="res://scenes/title_screen.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://assets/iron_mario_icon.svg"
+config/icon="res://assets/hero_roster_icon.svg"
 
 [autoload]
 
 Global="*res://scripts/Global.gd"
 GameManager="*res://scripts/GameManager.gd"
 SoundFX="*res://scripts/SoundFX.gd"
+Music="*res://scripts/Music.gd"
+MobileSession="*res://scripts/MobileSession.gd"
 
 [display]
 
@@ -22,12 +27,20 @@ window/size/viewport_height=720
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+window/handheld/orientation=0
+
+[input_devices]
+
+pointing/emulate_mouse_from_touch=true
+pointing/emulate_touch_from_mouse=false
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/default_filters/use_nearest_mipmap_filter=false
+textures/vram_compression/import_etc2_astc=true
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.027, 0.047, 0.102, 1)
 

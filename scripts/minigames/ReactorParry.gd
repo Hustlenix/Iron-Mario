@@ -69,4 +69,4 @@ func _draw() -> void:
 	if miss_time > 0.0:
 		Paint.rect(self, Rect2(140, 320, 1000, 122), Color(1.0, 0.1, 0.2, miss_time))
 	pixel_text("PARRIES  %d / 3" % parries, Vector2(460, 205), 32, Color("ffffff"), 360, HORIZONTAL_ALIGNMENT_CENTER)
-	pixel_text("SPACE / W", Vector2(490, 505), 26, Color("7bd9df"), 300, HORIZONTAL_ALIGNMENT_CENTER)
+	pixel_text("TAP PARRY" if Global.uses_touch() else "SPACE / W", Vector2(490, 505), 26, Color("7bd9df"), 300, HORIZONTAL_ALIGNMENT_CENTER)

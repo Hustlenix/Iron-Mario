@@ -9,6 +9,9 @@ with tempfile.TemporaryDirectory(prefix='iron-paint-') as tmp:
         shutil.copytree(root / name, copy / name)
     shutil.copy2(root / 'project.godot', copy / 'project.godot')
     (copy / 'docs').mkdir()
+    # The character gallery does not need continuous background music.
+    music = copy / 'scripts/Music.gd'
+    music.write_text('extends Node\nfunc play_theme(_id: String, _mood: String = "menu") -> void:\n\tpass\nfunc stop_music() -> void:\n\tpass\n')
     # Geometry-only capture: avoid starting audio players and freeing them in the same tick.
     for relative in ['scripts/TitleScreen.gd', 'scenes/flappy_bird.gd']:
         audio_script = copy / relative

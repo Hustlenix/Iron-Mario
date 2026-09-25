@@ -9,7 +9,7 @@ var target_radius := 30.0
 
 func _init() -> void:
 	game_title = "TARGET LOCK"
-	instruction = "CLICK THE FLYING TARGETS!"
+	instruction = "TAP OR CLICK THE FLYING TARGETS!"
 	duration = maxf(8.0, 9.5 - float(Global.current_loop - 1) * 0.35)
 
 func setup_game() -> void:

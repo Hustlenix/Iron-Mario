@@ -13,7 +13,7 @@ const MINIGAMES := [
 	},
 	{
 		"name": "TARGET LOCK",
-		"instruction": "CLICK THE FLYING TARGETS!",
+		"instruction": "TAP OR CLICK THE FLYING TARGETS!",
 		"scene": "res://scenes/minigames/target_lock.tscn"
 	},
 	{
@@ -38,7 +38,7 @@ const MINIGAMES := [
 	},
 	{
 		"name": "POWER CORE SEQUENCE",
-		"instruction": "WATCH THE FLASHES, THEN REPEAT THE KEYS!",
+		"instruction": "WATCH, THEN REPEAT WITH ARROWS OR TAPS!",
 		"scene": "res://scenes/minigames/power_core_sequence.tscn"
 	}
 ]

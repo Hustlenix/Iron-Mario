@@ -2,6 +2,10 @@ extends HSlider
 
 const Paint = preload("res://scripts/ui/Paint.gd")
 
+func focus_when_ready() -> void:
+	if is_inside_tree() and not is_queued_for_deletion():
+		grab_focus()
+
 func _ready() -> void:
 	for state in ["slider", "grabber_area", "grabber_area_highlight"]:
 		add_theme_stylebox_override(state, StyleBoxEmpty.new())

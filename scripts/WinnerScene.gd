@@ -10,6 +10,7 @@ var elapsed := 0.0
 var sparks: Array[Dictionary] = []
 
 func _ready() -> void:
+	Music.play_theme(Global.hero_id, "winner")
 	hero = Hero.new()
 	hero.pose = "victory"
 	hero.scale = Vector2(2.5, 2.5)
@@ -41,7 +42,7 @@ func _build_buttons() -> void:
 	var play_again := PixelButton.make("PLAY AGAIN", Vector2(280, 615), Vector2(220, 62), Color("f4a090"))
 	play_again.pressed.connect(func() -> void: GameManager.start_run(false))
 	add_child(play_again)
-	play_again.grab_focus.call_deferred()
+	play_again.focus_when_ready.call_deferred()
 	var harder := PixelButton.make("HARDER MODE", Vector2(530, 615), Vector2(220, 62), Color("ffd13c"))
 	harder.pressed.connect(func() -> void: GameManager.start_run(true))
 	add_child(harder)

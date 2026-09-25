@@ -13,6 +13,7 @@ var threaded := false
 
 func _ready() -> void:
 	game_data = GameManager.get_upcoming_game()
+	Music.play_theme(Global.hero_id, "briefing")
 	var hero := preload("res://scripts/ui/IronHero.gd").new()
 	hero.position = Vector2(225, 367)
 	hero.scale = Vector2(4.2,4.2)
@@ -63,12 +64,12 @@ func _draw() -> void:
 	var mission := String(game_data.get("scene", "arc_reactor_dash")).get_file().get_basename()
 	Backdrop.draw(self, mission, 3.0-countdown)
 	Paint.rect(self,Rect2(30,25,1220,63),Paint.PAPER)
-	Paint.text(self, "PILOT / " + Global.pilot_name,Vector2(55,66),23)
+	Paint.text(self, Global.hero_data()["name"] + " / " + Global.pilot_name,Vector2(55,66),23,Paint.INK,675)
 	Paint.text(self,"MISSION %d / 7    LOOP %d" % [GameManager.round_index+1,Global.current_loop],Vector2(765,66),23)
 	Paint.rect(self,Rect2(421,174,819,427),Paint.INK)
 	Paint.rect(self,Rect2(415,166,815,427),Paint.PAPER)
 	Paint.rect(self,Rect2(415,166,815,427),Paint.INK,false,4)
-	Paint.text(self,"NEXT MISSION",Vector2(453,216),20)
+	Paint.text(self,Global.hero_data()["place"] + " / NEXT MISSION",Vector2(453,216),20,Paint.INK,725)
 	Paint.text(self,String(game_data.get("name","MISSION")),Vector2(452,277),40,Paint.INK,728)
 	Paint.text(self,String(game_data.get("instruction","GET READY!")),Vector2(453,337),21,Paint.INK,728)
 	Paint.text(self,"STARTS IN " + str(maxi(1,ceili(countdown))) if countdown > 0 else "LOADING...",Vector2(453,416),30)

@@ -186,7 +186,11 @@ static func cloud(canvas: CanvasItem, at: Vector2, scale: float = 1.0) -> void:
 
 static func background(canvas: CanvasItem, kind: String) -> void:
 	var colors := {"sky": Color("b2e3ed"), "city": Color("b2e3ed"), "workshop": Color("f7dfb5"), "tunnel": Color("d6d7ca"), "space": Color("c7c9e8"), "title": Color("fff6dc"), "briefing": Color("dfe6c5"), "death": Color("273b61")}
-	canvas.draw_rect(Rect2(0,0,1280,720), colors.get(kind, PAPER))
+	var cast = preload("res://scripts/HeroCatalog.gd")
+	var theme: Dictionary = cast.get_hero(str(canvas.get_meta("hero_id", Global.hero_id)))
+	var sky := Color(theme["sky"])
+	canvas.draw_rect(Rect2(0,0,1280,720), colors["death"] if kind == "death" else sky)
+	hero_environment(canvas, theme, kind == "death")
 	if kind in ["sky", "city", "title"]:
 		cloud(canvas, Vector2(1110,245), 1.3)
 		cloud(canvas, Vector2(150,200), 0.8)
@@ -208,3 +212,98 @@ static func background(canvas: CanvasItem, kind: String) -> void:
 			var point := Vector2(35+(i*173)%1220,180+(i*97)%470)
 			line(canvas,point-Vector2(6,0),point+Vector2(6,0),PAPER if kind=="death" else INK,2)
 			line(canvas,point-Vector2(0,7),point+Vector2(0,7),PAPER if kind=="death" else INK,2)
+
+static func hero_environment(canvas: CanvasItem, theme: Dictionary, dark: bool = false) -> void:
+	var scenery := Color(theme["scenery"])
+	var accent := Color(theme["trim"])
+	if dark:
+		scenery = scenery.darkened(0.62)
+		accent = accent.darkened(0.6)
+	# Set pieces sit behind gameplay. No red beam-like decoration in the play area.
+	match theme["motif"]:
+		"forge":
+			for i in range(6):
+				var x := 35.0+i*245
+				rect(canvas,Rect2(x,510,170,210),scenery)
+				rect(canvas,Rect2(x+22,450,32,65),scenery)
+				for j in range(3):
+					rect(canvas,Rect2(x+16+j*48,555,30,40),accent)
+			for x in [105,1190]:
+				circle(canvas,Vector2(x,245),57,scenery,false,8)
+				line(canvas,Vector2(x,175),Vector2(x,315),scenery,7)
+		"moon":
+			circle(canvas,Vector2(1100,230),90,accent)
+			circle(canvas,Vector2(1130,209),75,Color("273b61") if dark else Color(theme["sky"]))
+			for i in range(18):
+				var p := Vector2(25+(i*191)%1250,150+(i*71)%300)
+				line(canvas,p-Vector2(3,0),p+Vector2(3,0),scenery,2)
+			for x in [70,930]:
+				rect(canvas,Rect2(x,505,250,215),scenery)
+				circle(canvas,Vector2(x+125,505),110,scenery)
+				line(canvas,Vector2(x+125,480),Vector2(x+200,414),accent,18)
+		"islands":
+			for i in range(5):
+				var p := Vector2(100+i*270,360+(i%2)*170)
+				polygon(canvas,PackedVector2Array([p-Vector2(85,0),p+Vector2(85,0),p+Vector2(25,85),p+Vector2(-25,65)]),PackedColorArray([scenery]))
+				rect(canvas,Rect2(p-Vector2(85,12),Vector2(170,20)),accent)
+				line(canvas,p-Vector2(40,15),p-Vector2(40,80),scenery,8)
+				polygon(canvas,PackedVector2Array([p-Vector2(40,80),p-Vector2(10,68),p-Vector2(40,53)]),PackedColorArray([accent]))
+		"sea":
+			for y in [560,610,660,710]:
+				var wave := PackedVector2Array()
+				for x in range(0,1300,35):
+					wave.append(Vector2(x,y+sin(x*0.026)*10))
+				polyline(canvas,wave,scenery,6)
+			for x in [70,1120]:
+				rect(canvas,Rect2(x,285,88,295),scenery)
+				polygon(canvas,PackedVector2Array([Vector2(x-15,285),Vector2(x+44,230),Vector2(x+104,285)]),PackedColorArray([accent]))
+				circle(canvas,Vector2(x+44,340),24,accent)
+		"port":
+			for i in range(4):
+				var p := Vector2(80+i*345,550)
+				rect(canvas,Rect2(p,Vector2(200,170)),scenery)
+				line(canvas,p+Vector2(20,-70),p+Vector2(20,0),scenery,9)
+				line(canvas,p+Vector2(20,-65),p+Vector2(95,-95),accent,12)
+			for i in range(6):
+				var p := Vector2(90+i*215,170+(i%3)*65)
+				circle(canvas,p,9,accent)
+				line(canvas,p-Vector2(30,-15),p-Vector2(10,-5),scenery,4)
+		"garden":
+			for i in range(8):
+				var p := Vector2(i*180,540+(i%3)*35)
+				rect(canvas,Rect2(p,Vector2(155,200)),scenery)
+				rect(canvas,Rect2(p-Vector2(5,12),Vector2(165,18)),accent)
+				for j in range(3):
+					var stem := p+Vector2(30+j*45,-12)
+					line(canvas,stem,stem-Vector2(0,34),scenery,4)
+					circle(canvas,stem-Vector2(6,28),12,scenery)
+			polyline(canvas,PackedVector2Array([Vector2(0,235),Vector2(270,275),Vector2(550,215),Vector2(850,260),Vector2(1280,210)]),scenery,3)
+		"rail":
+			for i in range(10):
+				var x := float(i)*145
+				rect(canvas,Rect2(x,580,120,86),scenery)
+				rect(canvas,Rect2(x+15,591,38,29),accent)
+				circle(canvas,Vector2(x+22,674),15,scenery)
+				circle(canvas,Vector2(x+97,674),15,scenery)
+			line(canvas,Vector2(0,694),Vector2(1280,694),scenery,8)
+			for x in [85,1180]:
+				line(canvas,Vector2(x,570),Vector2(x,220),scenery,8)
+				circle(canvas,Vector2(x,215),23,accent)
+		"crystal":
+			for i in range(9):
+				var x := float(i)*162
+				var h := 110+(i*47)%130
+				polygon(canvas,PackedVector2Array([Vector2(x,720),Vector2(x+16,720-h),Vector2(x+48,680-h),Vector2(x+83,720-h),Vector2(x+103,720)]),PackedColorArray([scenery]))
+				line(canvas,Vector2(x+48,680-h),Vector2(x+55,710),accent,4)
+			for x in [90,1165]:
+				circle(canvas,Vector2(x,230),42,scenery,false,3)
+				polygon(canvas,PackedVector2Array([Vector2(x,199),Vector2(x+20,230),Vector2(x,259),Vector2(x-20,230)]),PackedColorArray([accent]))
+		"fort":
+			rect(canvas,Rect2(0,565,1280,155),scenery)
+			for x in range(0,1280,75):
+				rect(canvas,Rect2(x,535,45,35),scenery)
+			for x in [70,1090]:
+				rect(canvas,Rect2(x,250,135,320),scenery)
+				circle(canvas,Vector2(x+67,324),49,accent)
+				line(canvas,Vector2(x+67,324),Vector2(x+67,292),INK,3)
+				line(canvas,Vector2(x+67,324),Vector2(x+89,338),INK,3)

@@ -49,4 +49,14 @@ func capture() -> void:
 		briefing.free()
 	await get_tree().process_frame
 	await get_tree().process_frame
+	for hero_id in preload("res://scripts/HeroCatalog.gd").IDS:
+		Global.hero_id = hero_id
+		var profile = load("res://scenes/profile_scene.tscn").instantiate()
+		add_child(profile)
+		Capture.items.clear()
+		capture_node(profile)
+		var output := FileAccess.open("res://docs/paint_hero_" + hero_id + ".svg",FileAccess.WRITE)
+		output.store_string('<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">'+''.join(Capture.items)+'</svg>')
+		profile.free()
+	await get_tree().process_frame
 	get_tree().quit()
