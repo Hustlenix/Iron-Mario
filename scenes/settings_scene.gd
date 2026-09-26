@@ -1,11 +1,13 @@
 extends Control
 
 @onready var volume_slider: HSlider = $CenterContainer/VBoxContainer/VolumeRow/VolumeSlider
+@onready var touch_toggle: CheckButton = $CenterContainer/VBoxContainer/TouchRow/TouchToggle
 @onready var status_label: RichTextLabel = $CenterContainer/VBoxContainer/StatusLabel
 
 func _ready() -> void:
 	volume_slider.value = Global.volume
 	_apply_volume(Global.volume)
+	touch_toggle.set_pressed_no_signal(Global.touch_controls_enabled)
 	SceneFade.fade_in(self)
 
 func _apply_volume(value: float) -> void:
@@ -14,6 +16,12 @@ func _apply_volume(value: float) -> void:
 func _on_volume_changed(value: float) -> void:
 	Global.volume = value
 	_apply_volume(value)
+
+func _on_touch_controls_toggled(pressed: bool) -> void:
+	Global.touch_controls_enabled = pressed
+	Global.save()
+	status_label.text = "TOUCH CONTROLS %s (SAVED)" % ("ON" if pressed else "OFF")
+	status_label.visible = true
 
 func _on_reset_button_pressed() -> void:
 	Global.best_streak = 0

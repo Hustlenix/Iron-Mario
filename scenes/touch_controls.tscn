@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/touch_controls.gd" id="1_script"]
+
+[node name="TouchControls" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_script")
+
+[node name="PortraitHint" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dim" type="ColorRect" parent="PortraitHint"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="Center" type="CenterContainer" parent="PortraitHint"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Message" type="RichTextLabel" parent="PortraitHint/Center"]
+layout_mode = 2
+custom_minimum_size = Vector2(560, 200)
+mouse_filter = 2
+theme_override_font_sizes/font_size = 52
+theme_override_constants/outline_size = 14
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+scroll_active = false
+text = "[center]ROTATE YOUR DEVICE[color=#ffd34d]SUPER-MARIO PLAYS IN LANDSCAPE[/color][/center]"
+
+[node name="BottomRow" type="MarginContainer" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -180.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 20
+
+[node name="Controls" type="HBoxContainer" parent="BottomRow"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="LeftButton" type="Button" parent="BottomRow/Controls"]
+custom_minimum_size = Vector2(112, 112)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 44
+theme_override_colors/font_color = Color(1, 0.83, 0.3, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+text = "◀"
+
+[node name="RightButton" type="Button" parent="BottomRow/Controls"]
+custom_minimum_size = Vector2(112, 112)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 44
+theme_override_colors/font_color = Color(1, 0.83, 0.3, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+text = "▶"
+
+[node name="Spacer" type="Control" parent="BottomRow/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="JumpButton" type="Button" parent="BottomRow/Controls"]
+custom_minimum_size = Vector2(160, 112)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(0.91, 0.25, 0.25, 1)
+theme_override_colors/font_hover_color = Color(1, 0.45, 0.45, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.65, 0.65, 1)
+text = "JUMP"

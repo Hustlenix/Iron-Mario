@@ -65,6 +65,22 @@ custom_minimum_size = Vector2(360, 48)
 max_value = 100.0
 value = 80.0
 
+[node name="TouchRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TouchLabel" type="Label" parent="CenterContainer/VBoxContainer/TouchRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+theme_override_constants/outline_size = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "TOUCH CONTROLS"
+
+[node name="TouchToggle" type="CheckButton" parent="CenterContainer/VBoxContainer/TouchRow"]
+layout_mode = 2
+button_pressed = true
+
 [node name="ControlsLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 custom_minimum_size = Vector2(640, 130)
@@ -74,7 +90,7 @@ theme_override_constants/outline_size = 10
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 scroll_active = false
-text = "[center]CONTROLS\nLEFT: A / LEFT ARROW\nRIGHT: D / RIGHT ARROW\nJUMP: SPACE / W[/center]"
+text = "[center]CONTROLS\nKEYBOARD: A / LEFT ARROW, D / RIGHT ARROW, SPACE / W\nTOUCH: ON-SCREEN BUTTONS (LANDSCAPE)\n[/center]"
 
 [node name="StatusLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -100,5 +116,6 @@ custom_minimum_size = Vector2(220, 60)
 text = "BACK"
 
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/VolumeRow/VolumeSlider" to="." method="_on_volume_changed"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/TouchRow/TouchToggle" to="." method="_on_touch_controls_toggled"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

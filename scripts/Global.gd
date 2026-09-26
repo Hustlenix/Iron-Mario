@@ -8,6 +8,11 @@ var best_streak: int = 0
 var flappy_best: int = 0
 var volume: float = 80.0
 
+## Device / player preferences. These are deliberately NOT cleared by reset(),
+## which only clears per-run state.
+var touch_controls_enabled: bool = true
+var low_quality: bool = false
+
 const SAVE_PATH := "user://save.dat"
 
 func _ready() -> void:
@@ -35,7 +40,13 @@ func save() -> void:
 	if file == null:
 		push_warning("Could not open save file: %s" % FileAccess.get_open_error())
 		return
-	file.store_string(JSON.stringify({"best_streak": best_streak, "volume": volume, "flappy_best": flappy_best}))
+	file.store_string(JSON.stringify({
+		"best_streak": best_streak,
+		"volume": volume,
+		"flappy_best": flappy_best,
+		"touch_controls_enabled": touch_controls_enabled,
+		"low_quality": low_quality,
+	}))
 
 func load_save() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
@@ -49,3 +60,5 @@ func load_save() -> void:
 		best_streak = int(data.get("best_streak", 0))
 		volume = float(data.get("volume", 80.0))
 		flappy_best = int(data.get("flappy_best", 0))
+		touch_controls_enabled = bool(data.get("touch_controls_enabled", true))
+		low_quality = bool(data.get("low_quality", false))

@@ -24,13 +24,24 @@ Fail a microgame and you lose a reactor — the failed mission replays. Survive 
 
 ## How to Play
 
-| Action | Keys |
-| --- | --- |
-| Move left | `A` / `←` |
-| Move right | `D` / `→` |
-| Jump | `Space` / `W` |
+| Action | Keyboard | Touch |
+| --- | --- | --- |
+| Move left | `A` / `←` | on-screen ◀ |
+| Move right | `D` / `→` | on-screen ▶ |
+| Jump | `Space` / `W` | on-screen JUMP |
 
-`SETTINGS` opens the settings scene (volume slider, controls reference, progress reset). `QUIT` closes the game.
+`SETTINGS` opens the settings scene (volume slider, touch controls, controls reference, progress reset). `QUIT` closes the game.
+
+### Mobile and web
+
+The game is **landscape-only**. On a phone or tablet:
+
+- The three on-screen buttons appear automatically once you touch the screen, so hybrid laptops that report a touchscreen still get them on first tap.
+- Held buttons drive the same `left` / `right` / `jump` actions the keyboard uses, so every microgame works by touch as well as by key.
+- Buttons are sized in **physical** pixels, so they stay at least 88 px wide after the game letterboxes to fit your screen — the 64 px accessibility floor is never breached.
+- Rotate back to landscape to play. Held in portrait, the game shows a rotate prompt instead of an unplayable view.
+
+Touch controls can be switched off in `SETTINGS`. The web build also installs as a Progressive Web App (standalone window, landscape, with icons), so it can be added to a phone home screen.
 
 ## Microgames
 
@@ -49,15 +60,23 @@ powershell -ExecutionPolicy Bypass -File tools\gen_audio.ps1
 
 ## Settings
 
-The settings scene (`settings_scene.tscn`) has a master volume slider (saved to `user://save.dat`), a controls reference, and **RESET PROGRESS** (clears best streak, streak, and loop count). Best streak and volume persist across restarts.
+The settings scene (`settings_scene.tscn`) has a master volume slider, a **TOUCH CONTROLS** toggle, a controls reference, and **RESET PROGRESS** (clears best streak, streak, and loop count). Volume, best streak, and the touch-controls choice persist across restarts; resetting progress leaves your settings alone.
 
 ## How to Run
 
-Open the project folder in the Godot 4.7.1 editor, or run it directly:
+Open the project folder in the Godot 4.7.1 editor, or run it directly with the path to your checkout:
 
 ```
-Godot_v4.7.1-stable_win64.exe --path "C:\Users\LalithReddy.b\Iron-Mario"
+Godot_v4.7.1-stable_win64.exe --path "C:\path\to\Iron-Mario"
 ```
+
+To produce the installable web build yourself (the output folder must already exist):
+
+```
+Godot_v4.7.1-stable_win64.exe --headless --path "C:\path\to\Iron-Mario" --export-release "Web" "C:\path\to\Iron-Mario\build\web\index.html"
+```
+
+That writes `index.html`, the generated PWA manifest, its icons, and an offline-capable service worker. Icons are generated from the original `assets/web_orb.svg` by `tools/gen_pwa_icons.gd`; rerun it after changing the mark.
 
 ## Continuous Integration
 
@@ -65,14 +84,14 @@ Pushing to `main` triggers `.github/workflows/deploy.yml`, which imports the pro
 
 ## Current State
 
-Playable prototype: the complete title → intermission → microgame → win/lose flow runs end to end, with difficulty loops, streaks, save persistence, generated audio, and a settings scene. All art is **original and created for this project** (hand-drawn SVG assets: armored hero sprite, arc-reactor life icons, shard collectibles, clicker target, parry bar and zone, and four background scenes).
+Playable prototype: the complete title → intermission → microgame → win/lose flow runs end to end, with difficulty loops, streaks, save persistence, generated audio, and a settings scene. It is playable on desktop (keyboard/mouse) and on phones and tablets (touch, landscape-only), and ships as an installable web app. All art is **original and created for this project** (hand-drawn SVG assets: armored hero sprite, arc-reactor life icons, shard collectibles, clicker target, parry bar and zone, and four background scenes).
 
 ## Stardance Submission Checklist
 
 | # | Requirement | Status |
 | --- | --- | --- |
 | 1 | Made in Godot | Done (Godot 4.7.1) |
-| 2 | Minigames respond to player input | Done (keyboard + mouse) |
+| 2 | Minigames respond to player input | Done (keyboard + mouse + touch) |
 | 3 | Minimum 5 hours spent coding | Tracked via Hackatime |
 | 4 | Minimum 2 minigames | Done (platformer + clicker + dodge + parry = 4) |
 | 5 | Implement your own assets | Done (original SVGs in `assets/`) |
