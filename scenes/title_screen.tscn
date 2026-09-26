@@ -164,7 +164,7 @@ theme_override_constants/outline_size = 40
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 scroll_active = false
-text = "[center][color=#ffd34d]IRON[/color][color=#e8403f]-[/color][color=#ffd34d]MARIO[/color][/center]"
+text = "[center][color=#ffd34d]SUPER[/color][color=#e8403f]-[/color][color=#ffd34d]MARIO[/color][/center]"
 
 [node name="MenuButtons" type="VBoxContainer" parent="."]
 layout_mode = 0

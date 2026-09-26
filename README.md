@@ -1,4 +1,10 @@
-# IRON-MARIO
+# SUPER-MARIO
+
+> **Fan project.** Super-Mario is an unofficial, non-commercial project and is not
+> affiliated with or endorsed by Nintendo, Marvel, DC, or any film or comic
+> publisher. All characters and audio in this project are original creations
+> inspired by superhero conventions. The title resembles a trademarked property —
+> check before publishing commercially.
 
 A WarioWare-style microgame gauntlet starring Mario's armored twin — a red-and-gold hero thrown into one absurd ten-second challenge after another. Collect arc-reactor shards, whack teleporting targets, dodge sweeping laser beams, parry a sweeping gauge, and keep your reactors burning through a back-to-back gauntlet where every failure costs a life. Clear all four microgames with power left and you win; run out and the suit powers down. Win rounds to build a **streak**, then hit **CONTINUE (HARDER)** to loop back through with a faster clock.
 

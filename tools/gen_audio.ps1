@@ -1,5 +1,5 @@
 # tools/gen_audio.ps1
-# Generates Iron-Mario's sound assets as 16-bit PCM mono 22050 Hz WAV files.
+# Generates Super-Mario's sound assets as 16-bit PCM mono 22050 Hz WAV files.
 # Every tone is synthesized here from scratch -- no external audio files.
 # SFX peak is kept around -10 dB; the BGM is a 16-note original loop (6.4 s)
 # with a 3rd harmonic for a square-ish retro timbre.
