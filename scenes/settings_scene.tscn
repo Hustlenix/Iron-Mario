@@ -57,13 +57,31 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 theme_override_constants/outline_size = 8
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "VOLUME"
+text = "SFX"
 
 [node name="VolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VolumeRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(360, 48)
 max_value = 100.0
 value = 80.0
+
+[node name="MusicRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MusicLabel" type="Label" parent="CenterContainer/VBoxContainer/MusicRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+theme_override_constants/outline_size = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "MUSIC"
+
+[node name="MusicSlider" type="HSlider" parent="CenterContainer/VBoxContainer/MusicRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(360, 48)
+max_value = 100.0
+value = 70.0
 
 [node name="TouchRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -116,6 +134,7 @@ custom_minimum_size = Vector2(220, 60)
 text = "BACK"
 
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/VolumeRow/VolumeSlider" to="." method="_on_volume_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/MusicRow/MusicSlider" to="." method="_on_music_volume_changed"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/TouchRow/TouchToggle" to="." method="_on_touch_controls_toggled"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

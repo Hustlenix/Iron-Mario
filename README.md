@@ -52,7 +52,13 @@ Touch controls can be switched off in `SETTINGS`. The web build also installs as
 
 ## Audio
 
-All sound is **generated from scratch** by `tools/gen_audio.ps1` (16-bit PCM mono 22050 Hz WAVs synthesized with `BinaryWriter` — sine tones with quick attack/decay envelopes, peaks around -10 dB). No external audio files. Assets: `tick.wav` (countdown blip), `win.wav` (rising arpeggio), `fail.wav` (descending sting), `bgm.wav` (16-note original loop on the title screen). Regenerate anytime with:
+All sound is **generated from scratch** by `tools/gen_audio.ps1` (16-bit PCM mono 22050 Hz WAVs synthesized with `BinaryWriter`, peaks normalized to −1 dBFS). No external audio files.
+
+**Sound effects:** `tick.wav` (countdown blip), `win.wav` (rising arpeggio), `fail.wav` (descending sting).
+
+**Music** is a four-part sequencer (bass, chords, lead, drums) rendering MIDI note tables through synthesized voices — plucked string, kick, snare, hats, crash, and riser. Tracks: `music_title.wav` (8 bars at 120 BPM, title screen and Flappy), `music_gauntlet.wav` (8 bars at 150 BPM, during microgames), `music_danger.wav` (4 bars at 180 BPM, same harmony but faster and percussive, for the final 3 seconds of a timer), `music_intermission.wav` (one-shot build-up between microgames). Loops are assembled with wrap-around mixing, so note tails fold into the next pass instead of being chopped, and the generator verifies each seam: the last-to-first sample step must be smaller than the largest natural step near the join. It fails loudly rather than shipping a click.
+
+Regenerate anytime with:
 
 ```
 powershell -ExecutionPolicy Bypass -File tools\gen_audio.ps1
@@ -60,7 +66,7 @@ powershell -ExecutionPolicy Bypass -File tools\gen_audio.ps1
 
 ## Settings
 
-The settings scene (`settings_scene.tscn`) has a master volume slider, a **TOUCH CONTROLS** toggle, a controls reference, and **RESET PROGRESS** (clears best streak, streak, and loop count). Volume, best streak, and the touch-controls choice persist across restarts; resetting progress leaves your settings alone.
+The settings scene (`settings_scene.tscn`) has separate **SFX** and **MUSIC** volume sliders, a **TOUCH CONTROLS** toggle, a controls reference, and **RESET PROGRESS** (clears best streak, streak, and loop count). Music rides its own `Music` bus routed to Master, so the music slider can never disturb effect levels. Both volumes, best streak, and the touch-controls choice persist across restarts; resetting progress leaves your settings alone.
 
 ## How to Run
 

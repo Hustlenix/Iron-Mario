@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4")
 [autoload]
 
 Global="*res://scripts/Global.gd"
+Music="*res://scripts/music_player.gd"
 
 [display]
 

@@ -14,6 +14,11 @@ const PIPE_POOL := 6
 const TRAIL_COUNT := 10
 const HITBOX_SHRINK := 0.075
 
+## Flappy reuses the title loop, pushed 6 dB further down than the menu so the
+## beeps and hits cut through it. Asking for the track that is already playing
+## only moves the trim, so the melody never restarts on entry.
+const TITLE_TRIM_DB := -14.0
+
 const _MEDALS := [
 	{"score": 5, "name": "BRONZE", "color": Color(0.72, 0.45, 0.22), "icon": "res://assets/medal_bronze.svg"},
 	{"score": 10, "name": "SILVER", "color": Color(0.8, 0.8, 0.85), "icon": "res://assets/medal_silver.svg"},
@@ -56,7 +61,6 @@ var _trail_timer := 0.0
 @onready var sfx_hit: AudioStreamPlayer = $SfxHit
 @onready var sfx_pickup: AudioStreamPlayer = $SfxPickup
 @onready var sfx_win: AudioStreamPlayer = $SfxWin
-@onready var bgm: AudioStreamPlayer = $Bgm
 
 func _ready() -> void:
 	SceneFade.fade_in(self)
@@ -65,8 +69,7 @@ func _ready() -> void:
 	build_sounds()
 	_build_pipe_pool()
 	_build_trail()
-	bgm.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
-	bgm.play()
+	Music.play("title", 0.8, TITLE_TRIM_DB)
 
 func get_state() -> String:
 	return state

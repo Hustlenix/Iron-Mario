@@ -13,6 +13,11 @@ var streak_label: RichTextLabel
 
 func _ready() -> void:
 	SceneFade.fade_in(self)
+	# The sting outlives this screen on its own: the players live in the Music
+	# autoload, so the scene swap does not clip it. Short fade rather than 0.0 --
+	# the spec's "never a hard cut" rule has no exception for the sting, and a
+	# 0.0 fade stops the outgoing voice dead on the downbeat.
+	Music.play("intermission", 0.35)
 	_build_progress_row()
 	_build_streak_label()
 	await countdown()

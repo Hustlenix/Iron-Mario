@@ -2,6 +2,8 @@ extends Control
 
 func _ready() -> void:
 	SceneFade.fade_in(self)
+	# Loop out, one-shot fail stays on Master over the top.
+	Music.stop(1.0)
 	$CenterContainer/VBoxContainer/BestStreakLabel.text = "BEST STREAK: %d" % Global.best_streak
 	_pulse_vignette()
 

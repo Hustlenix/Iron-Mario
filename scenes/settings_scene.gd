@@ -1,21 +1,35 @@
 extends Control
 
 @onready var volume_slider: HSlider = $CenterContainer/VBoxContainer/VolumeRow/VolumeSlider
+@onready var music_slider: HSlider = $CenterContainer/VBoxContainer/MusicRow/MusicSlider
 @onready var touch_toggle: CheckButton = $CenterContainer/VBoxContainer/TouchRow/TouchToggle
 @onready var status_label: RichTextLabel = $CenterContainer/VBoxContainer/StatusLabel
 
 func _ready() -> void:
 	volume_slider.value = Global.volume
 	_apply_volume(Global.volume)
+	music_slider.value = Global.music_volume
+	_apply_music_volume(Global.music_volume)
 	touch_toggle.set_pressed_no_signal(Global.touch_controls_enabled)
 	SceneFade.fade_in(self)
 
 func _apply_volume(value: float) -> void:
 	AudioServer.set_bus_volume_db(0, linear_to_db(maxf(value, 0.001) / 100.0))
 
+## Music rides its own bus so the two sliders stay independent.
+func _apply_music_volume(value: float) -> void:
+	var bus := AudioServer.get_bus_index(Global.MUSIC_BUS)
+	if bus < 0:
+		return
+	AudioServer.set_bus_volume_db(bus, linear_to_db(maxf(value, 0.001) / 100.0))
+
 func _on_volume_changed(value: float) -> void:
 	Global.volume = value
 	_apply_volume(value)
+
+func _on_music_volume_changed(value: float) -> void:
+	Global.music_volume = value
+	_apply_music_volume(value)
 
 func _on_touch_controls_toggled(pressed: bool) -> void:
 	Global.touch_controls_enabled = pressed

@@ -1,9 +1,12 @@
 extends Node2D
 
+## Menu music sits back so the hero art and logo lead, matching the trim the
+## retired Bgm node used.
+const TITLE_TRIM_DB := -8.0
+
 func _ready() -> void:
 	SceneFade.fade_in(self)
-	$Bgm.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
-	$Bgm.play()
+	Music.play("title", 1.2, TITLE_TRIM_DB)
 	$StreakLabel.text = "[center]BEST STREAK: %d[/center]" % Global.best_streak
 	$MenuButtons/FlappyButton.text = "FLAPPY  BEST: %d" % Global.flappy_best
 	_build_hero()

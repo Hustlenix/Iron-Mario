@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scenes/flappy_bird.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://assets/flappy_bg.svg" id="2_bg"]
 [ext_resource type="Texture2D" path="res://assets/flappy_hero.svg" id="3_hero"]
 [ext_resource type="Texture2D" path="res://assets/web_orb.svg" id="4_shard"]
-[ext_resource type="AudioStreamWAV" path="res://assets/audio/bgm.wav" id="5_bgm"]
 [ext_resource type="Script" path="res://scripts/juice/screen_shake.gd" id="6_shake"]
 [ext_resource type="PackedScene" path="res://scenes/touch_controls.tscn" id="7_touch"]
 
@@ -138,10 +137,6 @@ volume_db = -6.0
 
 [node name="SfxWin" type="AudioStreamPlayer" parent="."]
 volume_db = -4.0
-
-[node name="Bgm" type="AudioStreamPlayer" parent="."]
-volume_db = -14.0
-stream = ExtResource("5_bgm")
 
 [node name="ShakeCam" type="Camera2D" parent="."]
 script = ExtResource("6_shake")
