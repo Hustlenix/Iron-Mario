@@ -10,14 +10,17 @@ $GODOT_HEAD_INCLUDE
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#273b61;color:#202022;font-family:monospace;overscroll-behavior:none}
 #game{position:fixed;inset:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
 canvas{display:block;width:100%;height:100%;touch-action:none;outline:0}
-.sheet{background:#fff6dc;border:5px solid #202022;box-shadow:8px 8px #202022;padding:clamp(18px,4vw,40px);max-width:600px;text-align:center;transform:rotate(-.5deg)}
+.sheet{background:#fff6dc;border:5px solid #202022;box-shadow:8px 8px #202022;padding:clamp(18px,4vw,40px);max-width:650px;text-align:center;transform:rotate(-.5deg)}
 .cover{position:fixed;inset:0;display:grid;place-items:center;padding:24px;background:#bad5da;z-index:10}
 h1{font-size:clamp(25px,4vw,44px);margin:0 0 16px;line-height:1.15}p{font-size:16px;line-height:1.5}
 button{font:700 19px monospace;min-height:54px;padding:12px 22px;background:#ffd13c;border:4px solid #202022;box-shadow:3px 4px #202022;cursor:pointer;margin:8px}
-button:focus-visible{outline:4px solid #397e8b;outline-offset:4px}button:disabled{opacity:.55}
+button:focus-visible{outline:4px solid #397e8b;outline-offset:4px}button:disabled{opacity:.55;cursor:not-allowed}
 progress{display:block;width:100%;height:28px;accent-color:#35828d;border:3px solid #202022;background:#fff6dc}
 #rotate{display:none;z-index:20;background:#273b61;color:#fff6dc;text-align:center}
 #rotate div{border:4px dashed #ffd13c;padding:25px;max-width:350px}
+.privacy{margin-top:14px;padding-top:12px;border-top:3px dashed #202022}
+.privacy p{font-size:12px;margin:6px 0}
+.privacy button{font-size:12px;min-height:38px;padding:7px 12px;margin:5px}
 .gone{display:none!important}
 @media (orientation:portrait) and (pointer:coarse){#rotate{display:grid}}
 </style>
@@ -32,42 +35,282 @@ progress{display:block;width:100%;height:28px;accent-color:#35828d;border:3px so
   <p id="status" role="status">Phone: turn sideways. Computer: keyboard and mouse.</p>
   <progress id="progress" max="1" value="0" aria-label="Game download"></progress>
   <p>Touch buttons appear on phones. Tap targets, drag chips, and tap arrows to repeat the pattern.</p>
+  <div class="privacy">
+   <p>Optional usage analytics helps improve controls and fix bugs. Game telemetry does not send your callsign or typed text.</p>
+   <button id="analytics-toggle" type="button">ANALYTICS: OFF</button>
+   <p id="analytics-note">Analytics is off unless you choose to enable it.</p>
+  </div>
  </div>
 </div>
 <div id="rotate" class="cover"><div><h1>TURN YOUR<br>PHONE SIDEWAYS</h1><p>Your mission pauses while the phone is upright.</p></div></div>
+
+<script>
+const analyticsConfig = {
+ ga4: "__SMH_GA4_ID__",
+ clarity: "__SMH_CLARITY_ID__",
+ sentryLoader: "__SMH_SENTRY_LOADER_URL__"
+};
+for (const key of Object.keys(analyticsConfig)) {
+ if (String(analyticsConfig[key]).startsWith("__SMH_")) analyticsConfig[key] = "";
+}
+
+window.GameAnalytics = (() => {
+ const CONSENT_KEY = "smh_analytics_consent_v1";
+ const sessionStarted = performance.now();
+ const pending = [];
+ const debug = [];
+ let consent = localStorage.getItem(CONSENT_KEY) === "granted" ? "granted" :
+               localStorage.getItem(CONSENT_KEY) === "denied" ? "denied" : "unset";
+ let initialized = false;
+
+ window.__SMH_ANALYTICS_DEBUG__ = debug;
+
+ const providerConfigured = () => Boolean(analyticsConfig.ga4 || analyticsConfig.clarity || analyticsConfig.sentryLoader);
+
+ function safeParams(params = {}) {
+  const out = {};
+  const blocked = ["name", "email", "callsign", "pilot", "typed", "message", "user_id"];
+  for (const [rawKey, rawValue] of Object.entries(params || {})) {
+   const key = String(rawKey).toLowerCase().replace(/[^a-z0-9_]/g, "_").slice(0, 40);
+   if (!key || blocked.some(part => key.includes(part))) continue;
+   if (typeof rawValue === "string") out[key] = rawValue.slice(0, 100);
+   else if (typeof rawValue === "number" && Number.isFinite(rawValue)) out[key] = rawValue;
+   else if (typeof rawValue === "boolean") out[key] = rawValue;
+  }
+  out.viewport_w = window.innerWidth;
+  out.viewport_h = window.innerHeight;
+  out.orientation = window.innerWidth >= window.innerHeight ? "landscape" : "portrait";
+  out.device_class = matchMedia("(pointer: coarse)").matches ? "touch" : "pointer";
+  return out;
+ }
+
+ function validGa4(id) {
+  return /^G-[A-Z0-9]+$/.test(id);
+ }
+
+ function validClarity(id) {
+  return /^[a-z0-9]+$/i.test(id);
+ }
+
+ function validSentryLoader(url) {
+  try {
+   const parsed = new URL(url);
+   return parsed.protocol === "https:" && parsed.hostname === "js.sentry-cdn.com" && parsed.pathname.endsWith(".min.js");
+  } catch (_) {
+   return false;
+  }
+ }
+
+ function initProviders() {
+  if (initialized || consent !== "granted") return;
+  initialized = true;
+
+  if (validGa4(analyticsConfig.ga4)) {
+   window.dataLayer = window.dataLayer || [];
+   window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+   gtag("js", new Date());
+   gtag("config", analyticsConfig.ga4, {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+    send_page_view: true
+   });
+   const ga = document.createElement("script");
+   ga.async = true;
+   ga.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(analyticsConfig.ga4);
+   document.head.appendChild(ga);
+  }
+
+  if (validClarity(analyticsConfig.clarity)) {
+   window.clarity = window.clarity || function(){ (window.clarity.q = window.clarity.q || []).push(arguments); };
+   const clarityScript = document.createElement("script");
+   clarityScript.async = true;
+   clarityScript.src = "https://www.clarity.ms/tag/" + encodeURIComponent(analyticsConfig.clarity);
+   document.head.appendChild(clarityScript);
+  }
+
+  if (validSentryLoader(analyticsConfig.sentryLoader)) {
+   const sentryScript = document.createElement("script");
+   sentryScript.async = true;
+   sentryScript.crossOrigin = "anonymous";
+   sentryScript.src = analyticsConfig.sentryLoader;
+   sentryScript.onload = () => {
+    try {
+     window.Sentry?.setTag?.("game", "super-micro-heroes");
+     window.Sentry?.setTag?.("surface", "github-pages");
+    } catch (_) {}
+   };
+   document.head.appendChild(sentryScript);
+  }
+
+  while (pending.length) {
+   const item = pending.shift();
+   send(item.event, item.params);
+  }
+ }
+
+ function send(event, params) {
+  if (window.gtag && validGa4(analyticsConfig.ga4)) {
+   window.gtag("event", event, params);
+  }
+  if (window.clarity && validClarity(analyticsConfig.clarity)) {
+   try { window.clarity("event", event); } catch (_) {}
+  }
+  if (window.Sentry?.addBreadcrumb) {
+   try {
+    window.Sentry.addBreadcrumb({
+     category: "game.telemetry",
+     message: event,
+     level: "info",
+     data: params
+    });
+   } catch (_) {}
+  }
+ }
+
+ function track(event, params = {}) {
+  const eventName = String(event).toLowerCase().replace(/[^a-z0-9_]/g, "_").slice(0, 40);
+  if (!eventName) return;
+  const clean = safeParams(params);
+  debug.push({event: eventName, params: clean, at: Date.now()});
+  if (debug.length > 100) debug.shift();
+
+  if (consent === "granted") {
+   initProviders();
+   send(eventName, clean);
+  } else if (consent === "unset" && pending.length < 100) {
+   pending.push({event: eventName, params: clean});
+  }
+ }
+
+ function reportError(code, params = {}, error = null) {
+  track("client_error", { ...params, error_code: String(code).slice(0, 80) });
+  if (consent !== "granted") return;
+  initProviders();
+  try {
+   if (window.Sentry?.captureException && error instanceof Error) window.Sentry.captureException(error);
+   else if (window.Sentry?.captureMessage) window.Sentry.captureMessage(String(code).slice(0, 120));
+  } catch (_) {}
+ }
+
+ function setConsent(granted) {
+  const wasGranted = consent === "granted";
+  consent = granted ? "granted" : "denied";
+  localStorage.setItem(CONSENT_KEY, consent);
+  if (granted) {
+   initProviders();
+   track("analytics_consent_granted");
+  } else {
+   pending.length = 0;
+   if (wasGranted) location.reload();
+  }
+ }
+
+ function getConsent() { return consent; }
+ function isConfigured() { return providerConfigured(); }
+
+ if (consent === "granted") initProviders();
+
+ window.addEventListener("error", event => {
+  reportError("browser_error", {error_type: "javascript"}, event.error || null);
+ });
+ window.addEventListener("unhandledrejection", event => {
+  const reason = event.reason instanceof Error ? event.reason : null;
+  reportError("unhandled_rejection", {error_type: "promise"}, reason);
+ });
+ window.addEventListener("pagehide", () => {
+  track("game_exit", {session_duration_seconds: Math.round((performance.now() - sessionStarted) / 1000)});
+ });
+
+ return { track, reportError, setConsent, getConsent, isConfigured };
+})();
+</script>
+
 <script src="$GODOT_URL"></script>
 <script>
 const config = $GODOT_CONFIG;
 const engine = new Engine(config);
-const start = document.getElementById('start');
-const status = document.getElementById('status');
-const progress = document.getElementById('progress');
-const canvas = document.getElementById('canvas');
-document.getElementById('fullscreen').onclick = async () => {
- try { await document.documentElement.requestFullscreen(); } catch (_) {}
- try { await screen.orientation.lock('landscape'); } catch (_) {}
+const start = document.getElementById("start");
+const status = document.getElementById("status");
+const progress = document.getElementById("progress");
+const canvas = document.getElementById("canvas");
+const analyticsToggle = document.getElementById("analytics-toggle");
+const analyticsNote = document.getElementById("analytics-note");
+
+function syncAnalyticsUi() {
+ if (!GameAnalytics.isConfigured()) {
+  analyticsToggle.textContent = "ANALYTICS: NOT CONFIGURED";
+  analyticsToggle.disabled = true;
+  analyticsNote.textContent = "The game owner has not connected analytics providers on this build.";
+  return;
+ }
+ const granted = GameAnalytics.getConsent() === "granted";
+ analyticsToggle.textContent = granted ? "ANALYTICS: ON — TURN OFF" : "ALLOW ANALYTICS";
+ analyticsNote.textContent = granted ?
+  "Usage analytics is enabled on this device. You can turn it off here." :
+  "Analytics is off unless you choose to enable it.";
+}
+syncAnalyticsUi();
+
+analyticsToggle.onclick = () => {
+ if (!GameAnalytics.isConfigured()) return;
+ GameAnalytics.setConsent(GameAnalytics.getConsent() !== "granted");
+ syncAnalyticsUi();
 };
+
+GameAnalytics.track("page_loaded");
+
+const portraitMedia = matchMedia("(orientation: portrait) and (pointer: coarse)");
+let orientationPromptStarted = 0;
+function onOrientationPromptChange(matches) {
+ if (matches) {
+  orientationPromptStarted = performance.now();
+  GameAnalytics.track("orientation_prompt_shown");
+ } else if (orientationPromptStarted > 0) {
+  GameAnalytics.track("orientation_prompt_cleared", {
+   duration_ms: Math.round(performance.now() - orientationPromptStarted)
+  });
+  orientationPromptStarted = 0;
+ }
+}
+onOrientationPromptChange(portraitMedia.matches);
+if (portraitMedia.addEventListener) portraitMedia.addEventListener("change", event => onOrientationPromptChange(event.matches));
+
+document.getElementById("fullscreen").onclick = async () => {
+ GameAnalytics.track("fullscreen_clicked");
+ try {
+  await document.documentElement.requestFullscreen();
+  GameAnalytics.track("fullscreen_entered");
+ } catch (error) {
+  GameAnalytics.track("fullscreen_failed");
+ }
+ try { await screen.orientation.lock("landscape"); } catch (_) {}
+};
+
 start.onclick = async () => {
+ const startedAt = performance.now();
+ GameAnalytics.track("play_clicked");
  start.disabled = true;
- status.textContent = 'Preparing your adventure...';
+ status.textContent = "Preparing your adventure...";
  try {
   await engine.startGame({
    canvas,
    onProgress: (current,total) => {
-    if(total>0){progress.value=current/total;status.textContent='Downloading game: '+Math.round(current/total*100)+'%';}
-    else {progress.removeAttribute('value');status.textContent='Starting game...';}
+    if(total>0){progress.value=current/total;status.textContent="Downloading game: "+Math.round(current/total*100)+"%";}
+    else {progress.removeAttribute("value");status.textContent="Starting game...";}
    }
   });
-  document.getElementById('gate').classList.add('gone');
+  document.getElementById("gate").classList.add("gone");
   canvas.focus();
+  GameAnalytics.track("game_loaded", {load_time_ms: Math.round(performance.now() - startedAt)});
  } catch(error) {
-  status.textContent = 'Could not start. Try a browser with WebGL 2 enabled, or use the desktop download. '+String(error);
+  status.textContent = "Could not start. Try a browser with WebGL 2 enabled, or use the desktop download. "+String(error);
   start.disabled = false;
-  start.textContent = 'RETRY';
+  start.textContent = "RETRY";
+  GameAnalytics.reportError("engine_start_failed", {stage: "start_game"}, error);
  }
 };
-canvas.addEventListener('contextmenu',event=>event.preventDefault());
-canvas.addEventListener('touchmove',event=>event.preventDefault(),{passive:false});
+canvas.addEventListener("contextmenu",event=>event.preventDefault());
+canvas.addEventListener("touchmove",event=>event.preventDefault(),{passive:false});
 </script>
 </body>
 </html>
