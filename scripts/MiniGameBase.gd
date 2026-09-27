@@ -23,6 +23,8 @@ func _ready() -> void:
 	hud = preload("res://scripts/ui/HUD.gd").new()
 	add_child(hud)
 	hud.configure(game_title, instruction, duration)
+	var analytics_mode := "single" if GameManager.single_game else ("tournament" if Analytics.run_active else "preview")
+	Analytics.start_mission(scene_file_path.get_file().get_basename(), game_title, duration, analytics_mode)
 	setup_game()
 	Music.play_theme(Global.hero_id, "mission")
 	touch_controls = preload("res://scripts/ui/TouchControls.gd").new()
@@ -92,6 +94,7 @@ func finish(won: bool) -> void:
 	if ended:
 		return
 	ended = true
+	Analytics.finish_mission(won, time_left)
 	hud.show_feedback(won)
 	if won:
 		minigame_won.emit()
