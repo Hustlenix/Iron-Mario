@@ -209,7 +209,7 @@ func _safe_params(params: Dictionary) -> Dictionary:
 	for key in params:
 		var name := String(key)
 		var lower := name.to_lower()
-		if "name" in lower or "email" in lower or "callsign" in lower or "text" in lower:
+		if lower.contains("name") or lower.contains("email") or lower.contains("callsign") or lower.contains("text"):
 			continue
 		var value = params[key]
 		if value is String:
