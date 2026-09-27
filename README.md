@@ -139,6 +139,12 @@ Each hero has an original instrumental loop with its own motif, tempo, and music
 
 The original four-game scenes remain for compatibility and reference. Home cards use the shared manager for single games; Tournament queues all seven. `SingleResult.gd` handles the standalone replay/home screen.
 
+## Analytics and privacy
+
+The Web build includes privacy-first game telemetry for mission funnels, controls, FPS, load time, orientation interruptions, Flappy, and runtime errors. Google Analytics 4, Microsoft Clarity, and Sentry can be connected through GitHub Actions repository variables; analytics providers stay unloaded until the player explicitly enables analytics on the launch screen. Pilot callsigns and typed text are excluded from telemetry.
+
+See [Analytics and telemetry](docs/ANALYTICS.md) for provider setup, the event catalog, consent behavior, and debugging.
+
 ## Build and test
 
 Install the matching Godot export templates. On Windows PowerShell, from the project folder:

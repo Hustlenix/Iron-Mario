@@ -2,6 +2,8 @@ name: Build, test, and publish
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -49,6 +51,30 @@ jobs:
           cp docs/WINDOWS_README.txt build/windows/README.txt
           chmod +x build/linux/Super-Micro-Heroes.x86_64
           python tools/check_engine.py build/linux/Super-Micro-Heroes.x86_64 --exported
+      - name: Inject optional browser analytics IDs
+        env:
+          GA4_MEASUREMENT_ID: ${{ vars.GA4_MEASUREMENT_ID }}
+          CLARITY_PROJECT_ID: ${{ vars.CLARITY_PROJECT_ID }}
+          SENTRY_LOADER_URL: ${{ vars.SENTRY_LOADER_URL }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          path = Path("build/web/index.html")
+          html = path.read_text(encoding="utf-8")
+          values = {
+              "__SMH_GA4_ID__": os.environ.get("GA4_MEASUREMENT_ID", ""),
+              "__SMH_CLARITY_ID__": os.environ.get("CLARITY_PROJECT_ID", ""),
+              "__SMH_SENTRY_LOADER_URL__": os.environ.get("SENTRY_LOADER_URL", ""),
+          }
+          for token, value in values.items():
+              html = html.replace(json.dumps(token), json.dumps(value))
+          path.write_text(html, encoding="utf-8")
+          enabled = [name for name, value in values.items() if value]
+          print("Analytics provider values injected:", len(enabled))
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: Super-Micro-Heroes-Windows
@@ -119,6 +145,7 @@ jobs:
           path: docs/screenshots/
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: [build, windows-test, browser-test]
     runs-on: ubuntu-latest
     permissions:
