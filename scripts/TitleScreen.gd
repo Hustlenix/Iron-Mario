@@ -5,6 +5,7 @@ const HINTS := ["Move + jump. Grab 3 shards.", "Tap the flying targets.", "Jump 
 var controls_panel: Control
 
 func _ready() -> void:
+	Analytics.track("home_viewed", {"hero_id": Global.hero_id})
 	var hero := preload("res://scripts/ui/IronHero.gd").new()
 	hero.position = Vector2(1190,70)
 	hero.scale = Vector2(1.6,1.6)
