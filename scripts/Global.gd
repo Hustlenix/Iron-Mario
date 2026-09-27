@@ -16,8 +16,15 @@ var music_volume: float = 70.0
 var touch_controls_enabled: bool = true
 var low_quality: bool = false
 
+## The chosen hero (Phase 4). Like the preferences above this survives reset():
+## picking a character is a device preference, not per-run state, so a player
+## does not have to re-pick on every loop of the gauntlet. Empty means "no
+## pick yet", which PowerBus reads as "use the random pick".
+var selected_hero: String = ""
+
 const SAVE_PATH := "user://save.dat"
 const MUSIC_BUS := "Music"
+const DEFAULT_HERO := "dart"
 
 func _ready() -> void:
 	load_save()
@@ -62,6 +69,7 @@ func save() -> void:
 		"flappy_best": flappy_best,
 		"touch_controls_enabled": touch_controls_enabled,
 		"low_quality": low_quality,
+		"selected_hero": selected_hero,
 	}))
 
 func load_save() -> void:
@@ -79,3 +87,12 @@ func load_save() -> void:
 		flappy_best = int(data.get("flappy_best", 0))
 		touch_controls_enabled = bool(data.get("touch_controls_enabled", true))
 		low_quality = bool(data.get("low_quality", false))
+		selected_hero = str(data.get("selected_hero", ""))
+
+## The hero the player will actually play as. An unset or stale id resolves to a
+## random pick rather than failing, so a save written by an older build -- or one
+## with a hero id that no longer exists -- still boots into a playable game.
+func active_hero_id() -> String:
+	if selected_hero != "" and HeroData.is_selectable(selected_hero):
+		return selected_hero
+	return HeroData.random_id()

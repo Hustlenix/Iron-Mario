@@ -1,9 +1,9 @@
 # tools/gen_audio.ps1
-# Generates Super-Mario's sound assets as 16-bit PCM mono 22050 Hz WAV files.
+# Generates Super-Micro Heroes' sound assets as 16-bit PCM mono 22050 Hz WAV files.
 # Every tone is synthesized here from scratch -- no external audio files.
 #
 #   tick / win / fail  short SFX, unchanged since Phase 1.
-#   music_title        "Iron Mario March"   D minor  120 BPM  8 bars  16.000 s
+#   music_title        "Micro Heroes March"   D minor  120 BPM  8 bars  16.000 s
 #   music_gauntlet     "Gauntlet Run"       A minor  150 BPM  8 bars  12.800 s
 #   music_danger       "Redline"            A minor  180 BPM  4 bars   5.333 s
 #                      same chord roots as music_gauntlet, 1.2x tempo, denser kit
@@ -482,7 +482,7 @@ $fail = Concat-Samples @(
 Write-WavFile $fail (Join-Path $OutDir 'fail.wav')
 
 # =============================================================================
-# music_title.wav -- "Iron Mario March", D minor, 120 BPM, 8 bars (16.000 s)
+# music_title.wav -- "Micro Heroes March", D minor, 120 BPM, 8 bars (16.000 s)
 # Epic, moderate tempo. i - VI - III - VII (Dm - Bb - F - C) and back to Dm, so
 # the turnaround is V -> i and the loop joins on a resolution.
 # =============================================================================

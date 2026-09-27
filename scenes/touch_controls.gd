@@ -2,14 +2,21 @@ extends CanvasLayer
 
 ## Phase 2 touch controls.
 ##
-## Emits the existing `left` / `right` / `jump` input actions, so gameplay code
-## needs no changes to work with touch. Minigames 3 and 4 poll those actions as
-## held state, so every button is press-and-hold capable rather than tap-only.
+## Emits the existing `left` / `right` / `jump` / `power` input actions, so
+## gameplay code needs no changes to work with touch. Every button is
+## press-and-hold capable, not just tap: `Input.action_press` stays held until
+## the matching `button_up`, so a held direction keeps working.
 ##
-## The `power` button is deliberately absent -- Phase 4 adds it alongside the
-## nine playable heroes.
+## Minigames 1-4 read `power` themselves through PowerBus and instance a
+## PowerRing for the HUD. level_scene and flappy_bird only use these buttons
+## for movement and register no handler, so the power button stays hidden
+## there rather than offering a tap nothing can consume.
+##
+## The power button (Phase 4) mirrors the HUD cooldown ring: it carries the
+## active hero's own power name, hides itself for a hero with no power, and
+## disables while the shared cooldown runs so a tap cannot silently no-op.
 
-const TOUCHED_ACTIONS := ["jump", "left", "right"]
+const TOUCHED_ACTIONS := ["jump", "left", "right", "power"]
 
 ## height/width above this reads as a portrait phone and we show the rotate hint.
 const PORTRAIT_MIN_ASPECT := 1.2
@@ -21,6 +28,7 @@ const MIN_TOUCH_PX := 88.0
 @onready var left_button: Button = $BottomRow/Controls/LeftButton
 @onready var right_button: Button = $BottomRow/Controls/RightButton
 @onready var jump_button: Button = $BottomRow/Controls/JumpButton
+@onready var power_button: Button = $BottomRow/Controls/PowerButton
 @onready var portrait_hint: Control = $PortraitHint
 @onready var bottom_row: Control = $BottomRow
 
@@ -41,15 +49,47 @@ func _ready() -> void:
 	_bind_held("left", left_button)
 	_bind_held("right", right_button)
 	_bind_held("jump", jump_button)
+	_bind_held("power", power_button)
 
-	_buttons = [left_button, right_button, jump_button]
+	_buttons = [left_button, right_button, jump_button, power_button]
 	for button in _buttons:
 		_authored_sizes[button] = button.custom_minimum_size
 	_rescale_buttons()
 
+	_refresh_power_button()
 	_publish_visibility()
 	get_viewport().size_changed.connect(_on_viewport_resized)
 	tree_exiting.connect(_release_all)
+
+
+## The power button's state depends on two things that can both change under the
+## player: the selected hero (hero select, or a settings reset) and the shared
+## cooldown clock. Polling is what power_ring.gd already does, and it is what
+## makes a hero swap correct without a hero_changed signal that does not exist.
+func _process(_delta: float) -> void:
+	_refresh_power_button()
+
+
+## Show the active hero's real power name, hide the button for a hero with no
+## power (Flappy), and disable it while cooling down so the player gets honest
+## feedback instead of a tap that quietly does nothing.
+##
+## `has_handler()` is part of the gate on purpose. level_scene and flappy_bird
+## instance these buttons for their movement actions but register no power
+## handler, so the press would be rejected as "no target" every single time.
+## Advertising a live power there is a lie the player can see, so the button
+## stays hidden until a scene that can actually consume the press registers.
+func _refresh_power_button() -> void:
+	if power_button == null:
+		return
+
+	if not PowerBus.has_power() or not PowerBus.has_handler():
+		power_button.hide()
+		return
+
+	power_button.text = String(PowerBus.hero().get("power", "POWER")).to_upper()
+	power_button.disabled = not PowerBus.ready_to_use()
+	power_button.show()
 
 
 ## How far the 1280x720 content is scaled down to fit the real window. The

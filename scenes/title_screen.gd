@@ -28,6 +28,10 @@ func _build_hero() -> void:
 	tween.tween_property(hero, "position:y", 276.0, 1.1)
 
 func _pulse_logo() -> void:
+	# A Control scales around pivot_offset, which defaults to the top-left
+	# corner. Without this the centred wordmark drifts right on every beat
+	# instead of pulsing in place.
+	$TitleLabel.pivot_offset = $TitleLabel.size / 2.0
 	var tween := create_tween()
 	tween.set_loops(-1)
 	tween.set_trans(Tween.TRANS_SINE)

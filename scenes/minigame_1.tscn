@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://scenes/minigame_1.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStreamWAV" path="res://assets/audio/win.wav" id="6_win"]
 [ext_resource type="AudioStreamWAV" path="res://assets/audio/fail.wav" id="7_fail"]
 [ext_resource type="Script" path="res://scripts/juice/screen_shake.gd" id="8_shake"]
+[ext_resource type="PackedScene" path="res://scenes/power_ring.tscn" id="9_ring"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(1280, 48)
@@ -109,3 +110,15 @@ stream = ExtResource("7_fail")
 
 [node name="ShakeCam" type="Camera2D" parent="."]
 script = ExtResource("8_shake")
+
+[node name="PowerHUD" type="CanvasLayer" parent="."]
+
+[node name="PowerRing" parent="PowerHUD" instance=ExtResource("9_ring")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 88.0
+grow_horizontal = 0
