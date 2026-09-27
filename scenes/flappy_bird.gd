@@ -62,6 +62,7 @@ var _flap_tween: Tween
 @onready var bgm: AudioStreamPlayer = $Bgm
 
 func _ready() -> void:
+	Analytics.track("flappy_viewed", {"hero_id": Global.hero_id})
 	for visual in [$Background, $HUD, bird, pipes_node, pickups_node, trail_node]:
 		visual.modulate = Color.TRANSPARENT
 	bird.modulate = Color.WHITE
@@ -83,6 +84,8 @@ func get_state() -> String:
 func flap() -> void:
 	match state:
 		"title":
+			Analytics.start_run("flappy", {"hero_id": Global.hero_id})
+			Analytics.track("flappy_started", {"best_score": best})
 			state = "playing"
 			if OS.has_feature("web"):
 				print("FLAPPY_STATE playing")
@@ -321,6 +324,8 @@ func _collides() -> bool:
 
 func _score() -> void:
 	score += 1
+	if score in [1, 5, 10, 20, 40]:
+		Analytics.track("flappy_score_milestone", {"score": score})
 	score_label.text = "%d" % score
 	sfx_score.play()
 	Juice.text(self, "+1", Vector2(BIRD_X + 40.0, bird_y), Color(0.6, 1.0, 0.65), 30)
@@ -358,6 +363,8 @@ func _die() -> void:
 	if state != "playing":
 		return
 	state = "dying"
+	Analytics.track("flappy_game_over", {"score": score, "best_score": maxi(best, score)})
+	Analytics.end_run("flappy_game_over", {"score": score, "best_score": maxi(best, score)})
 	sfx_hit.play()
 	Juice.hit_stop(self)
 	Juice.shake(self, 0.6)
@@ -376,6 +383,7 @@ func _show_game_over() -> void:
 	best_label.text = "BEST: %d" % best
 
 func _restart() -> void:
+	Analytics.track("flappy_restarted", {"previous_score": score})
 	if _flap_tween:
 		_flap_tween.kill()
 	for pair in pipes_node.get_children():
@@ -449,6 +457,8 @@ func _move_pickups(delta: float) -> void:
 func _go_menu() -> void:
 	if leaving:
 		return
+	Analytics.end_run("returned_home", {"score": score})
+	Analytics.track("flappy_home_clicked", {"score": score})
 	leaving = true
 	await SceneFade.fade_out(self).finished
 	GameManager.return_to_title()
