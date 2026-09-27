@@ -15,6 +15,7 @@ config/icon="res://assets/hero_roster_icon.svg"
 [autoload]
 
 Global="*res://scripts/Global.gd"
+Analytics="*res://scripts/Analytics.gd"
 GameManager="*res://scripts/GameManager.gd"
 SoundFX="*res://scripts/SoundFX.gd"
 Music="*res://scripts/Music.gd"
