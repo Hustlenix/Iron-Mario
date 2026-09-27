@@ -9,6 +9,10 @@ var trauma := 0.0
 
 func _ready() -> void:
 	add_to_group("shake_cam")
+	# Anchor the view on the viewport centre. Without this the camera sits at
+	# (0,0), so it frames world x[-640,640] y[-360,360] and every gameplay node
+	# (ground 672, player 620, collectibles 410-510) falls below the view.
+	position = get_viewport_rect().size * 0.5
 	make_current()
 
 func add_trauma(amount: float) -> void:

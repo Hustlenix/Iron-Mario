@@ -44,7 +44,7 @@ theme_override_constants/outline_size = 14
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 scroll_active = false
-text = "[center]ROTATE YOUR DEVICE[color=#ffd34d]SUPER-MARIO PLAYS IN LANDSCAPE[/color][/center]"
+text = "[center]ROTATE YOUR DEVICE[color=#ffd34d]SUPER-MICRO HEROES PLAYS IN LANDSCAPE[/color][/center]"
 
 [node name="BottomRow" type="MarginContainer" parent="."]
 layout_mode = 3

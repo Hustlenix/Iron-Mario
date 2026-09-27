@@ -153,25 +153,25 @@ stretch_mode = 5
 
 [node name="TitleLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 150.0
+offset_left = 90.0
 offset_top = 120.0
-offset_right = 1130.0
+offset_right = 1190.0
 offset_bottom = 270.0
 mouse_filter = 2
-theme_override_font_sizes/font_size = 120
-theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 84
+theme_override_constants/outline_size = 30
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 scroll_active = false
-text = "[center][color=#ffd34d]SUPER[/color][color=#e8403f]-[/color][color=#ffd34d]MARIO[/color][/center]"
+text = "[center][color=#ffd34d]SUPER-MICRO[/color][color=#e8403f]·[/color][color=#ffd34d]HEROES[/color][/center]"
 
 [node name="MenuButtons" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 510.0
-offset_top = 340.0
+offset_top = 312.0
 offset_right = 770.0
-offset_bottom = 576.0
-theme_override_constants/separation = 22
+offset_bottom = 598.0
+theme_override_constants/separation = 10
 
 [node name="StartButton" type="Button" parent="MenuButtons"]
 layout_mode = 2
@@ -247,9 +247,9 @@ text = "QUIT"
 [node name="StreakLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 440.0
-offset_top = 610.0
+offset_top = 612.0
 offset_right = 840.0
-offset_bottom = 660.0
+offset_bottom = 662.0
 mouse_filter = 2
 theme_override_font_sizes/font_size = 28
 theme_override_constants/outline_size = 10
