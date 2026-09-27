@@ -26,8 +26,11 @@ var highest_loop := 1
 const REACTOR_COLORS := [Color("b7faff"), Color("ffe48c"), Color("b8efa1")]
 
 func save_hero_profile(value: String, selected_hero: String) -> void:
+	var previous_hero := hero_id
 	hero_id = Heroes.valid_id(selected_hero)
 	update_profile(value, reactor_style)
+	if hero_id != previous_hero:
+		Analytics.track("hero_selected", {"hero_id": hero_id})
 
 func hero_data() -> Dictionary:
 	return Heroes.get_hero(hero_id)
