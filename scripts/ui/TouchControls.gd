@@ -112,6 +112,7 @@ func _emit_action(action: String, pressed: bool) -> void:
 	event.action = action
 	event.pressed = pressed
 	if pressed:
+		Analytics.record_control(action, "touch")
 		Input.action_press(action)
 		if is_instance_valid(game) and game.is_inside_tree():
 			game._unhandled_input(event)
