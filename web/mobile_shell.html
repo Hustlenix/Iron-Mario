@@ -59,8 +59,15 @@ window.GameAnalytics = (() => {
  const sessionStarted = performance.now();
  const pending = [];
  const debug = [];
- let consent = localStorage.getItem(CONSENT_KEY) === "granted" ? "granted" :
-               localStorage.getItem(CONSENT_KEY) === "denied" ? "denied" : "unset";
+ function readConsent() {
+  try {
+   const value = localStorage.getItem(CONSENT_KEY);
+   return value === "granted" || value === "denied" ? value : "unset";
+  } catch (_) {
+   return "unset";
+  }
+ }
+ let consent = readConsent();
  let initialized = false;
 
  window.__SMH_ANALYTICS_DEBUG__ = debug;
@@ -89,7 +96,7 @@ window.GameAnalytics = (() => {
  }
 
  function validClarity(id) {
-  return /^[a-z0-9]+$/i.test(id);
+  return /^[a-z0-9_-]+$/i.test(id);
  }
 
  function validSentryLoader(url) {
@@ -107,9 +114,9 @@ window.GameAnalytics = (() => {
 
   if (validGa4(analyticsConfig.ga4)) {
    window.dataLayer = window.dataLayer || [];
-   window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
-   gtag("js", new Date());
-   gtag("config", analyticsConfig.ga4, {
+   window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+   window.gtag("js", new Date());
+   window.gtag("config", analyticsConfig.ga4, {
     allow_google_signals: false,
     allow_ad_personalization_signals: false,
     send_page_view: true
@@ -195,7 +202,7 @@ window.GameAnalytics = (() => {
  function setConsent(granted) {
   const wasGranted = consent === "granted";
   consent = granted ? "granted" : "denied";
-  localStorage.setItem(CONSENT_KEY, consent);
+  try { localStorage.setItem(CONSENT_KEY, consent); } catch (_) {}
   if (granted) {
    initProviders();
    track("analytics_consent_granted");
