@@ -9,6 +9,7 @@ var cards: Array[Button] = []
 var status := "PICK A HERO - PREVIEW THEIR WORLD AND MUSIC"
 
 func _ready() -> void:
+	Analytics.track("profile_viewed", {"hero_id": Global.hero_id})
 	selected_hero = Global.hero_id
 	set_meta("hero_id",selected_hero)
 	hero = preload("res://scripts/ui/IronHero.gd").new()
@@ -54,11 +55,13 @@ func _select_hero(id: String) -> void:
 		card.queue_redraw()
 	status = "PREVIEWING " + Catalog.get_hero(selected_hero)["name"] + " - SAVE TO EQUIP"
 	Music.play_theme(selected_hero)
+	Analytics.track("hero_previewed", {"hero_id": selected_hero})
 	SoundFX.play_click()
 	queue_redraw()
 
 func _save_profile() -> void:
 	Global.save_hero_profile(name_edit.text,selected_hero)
+	Analytics.track("profile_saved", {"hero_id": selected_hero})
 	name_edit.text = Global.pilot_name
 	status = "HERO AND CALLSIGN SAVED ON THIS DEVICE"
 	SoundFX.play_click()
