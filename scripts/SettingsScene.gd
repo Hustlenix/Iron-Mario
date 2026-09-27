@@ -5,6 +5,7 @@ const Buttons = preload("res://scripts/ui/PixelButton.gd")
 var status := ""
 
 func _ready() -> void:
+	Analytics.track("settings_viewed")
 	var slider := preload("res://scripts/ui/PaintSlider.gd").new()
 	slider.position = Vector2(450, 220)
 	slider.size = Vector2(440, 50)
@@ -17,6 +18,7 @@ func _ready() -> void:
 	add_child(mute)
 	mute.pressed.connect(func():
 		Global.toggle_mute()
+		Analytics.track("setting_changed", {"setting": "mute", "enabled": Global.muted})
 		mute.text = "SOUND: OFF" if Global.muted else "SOUND: ON"
 		mute.queue_redraw()
 	)
@@ -24,6 +26,7 @@ func _ready() -> void:
 	add_child(reset)
 	reset.pressed.connect(func():
 		Global.reset_records()
+		Analytics.track("progress_reset")
 		status = "PROGRESS RESET AND SAVED"
 		queue_redraw()
 	)
@@ -35,6 +38,7 @@ func _ready() -> void:
 	touch.pressed.connect(func():
 		Global.touch_controls = not Global.touch_controls
 		Global.save_data()
+		Analytics.track("setting_changed", {"setting": "touch_controls", "enabled": Global.touch_controls})
 		touch.text = "TOUCH: " + ("ON" if Global.touch_controls else "AUTO")
 		touch.queue_redraw()
 	)
