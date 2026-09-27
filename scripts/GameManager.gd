@@ -60,6 +60,8 @@ func start_run(harder: bool = false) -> void:
 		return
 	single_game = false
 	Global.reset_run(harder)
+	Analytics.start_run("tournament", {"loop": Global.current_loop, "hero_id": Global.hero_id})
+	Analytics.track("tournament_started", {"loop": Global.current_loop})
 	run_generation += 1
 	round_order.clear()
 	for index in range(MINIGAMES.size()):
@@ -76,6 +78,10 @@ func start_single(index: int) -> void:
 	single_game = true
 	single_won = false
 	Global.reset_run()
+	var selected_game: Dictionary = MINIGAMES[index]
+	var selected_id := String(selected_game["scene"]).get_file().get_basename()
+	Analytics.start_run("single", {"mission_id": selected_id, "hero_id": Global.hero_id})
+	Analytics.track("game_selected", {"mission_id": selected_id, "selection": "single"})
 	run_generation += 1
 	round_order.assign([index])
 	round_index = 0
@@ -83,6 +89,7 @@ func start_single(index: int) -> void:
 	_change_scene(INTERMISSION_SCENE)
 
 func replay_single() -> void:
+	Analytics.track("play_again_clicked", {"mode": "single"})
 	start_single(round_order[0] if not round_order.is_empty() else 0)
 
 func get_upcoming_game() -> Dictionary:
@@ -107,6 +114,7 @@ func resolve_round(won: bool) -> void:
 		single_won = won
 		Global.score = 100 if won else 0
 		Global.completed_minigames = 1 if won else 0
+		Analytics.end_run("single_complete", {"won": won, "score": Global.score})
 	elif won:
 		Global.record_success()
 	else:
@@ -118,6 +126,8 @@ func resolve_round(won: bool) -> void:
 		_change_scene("res://scenes/single_result.tscn")
 		return
 	if Global.lives <= 0:
+		Analytics.track("tournament_failed", {"score": Global.score, "missions_cleared": Global.completed_minigames, "loop": Global.current_loop})
+		Analytics.end_run("out_of_lives", {"score": Global.score, "missions_cleared": Global.completed_minigames, "loop": Global.current_loop})
 		_change_scene(DEATH_SCENE)
 		return
 	# A failed game stays in the queue until cleared or all lives run out.
@@ -126,6 +136,8 @@ func resolve_round(won: bool) -> void:
 	if Global.completed_minigames >= MINIGAMES.size():
 		Global.total_wins += 1
 		Global.save_data()
+		Analytics.track("tournament_completed", {"score": Global.score, "loop": Global.current_loop, "lives_left": Global.lives})
+		Analytics.end_run("tournament_complete", {"score": Global.score, "loop": Global.current_loop, "lives_left": Global.lives})
 		_change_scene(WINNER_SCENE)
 	else:
 		_change_scene(INTERMISSION_SCENE)
@@ -133,18 +145,22 @@ func resolve_round(won: bool) -> void:
 func restart_current_minigame() -> void:
 	if transition_locked:
 		return
+	Analytics.restart_mission()
 	transition_locked = true
 	_change_scene(scene_path)
 
 func return_to_title() -> void:
 	if transition_locked:
 		return
+	Analytics.abandon_mission("home")
+	Analytics.end_run("returned_home", {"score": Global.score, "missions_cleared": Global.completed_minigames})
 	transition_locked = true
 	_change_scene(TITLE_SCENE)
 
 func open_menu(path: String) -> void:
 	if transition_locked:
 		return
+	Analytics.track("menu_opened", {"menu": path.get_file().get_basename()})
 	transition_locked = true
 	_change_scene(path)
 
@@ -156,6 +172,7 @@ func _change_scene(path: String, prepared: PackedScene = null) -> void:
 func _perform_scene_change(path: String, prepared: PackedScene = null) -> void:
 	var error := get_tree().change_scene_to_packed(prepared) if prepared != null else get_tree().change_scene_to_file(path)
 	if error != OK:
+		Analytics.report_error("scene_change_failed", {"scene_target": path.get_file().get_basename(), "error_number": error})
 		push_error("Iron-Mario could not open scene: %s (error %s)" % [path, error])
 		transition_locked = false
 	else:
