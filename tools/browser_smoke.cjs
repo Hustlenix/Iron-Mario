@@ -1,0 +1,34 @@
+const {chromium} = require('playwright');
+const fs = require('node:fs');
+(async () => {
+  const browser = await chromium.launch({headless:true});
+  const context = await browser.newContext({viewport:{width:1280,height:720}});
+  const page = await context.newPage();
+  const errors = [];
+  page.on('pageerror', e => errors.push(e.message));
+  page.on('console', m => {if (m.type()==='error') errors.push(m.text());});
+  page.on('response', r => {if (r.status()>=400) errors.push(`${r.status()} ${r.url()}`);});
+  fs.mkdirSync('build/browser-qa',{recursive:true});
+  await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
+  await page.locator('#status').waitFor({state:'hidden',timeout:90000});
+  await page.screenshot({path:'build/browser-qa/onboarding.png'});
+  // Click the visible onboarding action, then exercise the in-game pause flow.
+  await page.mouse.click(600,380);
+  await page.waitForTimeout(1000);
+  await page.screenshot({path:'build/browser-qa/first-game.png'});
+  await page.mouse.click(1170,60);
+  await page.screenshot({path:'build/browser-qa/paused.png'});
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(9500);
+  await page.screenshot({path:'build/browser-qa/result.png'});
+  await page.setViewportSize({width:390,height:844});
+  await page.waitForTimeout(300);
+  await page.screenshot({path:'build/browser-qa/portrait.png'});
+  await page.setViewportSize({width:844,height:390});
+  await page.waitForTimeout(300);
+  await page.screenshot({path:'build/browser-qa/mobile-landscape.png'});
+  await context.close();
+  await browser.close();
+  if (errors.length) throw new Error(errors.join('\n'));
+  console.log('Browser load, game, pause, result, resize: no console errors or missing assets.');
+})().catch(e => {console.error(e);process.exit(1);});

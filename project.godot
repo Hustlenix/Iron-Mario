@@ -11,22 +11,29 @@ config_version=5
 [application]
 
 config/name="Super-Micro Heroes"
-run/main_scene="res://scenes/title_screen.tscn"
+config/icon="res://assets/icons/icon_512x512.png"
+run/main_scene="res://ui/main.tscn"
 config/features=PackedStringArray("4.4")
 
 [autoload]
 
-Global="*res://scripts/Global.gd"
+Profile="*res://core/save_store.gd"
 Music="*res://scripts/music_player.gd"
-PowerBus="*res://scripts/power_bus.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=960
+window/size/viewport_height=540
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 window/handheld/orientation=0
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+
 
 [input]
 

@@ -1,41 +1,107 @@
-name: Deploy Web
+name: Build, test, and publish
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: super-micro-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  GODOT_VERSION: 4.7.1
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: barichello/godot-ci:4.7.1
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-      - name: Import
-        run: godot --headless --import --path .
-      - name: Export Web
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install official Godot editor and export templates
+        shell: bash
         run: |
-          mkdir -p build/web
-          # GitHub Actions sets HOME=/github/home, but godot-ci installs the
-          # export templates under /root — make them visible to Godot.
-          mkdir -p "$HOME/.local/share/godot"
-          cp -r /root/.local/share/godot/export_templates "$HOME/.local/share/godot/"
-          godot --headless --path . --export-release "Web" "build/web/index.html"
+          base="https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}-stable"
+          curl -fL --retry 3 "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" -o /tmp/editor.zip
+          unzip -q /tmp/editor.zip -d /tmp/godot
+          chmod +x /tmp/godot/Godot*
+          ln -s /tmp/godot/Godot* /tmp/godot/godot
+          echo '/tmp/godot' >> "$GITHUB_PATH"
+          curl -fL --retry 3 "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz" -o /tmp/templates.tpz
+          target="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
+          mkdir -p "$target"
+          unzip -j -q /tmp/templates.tpz 'templates/windows_*_x86_64.exe' 'templates/web_nothreads_*.zip' 'templates/version.txt' -d "$target"
+      - name: Import and run all five validation suites
+        run: |
+          godot --headless --path . --editor --import --quit
+          python tools/run_checks.py godot
+      - name: Export Web and Windows
+        run: |
+          mkdir -p build/web build/windows
+          godot --headless --path . --export-release Web build/web/index.html
+          python tools/finish_web.py
+          godot --headless --path . --export-release "Windows Desktop" build/windows/Super-Micro-Heroes.exe
       - uses: actions/upload-artifact@v4
         with:
           name: web-build
           path: build/web
           if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Super-Micro-Heroes-Windows
+          path: build/windows
+          if-no-files-found: error
+  windows-test:
+    needs: build
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Super-Micro-Heroes-Windows
+          path: build/windows
+      - name: Launch exported native game
+        shell: pwsh
+        run: |
+          $process = Start-Process -FilePath './build/windows/Super-Micro-Heroes.exe' -ArgumentList '--headless','--quit-after','120','--','--test' -PassThru -Wait -WindowStyle Hidden -RedirectStandardOutput native.log -RedirectStandardError errors.log
+          Get-Content native.log,errors.log
+          if ($process.ExitCode -ne 0 -or (Select-String -Path native.log,errors.log -Pattern 'ERROR:')) { exit 1 }
+  browser-test:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          name: web-build
+          path: build/web
+      - name: Check browser launch and interaction
+        run: |
+          npm install --no-save --package-lock=false playwright@1.51.1
+          npx playwright install --with-deps chromium
+          python3 -m http.server 8765 --directory build/web > /tmp/preview.log 2>&1 &
+          node tools/browser_smoke.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Browser-screenshots
+          path: build/browser-qa
   deploy:
+    needs: [build, windows-test, browser-test]
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: build
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: web-build
-          path: ./build/web
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+          path: build/web
+      - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web

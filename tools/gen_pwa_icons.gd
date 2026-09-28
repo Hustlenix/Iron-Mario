@@ -1,63 +1,24 @@
 extends SceneTree
-
-## Rasterizes assets/web_orb.svg into the three square PNG sizes that the Web
-## export preset requires for a Progressive Web App manifest:
-## 144x144, 180x180 and 512x512.
-##
-## Each icon is composited onto an opaque #0b132b canvas rather than left
-## transparent, so launchers that mask the icon (Android adaptive icons) or
-## render it on a light background don't show a white/black halo.
-##
-## The orb SVG is the project's own mark -- no third-party art is involved.
-##
-## Run from the project root:
-##   godot --headless --path . --script res://tools/gen_pwa_icons.gd
-
-const SOURCE := "res://assets/web_orb.svg"
-const OUTPUT_DIR := "res://assets/icons"
-const SIZES := [144, 180, 512]
-const BACKGROUND := Color("#0b132b")
-## Rasterize oversized then downscale: sampling down from a larger raster keeps
-## the thin 0.8px spokes from disappearing.
-const RASTER_SIZE := 1024
-
-
+var canvas: Image
+func poly(points: Array, color: Color) -> void:
+	var polygon := PackedVector2Array(points)
+	for y in 128:
+		for x in 128:
+			if Geometry2D.is_point_in_polygon(Vector2(x,y),polygon): canvas.set_pixel(x,y,color)
 func _initialize() -> void:
-	var bytes := FileAccess.get_file_as_bytes(SOURCE)
-	if bytes.is_empty():
-		push_error("Could not read %s" % SOURCE)
-		quit(1)
-		return
-
-	if not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(OUTPUT_DIR)):
-		DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUTPUT_DIR))
-
-	# Image.load_svg_from_buffer rasterizes on the CPU via ThorVG, so this works
-	# under the headless dummy renderer with no GPU involved.
-	var big := Image.new()
-	var err := big.load_svg_from_buffer(bytes, float(RASTER_SIZE) / 40.0)
-	if err != OK:
-		push_error("SVG rasterization failed: %d" % err)
-		quit(1)
-		return
-
-	for size in SIZES:
-		var icon := Image.create(size, size, false, Image.FORMAT_RGBA8)
-		icon.fill(BACKGROUND)
-
-		var mark := big.duplicate() as Image
-		mark.resize(size, size, Image.INTERPOLATE_LANCZOS)
-
-		# Centre the mark and let any glow alpha blend into the opaque backdrop.
-		icon.blend_rect(mark, Rect2i(Vector2i.ZERO, mark.get_size()), Vector2i.ZERO)
-
-		var path := "%s/icon_%dx%d.png" % [OUTPUT_DIR, size, size]
-		var save_err := icon.save_png(path)
-		if save_err != OK:
-			push_error("Failed to write %s: %d" % [path, save_err])
-			quit(1)
-			return
-		print("wrote %s (%dx%d)" % [path, size, size])
-
-	print("PWA icons generated")
-	quit(0)
+	canvas = Image.create(128,128,false,Image.FORMAT_RGBA8)
+	canvas.fill(Color('#fff4d7'))
+	var ink := Color('#242333')
+	poly([Vector2(22,109),Vector2(33,78),Vector2(57,71),Vector2(86,75),Vector2(105,112)],ink)
+	poly([Vector2(29,105),Vector2(38,84),Vector2(59,77),Vector2(84,81),Vector2(97,106)],Color('#ef6351'))
+	poly([Vector2(31,35),Vector2(79,25),Vector2(96,45),Vector2(88,77),Vector2(47,82),Vector2(28,64)],ink)
+	poly([Vector2(35,39),Vector2(77,31),Vector2(90,47),Vector2(83,71),Vector2(49,77),Vector2(34,61)],Color('#ffc857'))
+	poly([Vector2(34,47),Vector2(91,43),Vector2(85,63),Vector2(38,66)],ink)
+	poly([Vector2(45,51),Vector2(56,50),Vector2(56,58),Vector2(45,58)],Color('#fff4d7'))
+	poly([Vector2(69,50),Vector2(79,49),Vector2(78,57),Vector2(68,57)],Color('#fff4d7'))
+	poly([Vector2(58,86),Vector2(73,84),Vector2(68,94),Vector2(74,95),Vector2(59,106),Vector2(63,96),Vector2(55,96)],Color('#fff4d7'))
+	for amount in [144,180,512]:
+		var icon: Image = canvas.duplicate()
+		icon.resize(amount,amount,Image.INTERPOLATE_NEAREST)
+		icon.save_png('res://assets/icons/icon_%dx%d.png' % [amount,amount])
+	quit()

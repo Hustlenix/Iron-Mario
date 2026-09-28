@@ -8,6 +8,15 @@ extends Node
 ## importer leaves WAV looping off.
 
 const TRACK_PATHS := {
+	'ember':'res://assets/audio/heroes/ember.wav',
+	'comet':'res://assets/audio/heroes/comet.wav',
+	'moon':'res://assets/audio/heroes/moon.wav',
+	'tide':'res://assets/audio/heroes/tide.wav',
+	'thread':'res://assets/audio/heroes/thread.wav',
+	'copper':'res://assets/audio/heroes/copper.wav',
+	'sun':'res://assets/audio/heroes/sun.wav',
+	'prism':'res://assets/audio/heroes/prism.wav',
+	'cipher':'res://assets/audio/heroes/cipher.wav',
 	"title": "res://assets/audio/music_title.wav",
 	"gauntlet": "res://assets/audio/music_gauntlet.wav",
 	"danger": "res://assets/audio/music_danger.wav",
@@ -39,6 +48,22 @@ var _voices: Array[Voice] = []
 var _streams: Dictionary = {}
 var _current: Voice = null
 
+func play_menu(hero_id: String) -> void:
+	var themes: Dictionary = {'dart':'ember','bolt':'comet','echo':'moon','frost':'tide','tether':'thread','snap':'copper','aegis':'sun','pulse':'prism','lance':'cipher'}
+	play(themes.get(hero_id,'title'),0.3)
+
+func _exit_tree() -> void:
+	for child in get_children():
+		if child is AudioStreamPlayer:
+			child.stop()
+			child.stream = null
+	for voice in _voices:
+		if voice.tween != null and voice.tween.is_valid(): voice.tween.kill()
+		voice.tween = null
+	_current = null
+	_voices.clear()
+	_streams.clear()
+
 
 func _ready() -> void:
 	# Autoloads default to inheriting, which would freeze crossfades on a paused
@@ -54,6 +79,10 @@ func _ready() -> void:
 ## the melody is never cut off. `offset_db` is a per-request trim in decibels on
 ## top of the Music bus, used to duck one scene relative to another.
 func play(track: String, fade: float = DEFAULT_FADE, offset_db: float = 0.0) -> void:
+	# Headless builds have no audio device. Avoid retaining dummy WAV playback
+	# during automated native startup/shutdown checks.
+	if DisplayServer.get_name() == "headless":
+		return
 	if not TRACK_PATHS.has(track):
 		push_warning("Music.play: unknown track '%s'" % track)
 		return
@@ -171,7 +200,7 @@ func _stream_for(track: String) -> AudioStream:
 		_streams[track] = null
 		return null
 	var stream: AudioStream = load(path)
-	if stream is AudioStreamWAV and LOOPING.has(track):
+	if stream is AudioStreamWAV and track != 'intermission':
 		var wav := stream as AudioStreamWAV
 		# These import with compress/mode=2 (QOA), so data.size() is a count of
 		# *compressed* bytes and cannot be divided into a frame count. Dividing
