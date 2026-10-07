@@ -203,7 +203,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_flap_norm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_flap_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_flap_pressed")
 theme_override_styles/focus = SubResource("StyleBoxFlat_flap_focus")
-text = "FLAPPY  BEST: 0"
+text = "ARCADE"
 icon = ExtResource("5_btn")
 icon_alignment = 0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://scenes/minigame_3.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://assets/bg_game.svg" id="2_bg"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStreamWAV" path="res://assets/audio/fail.wav" id="6_fail"]
 [ext_resource type="Script" path="res://scripts/juice/screen_shake.gd" id="7_shake"]
 [ext_resource type="PackedScene" path="res://scenes/power_ring.tscn" id="8_ring"]
+[ext_resource type="PackedScene" path="res://scenes/touch_controls.tscn" id="9_touch"]
+[ext_resource type="PackedScene" path="res://scenes/hero_badge.tscn" id="10_badge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(1280, 48)
@@ -118,3 +120,14 @@ offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 88.0
 grow_horizontal = 0
+
+[node name="HeroBadge" parent="PowerHUD" instance=ExtResource("10_badge")]
+full = true
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 166.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="TouchControls" parent="." instance=ExtResource("9_touch")]

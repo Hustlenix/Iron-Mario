@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/tower_bounce.gd" id="1_tower"]
+[ext_resource type="PackedScene" path="res://scenes/touch_controls.tscn" id="2_touch"]
+
+[node name="TowerBounce" type="Node2D"]
+script = ExtResource("1_tower")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+offset_left = 44.0
+offset_top = 28.0
+offset_right = 360.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(1, 0.827, 0.302, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 28
+text = "HEIGHT  0000m"
+
+[node name="BestLabel" type="Label" parent="HUD"]
+offset_left = 990.0
+offset_top = 28.0
+offset_right = 1235.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.78, 0.82, 0.92, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 22
+text = "BEST  0000m"
+horizontal_alignment = 2
+
+[node name="MessageLabel" type="Label" parent="HUD"]
+offset_left = 340.0
+offset_top = 80.0
+offset_right = 940.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.78, 0.82, 0.92, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "STEER  ·  LAND  ·  CLIMB"
+horizontal_alignment = 1
+
+[node name="TouchControls" parent="." instance=ExtResource("2_touch")]
+show_direction_buttons = true
+show_action_button = false

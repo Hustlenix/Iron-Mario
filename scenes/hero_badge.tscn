@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cherobadge0001"]
+
+[ext_resource type="Script" path="res://scenes/hero_badge.gd" id="1_script"]
+
+[node name="HeroBadge" type="Control"]
+custom_minimum_size = Vector2(168, 56)
+offset_right = 168.0
+offset_bottom = 56.0
+mouse_filter = 2
+script = ExtResource("1_script")

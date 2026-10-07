@@ -3,6 +3,11 @@ extends Node2D
 const CLICKS_REQUIRED := 5
 const TIME_LIMIT := 10.0
 const MARGIN := 48.0
+## The top strip of the screen belongs to the score, the hint, the timer and the
+## hero badge, so the target is only ever placed below it. Sampling the whole
+## area let the target land under the badge, whose panel is opaque enough to
+## hide it, and under the score text.
+const TOP_MARGIN := 168.0
 
 var clicks := 0
 var finished := false
@@ -50,11 +55,22 @@ func _time_limit() -> float:
 func _unhandled_input(event: InputEvent) -> void:
 	if finished:
 		return
+	if event.is_action_pressed("ui_cancel"):
+		_return_to_library()
+		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if target.get_global_rect().has_point(event.position):
 			_register_hit()
 		else:
 			Juice.text(self, "MISS", event.position, Color(1, 0.35, 0.35), 30)
+			Juice.shake(self, 0.08)
+
+func _return_to_library() -> void:
+	await SceneFade.fade_out(self)
+	if GameLauncher.has_return_scene():
+		GameLauncher.return_to_library()
+	else:
+		get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 
 ## The single point where a tap counts, shared by the mouse, a dash landing, and
 ## the reach/blast auto-hits so the score and feedback stay in step.
@@ -146,10 +162,17 @@ func _reposition_target() -> void:
 		return
 	var vp_size: Vector2 = get_viewport_rect().size
 	var max_pos := vp_size - target.size - Vector2(MARGIN, MARGIN)
+	# minf/maxf keep the ranges valid on a viewport too small to honour the
+	# margins, which randf_range answers with an arbitrary value.
+	var top := minf(TOP_MARGIN, max_pos.y)
 	target.position = Vector2(
-		randf_range(MARGIN, max_pos.x),
-		randf_range(MARGIN, max_pos.y)
+		randf_range(MARGIN, maxf(MARGIN, max_pos.x)),
+		randf_range(top, maxf(top, max_pos.y))
 	)
+	# Pulse vaporises the target, so every new position has to bring it back.
+	# Without this the target stayed hidden and the rest of the round could not
+	# be aimed at.
+	target.show()
 
 func _finish(win: bool) -> void:
 	if finished:
@@ -163,6 +186,9 @@ func _finish(win: bool) -> void:
 		await get_tree().create_timer(0.5).timeout
 		Global.win()
 		await SceneFade.fade_out(self)
+		if GameLauncher.has_return_scene():
+			GameLauncher.return_to_library()
+			return
 		get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
 	else:
 		$SfxFail.play()
@@ -174,7 +200,13 @@ func _finish(win: bool) -> void:
 		Global.lives -= 1
 		if Global.lives <= 0:
 			await SceneFade.fade_out(self)
+			if GameLauncher.has_return_scene():
+				GameLauncher.return_to_library()
+				return
 			get_tree().change_scene_to_file("res://scenes/death_scene.tscn")
 		else:
 			await SceneFade.fade_out(self)
+			if GameLauncher.has_return_scene():
+				GameLauncher.return_to_library()
+				return
 			get_tree().change_scene_to_file("res://scenes/level_scene.tscn")

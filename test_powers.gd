@@ -93,6 +93,9 @@ func _ready() -> void:
 	_verify_cooldown_blocks_second_press()
 	_verify_flappy_has_no_power()
 	await _verify_sixteen_handlers()
+	await _verify_tap_target_returns_after_blast()
+	await _verify_dodge_freed_laser_leaves_nothing_queued()
+	await _verify_parry_in_flight_does_not_land_after_finish()
 
 	print("\n=== %s ===" % ("ALL PASS" if _failures == 0 else "%d FAILURE(S)" % _failures))
 	get_tree().quit(0 if _failures == 0 else 1)
@@ -328,6 +331,155 @@ func _verify_sixteen_handlers() -> void:
 		mg.queue_free()
 		await get_tree().process_frame
 		_check("%s released from the bus after free" % label, not PowerBus.has_handler())
+
+
+## Pulse vaporises the tap game's target, and the only thing that brings it back
+## is the reposition at the end of the blast. Get that wrong and the target
+## stays invisible for the rest of the round while every handler still returns
+## a real bool, so the sweep above reports a healthy game. This is the one place
+## the tap game is checked for what actually happens rather than for shape.
+func _verify_tap_target_returns_after_blast() -> void:
+	print("\n-- tap: Pulse vaporises, then the target comes back")
+	var mg := _spawn(MINIGAME_SCENES["tap"])
+	if mg == null:
+		return
+	await get_tree().process_frame
+
+	var target := mg.get_node_or_null("Target") as TextureRect
+	_check("tap: the round has a target on screen", target != null)
+	if target == null:
+		mg.queue_free()
+		return
+	_check("tap: the target starts visible", target.visible)
+
+	# Two blasts, not one: the target has to survive being hit again, which is
+	# the case a one-shot check would wave through.
+	var script: GDScript = load("res://scenes/minigame_2.gd")
+	for _shot in 2:
+		var blast: Variant = mg.call("on_power", HeroData.Family.BLAST)
+		_check("tap / Blast reports a resolved press", blast is bool and blast == true,
+			"got %s" % str(blast))
+		await get_tree().process_frame
+		_check("tap: the target is back on screen after Pulse", target.visible)
+		_check("tap: the target is placed clear of the HUD",
+			target.position.y >= script.TOP_MARGIN,
+			"y %.1f, margin %.1f" % [target.position.y, script.TOP_MARGIN])
+
+	PowerBus.unregister_handler(mg)
+	mg.queue_free()
+	await get_tree().process_frame
+	_check("tap: released from the bus after free", not PowerBus.has_handler())
+
+
+## Blast resolves its parry from a tween callback, so the parry happens ~0.25s
+## after the press. If the round ends inside that gap the callback still lands.
+## The jump and the other powers are guarded by the `finished` check at the top
+## of their entry points; a callback already in flight has to be stopped at the
+## other end, or it banks a parry and restarts the sweep on a dying scene.
+func _verify_parry_in_flight_does_not_land_after_finish() -> void:
+	print("\n-- parry: a parry in flight does not land after the round ends")
+	var mg := _spawn(MINIGAME_SCENES["parry"])
+	if mg == null:
+		return
+	await get_tree().process_frame
+
+	var blast: Variant = mg.call("on_power", HeroData.Family.BLAST)
+	_check("parry / Blast reports a resolved press", blast is bool and blast == true,
+		"got %s" % str(blast))
+	_check("parry: the blast has not banked its parry yet", mg.parries == 0,
+		"got %d" % mg.parries)
+	_check("parry: the blast killed the running sweep", mg.sweep_tween == null)
+
+	# The countdown ending the round, without the navigation it would trigger.
+	mg.finished = true
+	await get_tree().create_timer(0.45).timeout
+
+	_check("parry: a parry in flight does not bank after the round ends",
+		mg.parries == 0, "got %d" % mg.parries)
+	_check("parry: a parry in flight does not restart the sweep on a dying scene",
+		mg.sweep_tween == null)
+
+	PowerBus.unregister_handler(mg)
+	mg.queue_free()
+	await get_tree().process_frame
+
+
+## MG3 arms its lasers on staggered SceneTree timers, and SONAR adds a second
+## tween on the laser it lights. Both timers outlive the laser they were handed,
+## so freeing a laser has to take its queued work with it -- otherwise a tween is
+## left writing to a node that no longer exists.
+func _verify_dodge_freed_laser_leaves_nothing_queued() -> void:
+	print("\n-- dodge: freeing a laser clears everything queued against it")
+	var mg := _spawn(MINIGAME_SCENES["dodge"])
+	if mg == null:
+		return
+	await get_tree().process_frame
+
+	var tracked := ["_sweeps", "_reveals"]
+	var lasers: Node = mg.get_node_or_null("Hazards")
+	_check("dodge: the round spawns lasers to work on", lasers != null and lasers.get_child_count() > 0)
+	if lasers == null:
+		mg.queue_free()
+		return
+
+	# Sonar first, so the laser that gets vaporised is also carrying a reveal
+	# blink: two tweens on one node, and only one of them was being tracked.
+	var sonar: Variant = mg.call("on_power", HeroData.Family.REVEAL)
+	_check("dodge / Sonar reports a resolved press", sonar is bool and sonar == true,
+		"got %s" % str(sonar))
+	# Stand the player on the last laser so the blast lands on the one whose
+	# staggered arm timer is still queued -- the only way to reach the window
+	# where a timer outlives the laser it was handed.
+	var pending: Node = lasers.get_child(lasers.get_child_count() - 1)
+	mg.get_node("Player").global_position = pending.global_position
+	# Straight into a blast, still inside the first arm tick.
+	var blast: Variant = mg.call("on_power", HeroData.Family.BLAST)
+	_check("dodge / Blast resolves before any laser has armed",
+		blast is bool and blast == true, "got %s" % str(blast))
+
+	# Checked once the free has actually landed, but while the reveal blink is
+	# still looping: queue_free() is deferred, so the laser is still valid on this
+	# same frame, and the reveal tidies itself away at ~0.9s. The gap in between
+	# is the only window where a tween is still running against a freed laser, and
+	# it is where this has to be looked for.
+	await get_tree().create_timer(0.25).timeout
+	_check("dodge: the blast leaves no freed laser tracked", _freed_tracked(mg, tracked).is_empty(),
+		"; ".join(_freed_tracked(mg, tracked)))
+
+	# Past the last staggered arm delay, so every timer handed to the freed laser
+	# has fired and had its chance to touch it.
+	await get_tree().create_timer(1.6).timeout
+
+	var stale := _freed_tracked(mg, tracked)
+	_check("dodge: no freed laser is left queued or tracked", stale.is_empty(),
+		"; ".join(stale))
+
+	# The surviving lasers must still be sweeping, so the cleanup above did not
+	# quietly disarm the round.
+	var live := 0
+	for laser: Area2D in mg._sweeps:
+		if is_instance_valid(laser):
+			live += 1
+	_check("dodge: the lasers that survived are still sweeping", live > 0,
+		"%d live sweeps" % live)
+
+	PowerBus.unregister_handler(mg)
+	mg.queue_free()
+	await get_tree().process_frame
+
+
+## Names every group that is still holding a laser which has already been freed.
+## The loop is deliberately untyped: a typed `for laser: Area2D in entries`
+## silently skips freed values, because a freed node no longer resolves to the
+## declared type -- which would hide exactly the thing this is here to find.
+func _freed_tracked(mg: Node, groups: Array) -> Array:
+	var stale: Array = []
+	for group: String in groups:
+		var entries: Dictionary = mg.get(group)
+		for laser in entries:
+			if not is_instance_valid(laser):
+				stale.append("%s held a freed laser" % group)
+	return stale
 
 
 ## Find the mounted cooldown ring anywhere under a spawned minigame. The ring

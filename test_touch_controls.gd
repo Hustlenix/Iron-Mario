@@ -1,4 +1,4 @@
-extends Node
+﻿extends Node
 
 ## Phase 2 verification driver. Loads both gameplay scenes, asserts the touch
 ## layer instantiated, then exercises the button -> action wiring directly.
@@ -140,6 +140,8 @@ func _ready() -> void:
 	_verify_orientation_and_keys()
 	await _verify_power_button()
 	await _verify_layout()
+	await _verify_power_only_variant()
+	_verify_minigame_wiring()
 
 	print("\n=== %s ===" % ("ALL PASS" if _failures == 0 else "%d FAILURE(S)" % _failures))
 	get_tree().quit(0 if _failures == 0 else 1)
@@ -475,3 +477,142 @@ func _verify_persistence_and_reset() -> void:
 	Global.low_quality = false
 	Global.best_streak = 0
 	Global.save()
+
+
+## A control the scene has no use for is not harmless: it sits over the play
+## area and swallows taps aimed at it, so the reduced layouts have to drop the
+## D-pad. The two reductions are not the same -- minigame 4 keeps its action
+## button because it parries on `jump` -- so both are checked, along with the
+## fact that the lone power button stays a legal touch target on the right of
+## the row, and that the action button says what it actually does.
+func _verify_power_only_variant() -> void:
+	get_window().size = Vector2i(1280, 720)
+	for i in range(4):
+		await get_tree().process_frame
+
+	var packed: PackedScene = load("res://scenes/touch_controls.tscn")
+	_check("variant: scene loads", packed != null)
+	if packed == null:
+		return
+
+	# One handler for the whole check. The power button re-reads has_handler()
+	# every frame, so unregistering between the two cases would hide the button
+	# out from under the assertions.
+	var stub := StubHandler.new()
+	add_child(stub)
+	PowerBus.register_handler(stub)
+
+	# minigame 2: click the target, then the power. Nothing else.
+	print("\n-- power-only variant (minigame 2)")
+	var tap := await _spawn_variant(packed, false, false, "POWER")
+	if tap != null:
+		var row: Control = tap.get_node("BottomRow/Controls")
+		var power: Button = row.get_node("PowerButton")
+		_check("tap: power button visible", power.visible)
+		_check("tap: left button removed", not row.get_node("LeftButton").visible)
+		_check("tap: right button removed", not row.get_node("RightButton").visible)
+		_check("tap: jump button removed", not row.get_node("JumpButton").visible)
+		# A hidden Button still holds a rect, but `visible` is what decides
+		# whether the UI can consume the touch aimed at the play area.
+		var size: Vector2 = power.get_global_rect().size
+		_check("tap: power button meets the touch floor",
+			minf(size.x, size.y) >= 88.0, "%s" % size)
+		# The Spacer is kept precisely so this button lands right-of-centre.
+		var width: float = row.get_global_rect().size.x
+		var center_x: float = power.get_global_rect().get_center().x
+		_check("tap: power button sits on the right-hand side",
+			center_x > width * 0.5, "center=%f width=%f" % [center_x, width])
+		tap.queue_free()
+		await get_tree().process_frame
+
+	# minigame 4: no directions, but it parries on `jump`, so the action button
+	# has to survive and has to say what it does.
+	print("\n-- parry variant (minigame 4)")
+	var parry := await _spawn_variant(packed, false, true, "PARRY")
+	if parry != null:
+		var row2: Control = parry.get_node("BottomRow/Controls")
+		var jump: Button = row2.get_node("JumpButton")
+		_check("parry: left button removed", not row2.get_node("LeftButton").visible)
+		_check("parry: right button removed", not row2.get_node("RightButton").visible)
+		_check("parry: action button kept for the parry", jump.visible)
+		_check("parry: action button labels the parry, not a jump",
+			jump.text == "PARRY", "'%s'" % jump.text)
+		_check("parry: power button still visible", row2.get_node("PowerButton").visible)
+		_check("parry: action button meets the touch floor",
+			minf(jump.get_global_rect().size.x, jump.get_global_rect().size.y) >= 88.0,
+			"%s" % jump.get_global_rect().size)
+		parry.queue_free()
+		await get_tree().process_frame
+
+	PowerBus.register_handler(null)
+	stub.queue_free()
+	await get_tree().process_frame
+
+
+## Instantiate the layer with a given control mix. The flags are set before the
+## node enters the tree so _ready() applies the variant and captures the
+## enlarged power size as the floor that _rescale_buttons grows from.
+func _spawn_variant(packed: PackedScene, directions: bool, action: bool, label: String) -> CanvasLayer:
+	var touch = packed.instantiate()
+	touch.show_direction_buttons = directions
+	touch.show_action_button = action
+	touch.action_label = label
+	add_child(touch)
+	await get_tree().process_frame
+
+	# The row starts hidden on a device that reports no touchscreen, and a hidden
+	# Control never sorts its container children -- so without this every rect
+	# below reads a zero-sized row and the position checks are meaningless.
+	# Drive the real reveal path with a synthetic touch, the same way
+	# _verify_layout does, rather than forcing show() and skipping the logic.
+	if not (DisplayServer.is_touchscreen_available() or touch._touch_seen):
+		var ev := InputEventScreenTouch.new()
+		ev.pressed = true
+		ev.index = 0
+		Input.parse_input_event(ev)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	return touch
+
+
+## The checks above drive touch_controls.tscn directly, so they prove the
+## variants work but say nothing about which variant each minigame actually
+## ships -- a scene that re-enabled minigame 2's D-pad would still pass all of
+## them. The four expected mixes are read back off the real scenes here.
+##
+## The scenes are instantiated but never added to the tree, so no gameplay
+## _ready() runs: no timers start, no PowerBus handler is registered, and this
+## only reads the exported flags the .tscn baked in.
+func _verify_minigame_wiring() -> void:
+	print("\n-- minigame scenes ship the right control mix")
+	var expected := {
+		"res://scenes/minigame_1.tscn": [true, true, "JUMP"],
+		"res://scenes/minigame_2.tscn": [false, false, ""],
+		"res://scenes/minigame_3.tscn": [true, true, "JUMP"],
+		"res://scenes/minigame_4.tscn": [false, true, "PARRY"],
+	}
+
+	for path: String in expected:
+		var want: Array = expected[path]
+		var mg: String = path.get_file().get_basename()
+		var packed: PackedScene = load(path)
+		_check("%s: scene loads" % mg, packed != null)
+		if packed == null:
+			continue
+
+		var scene: Node = packed.instantiate()
+		var touch: CanvasLayer = scene.get_node_or_null("TouchControls")
+		_check("%s: instances touch controls" % mg, touch != null)
+		if touch != null:
+			_check("%s: direction buttons %s" % [mg, "on" if want[0] else "off"],
+				touch.show_direction_buttons == want[0])
+			_check("%s: action button %s" % [mg, "on" if want[1] else "off"],
+				touch.show_action_button == want[1])
+			# Only worth asserting where the button is actually shown: minigame 2
+			# keeps the unused default, because a hidden button's text is not
+			# something a player can read.
+			if want[1]:
+				_check("%s: action button labels itself '%s'" % [mg, want[2]],
+					touch.action_label == want[2])
+
+		scene.free()

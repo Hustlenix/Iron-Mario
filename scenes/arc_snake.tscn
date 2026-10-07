@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/arc_snake.gd" id="1_snake"]
+[ext_resource type="PackedScene" path="res://scenes/touch_controls.tscn" id="2_touch"]
+
+[node name="ArcSnake" type="Node2D"]
+script = ExtResource("1_snake")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+offset_left = 44.0
+offset_top = 28.0
+offset_right = 360.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.6, 1, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 28
+text = "SCORE  0000"
+
+[node name="BestLabel" type="Label" parent="HUD"]
+offset_left = 990.0
+offset_top = 28.0
+offset_right = 1235.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.78, 0.82, 0.92, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 22
+text = "BEST  0000"
+horizontal_alignment = 2
+
+[node name="MessageLabel" type="Label" parent="HUD"]
+offset_left = 280.0
+offset_top = 72.0
+offset_right = 1000.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0.78, 0.82, 0.92, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "TURN  ·  BOOST  ·  EAT ARC ORBS"
+horizontal_alignment = 1
+
+[node name="TouchControls" parent="." instance=ExtResource("2_touch")]
+show_direction_buttons = true
+show_action_button = true
+action_label = "BOOST"

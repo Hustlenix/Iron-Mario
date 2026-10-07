@@ -334,6 +334,8 @@ func _check_new_best() -> void:
 
 func _die() -> void:
 	state = "dying"
+	if GameLauncher.has_return_scene():
+		GameLauncher.record_result("flappy", score, false)
 	sfx_hit.play()
 	Juice.hit_stop(self)
 	Juice.shake(self, 0.6)
@@ -413,4 +415,7 @@ func _move_pickups(delta: float) -> void:
 
 func _go_menu() -> void:
 	await SceneFade.fade_out(self)
-	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+	if GameLauncher.has_return_scene():
+		GameLauncher.return_to_library()
+	else:
+		get_tree().change_scene_to_file("res://scenes/title_screen.tscn")

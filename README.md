@@ -13,6 +13,10 @@ four microgames with power left and you win; run out and the suit powers down. W
 to build a **streak**, then hit **CONTINUE (HARDER)** to loop back through with a faster
 clock.
 
+The project is growing into a larger handmade arcade. The current library contains the
+four gauntlet microgames, Flappy Bonus, Tower Bounce, Brick Reactor, and Arc Snake, with
+shared launch, return, profile, best-score, recent-game, and starter-achievement support.
+
 Built with [Godot 4.7.1](https://godotengine.org/) (1280x720).
 
 ## Game Idea
@@ -65,7 +69,7 @@ weight, and a distinct silhouette per hero so they stay readable at gameplay siz
 | Move left | `A` / `←` | on-screen ◀ |
 | Move right | `D` / `→` | on-screen ▶ |
 | Jump | `Space` / `W` | on-screen JUMP |
-| Fire power | `Shift` / `E` | *not bound yet* |
+| Fire power | `Shift` / `E` | on-screen POWER |
 
 `SETTINGS` opens the settings scene (volume slider, touch controls, controls reference,
 progress reset). `QUIT` closes the game.
@@ -78,8 +82,9 @@ The game is **landscape-only**. On a phone or tablet:
   that report a touchscreen still get them on first tap.
 - Held buttons drive the same `left` / `right` / `jump` actions the keyboard uses, so every
   microgame works by touch as well as by key.
-- The `power` action is **keyboard-only for now** — the hero powers have no on-screen
-  button, so a touch player never fires one. See Next Steps.
+- The `power` action has an on-screen **POWER** button during minigames where the
+  active hero power can resolve. It mirrors the shared cooldown and stays hidden
+  for Flappy or non-gameplay scenes where no power handler exists.
 - Buttons are sized in **physical** pixels, so they stay at least 88 px wide after the
   game letterboxes to fit your screen — the 64 px accessibility floor is never breached.
 - Rotate back to landscape to play. Held in portrait, the game shows a rotate prompt
@@ -163,15 +168,17 @@ Pushing to `main` triggers `.github/workflows/deploy.yml`, which imports the pro
 exports the Web build headlessly, and publishes it to the `gh-pages` branch — the live site
 updates automatically with no local export needed.
 
-Live build: **https://hustlenix.github.io/Iron-Mario/** (landscape-only; best in a desktop
-browser with a keyboard, since hero powers are keyboard-only).
+Live build: **https://hustlenix.github.io/Iron-Mario/** (landscape-only; supports keyboard,
+mouse, and touch POWER controls during hero-powered minigames).
 
 ## Current State
 
-Playable prototype: the complete title → intermission → microgame → win/lose flow runs end
-to end, with difficulty loops, streaks, save persistence, generated audio, a nine-hero
-roster, and a settings scene. It is playable on desktop (keyboard/mouse) and on phones and
-tablets (touch, landscape-only), and ships as an installable web app. All art is
+Playable prototype and expanding arcade: the title → library → cabinet flow runs end to
+end, alongside the original title → intermission → microgame → win/lose gauntlet. It has
+difficulty loops, streaks, save persistence, generated audio, a nine-hero roster, profile
+best scores, recent games, starter achievements, and a settings scene. It is playable on
+desktop (keyboard/mouse) and on phones and tablets (touch, landscape-only), and ships as an
+installable web app. All art is
 **original and created for this project** (hand-drawn SVG assets: nine hero sprites, the
 bonus Flappy sprite, power-core life icons, shard collectibles, clicker target, parry bar
 and zone, and four background scenes).
@@ -212,7 +219,7 @@ scaffolding and fix engine bugs, not to replace your learning.
 ## Next Steps
 
 - More microgames to keep the gauntlet sprinting (memory, aim, etc.)
-- Add an on-screen **POWER** button so touch players can fire their hero's power
+- Verify touch POWER behavior on physical phones and multitouch browsers
 - Per-minigame art and animations (the parry bar/zone are the newest assets)
 - Balanced difficulty curve per loop (zone speed scaling)
 - Polish the SVG art (shading, animation, backgrounds)

@@ -39,6 +39,13 @@ func _physics_process(_delta: float) -> void:
 	if not finished and Input.is_action_just_pressed("power"):
 		PowerBus.try_activate()
 
+func _return_to_library() -> void:
+	await SceneFade.fade_out(self)
+	if GameLauncher.has_return_scene():
+		GameLauncher.return_to_library()
+	else:
+		get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+
 func _build_zone_arrow() -> void:
 	zone_arrow = Label.new()
 	zone_arrow.text = "▼"
@@ -70,6 +77,9 @@ func _time_limit() -> float:
 func _unhandled_input(event: InputEvent) -> void:
 	if finished:
 		return
+	if event.is_action_pressed("ui_cancel"):
+		_return_to_library()
+		return
 	if event.is_action_pressed("jump"):
 		_attempt_parry()
 
@@ -92,8 +102,15 @@ func _zone_center_x() -> float:
 	return parry_zone.position.x + ZONE_WIDTH * 0.5
 
 func _parry_success() -> void:
+	# Blast resolves its parry from a tween callback, so it can land after the
+	# round has already ended -- the countdown finishing the round cannot recall a
+	# callback it never knew about. A parry the player cannot see is not a parry,
+	# and restarting the sweep here would leave an infinite tween running on a
+	# scene that is already fading out to the next one.
+	if finished:
+		return
 	parries += 1
-	parry_label.text = "PARS: %d / %d" % [parries, PARS_REQUIRED]
+	parry_label.text = "PARRIES: %d / %d" % [parries, PARS_REQUIRED]
 	_flash_zone(Color(0.5, 1, 0.6))
 	Juice.shake(self, 0.3)
 	Juice.burst(self, parry_zone.position + parry_zone.size * 0.5, Color(0.5, 1, 0.6), 12, 240.0)
@@ -210,6 +227,9 @@ func _finish(win: bool) -> void:
 		await get_tree().create_timer(0.5).timeout
 		Global.win()
 		await SceneFade.fade_out(self)
+		if GameLauncher.has_return_scene():
+			GameLauncher.return_to_library()
+			return
 		get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
 	else:
 		$SfxFail.play()
@@ -221,7 +241,13 @@ func _finish(win: bool) -> void:
 		Global.lives -= 1
 		if Global.lives <= 0:
 			await SceneFade.fade_out(self)
+			if GameLauncher.has_return_scene():
+				GameLauncher.return_to_library()
+				return
 			get_tree().change_scene_to_file("res://scenes/death_scene.tscn")
 		else:
 			await SceneFade.fade_out(self)
+			if GameLauncher.has_return_scene():
+				GameLauncher.return_to_library()
+				return
 			get_tree().change_scene_to_file("res://scenes/level_scene.tscn")

@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.4")
 Global="*res://scripts/Global.gd"
 Music="*res://scripts/music_player.gd"
 PowerBus="*res://scripts/power_bus.gd"
+GameLauncher="*res://scripts/game_launcher.gd"
 
 [display]
 

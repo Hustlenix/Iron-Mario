@@ -7,10 +7,12 @@ var collectible_count := 0
 var finished := false
 
 @onready var collectibles: Node2D = $Collectibles
+@onready var goal_label: Label = $PowerHUD/GoalLabel
 
 func _ready() -> void:
 	SceneFade.fade_in(self)
 	PowerBus.register_handler(self)
+	goal_label.text = "SHARDS  0 / %d" % COLLECTIBLES_REQUIRED
 	for child in collectibles.get_children():
 		child.collectible_collected.connect(_on_collectible_collected)
 	await $ThemedTimer.countdown(_time_limit())
@@ -22,6 +24,17 @@ func _exit_tree() -> void:
 func _physics_process(_delta: float) -> void:
 	if not finished and Input.is_action_just_pressed("power"):
 		PowerBus.try_activate()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel") and not finished:
+		_return_to_library()
+
+func _return_to_library() -> void:
+	await SceneFade.fade_out(self)
+	if GameLauncher.has_return_scene():
+		GameLauncher.return_to_library()
+	else:
+		get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 
 func _time_limit() -> float:
 	return maxf(5.0, TIME_LIMIT - Global.loop)
@@ -82,15 +95,24 @@ func _power_blast() -> bool:
 	var start := target.global_position
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
+	# The player is still moving while the shard flies, so the destination is
+	# read every step instead of once up front. Sampling it up front left the
+	# shard stopping short of wherever the player had since run to.
 	tween.tween_method(
-		func(v: Vector2) -> void:
+		func(t: float) -> void:
 			if is_instance_valid(target):
-				target.global_position = v,
-		start,
-		$Player.global_position,
+				target.global_position = start.lerp($Player.global_position, t),
+		0.0,
+		1.0,
 		0.3
 	)
-	tween.tween_callback(Callable(target, "collect"))
+	# Guarded like the movement above, so a target that went away mid-flight
+	# cannot turn a power use into a console error.
+	tween.tween_callback(
+		func() -> void:
+			if is_instance_valid(target):
+				target.collect()
+	)
 	return true
 
 func _power_text(text: String, color: Color) -> void:
@@ -111,6 +133,7 @@ func _nearest_collectible() -> Node2D:
 
 func _on_collectible_collected() -> void:
 	collectible_count += 1
+	goal_label.text = "SHARDS  %d / %d" % [collectible_count, COLLECTIBLES_REQUIRED]
 	Juice.shake(self, 0.15)
 	if collectible_count >= COLLECTIBLES_REQUIRED:
 		_finish(true)
@@ -127,6 +150,9 @@ func _finish(win: bool) -> void:
 		await get_tree().create_timer(0.5).timeout
 		Global.win()
 		await SceneFade.fade_out(self)
+		if GameLauncher.has_return_scene():
+			GameLauncher.return_to_library()
+			return
 		get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
 	else:
 		$SfxFail.play()
@@ -139,7 +165,13 @@ func _finish(win: bool) -> void:
 		Global.lives -= 1
 		if Global.lives <= 0:
 			await SceneFade.fade_out(self)
+			if GameLauncher.has_return_scene():
+				GameLauncher.return_to_library()
+				return
 			get_tree().change_scene_to_file("res://scenes/death_scene.tscn")
 		else:
 			await SceneFade.fade_out(self)
+			if GameLauncher.has_return_scene():
+				GameLauncher.return_to_library()
+				return
 			get_tree().change_scene_to_file("res://scenes/level_scene.tscn")

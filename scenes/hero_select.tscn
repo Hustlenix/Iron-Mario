@@ -1,0 +1,176 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scenes/hero_select.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/bg_title.svg" id="2_bg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_norm"]
+content_margin_left = 24.0
+content_margin_top = 14.0
+content_margin_right = 24.0
+content_margin_bottom = 14.0
+bg_color = Color(0.043, 0.075, 0.169, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.827, 0.302, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+content_margin_left = 24.0
+content_margin_top = 14.0
+content_margin_right = 24.0
+content_margin_bottom = 14.0
+bg_color = Color(0.106, 0.165, 0.369, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.91, 0.61, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+content_margin_left = 24.0
+content_margin_top = 14.0
+content_margin_right = 24.0
+content_margin_bottom = 14.0
+bg_color = Color(0.851, 0.149, 0.165, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.827, 0.302, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.91, 0.251, 0.247, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="HeroSelect" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 24.0
+offset_right = 1140.0
+offset_bottom = 78.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.827, 0.302, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "CHOOSE YOUR HERO"
+horizontal_alignment = 1
+
+[node name="DetailLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 598.0
+offset_right = 1140.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.827, 0.302, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 17
+text = "Pick a hero. Your choice carries across every loop."
+horizontal_alignment = 1
+
+[node name="Grid" type="Node2D" parent="."]
+
+[node name="FightButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 648.0
+offset_right = 510.0
+offset_bottom = 712.0
+theme_override_colors/font_color = Color(1, 0.827, 0.302, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.914, 0.765, 1)
+theme_override_colors/font_focus_color = Color(1, 0.827, 0.302, 1)
+theme_override_colors/font_disabled_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_norm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_norm")
+text = "FIGHT"
+
+[node name="RandomButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 648.0
+offset_right = 770.0
+offset_bottom = 712.0
+theme_override_colors/font_color = Color(1, 0.827, 0.302, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.914, 0.765, 1)
+theme_override_colors/font_focus_color = Color(1, 0.827, 0.302, 1)
+theme_override_colors/font_disabled_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_norm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_norm")
+text = "SURPRISE ME"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 648.0
+offset_right = 1030.0
+offset_bottom = 712.0
+theme_override_colors/font_color = Color(1, 0.827, 0.302, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.914, 0.765, 1)
+theme_override_colors/font_focus_color = Color(1, 0.827, 0.302, 1)
+theme_override_colors/font_disabled_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_norm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_norm")
+text = "BACK"
+
+[connection signal="pressed" from="FightButton" to="." method="_on_fight_pressed"]
+[connection signal="pressed" from="RandomButton" to="." method="_on_random_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_pressed"]

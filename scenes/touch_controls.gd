@@ -25,6 +25,23 @@ const PORTRAIT_MIN_ASPECT := 1.2
 ## accessibility floor, but thumbs on a phone are imprecise, so aim higher.
 const MIN_TOUCH_PX := 88.0
 
+## Authored size for the power button when it is the only control on screen.
+## Alone, it is the only route to a power in that minigame, so it gets a bigger
+## target than the shared row gives it.
+const POWER_ONLY_SIZE := Vector2(260, 132)
+
+## Which of the three movement controls this scene should offer. A minigame
+## whose play is a tap or a timed parry has no use for a D-pad, and an unused
+## D-pad is not harmless: it sits over the play area and swallows taps aimed at
+## it. The three are split rather than one flag because minigame 4 needs its
+## action button (it parries on `jump`) but no directions.
+@export var show_direction_buttons := true
+@export var show_action_button := true
+
+## What the action button says. minigame 4 does not jump, it parries, and a
+## button that lies about what it does is worse than one with a dull name.
+@export var action_label := "JUMP"
+
 @onready var left_button: Button = $BottomRow/Controls/LeftButton
 @onready var right_button: Button = $BottomRow/Controls/RightButton
 @onready var jump_button: Button = $BottomRow/Controls/JumpButton
@@ -46,6 +63,10 @@ func _ready() -> void:
 			push_error("touch_controls: missing input action '%s'" % action)
 			return
 
+	# Applied before the authored sizes are captured, so the power-only variant's
+	# larger button becomes the new floor that _rescale_buttons grows from.
+	_apply_variant()
+
 	_bind_held("left", left_button)
 	_bind_held("right", right_button)
 	_bind_held("jump", jump_button)
@@ -60,6 +81,23 @@ func _ready() -> void:
 	_publish_visibility()
 	get_viewport().size_changed.connect(_on_viewport_resized)
 	tree_exiting.connect(_release_all)
+
+
+## Drop the controls this scene has no use for. The Spacer always stays: it is
+## what holds the buttons apart and keeps the power button out at the right-hand
+## thumb rest.
+func _apply_variant() -> void:
+	if not show_direction_buttons:
+		left_button.hide()
+		right_button.hide()
+	if show_action_button:
+		jump_button.text = action_label
+	else:
+		jump_button.hide()
+
+	# Only grow the power button when it has genuinely been left on its own.
+	if not show_direction_buttons and not show_action_button:
+		power_button.custom_minimum_size = POWER_ONLY_SIZE
 
 
 ## The power button's state depends on two things that can both change under the

@@ -3,18 +3,41 @@ extends Node2D
 ## Menu music sits back so the hero art and logo lead, matching the trim the
 ## retired Bgm node used.
 const TITLE_TRIM_DB := -8.0
+## Long enough to cover SceneFade's fade-in, so the focus ring never appears
+## on an already-dark screen.
+const FOCUS_DELAY := 0.3
 
 func _ready() -> void:
 	SceneFade.fade_in(self)
 	Music.play("title", 1.2, TITLE_TRIM_DB)
 	$StreakLabel.text = "[center]BEST STREAK: %d[/center]" % Global.best_streak
-	$MenuButtons/FlappyButton.text = "FLAPPY  BEST: %d" % Global.flappy_best
+	$MenuButtons/FlappyButton.text = "ARCADE"
 	_build_hero()
 	_pulse_logo()
+	_focus_start_button()
 
+## Every action here is a Button, but Godot does not hand one of them focus on
+## its own, and the web export never forwards Tab to the engine while no control
+## is focused -- which left the title playable by mouse only. Seeding focus with
+## START makes the menu reachable with Tab and fired with Enter/Space.
+func _focus_start_button() -> void:
+	var button := $MenuButtons/StartButton as Button
+	if button == null:
+		return
+	button.focus_mode = Control.FOCUS_ALL
+	var tween := create_tween()
+	tween.tween_interval(FOCUS_DELAY)
+	tween.tween_callback(button.grab_focus)
+
+## The title art is whoever you last picked, so the menu previews your own hero.
+## With nothing picked yet it keeps the original title art, so the front door
+## still reads as a title screen rather than as a random character.
 func _build_hero() -> void:
+	var art := "res://assets/title_hero.svg"
+	if Global.selected_hero != "" and HeroData.is_selectable(Global.selected_hero):
+		art = str(HeroData.get_hero(Global.selected_hero)["art"])
 	var hero := TextureRect.new()
-	hero.texture = load("res://assets/title_hero.svg") as Texture2D
+	hero.texture = load(art) as Texture2D
 	hero.position = Vector2(120, 276)
 	hero.custom_minimum_size = Vector2(240, 360)
 	hero.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -39,10 +62,12 @@ func _pulse_logo() -> void:
 	tween.tween_property($TitleLabel, "scale", Vector2(1.06, 1.06), 0.9)
 	tween.tween_property($TitleLabel, "scale", Vector2.ONE, 0.9)
 
+## Per-run state is reset by the hero select's FIGHT, not here, so backing out of
+## the roster and returning leaves the menu feeling like the menu. The pick
+## itself is a device preference and lives in Global.selected_hero.
 func _on_start_button_pressed() -> void:
-	Global.reset()
 	await SceneFade.fade_out(self)
-	get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/hero_select.tscn")
 
 func _on_settings_button_pressed() -> void:
 	await SceneFade.fade_out(self)
@@ -53,4 +78,4 @@ func _on_quit_button_pressed() -> void:
 
 func _on_flappy_button_pressed() -> void:
 	await SceneFade.fade_out(self)
-	get_tree().change_scene_to_file("res://scenes/flappy_bird.tscn")
+	GameLauncher.open_library()

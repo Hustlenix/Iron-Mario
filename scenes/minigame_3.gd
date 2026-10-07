@@ -9,8 +9,11 @@ const SWEEP_DURATION_MAX := 2.6
 var finished := false
 var _laser_frozen := false
 # Each laser owns a looping tween, kept so a reveal can pause the sweeps and a
-# blast can kill one without leaving a dead laser sweeping the screen.
+# blast can kill one without leaving a dead laser sweeping the screen. SONAR adds
+# a second, shorter tween on top of the sweep, tracked for the same reason: a
+# blast that frees the laser has to take its blink with it.
 var _sweeps: Dictionary = {}
+var _reveals: Dictionary = {}
 var _freeze_token := 0
 
 @onready var player_area: Area2D = $Player/PlayerArea
@@ -30,22 +33,44 @@ func _physics_process(_delta: float) -> void:
 	if not finished and Input.is_action_just_pressed("power"):
 		PowerBus.try_activate()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel") and not finished:
+		_return_to_library()
+
+func _return_to_library() -> void:
+	await SceneFade.fade_out(self)
+	if GameLauncher.has_return_scene():
+		GameLauncher.return_to_library()
+	else:
+		get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+
 func _time_limit() -> float:
 	return maxf(5.0, TIME_LIMIT - Global.loop)
 
 func _setup_laser_sweeps() -> void:
-	# Stagger each laser's start so the beams never align.
+	# Stagger each laser's start so the beams never align. The timer is handed the
+	# instance id, not the node: a blast can free a laser before its arm timer
+	# fires, and a Callable bound to a freed object dies at the call site -- too
+	# early for any guard inside _arm_sweep to be reached. An int is always safe
+	# to carry, and unlike an index it survives a freed laser shifting its
+	# siblings along.
 	var index := 0
 	for laser: Area2D in $Hazards.get_children():
 		var delay := index * 0.45
-		get_tree().create_timer(delay).timeout.connect(_arm_sweep.bind(laser))
+		get_tree().create_timer(delay).timeout.connect(_arm_sweep.bind(laser.get_instance_id()))
 		index += 1
 
-func _arm_sweep(laser: Area2D) -> void:
+func _arm_sweep(laser_id: int) -> void:
+	var laser := instance_from_id(laser_id) as Area2D
+	if laser == null:
+		return
 	laser.modulate = Color(1, 0.4, 0.4)
 	var warn := create_tween()
 	warn.tween_property(laser, "modulate", Color(1, 0.15, 0.15), 0.35)
 	await warn.finished
+	# The blast can also land while the warning is still fading in.
+	if not is_instance_valid(laser):
+		return
 	laser.modulate = Color.WHITE
 	_start_sweep(laser)
 
@@ -111,6 +136,9 @@ func _power_reveal() -> bool:
 		tween.set_loops(3)
 		tween.tween_property(laser, "modulate", Color(0.75, 0.6, 1.0, 0.35), 0.15)
 		tween.tween_property(laser, "modulate", Color.WHITE, 0.15)
+		_reveals[laser] = tween
+		# A looping tween only reports finished once the last pass is done.
+		tween.finished.connect(func() -> void: _reveals.erase(laser))
 	return true
 
 ## Tether / snap / aegis: a ward that eats the next hit, plus a short hop
@@ -128,12 +156,21 @@ func _power_blast() -> bool:
 		return false
 	_power_text("PULSE!", Color(1.0, 0.5, 0.35))
 	Juice.burst(self, laser.global_position, Color(1, 0.5, 0.35), 20, 300.0)
+	_kill_laser_tweens(laser)
+	laser.queue_free()
+	return true
+
+## Stop everything still driving a laser and forget it, so no tween is left
+## writing to a node that is about to be freed.
+func _kill_laser_tweens(laser: Area2D) -> void:
 	var sweep: Tween = _sweeps.get(laser)
 	if sweep != null:
 		sweep.kill()
 	_sweeps.erase(laser)
-	laser.queue_free()
-	return true
+	var reveal: Tween = _reveals.get(laser)
+	if reveal != null:
+		reveal.kill()
+	_reveals.erase(laser)
 
 func _power_text(text: String, color: Color) -> void:
 	Juice.text(self, text, $Player.global_position + Vector2(0, -60), color, 32)
@@ -143,6 +180,9 @@ func _freeze_lasers(seconds: float) -> void:
 	var token := _freeze_token
 	_laser_frozen = true
 	for laser: Area2D in _sweeps:
+		if not is_instance_valid(laser):
+			_kill_laser_tweens(laser)
+			continue
 		var sweep: Tween = _sweeps[laser]
 		if sweep != null:
 			sweep.pause()
@@ -155,7 +195,7 @@ func _unfreeze_lasers(token: int) -> void:
 	_laser_frozen = false
 	for laser: Area2D in _sweeps:
 		if not is_instance_valid(laser):
-			_sweeps.erase(laser)
+			_kill_laser_tweens(laser)
 			continue
 		var sweep: Tween = _sweeps[laser]
 		if sweep != null:
@@ -185,6 +225,9 @@ func _finish(win: bool) -> void:
 		await get_tree().create_timer(0.5).timeout
 		Global.win()
 		await SceneFade.fade_out(self)
+		if GameLauncher.has_return_scene():
+			GameLauncher.return_to_library()
+			return
 		get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
 	else:
 		$SfxFail.play()
@@ -197,7 +240,13 @@ func _finish(win: bool) -> void:
 		Global.lives -= 1
 		if Global.lives <= 0:
 			await SceneFade.fade_out(self)
+			if GameLauncher.has_return_scene():
+				GameLauncher.return_to_library()
+				return
 			get_tree().change_scene_to_file("res://scenes/death_scene.tscn")
 		else:
 			await SceneFade.fade_out(self)
+			if GameLauncher.has_return_scene():
+				GameLauncher.return_to_library()
+				return
 			get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
