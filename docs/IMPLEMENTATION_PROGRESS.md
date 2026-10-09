@@ -19,4 +19,14 @@ Native GL captures cover all 105 boards plus representative desktop/mobile layou
 
 ## Release gate
 
-Web and Windows exports succeeded. The exported Windows executable launched headlessly without engine errors. Local browser evidence: library reports 105 games; search and rendered previews work; new cabinet pause/home navigation works; Disk Delivery solved via fourteen real browser clicks, resulting in seven moves, 187 points and one reward; replay and menu return are being verified. GitHub Actions and public-site verification remain pending. Existing user checkouts and Hackatime configuration remain preserved.
+Web and Windows exports succeeded. The final exported Windows executable launched headlessly without engine errors. The 40,801,107-byte Windows ZIP passed CRC verification and includes the executable and required PCK.
+
+Local browser evidence: library reports 105 games; search and rendered previews work; new cabinet pause/home navigation works; Disk Delivery solved via fourteen real browser clicks, resulting in seven moves, 187 points and one reward. Replay resets moves/time; pause and menu return work. The final puzzle keyboard cursor was also visibly verified in a fresh-profile Web export.
+
+## Published release
+
+Gameplay release commit **9680927**, preceded by full-catalog checkpoint **4feaab9**. [Final build, all thirteen suites, browser, Windows and deployment jobs passed](https://github.com/Hustlenix/Iron-Mario/actions/runs/37934144241). [GitHub Pages publication passed](https://github.com/Hustlenix/Iron-Mario/actions/runs/37935373544).
+
+[Public arcade](https://hustlenix.github.io/Iron-Mario/) was checked directly after publication: 105-game catalog, rendered previews, search, seven-move Disk Delivery win, result/reward, fresh replay, pause, menu return and retained prior records. The final keyboard puzzle cursor was visibly confirmed on the public site, followed by another complete seven-move win. Browser warning/error logs were empty during the verified loop. Screenshot evidence is stored locally at `build/public-puzzle-win.png`.
+
+The complete release rerun comprises **4203 checks with zero failures**. This does not assert manual browser play of every game or physical-phone performance. Full commercial-readiness/human-fun claims remain withheld; the audit records specific B/C refinement tasks. Existing user checkouts and Hackatime configuration remain preserved.
