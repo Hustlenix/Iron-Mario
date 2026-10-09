@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8e7">
+  <meta name="description" content="Meet four original superheroes, preview their powers and discover the 105-game Iron-Mario arcade.">
+  <meta name="application-name" content="Super-Micro Heroes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Super-Micro Heroes 2.0 — Big fun. Tiny games.">
+  <meta property="og:description" content="Jump, dodge, draw and discover a whole box of hand-painted microgames. Free to play, made for little victories.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Super-Micro Heroes 2.0">
+  <meta name="twitter:description" content="Big fun. Tiny games. Your next little victory starts here.">
+  <title>IRON-MARIO — Choose Your Extraordinary</title>
+  <!-- Godot adds the exported PWA manifest, icons and service worker configuration here. -->
+  <link rel="manifest" href="index.manifest.json">
+
+  <style>
+    :root { color-scheme: dark; --paper: #101c28; --ink: #faf3df; --red: #f3a461; --blue: #66dcca; --yellow: #f2c15d; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+    body { font-family: "Trebuchet MS", Arial, sans-serif; color: var(--ink); background: var(--paper); overscroll-behavior: none; }
+    #viewport { position: fixed; inset: 0; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+    #canvas { display: block; width: 100%; height: 100%; outline: none; touch-action: none; }
+    #status { position: fixed; inset: 0; display: grid; place-items: center; padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); background: var(--paper); z-index: 2; }
+    #status[hidden] { display: none; }
+    .sheet { width: min(100%, 580px); text-align: center; }
+    .edition { margin: 0 0 14px; font-weight: bold; letter-spacing: .2em; font-size: 12px; }
+    .hero-art { display: block; width: min(100%, 230px); height: 32vh; object-fit: contain; margin: 0 auto 14px; }
+    h1 { margin: 0; font-size: clamp(35px, 8vw, 58px); line-height: .98; letter-spacing: -.065em; font-weight: 900; transform: rotate(-2deg); }
+    h1 span { display: block; color: var(--red); }
+    .tagline { margin: 22px 0 26px; font-size: clamp(16px, 4vw, 21px); }
+    .load-row { display: flex; justify-content: space-between; margin: 0 2px 9px; font-size: 13px; font-weight: bold; }
+    .loader { max-width: 360px; margin: auto; }
+    progress { appearance: none; display: block; width: 100%; height: 19px; border: 3px solid var(--ink); background: white; color: var(--blue); transform: rotate(-.8deg); }
+    progress::-webkit-progress-bar { background: white; }
+    progress::-webkit-progress-value { background: var(--blue); transition: width .15s; }
+    progress::-moz-progress-bar { background: var(--blue); }
+    .fine { font-size: 12px; line-height: 1.5; opacity: .72; margin: 20px 0 0; }
+    #notice { margin: 22px auto 0; max-width: 440px; line-height: 1.5; font-size: 15px; white-space: pre-line; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    button { min-height: 44px; min-width: 44px; border: 2px solid var(--yellow); border-radius: 8px; color: #101c28; background: var(--yellow); padding: 10px 18px; font: bold 14px "Trebuchet MS", Arial, sans-serif; cursor: pointer; }
+    button:hover { background: white; }
+    button:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+    button:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+    #retry { margin-top: 20px; }
+    #fullscreen { position: fixed; z-index: 3; bottom: max(12px, env(safe-area-inset-bottom)); right: max(12px, env(safe-area-inset-right)); padding: 6px 12px; background: var(--paper); color: var(--ink); font-size: 18px; }
+    #fullscreen[hidden], #retry[hidden] { display: none; }
+    #connection { position: fixed; z-index: 4; top: max(8px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); max-width: 90%; padding: 7px 13px; background: var(--yellow); border: 2px solid var(--ink); font-size: 12px; text-align: center; pointer-events: none; }
+    #connection[hidden] { display: none; }
+    noscript { position: fixed; inset: 0; z-index: 6; display: grid; place-items: center; background: var(--paper); padding: 30px; font-size: 20px; }
+    @media (max-height: 500px) { .hero-art { max-height: 19vh; margin-bottom: 6px; } h1 { font-size: 34px; } h1 span { display: inline; } .tagline { margin: 12px 0; font-size: 16px; } .edition { margin-bottom: 4px; } .fine { margin-top: 10px; } }
+    @media (prefers-reduced-motion: reduce) { progress::-webkit-progress-value { transition: none; } }
+  </style>
+</head>
+<body>
+  <div id="viewport"><canvas id="canvas" tabindex="0" aria-label="Iron-Mario game. Hero selection: Left and Right switch, Space demonstrates power, Enter equips.">Your browser needs canvas support to play.</canvas></div>
+  <p id="hero-a11y" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+  <section id="status" aria-label="Loading Super-Micro Heroes">
+    <div class="sheet">
+      <p class="edition">IRON-MARIO / 105 GAME ARCADE / 3.0</p>
+      <img class="hero-art" src="previews/solstice-roster.png" alt="Solstice, an original turbine-armored hero with an energy lance">
+      <h1>IRON-MARIO</h1>
+      <p class="tagline">Choose your extraordinary.</p>
+      <div class="loader" id="loader">
+        <div class="load-row"><span id="loading-label">OPENING THE GAME BOX</span><span id="percentage">0%</span></div>
+        <progress id="progress" value="0" max="100" aria-label="Game download progress"></progress>
+      </div>
+      <p id="notice" role="status" aria-live="polite" hidden></p>
+      <button id="retry" hidden>TRY AGAIN</button>
+      <p class="fine" id="loading-tip">Touch, mouse, keyboard or controller.<br>Save a little space for your next little victory.</p>
+    </div>
+  </section>
+  <div id="connection" role="status" hidden>Offline — cached games and local progress still work.</div>
+  <button id="fullscreen" type="button" aria-label="Enter fullscreen" title="Fullscreen" hidden>⛶</button>
+  <noscript>Turn on JavaScript to open Super-Micro Heroes.</noscript>
+  <script src="smh-18731b1b0a9d0887.js"></script>
+  <script>
+    'use strict';
+    const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"smh-18731b1b0a9d0887","experimentalVK":false,"fileSizes":{"smh-18731b1b0a9d0887.pck":9822032,"smh-18731b1b0a9d0887.wasm":39513091},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
+    const GODOT_THREADS_ENABLED = false;
+    const canvas = document.getElementById('canvas');
+    const status = document.getElementById('status');
+    const progress = document.getElementById('progress');
+    const percentage = document.getElementById('percentage');
+    const notice = document.getElementById('notice');
+    const retry = document.getElementById('retry');
+    const fullscreen = document.getElementById('fullscreen');
+    const connection = document.getElementById('connection');
+    let gameStarted = false;
+    // Policy 0 respects the safe-area-sized canvas instead of overwriting it with window bounds.
+    GODOT_CONFIG.canvasResizePolicy = 0;
+    GODOT_CONFIG.canvas = canvas;
+    function fitCanvas() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.max(1, Math.round(canvas.clientWidth * ratio));
+      canvas.height = Math.max(1, Math.round(canvas.clientHeight * ratio));
+    }
+    fitCanvas();
+    window.addEventListener('resize', fitCanvas);
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', fitCanvas);
+    function updateConnection() {
+      connection.hidden = navigator.onLine;
+      connection.textContent = gameStarted ? 'Offline — keep playing. Progress saves on this device.' : 'Offline — opening the cached game if available.';
+    }
+    window.addEventListener('online', updateConnection);
+    window.addEventListener('offline', updateConnection);
+    updateConnection();
+    retry.addEventListener('click', () => window.location.reload());
+    fullscreen.hidden = !document.fullscreenEnabled;
+    fullscreen.addEventListener('click', async () => {
+      try {
+        if (document.fullscreenElement) await document.exitFullscreen();
+        else {
+          await document.documentElement.requestFullscreen();
+          if (screen.orientation && screen.orientation.lock) await screen.orientation.lock('landscape').catch(() => {});
+        }
+      } catch (_) { /* The in-game settings offer the same optional display control. */ }
+      canvas.focus();
+    });
+    document.addEventListener('fullscreenchange', () => {
+      fullscreen.setAttribute('aria-label', document.fullscreenElement ? 'Exit fullscreen' : 'Enter fullscreen');
+      fitCanvas();
+    });
+    function fail(error) {
+      console.error(error);
+      status.hidden = false;
+      document.getElementById('loader').hidden = true;
+      document.getElementById('loading-tip').hidden = true;
+      notice.hidden = false;
+      const detail = error && error.message ? error.message : String(error || 'The game could not start.');
+      notice.textContent = navigator.onLine ? 'The game box could not open. Try again, or use a browser with WebGL 2 support.\n' + detail : 'This game is not fully cached yet. Connect to the internet and try again.';
+      retry.hidden = false;
+    }
+    async function boot() {
+      if (typeof Engine === 'undefined') throw new Error('The engine download did not finish.');
+      const engine = new Engine(GODOT_CONFIG);
+      const missing = Engine.getMissingFeatures({ threads: GODOT_THREADS_ENABLED });
+      if (missing.length) {
+        if (GODOT_CONFIG.serviceWorker && GODOT_CONFIG.ensureCrossOriginIsolationHeaders && 'serviceWorker' in navigator) {
+          const registration = await navigator.serviceWorker.getRegistration();
+          if (!registration) {
+            await engine.installServiceWorker();
+            window.location.reload();
+            return;
+          }
+        }
+        throw new Error('Missing browser features: ' + missing.join(', '));
+      }
+      await engine.startGame({ onProgress(current, total) {
+        if (total > 0) {
+          const value = Math.min(100, Math.floor(current / total * 100));
+          progress.value = value;
+          percentage.textContent = value + '%';
+          document.getElementById('loading-label').textContent = value === 100 ? 'GETTING YOUR HERO READY' : 'OPENING THE GAME BOX';
+        } else {
+          progress.removeAttribute('value');
+          percentage.textContent = '…';
+        }
+      }});
+      gameStarted = true;
+      document.title = 'IRON-MARIO — Choose Your Extraordinary';
+      status.hidden = true;
+      // The game has its own fullscreen control; keep the arena free for taps.
+      fullscreen.hidden = true;
+      updateConnection();
+      canvas.focus();
+    }
+    boot().catch(fail);
+  </script>
+</body>
+</html>
+
