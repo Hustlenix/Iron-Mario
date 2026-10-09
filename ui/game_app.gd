@@ -33,8 +33,6 @@ var cursor_layer: Node2D
 var services := PlatformServices.new()
 var library_page: int = 0
 var library_sort: String = 'A-Z'
-const HERO_IDS := ['dart','bolt','echo','frost','tether','snap','aegis','pulse','lance','flappy']
-const HERO_WORLDS := ['Cardboard city','Electric rooftops','Haunted hallway','Notebook snow','Junkyard','Paint factory','Marker desert','Doodle space','Laboratory','Notebook ocean']
 
 func _ready() -> void:
 	theme = Design.theme()
@@ -54,8 +52,12 @@ func _ready() -> void:
 	resized.connect(layout_game)
 	apply_settings()
 	services.log_event('app_open')
-	show_page('HOME')
-	if not Profile.data.get('onboarded',false):
+	var initial_page: String='HEROES'
+	if OS.has_feature('web'):
+		var requested: Variant=JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('screen')",true)
+		if requested=='arcade': initial_page='HOME'
+	show_page(initial_page)
+	if initial_page=='HOME' and not Profile.data.get('onboarded',false):
 		show_modal('A TINY WORLD. A BIG HERO.','One command. A few seconds. You have got this.',[
 			['LET’S TRY IT',func() -> void:
 				Profile.data.onboarded = true
@@ -99,7 +101,15 @@ func show_page(name: String) -> void:
 	run = null
 	current_page = name
 	clear_page()
+	set_selector_scale(name=='HEROES')
 	Music.play_menu(Profile.data.hero)
+	if name=='HEROES':
+		var selector := HeroSelection.new()
+		page.add_child(selector)
+		selector.exit_requested.connect(func()->void:show_page('HOME'))
+		selector.play_requested.connect(func(id: String)->void:start_run('single',id))
+		layout_game()
+		return
 	build_top()
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -111,7 +121,6 @@ func show_page(name: String) -> void:
 	match name:
 		'HOME': build_home()
 		'GAMES': build_games()
-		'HEROES': build_heroes()
 		'MISSIONS': build_missions()
 		'SHOP': build_shop()
 		'PROFILE': build_profile()
@@ -123,6 +132,16 @@ func show_page(name: String) -> void:
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		nav.add_child(btn)
 	layout_game()
+
+func set_selector_scale(active: bool) -> void:
+	# Match CSS pixels on high-DPI browsers, while games keep their 960×540 canvas.
+	get_tree().root.content_scale_mode=Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+	get_tree().root.content_scale_size=Vector2i.ZERO if active else Vector2i(960,540)
+	var pixel_ratio: float=1.0
+	if active and OS.has_feature('web'):
+		var ratio: Variant=JavaScriptBridge.eval("document.getElementById('canvas').width / document.getElementById('canvas').clientWidth",true)
+		if ratio is float or ratio is int: pixel_ratio=maxf(0.25,float(ratio))
+	get_tree().root.content_scale_factor=pixel_ratio
 
 func build_top() -> void:
 	top = Design.row(16)
@@ -153,6 +172,7 @@ func build_home() -> void:
 	play.custom_minimum_size.y = 64
 	play.add_theme_font_size_override('font_size',38)
 	left.add_child(play)
+	left.add_child(Design.button('MEET THE ORIGINAL FOUR',func()->void:show_page('HEROES'),Design.BLUE))
 	var modes := Design.row()
 	left.add_child(modes)
 	for choice in ['TOURNAMENT','DAILY CHALLENGE']:
@@ -296,31 +316,6 @@ func build_games() -> void:
 	sort.item_selected.connect(func(index:int)->void:library_sort=['A-Z','NEW FIRST','YOUR BEST'][index];library_page=0;refill.call())
 	refill.call()
 
-func build_heroes() -> void:
-	heading('YOUR HAND-DRAWN CREW','TEN TINY LEGENDS','Pick a silhouette. Build mastery. Every hero plays fair.')
-	var grid := GridContainer.new()
-	grid.columns = 2 if size.x < 1100 else 3
-	grid.add_theme_constant_override('h_separation',18)
-	grid.add_theme_constant_override('v_separation',18)
-	content.add_child(grid)
-	for i in HERO_IDS.size():
-		var id: String = HERO_IDS[i]
-		var card := Design.panel()
-		card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		grid.add_child(card)
-		var col := Design.column(6)
-		card.add_child(col)
-		var portrait := PaintWorld.new()
-		portrait.hero_id = id
-		portrait.custom_minimum_size = Vector2(280,175)
-		col.add_child(portrait)
-		col.add_child(Design.label(id.to_upper(),29))
-		col.add_child(Design.label(HERO_WORLDS[i],18))
-		col.add_child(Design.label('MASTERY %d' % (1+int(Profile.data.mastery.get(id,0))/100),19))
-		col.add_child(Design.button('EQUIPPED' if Profile.data.hero==id else 'CHOOSE',func() -> void:
-			Profile.equip_hero(id)
-			show_page('HEROES'),Design.GOLD if Profile.data.hero==id else Design.PAPER))
-
 func build_missions() -> void:
 	heading('A LITTLE SOMETHING EXTRA','TODAY’S MISSIONS','Play because it is fun. Pick up a bonus along the way.')
 	for mission in Profile.mission_progress():
@@ -424,6 +419,7 @@ func mode_preview(mode: String) -> void:
 		show_modal('TODAY’S TEN','Same date. Same games.\n'+RunDirector.daily_modifier(Time.get_date_string_from_system(true)).replace('_',' ').to_upper()+'  /  '+names+'...\nBEST  %d' % Profile.data.daily.get('best',0),[['PLAY TODAY',func() -> void: start_run('daily')],['BACK',close_modal]])
 
 func start_run(mode: String, id: String = '') -> void:
+	set_selector_scale(false)
 	services.log_event('play_pressed',{'mode':mode})
 	clear_page()
 	manual_pause = false
@@ -600,7 +596,7 @@ func layout_game() -> void:
 			game_layer.scale = Vector2.ONE*amount
 			game_layer.position = area.global_position+(area.size-Vector2(960,480)*amount)/2
 			router.board = Rect2(game_layer.position,Vector2(960,480)*amount)
-	var portrait: bool = size.y>size.x
+	var portrait: bool = size.y>size.x and current_page!='HEROES'
 	if portrait != orientation_pause:
 		orientation_pause = portrait
 		if portrait:

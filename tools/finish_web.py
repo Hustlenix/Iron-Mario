@@ -16,6 +16,7 @@ for icon in manifest['icons']:
     icon['purpose'] = 'any maskable'
 manifest_path.write_text(json.dumps(manifest, separators=(',', ':')), encoding='utf-8')
 shutil.copytree(project / 'web' / 'previews', root / 'previews', dirs_exist_ok=True)
+shutil.copy2(project / 'assets' / 'roster' / 'solstice.png', root / 'previews' / 'solstice-roster.png')
 assert (root / 'index.wasm').stat().st_size > 1_000_000
 assert (root / 'index.pck').stat().st_size > 100_000
 # Content-address runtime assets so an old service worker or CDN cannot mix

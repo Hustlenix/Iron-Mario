@@ -1,6 +1,6 @@
 # Iron-Mario — Super-Micro Arcade
 
-A hand-drawn Godot arcade with **105 playable games**: 50 preserved microgames, 25 puzzles, 16 original classics, 11 chaos games and 3 restored cabinets. Includes ten cosmetic heroes, quick play, a five-heart Tournament and a deterministic ten-game Daily Challenge.
+A Godot arcade with **105 playable games**: 50 preserved microgames, 25 puzzles, 16 original classics, 11 chaos games and 3 restored cabinets. The opening screen features four original superheroes: **Solstice, Vector, Umbra and Prism**, with large illustrated previews, entrances, timed power demonstrations, sound cues, keyboard/controller navigation and responsive phone layouts. Quick play, a five-heart Tournament and a deterministic ten-game Daily Challenge remain available through ARCADE.
 
 [Play in the browser](https://hustlenix.github.io/Iron-Mario/)
 
@@ -10,7 +10,7 @@ The 3.0 catalog adds searchable, paginated shelves, favorites, recent games, sor
 
 Tap, hold, swipe, or drag as shown by each game. Keyboard uses arrows/WASD and Space; controllers use the stick/D-pad and A. Arcade puzzles also use 1–4 to select, E/B for a secondary action, R to reset and U to undo where supported. For a precise physics swipe, hold Space/A, move the crosshair, then release. Escape/Start pauses. Portrait and focus changes safely pause play and cancel held inputs.
 
-All games and heroes are immediately available. XP, mastery, medals, missions, favorites, records and cosmetic coins are saved locally. Coins buy cosmetic effects only. Billing, ads and external analytics are disabled adapters, not simulated purchases.
+All games and the four featured heroes are immediately available. Selection is cosmetic; power demonstrations are presentation previews and PLAY opens a matching existing game. Native saves preserve XP, mastery, medals, missions, favorites, records and cosmetic coins. Browser hero and reduced-motion preferences survive immediate reload through validated localStorage keys. Broader browser record durability currently needs further repair; an IndexedDB reload check exposed stale saved data. Coins buy cosmetic effects only. Billing, ads and external analytics are disabled adapters, not simulated purchases.
 
 ## Develop
 
@@ -21,7 +21,9 @@ godot --headless --path . --editor --import --quit
 python tools/run_checks.py godot
 ```
 
-Thirteen suites drive action-based wins, losses, restart, pause, scoring, save migration, native keyboard/touch/controller events and cleanup. All 105 IDs are exercised through the actual application. Tests use disposable profiles; `--test` keeps the profile autoload away from real saves. CPU measurements are headless update costs, not physical-device FPS.
+Fourteen suites drive action-based wins, losses, restart, pause, scoring, save migration, native keyboard/touch/controller events, responsive hero selection and cleanup. All 105 IDs are exercised through the actual application. Tests use disposable profiles; `--test` keeps the profile autoload away from real saves. CPU measurements are headless update costs, not physical-device FPS.
+
+See the [hero selection milestone](docs/HERO_SELECTION_MILESTONE.md) for art provenance, saved-ID compatibility, browser preferences and the remaining broader visual work. Run `godot --path . --script res://tests/capture_visual.gd -- --test` to capture all four heroes, their powers and mobile layouts into `build/visual-after`.
 
 See [game audit](docs/GAME_AUDIT.md), [machine catalog](docs/game_catalog.json), [46 verified Play Store references](docs/PLAY_STORE_RESEARCH.md), [asset licenses](docs/ASSET_LICENSES.md) and [release progress](docs/IMPLEMENTATION_PROGRESS.md). Small authored garage interiors use commercially licensed Modern Interiors by [LimeZu](https://limezu.itch.io/). Unverified and noncommercial asset packs are excluded; supplied installers were not run.
 

@@ -94,7 +94,7 @@ func _sanitize(raw: Dictionary) -> void:
 	if settings is Dictionary:
 		for key: String in ["volume", "music_volume"]:
 			data.settings[key] = clampf(_number(settings.get(key), data.settings[key]), 0.0, 100.0)
-		for key: String in ["shake", "haptics", "touch_controls_enabled", "low_quality"]:
+		for key: String in ["shake", "haptics", "touch_controls_enabled", "low_quality", "reduced_motion"]:
 			if settings.get(key) is bool:
 				data.settings[key] = settings[key]
 	var mastery: Variant = raw.get("mastery")
@@ -230,8 +230,11 @@ func toggle_favorite(id: String) -> void:
 func equip_hero(id: String) -> bool:
 	if id not in HERO_IDS:
 		return false
+	var previous: String=data.hero
 	data.hero = id
-	save_profile()
+	if not save_profile():
+		data.hero=previous
+		return false
 	profile_changed.emit()
 	return true
 

@@ -5,7 +5,7 @@ from pathlib import Path
 
 editor = sys.argv[1] if len(sys.argv) > 1 else 'godot'
 root = Path(__file__).resolve().parents[1]
-for name in ['services', 'pack_a', 'pack_b', 'input', 'mobile_controls', 'app', 'catalog_audit', 'cabinets', 'classics_a', 'chaos', 'pack_c', 'classics_b', 'performance']:
+for name in ['services', 'pack_a', 'pack_b', 'input', 'mobile_controls', 'app', 'ui_visual', 'catalog_audit', 'cabinets', 'classics_a', 'chaos', 'pack_c', 'classics_b', 'performance']:
     result = subprocess.run([editor, '--headless', '--path', str(root), '--script',
                              f'res://tests/{name}_test.gd', '--', '--test'],
                             capture_output=True, text=True, timeout=120)
