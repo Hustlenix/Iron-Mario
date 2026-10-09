@@ -43,8 +43,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 5,
-        "mean_update_usec": 4.175,
+        "p95_update_usec": 4,
+        "mean_update_usec": 3.55,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -95,8 +95,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 3,
-        "mean_update_usec": 2.125,
+        "p95_update_usec": 14,
+        "mean_update_usec": 6.33333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -147,8 +147,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 2,
-        "mean_update_usec": 2.04166666666667,
+        "p95_update_usec": 5,
+        "mean_update_usec": 6.65,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -199,8 +199,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 3,
-        "mean_update_usec": 2.29166666666667,
+        "p95_update_usec": 5,
+        "mean_update_usec": 4.05833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -252,7 +252,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 6,
-        "mean_update_usec": 5.10833333333333,
+        "mean_update_usec": 5.45833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -303,8 +303,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 6,
-        "mean_update_usec": 3.50833333333333,
+        "p95_update_usec": 11,
+        "mean_update_usec": 8.23333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -355,8 +355,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.025,
+        "p95_update_usec": 5,
+        "mean_update_usec": 4.66666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -407,8 +407,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 5,
-        "mean_update_usec": 3.90833333333333,
+        "p95_update_usec": 7,
+        "mean_update_usec": 5.88333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -459,8 +459,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 3,
-        "mean_update_usec": 2.975,
+        "p95_update_usec": 5,
+        "mean_update_usec": 4.66666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -511,8 +511,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.15,
+        "p95_update_usec": 8,
+        "mean_update_usec": 7.66666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -563,8 +563,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 3,
-        "mean_update_usec": 3.05,
+        "p95_update_usec": 6,
+        "mean_update_usec": 5.95,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -615,8 +615,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 3,
-        "mean_update_usec": 2.98333333333333,
+        "p95_update_usec": 7,
+        "mean_update_usec": 6.225,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -667,8 +667,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.21666666666667,
+        "p95_update_usec": 6,
+        "mean_update_usec": 5.24166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -719,8 +719,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.18333333333333,
+        "p95_update_usec": 6,
+        "mean_update_usec": 4.86666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -771,8 +771,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.16666666666667,
+        "p95_update_usec": 7,
+        "mean_update_usec": 5.25,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -824,7 +824,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 6,
-        "mean_update_usec": 4.01666666666667,
+        "mean_update_usec": 5.05833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -876,7 +876,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 6,
-        "mean_update_usec": 3.73333333333333,
+        "mean_update_usec": 5.475,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -928,7 +928,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 6,
-        "mean_update_usec": 3.55,
+        "mean_update_usec": 4.8,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -979,8 +979,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 6,
-        "mean_update_usec": 3.44166666666667,
+        "p95_update_usec": 8,
+        "mean_update_usec": 4.99166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1032,7 +1032,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 6,
-        "mean_update_usec": 3.5,
+        "mean_update_usec": 4.79166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1083,8 +1083,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 4.00833333333333,
+        "p95_update_usec": 6,
+        "mean_update_usec": 6.075,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1136,7 +1136,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 12,
-        "mean_update_usec": 7.13333333333333,
+        "mean_update_usec": 10.975,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1187,8 +1187,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.30833333333333,
+        "p95_update_usec": 6,
+        "mean_update_usec": 5.26666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1239,8 +1239,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 3,
-        "mean_update_usec": 2.9,
+        "p95_update_usec": 6,
+        "mean_update_usec": 5.925,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1291,8 +1291,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.25,
+        "p95_update_usec": 11,
+        "mean_update_usec": 6.20833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1343,8 +1343,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.14166666666667,
+        "p95_update_usec": 5,
+        "mean_update_usec": 4.93333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1396,7 +1396,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 6,
-        "mean_update_usec": 3.95833333333333,
+        "mean_update_usec": 5.025,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1447,8 +1447,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 7,
-        "mean_update_usec": 4.325,
+        "p95_update_usec": 6,
+        "mean_update_usec": 5.21666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1499,8 +1499,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 3,
-        "mean_update_usec": 2.50833333333333,
+        "p95_update_usec": 5,
+        "mean_update_usec": 4.2,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1551,8 +1551,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.7,
+        "p95_update_usec": 7,
+        "mean_update_usec": 6.2,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1603,8 +1603,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 3,
-        "mean_update_usec": 2.53333333333333,
+        "p95_update_usec": 4,
+        "mean_update_usec": 3.55833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1655,8 +1655,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 5,
-        "mean_update_usec": 4.775,
+        "p95_update_usec": 9,
+        "mean_update_usec": 7.88333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1708,7 +1708,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 8,
-        "mean_update_usec": 5.09166666666667,
+        "mean_update_usec": 8.325,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1759,8 +1759,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 3,
-        "mean_update_usec": 2.35833333333333,
+        "p95_update_usec": 4,
+        "mean_update_usec": 3.4,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1811,8 +1811,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 6,
-        "mean_update_usec": 3.91666666666667,
+        "p95_update_usec": 5,
+        "mean_update_usec": 4.78333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1863,8 +1863,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.3,
+        "p95_update_usec": 9,
+        "mean_update_usec": 5.86666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1916,7 +1916,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 6,
-        "mean_update_usec": 4.08333333333333,
+        "mean_update_usec": 6.89166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -1967,8 +1967,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 4.06666666666667,
+        "p95_update_usec": 7,
+        "mean_update_usec": 5.675,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2020,7 +2020,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 6,
-        "mean_update_usec": 4.3,
+        "mean_update_usec": 5.80833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2071,8 +2071,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 5,
-        "mean_update_usec": 4.15833333333333,
+        "p95_update_usec": 11,
+        "mean_update_usec": 11.6416666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2123,8 +2123,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.08333333333333,
+        "p95_update_usec": 5,
+        "mean_update_usec": 4.95833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2175,8 +2175,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 7,
-        "mean_update_usec": 4.38333333333333,
+        "p95_update_usec": 8,
+        "mean_update_usec": 5.9,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2227,8 +2227,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.86666666666667,
+        "p95_update_usec": 6,
+        "mean_update_usec": 4.70833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2279,8 +2279,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 7,
-        "mean_update_usec": 5.86666666666667,
+        "p95_update_usec": 9,
+        "mean_update_usec": 6.40833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2331,8 +2331,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.5,
+        "p95_update_usec": 8,
+        "mean_update_usec": 4.66666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2383,8 +2383,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.875,
+        "p95_update_usec": 8,
+        "mean_update_usec": 5.76666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2435,8 +2435,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 7,
-        "mean_update_usec": 4.86666666666667,
+        "p95_update_usec": 6,
+        "mean_update_usec": 5.79166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2487,8 +2487,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 7,
-        "mean_update_usec": 4.55,
+        "p95_update_usec": 9,
+        "mean_update_usec": 6.05,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2539,8 +2539,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 6,
-        "mean_update_usec": 5.54166666666667,
+        "p95_update_usec": 13,
+        "mean_update_usec": 10.5916666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2591,8 +2591,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 3,
-        "mean_update_usec": 2.48333333333333,
+        "p95_update_usec": 6,
+        "mean_update_usec": 4.425,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2645,8 +2645,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.908333333333333,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.6,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2698,8 +2698,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.958333333333333,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.65833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2751,8 +2751,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.916666666666667,
+        "p95_update_usec": 3,
+        "mean_update_usec": 2.375,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2804,8 +2804,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.908333333333333,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.51666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2857,8 +2857,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.916666666666667,
+        "p95_update_usec": 2,
+        "mean_update_usec": 2.55,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2910,8 +2910,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.925,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.45833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -2964,7 +2964,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 2,
-        "mean_update_usec": 1.50833333333333,
+        "mean_update_usec": 1.73333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3017,7 +3017,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 2,
-        "mean_update_usec": 1.54166666666667,
+        "mean_update_usec": 1.60833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3070,7 +3070,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 2,
-        "mean_update_usec": 1.60833333333333,
+        "mean_update_usec": 1.40833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3122,8 +3122,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.908333333333333,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.6,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3175,8 +3175,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 1.11666666666667,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.70833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3228,8 +3228,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.941666666666667,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.75,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3281,8 +3281,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.925,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.48333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3335,7 +3335,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 2,
-        "mean_update_usec": 1.61666666666667,
+        "mean_update_usec": 1.75,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3387,8 +3387,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.9,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.54166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3441,7 +3441,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 2,
-        "mean_update_usec": 1.08333333333333,
+        "mean_update_usec": 1.98333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3493,8 +3493,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.9,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.88333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3546,8 +3546,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.908333333333333,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.58333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3599,8 +3599,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.941666666666667,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.76666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3652,8 +3652,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.908333333333333,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.65833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3705,8 +3705,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.891666666666667,
+        "p95_update_usec": 2,
+        "mean_update_usec": 2.125,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3758,8 +3758,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.908333333333333,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.675,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3811,8 +3811,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.891666666666667,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.75,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3864,8 +3864,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.925,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.71666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3917,8 +3917,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 1,
-        "mean_update_usec": 0.958333333333333,
+        "p95_update_usec": 2,
+        "mean_update_usec": 1.7,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -3970,8 +3970,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 22,
-        "mean_update_usec": 18.5333333333333,
+        "p95_update_usec": 74,
+        "mean_update_usec": 28.0833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4023,8 +4023,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 5,
-        "mean_update_usec": 3.85,
+        "p95_update_usec": 9,
+        "mean_update_usec": 6.49166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4076,8 +4076,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 10,
-        "mean_update_usec": 8.95,
+        "p95_update_usec": 15,
+        "mean_update_usec": 13.8666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4129,8 +4129,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 5,
-        "mean_update_usec": 2.75,
+        "p95_update_usec": 7,
+        "mean_update_usec": 4.93333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4182,8 +4182,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 31,
-        "mean_update_usec": 17.5916666666667,
+        "p95_update_usec": 50,
+        "mean_update_usec": 29.025,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4235,8 +4235,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 27,
-        "mean_update_usec": 14.55,
+        "p95_update_usec": 21,
+        "mean_update_usec": 13.55,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4288,8 +4288,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 6,
-        "mean_update_usec": 5.0,
+        "p95_update_usec": 9,
+        "mean_update_usec": 7.79166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4341,8 +4341,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 201,
-        "mean_update_usec": 121.541666666667,
+        "p95_update_usec": 350,
+        "mean_update_usec": 206.291666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4376,7 +4376,7 @@
       ],
       "genre": "Physics",
       "duration_seconds": 60,
-      "tournament_enabled": true,
+      "tournament_enabled": false,
       "status": "working_in_executed_simulations",
       "quality_grade": "B",
       "grade_basis": "Provisional source/rule and executed-loop assessment; native captures are available, physical-device polish and human enjoyment unmeasured.",
@@ -4394,8 +4394,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 6,
-        "mean_update_usec": 4.16666666666667,
+        "p95_update_usec": 7,
+        "mean_update_usec": 5.925,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4429,7 +4429,7 @@
       ],
       "genre": "Rhythm",
       "duration_seconds": 45,
-      "tournament_enabled": true,
+      "tournament_enabled": false,
       "status": "working_in_executed_simulations",
       "quality_grade": "B",
       "grade_basis": "Provisional source/rule and executed-loop assessment; native captures are available, physical-device polish and human enjoyment unmeasured.",
@@ -4447,8 +4447,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 53,
-        "mean_update_usec": 43.0583333333333,
+        "p95_update_usec": 97,
+        "mean_update_usec": 77.375,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4482,7 +4482,7 @@
       ],
       "genre": "Platformer",
       "duration_seconds": 60,
-      "tournament_enabled": true,
+      "tournament_enabled": false,
       "status": "working_in_executed_simulations",
       "quality_grade": "B",
       "grade_basis": "Provisional source/rule and executed-loop assessment; native captures are available, physical-device polish and human enjoyment unmeasured.",
@@ -4500,8 +4500,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 39,
-        "mean_update_usec": 25.925,
+        "p95_update_usec": 95,
+        "mean_update_usec": 53.2666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4535,7 +4535,7 @@
       ],
       "genre": "Flying",
       "duration_seconds": 70,
-      "tournament_enabled": true,
+      "tournament_enabled": false,
       "status": "working_in_executed_simulations",
       "quality_grade": "B",
       "grade_basis": "Provisional source/rule and executed-loop assessment; native captures are available, physical-device polish and human enjoyment unmeasured.",
@@ -4553,8 +4553,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 91,
-        "mean_update_usec": 57.125,
+        "p95_update_usec": 165,
+        "mean_update_usec": 124.325,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4588,7 +4588,7 @@
       ],
       "genre": "Precision",
       "duration_seconds": 60,
-      "tournament_enabled": true,
+      "tournament_enabled": false,
       "status": "working_in_executed_simulations",
       "quality_grade": "B",
       "grade_basis": "Provisional source/rule and executed-loop assessment; native captures are available, physical-device polish and human enjoyment unmeasured.",
@@ -4607,7 +4607,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 2,
-        "mean_update_usec": 1.475,
+        "mean_update_usec": 2.04166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4660,7 +4660,7 @@
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
         "p95_update_usec": 2,
-        "mean_update_usec": 1.24166666666667,
+        "mean_update_usec": 1.23333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4694,7 +4694,7 @@
       ],
       "genre": "Strategy",
       "duration_seconds": 75,
-      "tournament_enabled": true,
+      "tournament_enabled": false,
       "status": "working_in_executed_simulations",
       "quality_grade": "B",
       "grade_basis": "Provisional source/rule and executed-loop assessment; native captures are available, physical-device polish and human enjoyment unmeasured.",
@@ -4712,8 +4712,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 5,
-        "mean_update_usec": 3.59166666666667,
+        "p95_update_usec": 9,
+        "mean_update_usec": 6.83333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4765,8 +4765,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 2,
-        "mean_update_usec": 1.93333333333333,
+        "p95_update_usec": 4,
+        "mean_update_usec": 2.91666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4818,8 +4818,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 9,
-        "mean_update_usec": 4.85,
+        "p95_update_usec": 20,
+        "mean_update_usec": 9.6,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4871,8 +4871,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 17,
-        "mean_update_usec": 12.3166666666667,
+        "p95_update_usec": 49,
+        "mean_update_usec": 24.725,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4924,8 +4924,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 41,
-        "mean_update_usec": 21.4833333333333,
+        "p95_update_usec": 35,
+        "mean_update_usec": 22.3166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -4977,8 +4977,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 21,
-        "mean_update_usec": 13.225,
+        "p95_update_usec": 25,
+        "mean_update_usec": 22.7333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -5030,8 +5030,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 6,
-        "mean_update_usec": 5.46666666666667,
+        "p95_update_usec": 10,
+        "mean_update_usec": 8.96666666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -5083,8 +5083,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 9,
-        "mean_update_usec": 7.45833333333333,
+        "p95_update_usec": 14,
+        "mean_update_usec": 11.85,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -5136,8 +5136,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 7,
-        "mean_update_usec": 5.89166666666667,
+        "p95_update_usec": 14,
+        "mean_update_usec": 10.3,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -5189,8 +5189,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 19,
-        "mean_update_usec": 14.175,
+        "p95_update_usec": 42,
+        "mean_update_usec": 26.275,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -5242,8 +5242,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 6,
-        "mean_update_usec": 5.61666666666667,
+        "p95_update_usec": 12,
+        "mean_update_usec": 9.625,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -5295,8 +5295,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 11,
-        "mean_update_usec": 6.475,
+        "p95_update_usec": 20,
+        "mean_update_usec": 10.5083333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -5348,8 +5348,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 21,
-        "mean_update_usec": 19.9,
+        "p95_update_usec": 49,
+        "mean_update_usec": 34.5166666666667,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -5402,8 +5402,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 4,
-        "mean_update_usec": 3.20833333333333,
+        "p95_update_usec": 6,
+        "mean_update_usec": 3.28333333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -5439,8 +5439,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 5,
-        "mean_update_usec": 2.78333333333333,
+        "p95_update_usec": 6,
+        "mean_update_usec": 6.20833333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"
@@ -5476,8 +5476,8 @@
       "performance": {
         "measurement": "native headless unattended simulation CPU cost, not rendered FPS",
         "sample_frames": 120,
-        "p95_update_usec": 18,
-        "mean_update_usec": 9.45833333333333,
+        "p95_update_usec": 36,
+        "mean_update_usec": 32.2083333333333,
         "scene_children_delta_after_free": 0,
         "GPU_browser_phone_frame_time": "unmeasured",
         "browser_heap": "unmeasured"

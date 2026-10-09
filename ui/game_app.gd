@@ -652,7 +652,8 @@ func _process(_delta: float) -> void:
 	if is_instance_valid(cursor_layer): cursor_layer.queue_redraw()
 
 func draw_cursor() -> void:
-	if router.enabled and router.device in ['keyboard','controller'] and router.mode in ['TAP','DRAG','HOLD','SWIPE']:
+	var puzzle_aim: bool = is_instance_valid(current_game) and current_game.spec.get('script','')=='res://microgames/pack_c.gd'
+	if router.enabled and router.device in ['keyboard','controller'] and (router.mode in ['TAP','DRAG','HOLD','SWIPE'] or puzzle_aim):
 		var p: Vector2 = router.board.position+router.cursor*router.board.size.x/960.0
 		cursor_layer.draw_circle(p,16,Design.RED,false,3)
 		cursor_layer.draw_line(p-Vector2(24,0),p+Vector2(24,0),Design.INK,2)

@@ -179,7 +179,7 @@ for pack, test, cases, count in ADDED_PACKS:
         entries.append({"id": item["id"], "name": item["name"],
                         "files": [item["script"].removeprefix("res://"), pack, "microgames/microgame_base.gd"],
                         "genre": item["category"].capitalize(), "duration_seconds": item["duration"],
-                        "tournament_enabled": item.get("tournament_enabled", True),
+                        "tournament_enabled": item.get("tournament_enabled", True) and not item.get("long_form", False),
                         "status": "working_in_executed_simulations", "quality_grade": "B",
                         "grade_basis": "Provisional source/rule and executed-loop assessment; native captures are available, physical-device polish and human enjoyment unmeasured.",
                         "controls": {"mode": item["input"], "mapping": CONTROLS[item["input"]], "hint": item["hint"]},
