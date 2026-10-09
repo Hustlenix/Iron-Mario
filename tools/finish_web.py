@@ -1,16 +1,21 @@
 """Complete the Godot PWA metadata without replacing its generated runtime."""
 import json
 import hashlib
+import shutil
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1] / 'build' / 'web'
+project = root.parents[1]
+count = sum(len(json.loads(path.read_text(encoding='utf-8'))) for folder in ['microgames','games']
+            for path in (project / folder).glob('*.json'))
 manifest_path = root / 'index.manifest.json'
 manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
 manifest.update(short_name='Micro Heroes', id='./', scope='./', theme_color='#fff4d7',
-                description='Fifty tiny adventures. One hand-drawn arcade universe.')
+                description=f'{count} playable adventures. One hand-drawn arcade universe.')
 for icon in manifest['icons']:
     icon['purpose'] = 'any maskable'
 manifest_path.write_text(json.dumps(manifest, separators=(',', ':')), encoding='utf-8')
+shutil.copytree(project / 'web' / 'previews', root / 'previews', dirs_exist_ok=True)
 assert (root / 'index.wasm').stat().st_size > 1_000_000
 assert (root / 'index.pck').stat().st_size > 100_000
 # Content-address runtime assets so an old service worker or CDN cannot mix

@@ -21,6 +21,11 @@ var failure_seen: bool = false
 var banked: bool = false
 var level_speed: float = 1.0
 
+func cancel_input() -> void:
+	held=false
+	axis=Vector2.ZERO
+	selected=-1
+
 func setup() -> void:
 	items.clear()
 	marks.clear()
@@ -288,6 +293,7 @@ func collect_near(radius: float) -> void:
 			progress += 1
 
 func handle_action(action: String, point: Vector2, value: Vector2) -> void:
+	if action=='cancel': cancel_input(); return
 	if finished: return
 	var tap: bool = action == "press" or action == "action"
 	if action == "move": axis = value

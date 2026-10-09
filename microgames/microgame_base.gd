@@ -48,6 +48,10 @@ func paint() -> void:
 	pass
 func timeout() -> void:
 	lose()
+func cancel_input() -> void:
+	# Cancellation is separate from release: releasing a charged spring during
+	# a focus pause must never fire the spring or complete a puzzle.
+	handle_action('cancel',Vector2.ZERO,Vector2.ZERO)
 
 func advance(delta: float) -> void:
 	if not active or finished:

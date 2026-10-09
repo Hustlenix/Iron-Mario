@@ -31,6 +31,8 @@ var standalone_difficulty: float = 1.0
 var sfx: AudioStreamPlayer
 var cursor_layer: Node2D
 var services := PlatformServices.new()
+var library_page: int = 0
+var library_sort: String = 'A-Z'
 const HERO_IDS := ['dart','bolt','echo','frost','tether','snap','aegis','pulse','lance','flappy']
 const HERO_WORLDS := ['Cardboard city','Electric rooftops','Haunted hallway','Notebook snow','Junkyard','Paint factory','Marker desert','Doodle space','Laboratory','Notebook ocean']
 
@@ -170,19 +172,35 @@ func build_home() -> void:
 	content.add_child(cards)
 	for id in recent.slice(0,3):
 		if registry.lookup.has(id): cards.add_child(game_card(registry.get_game(id),true))
+	for section in [['FEATURED CABINETS',['metro_armor_rush','shadow_armor_duel','scrap_hill_racer']],['NOSTALGIA COLLECTION',['reactor_merge','catapult_chaos','arc_snake']],['BRAINROT ARCADE',['impossible_parking','brainrot_button_panic','chaos_elevator']]]:
+		content.add_child(Design.label(section[0],25))
+		var shelf := Design.row(15)
+		content.add_child(shelf)
+		for id in section[1]:
+			if registry.lookup.has(id): shelf.add_child(game_card(registry.get_game(id),true))
+	content.add_child(Design.button('EXPLORE ALL %d GAMES' % registry.games.size(),func()->void:show_page('GAMES'),Design.BLUE))
 
 func game_card(spec: Dictionary, compact: bool = false) -> Control:
 	var panel := Design.panel(Color('#f8e4ab') if compact else Design.PAPER)
 	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var col := Design.column(8)
 	panel.add_child(col)
+	var cover: Control = load('res://ui/game_thumbnail.gd').new()
+	cover.entry=spec
+	col.add_child(cover)
 	var card_header := Design.row(8)
 	col.add_child(card_header)
 	var glyph: Control = load('res://ui/game_glyph.gd').new()
 	glyph.category = spec.category
 	card_header.add_child(glyph)
 	card_header.add_child(Design.label(String(spec.category).to_upper()+' / '+String(spec.input),16,Design.RED))
-	col.add_child(Design.label(spec.name,25))
+	var card_title := Design.label(spec.name,25)
+	card_title.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	col.add_child(card_title)
+	if not compact:
+		var description := Design.label(spec.get('description',spec.objective),17)
+		description.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+		col.add_child(description)
 	var record: Dictionary = Profile.data.records.get(spec.id,{})
 	col.add_child(Design.label('BEST %d   /   %d MEDALS' % [int(record.get('best',0)),int(record.get('stars',0))],17))
 	var actions := Design.row(8)
@@ -195,10 +213,13 @@ func game_card(spec: Dictionary, compact: bool = false) -> Control:
 			Profile.toggle_favorite(spec.id)
 			show_page('GAMES'))
 		actions.add_child(fav)
+		col.add_child(Design.button('PREVIEW / CONTROLS',func()->void:
+			show_modal(spec.name,spec.get('description',spec.objective)+'\n\n'+spec.hint+'\n\n'+str(spec.duration)+' SECOND CHALLENGE',[
+				['PLAY',func()->void:start_run('single',spec.id)],['BACK',close_modal]])))
 	return panel
 
 func build_games() -> void:
-	heading('PICK YOUR NEXT OBSESSION','THE GAME BOX','One command. One tiny adventure. Every game is open.')
+	heading('PICK YOUR NEXT OBSESSION','THE GAME BOX','%d real games. Tiny challenges and full arcade cabinets.' % registry.games.size())
 	var filters := Design.row()
 	content.add_child(filters)
 	var search := LineEdit.new()
@@ -209,7 +230,7 @@ func build_games() -> void:
 	filters.add_child(search)
 	var categories := OptionButton.new()
 	categories.custom_minimum_size = Vector2(240,52)
-	var names: Array = ['ALL','FAVORITES','RECENT']
+	var names: Array = ['ALL','FAVORITES','RECENT','NEW','NOSTALGIA','BRAINROT']
 	for game in registry.games:
 		if not names.has(game.category): names.append(game.category)
 	for name in names: categories.add_item(name)
@@ -221,31 +242,58 @@ func build_games() -> void:
 	diff.custom_minimum_size = Vector2(190,52)
 	diff.item_selected.connect(func(index: int) -> void: standalone_difficulty = index+1)
 	filters.add_child(diff)
+	var sort := OptionButton.new()
+	for name in ['A-Z','NEW FIRST','YOUR BEST']: sort.add_item(name)
+	sort.select(['A-Z','NEW FIRST','YOUR BEST'].find(library_sort))
+	content.add_child(sort)
 	var grid := GridContainer.new()
 	grid.columns = 2 if size.x < 1100 else 3
 	grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	grid.add_theme_constant_override('h_separation',16)
 	grid.add_theme_constant_override('v_separation',16)
 	content.add_child(grid)
+	var pager := Design.row()
+	content.add_child(pager)
 	var refill := func() -> void:
 		for child in grid.get_children():
 			grid.remove_child(child)
 			child.queue_free()
 		var entries: Array = registry.games
 		if category=='RECENT': entries = Profile.data.recent.map(func(id: String) -> Dictionary: return registry.get_game(id))
+		var filtered: Array = []
 		for spec in entries:
 			if spec.is_empty(): continue
 			if category=='FAVORITES' and not Profile.data.favorites.has(spec.id): continue
-			if category not in ['ALL','FAVORITES','RECENT'] and spec.category!=category: continue
+			if category in ['NEW','NOSTALGIA','BRAINROT']:
+				if category=='NEW' and not spec.script.begins_with('res://games/') and spec.script!='res://microgames/pack_c.gd': continue
+				if category!='NEW' and spec.get('collection','')!=category: continue
+			elif category not in ['ALL','FAVORITES','RECENT'] and spec.category!=category: continue
 			if search_text!='' and not String(spec.name).to_lower().contains(search_text.to_lower()): continue
-			grid.add_child(game_card(spec))
+			filtered.append(spec)
+		if library_sort=='A-Z': filtered.sort_custom(func(a:Dictionary,b:Dictionary)->bool:return a.name<b.name)
+		elif library_sort=='NEW FIRST': filtered.reverse()
+		else: filtered.sort_custom(func(a:Dictionary,b:Dictionary)->bool:return int(Profile.data.records.get(a.id,{}).get('best',0))>int(Profile.data.records.get(b.id,{}).get('best',0)))
+		var pages: int = maxi(1,ceili(filtered.size()/12.0))
+		library_page=clampi(library_page,0,pages-1)
+		for spec in filtered.slice(library_page*12,(library_page+1)*12): grid.add_child(game_card(spec))
+		for child in pager.get_children(): pager.remove_child(child); child.queue_free()
+		var previous := Design.button('< PREVIOUS',func()->void:library_page=maxi(0,library_page-1);show_page('GAMES'))
+		previous.disabled=library_page==0
+		pager.add_child(previous)
+		pager.add_child(Design.label('PAGE %d / %d / %d GAMES' % [library_page+1,pages,filtered.size()],20))
+		var next := Design.button('NEXT >',func()->void:library_page+=1;show_page('GAMES'))
+		next.disabled=library_page>=pages-1
+		pager.add_child(next)
 		if grid.get_child_count()==0: grid.add_child(Design.label('Nothing here yet. Try another filter.',24))
 	search.text_changed.connect(func(value: String) -> void:
 		search_text = value
+		library_page=0
 		refill.call())
 	categories.item_selected.connect(func(index: int) -> void:
 		category = names[index]
+		library_page=0
 		refill.call())
+	sort.item_selected.connect(func(index:int)->void:library_sort=['A-Z','NEW FIRST','YOUR BEST'][index];library_page=0;refill.call())
 	refill.call()
 
 func build_heroes() -> void:
@@ -355,7 +403,10 @@ func build_settings() -> void:
 	content.add_child(Design.button('FULLSCREEN',func() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if DisplayServer.window_get_mode()!=DisplayServer.WINDOW_MODE_FULLSCREEN else DisplayServer.WINDOW_MODE_WINDOWED)))
 	content.add_child(Design.label('Mouse / touch: tap, hold, drag or swipe.\nKeyboard: arrows / WASD, Space. Controller: stick / D-pad, A.\nPause: Escape / Start. Aiming games: move the crosshair, then press.',22))
-	content.add_child(Design.label('SUPER-MICRO HEROES  /  REBUILD 2.0',18,Design.RED))
+	content.add_child(Design.label('IRON-MARIO / SUPER-MICRO HEROES / ARCADE 3.0',18,Design.RED))
+	var credits := Design.label('Room artwork: Modern Interiors by LimeZu — https://limezu.itch.io/\nOriginal hand-drawn game art and original music. Other supplied packs remain excluded until rights are verified.',18)
+	credits.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	content.add_child(credits)
 
 func apply_settings() -> void:
 	var music_bus: int = AudioServer.get_bus_index('Music')
@@ -367,7 +418,7 @@ func mode_preview(mode: String) -> void:
 		show_modal('FIVE HEARTS. HOW FAR?','The entire game box. Faster every five rounds.\nBuild a streak. Beat your best.',[['LET’S GO',func() -> void: start_run('tournament')],['BACK',close_modal]])
 	else:
 		var director := RunDirector.new()
-		var ids: Array = director.daily_ids(registry.ids(),Time.get_date_string_from_system(true))
+		var ids: Array = director.daily_ids(registry.tournament_ids(),Time.get_date_string_from_system(true))
 		var names: String = ''
 		for id in ids.slice(0,5): names += String(registry.get_game(id).get('name',id))+'  /  '
 		show_modal('TODAY’S TEN','Same date. Same games.\n'+RunDirector.daily_modifier(Time.get_date_string_from_system(true)).replace('_',' ').to_upper()+'  /  '+names+'...\nBEST  %d' % Profile.data.daily.get('best',0),[['PLAY TODAY',func() -> void: start_run('daily')],['BACK',close_modal]])
@@ -378,11 +429,11 @@ func start_run(mode: String, id: String = '') -> void:
 	manual_pause = false
 	current_page = 'PLAY'
 	run = RunDirector.new()
-	run.begin(mode,registry.ids(),Time.get_date_string_from_system(true))
+	run.begin(mode,registry.tournament_ids() if mode in ['tournament','daily'] else registry.ids(),Time.get_date_string_from_system(true))
 	run_xp = 0
 	run_coins = 0
 	if mode in ['single','quick']:
-		current_id = id if id!='' else String(registry.ids().pick_random())
+		current_id = id if id!='' else String(registry.tournament_ids().pick_random())
 		run.current_id = current_id
 	else: current_id = run.next_id()
 	Music.play('gauntlet',0.3)
@@ -400,6 +451,7 @@ func launch_game() -> void:
 	top = Design.row()
 	body.add_child(top)
 	title_label = Design.label(spec.objective,36)
+	title_label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	title_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(title_label)
 	status_label = Design.label('READY',22)
@@ -437,6 +489,8 @@ func launch_game() -> void:
 	router.mode = spec.input
 	input_hint = spec.get('hint',spec.input)
 	hint_label = Design.label('',23)
+	hint_label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	hint_label.tooltip_text=input_hint
 	hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	body.add_child(hint_label)
 	update_hint()
@@ -580,7 +634,9 @@ func toggle_pause() -> void:
 
 func refresh_pause() -> void:
 	var active: bool = not manual_pause and not orientation_pause and not transitioning
-	if is_instance_valid(current_game): current_game.active = active
+	if is_instance_valid(current_game):
+		current_game.active = active
+		if not active: current_game.cancel_input()
 	router.enabled = active and is_instance_valid(current_game) and not current_game.finished
 	if not active: router.reset()
 

@@ -32,7 +32,7 @@ jobs:
           target="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
           mkdir -p "$target"
           unzip -j -q /tmp/templates.tpz 'templates/windows_*_x86_64.exe' 'templates/web_nothreads_*.zip' 'templates/version.txt' -d "$target"
-      - name: Import and run all five validation suites
+      - name: Import and run all thirteen validation suites
         run: |
           godot --headless --path . --editor --import --quit
           python tools/run_checks.py godot

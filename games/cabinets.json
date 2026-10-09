@@ -1,0 +1,5 @@
+[
+  {"id":"arc_snake","name":"Arc Snake","category":"Arcade","objective":"EAT EIGHT CORES!","hint":"Arrow keys steer. Space boosts. Touch TURN LEFT / TURN RIGHT / BOOST.","input":"ARCADE","duration":90,"difficulty":2,"world":"Reactor Grid","script":"res://games/cabinets/arc_snake.gd","tournament_enabled":false,"tags":["nostalgia","snake","arcade"]},
+  {"id":"brick_reactor","name":"Brick Reactor","category":"Arcade","objective":"BREAK THE CORE!","hint":"Arrows move. Space launches. Drag the paddle or hold LEFT / RIGHT.","input":"ARCADE","duration":90,"difficulty":2,"world":"Reactor Yard","script":"res://games/cabinets/brick_reactor.gd","tournament_enabled":false,"tags":["nostalgia","breakout","arcade"]},
+  {"id":"tower_bounce","name":"Tower Bounce","category":"Arcade","objective":"CLIMB THE TOWER!","hint":"Arrow keys steer. Hold the LEFT / RIGHT touch buttons. Land to bounce.","input":"ARCADE","duration":90,"difficulty":2,"world":"Ink Tower","script":"res://games/cabinets/tower_bounce.gd","tournament_enabled":false,"tags":["nostalgia","platformer","arcade"]}
+]

@@ -5,6 +5,10 @@ var mode: String = ""
 var pad_colors: Array[Color] = [RED, BLUE, GREEN, GOLD]
 var arrows: Array[String] = ["UP", "RIGHT", "DOWN", "LEFT"]
 
+func cancel_input() -> void:
+	s.held=false
+	s.axis=Vector2.ZERO
+
 func setup() -> void:
 	mode = str(spec.get("id", "target_lock"))
 	s = {"n": 0, "goal": 3, "held": false, "axis": Vector2.ZERO, "t": 0.0, "idx": 0, "phase": 0, "x": 480.0, "y": 240.0, "target": Vector2(480,240), "value": 0.0, "gesture_swiped": false}
@@ -135,6 +139,7 @@ func tick(delta: float) -> void:
 	queue_redraw()
 
 func handle_action(action: String, point: Vector2, value: Vector2) -> void:
+	if action=='cancel': cancel_input(); return
 	if finished: return
 	var tap: bool = action == "press" or action == "action"
 	# Swipe choices commit on release, so a swipe start cannot select a wrong box.
