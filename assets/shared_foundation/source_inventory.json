@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-09",
+  "project": "Iron-Mario",
+  "policy": "Source packs are inputs; only permitted and transformed compositions may ship.",
+  "sources": [
+    {"id":"moderninteriors_full_windows","path":"C:/Users/LalithReddy.b/Downloads/moderninteriors-win","observed_files":52969,"license":"commercial_with_credit","credit":"Modern Interiors by LimeZu — https://limezu.itch.io/","public_status":"ready_for_selected_compositions"},
+    {"id":"moderninteriors_full_rpgmaker","path":"C:/Users/LalithReddy.b/Downloads/Modern_Interiors_RPG_Maker_Version","observed_files":500,"license":"commercial_with_credit","credit":"Modern Interiors by LimeZu — https://limezu.itch.io/","public_status":"ready_for_selected_compositions"},
+    {"id":"moderninteriors_free","path":"C:/Users/LalithReddy.b/Downloads/Modern_Interiors_Free_v2.2","observed_files":66,"license":"noncommercial_only","public_status":"restricted_exclude_public_build"},
+    {"id":"character_generator_linux","path":"C:/Users/LalithReddy.b/Downloads/Character Generator 2.0 Linux Build","observed_files":1631,"license":"art_output_rights_unverified","public_status":"restricted_tool_reference"},
+    {"id":"character_generator_installer","path":"C:/Users/LalithReddy.b/Downloads/Character Generator 2.0 Setup.exe","license":"installer_rights_unverified","public_status":"do_not_bundle_or_run_automatically"},
+    {"id":"fantasy_battlers_complete","path":"C:/Users/LalithReddy.b/Downloads/Fantasy Battlers - Complete","observed_files":251,"license":"not_supplied_locally","public_status":"restricted_until_verified"},
+    {"id":"fantasy_battlers_free","path":"C:/Users/LalithReddy.b/Downloads/Fantasy Battlers - Free","observed_files":47,"license":"not_supplied_locally","public_status":"restricted_until_verified"},
+    {"id":"fungus_cave","path":"C:/Users/LalithReddy.b/Downloads/Fungus Cave [16x16]","observed_files":79,"license":"not_supplied_locally","public_status":"restricted_until_verified"}
+  ],
+  "project_originals": [
+    {"id":"hero_roster","path":"res://assets/roster","license":"project_original_art","public_status":"ready"},
+    {"id":"authored_rooms","path":"res://assets/rooms","license":"transformed_full_modern_interiors_sources","credit":"Modern Interiors by LimeZu — https://limezu.itch.io/","public_status":"ready"}
+  ]
+}
