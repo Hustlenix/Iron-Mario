@@ -15,6 +15,7 @@ var equip_button: Button
 var demo_button: Button
 var play_button: Button
 var portraits: Array[Button]=[]
+var portrait_names: Array[Label]=[]
 var scroll: ScrollContainer
 var column: VBoxContainer
 var main: BoxContainer
@@ -31,7 +32,7 @@ var motion_button: Button
 func _ready() -> void:
 	restore_browser_preferences()
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var bg := ColorRect.new(); bg.color=HeroDesign.NIGHT; bg.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	var bg := ColorRect.new(); bg.color=HeroDesign.PAPER; bg.mouse_filter=Control.MOUSE_FILTER_IGNORE
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); add_child(bg)
 	sound=AudioStreamPlayer.new(); add_child(sound)
 	scroll=ScrollContainer.new(); scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -43,14 +44,14 @@ func _ready() -> void:
 	var header := HeroDesign.row(12); column.add_child(header)
 	var brand := HeroDesign.label('IRON-MARIO',18,HeroDesign.GOLD); header.add_child(brand)
 	motion_button=HeroDesign.button('MOTION',toggle_motion); motion_button.custom_minimum_size.x=80; header.add_child(motion_button)
-	motion_button.tooltip_text='Toggle reduced motion for hero entrances and power effects'
+	motion_button.tooltip_text='Toggle reduced motion for character animations'
 	var back := HeroDesign.button('ARCADE',func()->void:exit_requested.emit())
 	back.custom_minimum_size.x=86; header.add_child(back)
-	preview_title=HeroDesign.label('CHOOSE YOUR EXTRAORDINARY.',24); column.add_child(preview_title)
+	preview_title=HeroDesign.label('MEET YOUR NEIGHBOURS.',24); column.add_child(preview_title)
 	main=BoxContainer.new(); main.add_theme_constant_override('separation',28); column.add_child(main)
 	stage=HeroStage.new(); stage.name='HeroStage'; stage.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 	main.add_child(stage)
-	stage_power=HeroDesign.button('POWER PREVIEW',demonstrate)
+	stage_power=HeroDesign.button('CELEBRATE',demonstrate)
 	stage.add_child(stage_power); stage_power.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
 	stage_power.offset_left=-180; stage_power.offset_top=-85; stage_power.offset_right=-18; stage_power.offset_bottom=-37
 	details=HeroDesign.column(12); details.size_flags_horizontal=Control.SIZE_EXPAND_FILL; main.add_child(details)
@@ -61,14 +62,14 @@ func _ready() -> void:
 	var separator := HSeparator.new(); details.add_child(separator)
 	ability=HeroDesign.label('',16); details.add_child(ability)
 	ability_text=HeroDesign.label('',15,HeroDesign.MUTED); details.add_child(ability_text)
-	demo_button=HeroDesign.button('DEMONSTRATE POWER',demonstrate); details.add_child(demo_button)
+	demo_button=HeroDesign.button('CELEBRATE',demonstrate); details.add_child(demo_button)
 	status=HeroDesign.label('',13,HeroDesign.MUTED); details.add_child(status)
 	var actions := HeroDesign.row(8); details.add_child(actions)
-	equip_button=HeroDesign.button('EQUIP HERO',equip,HeroDesign.GOLD)
+	equip_button=HeroDesign.button('CHOOSE CHARACTER',equip,HeroDesign.GOLD)
 	equip_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL; actions.add_child(equip_button)
 	play_button=HeroDesign.button('PLAY  >',launch); play_button.custom_minimum_size.x=102; actions.add_child(play_button)
-	details.add_child(HeroDesign.label('Selection is cosmetic. Power demonstrations are previews; PLAY opens a matching arcade game.',12,HeroDesign.MUTED))
-	roster_title=HeroDesign.label('THE ORIGINAL FOUR   /   ALL UNLOCKED',12,HeroDesign.MUTED); column.add_child(roster_title)
+	details.add_child(HeroDesign.label('Pick your character and enjoy the arcade.',12,HeroDesign.MUTED))
+	roster_title=HeroDesign.label('THE TOWN SIX   /   ALL UNLOCKED',12,HeroDesign.MUTED); column.add_child(roster_title)
 	roster=GridContainer.new(); roster.columns=4; roster.add_theme_constant_override('h_separation',10)
 	roster.add_theme_constant_override('v_separation',10); column.add_child(roster)
 	for i in HeroRoster.HEROES.size():
@@ -76,15 +77,16 @@ func _ready() -> void:
 		var b := HeroDesign.button('',func()->void:select_hero(i))
 		b.name='Portrait'+str(i); b.custom_minimum_size=Vector2(150,88); b.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 		roster.add_child(b); portraits.append(b)
-		var atlas := AtlasTexture.new(); atlas.atlas=load(spec.art); atlas.region=Rect2(180,20,664,720)
+		var atlas := AtlasTexture.new(); atlas.atlas=load('res://assets/shared_foundation/town_cast/cast_idles.png'); atlas.region=Rect2(i*32,0,32,32)
 		var image := TextureRect.new(); image.texture=atlas; image.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
-		image.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED; image.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		image.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+		image.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED; image.mouse_filter=Control.MOUSE_FILTER_IGNORE
 		image.position=Vector2(4,4); image.size=Vector2(68,80); image.clip_contents=true; b.add_child(image)
 		var name_label := HeroDesign.label(spec.name,14); name_label.mouse_filter=Control.MOUSE_FILTER_IGNORE
-		name_label.position=Vector2(78,18); name_label.size=Vector2(105,22); b.add_child(name_label)
+		name_label.position=Vector2(78,18); name_label.size=Vector2(105,22); b.add_child(name_label); portrait_names.append(name_label)
 		var number := HeroDesign.label('0'+str(i+1),12,Color(spec.color)); number.mouse_filter=Control.MOUSE_FILTER_IGNORE
 		number.position=Vector2(78,45); number.size=Vector2(40,22); b.add_child(number)
-	footer=HeroDesign.label('LEFT / RIGHT: SWITCH    |    SPACE: POWER    |    ENTER: EQUIP    |    GAMEPAD: D-PAD / X / A',12,HeroDesign.MUTED)
+	footer=HeroDesign.label('LEFT / RIGHT: SWITCH    |    SPACE: CELEBRATE    |    ENTER: EQUIP    |    GAMEPAD: D-PAD / X / A',12,HeroDesign.MUTED)
 	column.add_child(footer)
 	stage.demo_finished.connect(update_selection)
 	for i in HeroRoster.HEROES.size():
@@ -93,6 +95,7 @@ func _ready() -> void:
 	Music.play_menu(Profile.data.hero)
 func restore_browser_preferences() -> void:
 	if not OS.has_feature('web') or Profile._future_version: return
+	if Profile.uses_browser_profile(): return
 	var raw: Variant=JavaScriptBridge.eval("(()=>{try{return JSON.stringify({hero:localStorage.getItem('iron-mario-roster-hero-v1'),motion:localStorage.getItem('iron-mario-roster-motion-v1')});}catch(e){return null;}})()",true)
 	if not raw is String: return
 	var parsed: Variant=JSON.parse_string(raw)
@@ -103,13 +106,14 @@ func restore_browser_preferences() -> void:
 		Profile.data.settings.reduced_motion=parsed.motion=='true'
 func persist_browser_preferences() -> bool:
 	if not OS.has_feature('web'): return true
+	if Profile.uses_browser_profile(): return Profile.last_error.is_empty()
 	var hero_value: String=JSON.stringify(String(Profile.data.hero))
 	var motion_value: String=JSON.stringify(str(Profile.data.settings.get('reduced_motion',false)))
 	return JavaScriptBridge.eval("(()=>{try{localStorage.setItem('iron-mario-roster-hero-v1',"+hero_value+");localStorage.setItem('iron-mario-roster-motion-v1',"+motion_value+");return true;}catch(e){return false;}})()",true)==true
 func reflow() -> void:
 	if not is_instance_valid(main): return
 	mobile=size.x<720
-	main.vertical=mobile; roster.columns=2 if size.x<850 else 4
+	main.vertical=mobile; roster.columns=2 if size.x<850 else 3
 	column.move_child(roster,2 if mobile else 4)
 	if not mobile:
 		column.move_child(main,2); column.move_child(roster_title,3); column.move_child(roster,4)
@@ -123,7 +127,7 @@ func reflow() -> void:
 	stage.size_flags_stretch_ratio=1.55
 	details.custom_minimum_size.x=0 if mobile else 290
 	details.size_flags_stretch_ratio=1.0
-	footer.text='TAP A HERO / DEMONSTRATE THEIR POWER' if mobile else 'LEFT / RIGHT: SWITCH    |    SPACE: POWER    |    ENTER: EQUIP    |    GAMEPAD: D-PAD / X / A'
+	footer.text='PICK A CHARACTER / SEE THEIR CELEBRATION' if mobile else 'LEFT / RIGHT: SWITCH    |    SPACE: CELEBRATE    |    ENTER: EQUIP    |    GAMEPAD: D-PAD / X / A'
 	last_width=size.x
 	if OS.has_feature('web'):
 		JavaScriptBridge.eval("document.getElementById('canvas').dataset.selectorWidth="+JSON.stringify(str(size.x))+";",true)
@@ -138,22 +142,23 @@ func update_selection() -> void:
 	ability.text=spec.ability; ability.add_theme_color_override('font_color',Color(spec.secondary))
 	ability_text.text=spec.ability_text
 	var equipped: bool=Profile.data.hero==spec.id
-	equip_button.text='EQUIPPED' if equipped else 'EQUIP HERO'; equip_button.disabled=equipped
-	demo_button.text='POWER ACTIVE…' if stage.demo_time>=0 else 'DEMONSTRATE POWER'
-	stage_power.text='POWER ACTIVE…' if stage.demo_time>=0 else 'POWER PREVIEW'
+	equip_button.text='EQUIPPED' if equipped else 'CHOOSE CHARACTER'; equip_button.disabled=equipped
+	demo_button.text='CELEBRATING…' if stage.demo_time>=0 else 'CELEBRATE'
+	stage_power.text='CELEBRATING…' if stage.demo_time>=0 else 'CELEBRATE'
 	motion_button.text='STILL' if Profile.data.settings.get('reduced_motion',false) else 'MOTION'
-	status.text=('YOUR ACTIVE HERO  /  ' if equipped else 'READY TO EQUIP  /  ')+'MASTERY '+str(1+int(Profile.data.mastery.get(spec.id,0))/100)
+	status.text=('YOUR CHARACTER  /  ' if equipped else 'READY TO EQUIP  /  ')+'MASTERY '+str(1+int(Profile.data.mastery.get(spec.id,0))/100)
 	for i in portraits.size():
 		var color := Color(HeroRoster.hero(i).color)
 		portraits[i].add_theme_stylebox_override('normal',HeroDesign.style(HeroDesign.PANEL.lightened(0.07) if selected==i else HeroDesign.NIGHT,color if selected==i else HeroDesign.LINE,8))
+		portrait_names[i].add_theme_color_override('font_color',HeroDesign.INK if selected==i else HeroDesign.PAPER)
 		portraits[i].tooltip_text=HeroRoster.hero(i).name+' — '+HeroRoster.hero(i).role
 	if OS.has_feature('web'):
-		var announcement: String='Selected '+spec.name+'. '+spec.role+'. '+('Equipped. ' if equipped else 'Press Enter to equip. ')+('Power demonstration active. ' if stage.demo_time>=0 else 'Press Space for the power demonstration. ')+ 'Use Left and Right to switch heroes.'
+		var announcement: String='Selected '+spec.name+'. '+spec.role+'. '+('Equipped. ' if equipped else 'Press Enter to equip. ')+('Celebration active. ' if stage.demo_time>=0 else 'Press Space to celebrate. ')+ 'Use Left and Right to switch characters.'
 		JavaScriptBridge.eval("var live=document.getElementById('hero-a11y'); if(live)live.textContent="+JSON.stringify(announcement)+";",true)
 		JavaScriptBridge.eval("document.getElementById('hero-a11y').dataset.saveError="+JSON.stringify(Profile.last_error)+";document.getElementById('hero-a11y').dataset.persistent="+JSON.stringify(str(OS.is_userfs_persistent()))+";",true)
 func equip() -> bool:
 	if not Profile.equip_hero(HeroRoster.hero(selected).id):
-		status.text='Could not save your hero. Please try again.'
+		status.text='Could not save your character. Please try again.'
 		return false
 	update_selection(); play_tone(false)
 	if not persist_browser_preferences(): status.text='Equipped for this visit. Browser storage is unavailable.'
@@ -189,7 +194,7 @@ func play_tone(power: bool) -> void:
 	var stream := AudioStreamWAV.new(); stream.format=AudioStreamWAV.FORMAT_16_BITS; stream.mix_rate=22050
 	var length: int=6600 if power else 2200
 	var data := PackedByteArray(); data.resize(length*2)
-	var base: float=[330.0,520.0,180.0,440.0][selected]
+	var base: float=[330.0,520.0,262.0,440.0,392.0,587.0][selected]
 	for i in length:
 		var t: float=i/22050.0; var p: float=i/float(length)
 		var frequency: float=base*(1.0+p*(1.5 if power else 0.2))

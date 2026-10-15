@@ -1,0 +1,77 @@
+{
+  "style": "warm paper arcade pixel art",
+  "assets": [
+    {
+      "id": "sky_foundry",
+      "file": "assets/shared_foundation/pixel_kits/sky_foundry.png",
+      "canvas": "320x180",
+      "pixel_scale": 1,
+      "format": "PNG RGB",
+      "source": "original pixel composition, drawn to match Iron-Mario paper boards",
+      "sha256": "2bb09c287fa00eb188df5859b58b8d6b8b6d7028ac950fc00b5358f325fb7e5b"
+    },
+    {
+      "id": "neon_workshop",
+      "file": "assets/shared_foundation/pixel_kits/neon_workshop.png",
+      "canvas": "320x180",
+      "pixel_scale": 1,
+      "format": "PNG RGB",
+      "source": "original pixel composition, drawn to match Iron-Mario paper boards",
+      "sha256": "9c2ac7e8424e4e22d8215c99f2f118d1836741145112a44e548fb082d6392a95"
+    },
+    {
+      "id": "reactor_core",
+      "file": "assets/shared_foundation/pixel_kits/reactor_core.png",
+      "canvas": "320x180",
+      "pixel_scale": 1,
+      "format": "PNG RGB",
+      "source": "original pixel composition, drawn to match Iron-Mario paper boards",
+      "sha256": "7f9f5a909d074eb4bbcd703bdd11b5956105bc7fb3ef181f6c245eaf43c9634a"
+    },
+    {
+      "id": "fungus_underworks",
+      "file": "assets/shared_foundation/pixel_kits/fungus_underworks.png",
+      "canvas": "320x180",
+      "pixel_scale": 1,
+      "format": "PNG RGB",
+      "source": "original pixel composition, drawn to match Iron-Mario paper boards",
+      "sha256": "b9eea291a887083a4cffbe1e06ce569cf718f7a6a1b4b3ce3ffe416680a8fb65"
+    },
+    {
+      "id": "battle_lab",
+      "file": "assets/shared_foundation/pixel_kits/battle_lab.png",
+      "canvas": "320x180",
+      "pixel_scale": 1,
+      "format": "PNG RGB",
+      "source": "original pixel composition, drawn to match Iron-Mario paper boards",
+      "sha256": "a9f9fe4f11a08ab86ca86ae22f08c9e21a3241e5a711c1567e2c4e594bb54f89"
+    },
+    {
+      "id": "chaos_carnival",
+      "file": "assets/shared_foundation/pixel_kits/chaos_carnival.png",
+      "canvas": "320x180",
+      "pixel_scale": 1,
+      "format": "PNG RGB",
+      "source": "original pixel composition, drawn to match Iron-Mario paper boards",
+      "sha256": "4aba0fc44e1c7d0d6ce153d93fd178dd906bb4aae5cd0b5197bca685dce17505"
+    },
+    {
+      "id": "pixel_effects",
+      "file": "assets/shared_foundation/pixel_effects.png",
+      "canvas": "64x16; four 16x16 frames",
+      "pixel_scale": 1,
+      "format": "PNG RGBA",
+      "source": "original palette-matched pixel sprites",
+      "sha256": "d870ae5cb1cf1c12986727a875bd633937eb831d780f82acc14a4f5564f26df0"
+    },
+    {
+      "id": "hero_idles",
+      "file": "assets/shared_foundation/pixel_kits/hero_idles.png",
+      "canvas": "128x32; four 32x32 heroes",
+      "pixel_scale": 1,
+      "format": "PNG RGBA",
+      "source": "original pixel sprites for Solstice, Vector, Umbra, Prism",
+      "sha256": "8d650bcd62ac952781906835c91243889d08349b428f226fa9db7092e7923d9a"
+    }
+  ]
+}

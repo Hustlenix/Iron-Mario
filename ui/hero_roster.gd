@@ -1,9 +1,105 @@
 class_name HeroRoster
 extends RefCounted
 const HEROES := [
-	{'id':'dart','name':'SOLSTICE','title':'THE SKY FORGE','role':'POWERED FLIGHT','color':'#f3a461','secondary':'#66dcca','art':'res://assets/roster/solstice.png','power':'forge','demo':'Flight / energy lance','story':'Built in a storm-battered sky foundry. Every turbine strike turns momentum into brilliant force.','ability':'AERIAL FORGE','ability_text':'A turbine ascent followed by a focused energy-lance strike.','trait':'PRECISION + FLIGHT','game':'jetpack_test_lab'},
-	{'id':'bolt','name':'VECTOR','title':'THE GRAVITY RUNNER','role':'KINETIC ACROBAT','color':'#e58cbc','secondary':'#67d5cc','art':'res://assets/roster/vector.png','power':'tether','demo':'Gravity ribbon / aerial dash','story':'She catches the city on gravity ribbons, then releases it one impossible leap at a time.','ability':'RIBBON SLING','ability_text':'Anchor a gravity ribbon and whip through a curved aerial dash.','trait':'AGILITY + MOMENTUM','game':'skyline_jumper'},
-	{'id':'echo','name':'UMBRA','title':'THE LAST NIGHTWATCH','role':'TACTICAL STEALTH','color':'#a2a9dc','secondary':'#81d9ad','art':'res://assets/roster/umbra.png','power':'stealth','demo':'Smoke veil / tactical strike','story':'A quiet guardian with a sharp mind. Smoke, misdirection and one decisive counter end the fight.','ability':'NIGHT VEIL','ability_text':'Dissolve into smoke, mark a target and reappear with a tactical strike.','trait':'CONTROL + COUNTER','game':'shadow_armor_duel'},
-	{'id':'frost','name':'PRISM','title':'THE DIMENSION WEAVER','role':'DIMENSIONAL POWER','color':'#b8a0ec','secondary':'#8bddc2','art':'res://assets/roster/prism.png','power':'rift','demo':'Prismatic gate / shard burst','story':'She folds the space between worlds into impossible geometry. Nothing is where you expect it to be.','ability':'PRISMATIC GATE','ability_text':'Open a faceted gate and release a constellation of crystalline shards.','trait':'SPACE + STRATEGY','game':'laser_reflect'}
+  {
+    "id": "dart",
+    "name": "MILO",
+    "title": "PIXEL TOWN",
+    "role": "CURIOUS MECHANIC",
+    "color": "#c68652",
+    "secondary": "#92cbb4",
+    "art": "res://assets/shared_foundation/town_cast/milo.png",
+    "power": "town",
+    "demo": "Meet the character",
+    "story": "Milo, the town’s curious mechanic. Always ready for another little adventure.",
+    "ability": "A LITTLE CELEBRATION",
+    "ability_text": "A cheerful hop and a burst of confetti.",
+    "trait": "SAME GAMES. YOUR OWN STYLE.",
+    "game": "skyline_jumper"
+  },
+  {
+    "id": "bolt",
+    "name": "JUN",
+    "title": "PIXEL TOWN",
+    "role": "ENERGETIC COURIER",
+    "color": "#6196ab",
+    "secondary": "#92cbb4",
+    "art": "res://assets/shared_foundation/town_cast/jun.png",
+    "power": "town",
+    "demo": "Meet the character",
+    "story": "Jun, the town’s energetic courier. Always ready for another little adventure.",
+    "ability": "A LITTLE CELEBRATION",
+    "ability_text": "A cheerful hop and a burst of confetti.",
+    "trait": "SAME GAMES. YOUR OWN STYLE.",
+    "game": "skyline_jumper"
+  },
+  {
+    "id": "echo",
+    "name": "BEA",
+    "title": "PIXEL TOWN",
+    "role": "CHEERFUL BUILDER",
+    "color": "#c6a353",
+    "secondary": "#92cbb4",
+    "art": "res://assets/shared_foundation/town_cast/bea.png",
+    "power": "town",
+    "demo": "Meet the character",
+    "story": "Bea, the town’s cheerful builder. Always ready for another little adventure.",
+    "ability": "A LITTLE CELEBRATION",
+    "ability_text": "A cheerful hop and a burst of confetti.",
+    "trait": "SAME GAMES. YOUR OWN STYLE.",
+    "game": "skyline_jumper"
+  },
+  {
+    "id": "frost",
+    "name": "NIA",
+    "title": "PIXEL TOWN",
+    "role": "INVENTIVE TINKERER",
+    "color": "#b381ac",
+    "secondary": "#92cbb4",
+    "art": "res://assets/shared_foundation/town_cast/nia.png",
+    "power": "town",
+    "demo": "Meet the character",
+    "story": "Nia, the town’s inventive tinkerer. Always ready for another little adventure.",
+    "ability": "A LITTLE CELEBRATION",
+    "ability_text": "A cheerful hop and a burst of confetti.",
+    "trait": "SAME GAMES. YOUR OWN STYLE.",
+    "game": "skyline_jumper"
+  },
+  {
+    "id": "tether",
+    "name": "ASH",
+    "title": "PIXEL TOWN",
+    "role": "RELAXED SKATER",
+    "color": "#849a9b",
+    "secondary": "#92cbb4",
+    "art": "res://assets/shared_foundation/town_cast/ash.png",
+    "power": "town",
+    "demo": "Meet the character",
+    "story": "Ash, the town’s relaxed skater. Always ready for another little adventure.",
+    "ability": "A LITTLE CELEBRATION",
+    "ability_text": "A cheerful hop and a burst of confetti.",
+    "trait": "SAME GAMES. YOUR OWN STYLE.",
+    "game": "skyline_jumper"
+  },
+  {
+    "id": "snap",
+    "name": "PIP",
+    "title": "PIXEL TOWN",
+    "role": "ARCADE REGULAR",
+    "color": "#d58977",
+    "secondary": "#92cbb4",
+    "art": "res://assets/shared_foundation/town_cast/pip.png",
+    "power": "town",
+    "demo": "Meet the character",
+    "story": "Pip, the town’s arcade regular. Always ready for another little adventure.",
+    "ability": "A LITTLE CELEBRATION",
+    "ability_text": "A cheerful hop and a burst of confetti.",
+    "trait": "SAME GAMES. YOUR OWN STYLE.",
+    "game": "skyline_jumper"
+  }
 ]
 static func hero(index: int) -> Dictionary: return HEROES[posmod(index,HEROES.size())]
+static func by_id(id: String) -> Dictionary:
+	for spec: Dictionary in HEROES:
+		if spec.id==id: return spec
+	return {}

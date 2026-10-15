@@ -2,8 +2,12 @@ extends Node
 ## Versioned local profile. Legacy save.dat is read only and never replaced.
 
 signal profile_changed
+const WebProfileStoreScript = preload("res://core/web_profile_store.gd")
 const VERSION: int = 2
 const HERO_IDS: Array[String] = ["dart", "bolt", "echo", "frost", "tether", "snap", "aegis", "pulse", "lance", "flappy"]
+const TOWN_IDS: Array[String] = ["dart", "bolt", "echo", "frost", "tether", "snap"]
+func town_character(value: Variant) -> String:
+	return value if value is String and value in TOWN_IDS else "dart"
 const COSMETICS: Dictionary = {"confetti": 100, "midnight": 180, "sunshine": 180}
 var profile_path: String = "user://profile_v2.json"
 var legacy_path: String = "user://save.dat"
@@ -12,6 +16,8 @@ var data: Dictionary = {}
 var last_error: String = ""
 var recovered_from_backup: bool = false
 var _future_version: bool = false
+## Inject only in isolated tests. Production uses this for the default web profile.
+var browser_store: Variant = null
 
 func _ready() -> void:
 	if '--test' in OS.get_cmdline_user_args():
@@ -56,6 +62,9 @@ func _is_profile(raw: Dictionary) -> bool:
 	return int(_number(raw.get("schema_version"))) >= VERSION
 
 func load_profile() -> void:
+	if uses_browser_profile():
+		_load_browser_profile()
+		return
 	last_error = ""
 	recovered_from_backup = false
 	_future_version = false
@@ -77,12 +86,50 @@ func load_profile() -> void:
 		save_profile()
 	profile_changed.emit()
 
+func uses_browser_profile() -> bool:
+	return browser_store != null or (OS.has_feature("web") and profile_path == "user://profile_v2.json" and not "--test" in OS.get_cmdline_user_args())
+
+func _load_browser_profile() -> void:
+	if browser_store == null:
+		browser_store = WebProfileStoreScript.new()
+	var result: Dictionary = browser_store.load_profile()
+	last_error = browser_store.last_error
+	recovered_from_backup = browser_store.recovered_from_backup
+	_future_version = browser_store.future_version
+	data = _defaults()
+	var raw: Dictionary = result.raw
+	if _is_profile(raw):
+		_sanitize(raw)
+	elif result.migration_allowed:
+		# Migrate the virtual-file profile only before this browser store exists.
+		raw = _read(profile_path)
+		if not _is_profile(raw):
+			raw = _read(profile_path + ".bak")
+		if _is_profile(raw):
+			_future_version = int(_number(raw.get("schema_version"))) > VERSION
+			_sanitize(raw)
+		else:
+			_migrate(_read(legacy_path))
+			_migrate_config()
+		if not _future_version:
+			var preferences: Dictionary = result.preferences
+			if preferences.get("hero") in HERO_IDS:
+				data.hero = town_character(preferences.hero)
+			if preferences.get("reduced_motion") is bool:
+				data.settings.reduced_motion = preferences.reduced_motion
+	_refresh_daily()
+	if _future_version:
+		last_error = "This profile was saved by a newer version; saving is disabled."
+	elif not result.blocked and (not _is_profile(result.raw) or recovered_from_backup):
+		save_profile()
+	profile_changed.emit()
+
 func _sanitize(raw: Dictionary) -> void:
 	if raw.get('legacy_profile') is Dictionary: data['legacy_profile'] = raw.legacy_profile.duplicate(true)
 	for key: String in ["xp", "coins", "tournament_best", "best_streak", "total_wins", "total_plays", "flappy_best"]:
 		data[key] = int(_number(raw.get(key)))
 	var saved_hero: Variant = raw.get("hero", "dart")
-	data.hero = saved_hero if saved_hero is String and saved_hero in HERO_IDS else "dart"
+	data.hero = town_character(saved_hero)
 	data.onboarded = raw.get("onboarded", false) if raw.get("onboarded") is bool else false
 	for key: String in ["favorites", "recent", "achievements", "owned", "heroes_used"]:
 		data[key] = _strings(raw.get(key), 20 if key == "recent" else 200)
@@ -117,7 +164,7 @@ func _migrate(legacy: Dictionary) -> void:
 	data.best_streak = int(_number(legacy.get("best_streak")))
 	data.flappy_best = int(_number(legacy.get("flappy_best")))
 	if legacy.get("selected_hero") is String and legacy.selected_hero in HERO_IDS:
-		data.hero = legacy.selected_hero
+		data.hero = town_character(legacy.selected_hero)
 	for key: String in ["volume", "music_volume"]:
 		data.settings[key] = clampf(_number(legacy.get(key), data.settings[key]), 0.0, 100.0)
 	for key: String in ["touch_controls_enabled", "low_quality"]:
@@ -137,7 +184,7 @@ func _migrate_config() -> void:
 	data.total_plays = data.total_wins
 	data['legacy_profile'] = {'name':str(config.get_value('profile','name','PILOT')).substr(0,16),'hero':str(config.get_value('profile','hero_id','ember')),'reactor_style':int(_number(config.get_value('profile','reactor_style',0))),'highest_loop':int(_number(config.get_value('progress','highest_loop',1))),'tournaments_won':int(_number(config.get_value('progress','total_wins',0)))}
 	var hero_map: Dictionary = {'ember':'dart','comet':'bolt','moon':'echo','tide':'frost','thread':'tether','copper':'snap','sun':'aegis','prism':'pulse','cipher':'lance'}
-	data.hero = hero_map.get(data.legacy_profile.hero,'dart')
+	data.hero = town_character(hero_map.get(data.legacy_profile.hero,'dart'))
 	data.settings.volume = clampf(_number(config.get_value('settings','volume',80)),0,100)
 	if config.get_value('settings','muted',false) == true:
 		data.settings.volume = 0
@@ -147,7 +194,16 @@ func _migrate_config() -> void:
 
 func save_profile() -> bool:
 	if _future_version:
+		last_error = "This profile was saved by a newer version; saving is disabled."
 		return false
+	if uses_browser_profile():
+		if browser_store == null:
+			browser_store = WebProfileStoreScript.new()
+		data.schema_version = VERSION
+		var saved: bool = browser_store.save_profile(data)
+		last_error = browser_store.last_error
+		_future_version = browser_store.future_version
+		return saved
 	var directory: String = ProjectSettings.globalize_path(profile_path).get_base_dir()
 	if DirAccess.make_dir_recursive_absolute(directory) != OK:
 		last_error = "Could not create profile directory."
@@ -228,7 +284,7 @@ func toggle_favorite(id: String) -> void:
 	profile_changed.emit()
 
 func equip_hero(id: String) -> bool:
-	if id not in HERO_IDS:
+	if id not in TOWN_IDS:
 		return false
 	var previous: String=data.hero
 	data.hero = id

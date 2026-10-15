@@ -102,7 +102,7 @@ func _run() -> void:
 	legacy_config.set_value('settings','muted',true)
 	legacy_config.save(folder+'/iron_mario_save.cfg')
 	config_profile.load_profile()
-	check(config_profile.data.hero=='pulse' and config_profile.data.legacy_profile.name=='OLD PILOT','Migrates deployed hero and preserves profile identity')
+	check(config_profile.data.hero=='dart' and config_profile.data.legacy_profile.name=='OLD PILOT' and config_profile.data.legacy_profile.hero=='prism','Retired deployed hero falls back to Milo while preserving original profile identity')
 	check(config_profile.data.best_streak==31 and config_profile.data.tournament_best==4400 and config_profile.data.total_wins==22,'Migrates deployed records')
 	check(config_profile.data.settings.volume==0 and config_profile.data.settings.music_volume==0,'Preserves deployed mute preference')
 	check(config_profile.data.records.flappy_bonus.best==45,'Preserves deployed Flappy record')
@@ -110,6 +110,7 @@ func _run() -> void:
 	config_profile.load_profile()
 	check(config_profile.data.legacy_profile.name=='OLD PILOT','Migrated identity survives reload')
 	config_profile.free()
+	_test_town_profile()
 	_test_director()
 	var services = PlatformScript.new()
 	check(not services.analytics_enabled and not services.billing_available() and not services.rewarded_ads_available(), "Platform services disabled by default")
@@ -120,6 +121,25 @@ func _run() -> void:
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(folder))
 	print("SERVICES: %s checks, %s failures" % [checks, failures])
 	quit(1 if failures else 0)
+
+func _test_town_profile() -> void:
+	var profile = SaveStoreScript.new()
+	profile.profile_path = folder + '/town_migration.json'
+	profile.legacy_path = folder + '/absent_town.dat'
+	for retired: String in ['aegis','pulse','lance','flappy','unknown']:
+		write_file(profile.profile_path,JSON.stringify({'schema_version':2,'hero':retired,'xp':600,'mastery':{'pulse':90,'dart':120},'heroes_used':['pulse','dart'],'records':{'flappy_bonus':{'best':45,'plays':3,'wins':2,'stars':1,'category':'Flying'}}}))
+		profile.load_profile()
+		check(profile.data.hero == 'dart',retired+' active selection falls back to Milo')
+		check(profile.data.mastery.pulse == 90 and profile.data.mastery.dart == 120 and profile.data.heroes_used == ['pulse','dart'] and profile.data.records.flappy_bonus.best == 45 and profile.data.xp == 600,retired+' migration retains mastery, history, records and XP')
+		check(not profile.equip_hero(retired) and profile.data.hero == 'dart',retired+' cannot become an invisible equipped character')
+		check(profile.save_profile(),'Fallback town profile saves')
+		profile.load_profile()
+		check(profile.data.hero == 'dart' and profile.data.mastery.pulse == 90,'Fallback character and retired mastery survive reload')
+	for id: String in ['dart','bolt','echo','frost','tether','snap']:
+		check(profile.equip_hero(id),'Town roster choice '+id+' equips')
+		profile.load_profile()
+		check(profile.data.hero == id,'Town roster choice '+id+' persists')
+	profile.free()
 
 func _test_director() -> void:
 	var ids: Array = ["a", "b", "c", "d"]

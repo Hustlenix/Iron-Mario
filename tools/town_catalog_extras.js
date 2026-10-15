@@ -1,0 +1,6 @@
+// Animate effect cards directly from the exported manifest, with the same still
+// frames used by Godot. Keep controls available to keyboard and touch users.
+const existingRender=render;let effectCards=[];
+render=function(){existingRender();effectCards=[];for(const card of document.querySelectorAll('#cards article')){const img=card.querySelector('img');const asset=data.assets.find(a=>a.id===img.alt);if(!asset||asset.kind!=='effects')continue;const canvas=document.createElement('canvas');canvas.width=32;canvas.height=32;canvas.style.cssText='display:block;width:100%;height:180px;object-fit:contain;image-rendering:pixelated;background:#252c42';canvas.setAttribute('aria-label',asset.use||asset.id);img.replaceWith(canvas);effectCards.push({asset,canvas,image:picture(asset.file)})}};
+document.querySelector('#search').oninput=render;document.querySelector('#kind').onchange=render;render();
+function effectPreview(t){for(const {asset,canvas,image} of effectCards){if(!image.complete||!image.naturalWidth)continue;const context=canvas.getContext('2d');context.imageSmoothingEnabled=false;context.clearRect(0,0,32,32);const f=document.querySelector('#still').checked?asset.reduced_motion.frame:Math.floor(t/1000*asset.fps)%asset.frame_count;context.drawImage(image,f*32,0,32,32,0,0,32,32)}requestAnimationFrame(effectPreview)}requestAnimationFrame(effectPreview);

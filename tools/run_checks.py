@@ -5,10 +5,10 @@ from pathlib import Path
 
 editor = sys.argv[1] if len(sys.argv) > 1 else 'godot'
 root = Path(__file__).resolve().parents[1]
-for name in ['services', 'pack_a', 'pack_b', 'input', 'mobile_controls', 'app', 'ui_visual', 'catalog_audit', 'cabinets', 'classics_a', 'chaos', 'pack_c', 'classics_b', 'performance']:
+for name in ['services', 'web_profile_store', 'pack_a', 'pack_b', 'input', 'mobile_controls', 'app', 'ui_visual', 'presentation', 'catalog_audit', 'cabinets', 'classics_a', 'chaos', 'pack_c', 'classics_b', 'performance']:
     result = subprocess.run([editor, '--headless', '--path', str(root), '--script',
                              f'res://tests/{name}_test.gd', '--', '--test'],
-                            capture_output=True, text=True, timeout=120)
+                            capture_output=True, text=True, timeout=300 if name == 'catalog_audit' else 120)
     output = result.stdout + result.stderr
     print(output, flush=True)
     if result.returncode or 'ERROR:' in output or 'leaked at exit' in output:

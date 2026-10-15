@@ -1,0 +1,104 @@
+[
+  {
+    "id": "milo",
+    "legacy_id": "dart",
+    "role": "Curious mechanic",
+    "source_layers": [
+      "Bodies/16x16/Body_02.png",
+      "Eyes/16x16/Eyes_05.png",
+      "Outfits/16x16/Outfit_16_02.png",
+      "Hairstyles/16x16/Hairstyle_29_02.png"
+    ],
+    "cell": [
+      16,
+      32
+    ],
+    "credit": "Modern Interiors by LimeZu \u2014 https://limezu.itch.io/",
+    "license": "Full Modern Interiors: commercial/noncommercial game use with credit; no standalone redistribution"
+  },
+  {
+    "id": "jun",
+    "legacy_id": "bolt",
+    "role": "Energetic courier",
+    "source_layers": [
+      "Bodies/16x16/Body_03.png",
+      "Eyes/16x16/Eyes_02.png",
+      "Outfits/16x16/Outfit_17_01.png",
+      "Hairstyles/16x16/Hairstyle_27_04.png"
+    ],
+    "cell": [
+      16,
+      32
+    ],
+    "credit": "Modern Interiors by LimeZu \u2014 https://limezu.itch.io/",
+    "license": "Full Modern Interiors: commercial/noncommercial game use with credit; no standalone redistribution"
+  },
+  {
+    "id": "bea",
+    "legacy_id": "echo",
+    "role": "Cheerful builder",
+    "source_layers": [
+      "Bodies/16x16/Body_05.png",
+      "Eyes/16x16/Eyes_03.png",
+      "Outfits/16x16/Outfit_16_01.png",
+      "Hairstyles/16x16/Hairstyle_24_02.png"
+    ],
+    "cell": [
+      16,
+      32
+    ],
+    "credit": "Modern Interiors by LimeZu \u2014 https://limezu.itch.io/",
+    "license": "Full Modern Interiors: commercial/noncommercial game use with credit; no standalone redistribution"
+  },
+  {
+    "id": "nia",
+    "legacy_id": "frost",
+    "role": "Inventive tinkerer",
+    "source_layers": [
+      "Bodies/16x16/Body_04.png",
+      "Eyes/16x16/Eyes_04.png",
+      "Outfits/16x16/Outfit_17_02.png",
+      "Hairstyles/16x16/Hairstyle_27_06.png"
+    ],
+    "cell": [
+      16,
+      32
+    ],
+    "credit": "Modern Interiors by LimeZu \u2014 https://limezu.itch.io/",
+    "license": "Full Modern Interiors: commercial/noncommercial game use with credit; no standalone redistribution"
+  },
+  {
+    "id": "ash",
+    "legacy_id": "tether",
+    "role": "Relaxed skater",
+    "source_layers": [
+      "Bodies/16x16/Body_06.png",
+      "Eyes/16x16/Eyes_01.png",
+      "Outfits/16x16/Outfit_25_02.png",
+      "Hairstyles/16x16/Hairstyle_21_04.png"
+    ],
+    "cell": [
+      16,
+      32
+    ],
+    "credit": "Modern Interiors by LimeZu \u2014 https://limezu.itch.io/",
+    "license": "Full Modern Interiors: commercial/noncommercial game use with credit; no standalone redistribution"
+  },
+  {
+    "id": "pip",
+    "legacy_id": "snap",
+    "role": "Arcade regular",
+    "source_layers": [
+      "Bodies/16x16/Body_01.png",
+      "Eyes/16x16/Eyes_06.png",
+      "Outfits/16x16/Outfit_16_03.png",
+      "Hairstyles/16x16/Hairstyle_11_01.png"
+    ],
+    "cell": [
+      16,
+      32
+    ],
+    "credit": "Modern Interiors by LimeZu \u2014 https://limezu.itch.io/",
+    "license": "Full Modern Interiors: commercial/noncommercial game use with credit; no standalone redistribution"
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "application": "C:\\Users\\LalithReddy.b\\Downloads\\aseprite\\build\\bin\\aseprite.exe",
+  "records": [
+    {
+      "id": "milo",
+      "source": "source_art/town_cast/milo.aseprite",
+      "sha256": "b0c964b6d068050f9ab3ff315dec70e0b3006633df95da7898a5285e7646cdfd",
+      "frames": 88,
+      "tags": 20,
+      "atlas": "milo_aseprite.png"
+    },
+    {
+      "id": "jun",
+      "source": "source_art/town_cast/jun.aseprite",
+      "sha256": "1e8e17d9a12596ff1bb8b13da664321dfe5a21751c89575ccf65b591841f1d13",
+      "frames": 88,
+      "tags": 20,
+      "atlas": "jun_aseprite.png"
+    },
+    {
+      "id": "bea",
+      "source": "source_art/town_cast/bea.aseprite",
+      "sha256": "11e259c0d8cc46f58267bc07afa5b519795427590715945585521c9b6653b8e8",
+      "frames": 88,
+      "tags": 20,
+      "atlas": "bea_aseprite.png"
+    },
+    {
+      "id": "nia",
+      "source": "source_art/town_cast/nia.aseprite",
+      "sha256": "d75dee7d115ed02eb4756aafb0a4f91594434bfc8c9e6fb7020e177756045436",
+      "frames": 88,
+      "tags": 20,
+      "atlas": "nia_aseprite.png"
+    },
+    {
+      "id": "ash",
+      "source": "source_art/town_cast/ash.aseprite",
+      "sha256": "52ed160bd65498bd6eab2cf1f32eb8e5e7afa987c17819b84240462f273d47dd",
+      "frames": 88,
+      "tags": 20,
+      "atlas": "ash_aseprite.png"
+    },
+    {
+      "id": "pip",
+      "source": "source_art/town_cast/pip.aseprite",
+      "sha256": "ccda1db26b1e6320a7488d8798d6157123bf87ccc86263b3e5416c116ed9dbc4",
+      "frames": 88,
+      "tags": 20,
+      "atlas": "pip_aseprite.png"
+    }
+  ]
+}

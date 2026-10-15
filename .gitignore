@@ -9,3 +9,7 @@ Thumbs.db
 *.tmp
 build/
 exports/
+__pycache__/
+*.pyc
+# Earlier generator audition has unverified output terms; keep it local.
+assets/shared_foundation/generated/

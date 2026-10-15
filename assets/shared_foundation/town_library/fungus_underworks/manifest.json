@@ -1,0 +1,22 @@
+{
+  "id": "fungus_underworks",
+  "name": "Fungus Underworks",
+  "tiles": 48,
+  "prop_assignments": 24,
+  "shared_workshop_prop_assignments": 12,
+  "thematic_prop_assignments": 12,
+  "hazard_assignments": 4,
+  "animated_object_assignments": [
+    "bubbling_cauldron",
+    "warm_chimney",
+    "server_lights",
+    "control_screens"
+  ],
+  "unique_animated_objects_in_library": 5,
+  "interior": "fungus_underworks/interior.png",
+  "exterior": "fungus_underworks/exterior.png",
+  "status": "native_art_and_modular_assets_exported_for_review",
+  "remaining": [
+    "Review and adaptation inside representative games; exported preview scenes do not change minigame mechanics."
+  ]
+}

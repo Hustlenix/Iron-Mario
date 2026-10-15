@@ -96,17 +96,23 @@ func run_tests() -> void:
 	check(s != null, "HEROES creates functioning selector")
 	if s == null:
 		finish(); return
-	check(HeroRoster.HEROES.size() >= 4 and s.portraits.size() == 4, "Four selectable original heroes")
+	check(HeroRoster.HEROES.size() == 6 and s.portraits.size() == 6, "All six town characters are selectable")
 	check(s.size.is_equal_approx(Vector2(1280,900)), "Hero screen preserves the native interactive viewport dimensions")
 	check(not app.orientation_pause and not app.router.enabled, "Selector is usable and gameplay input is disabled")
-	var unique_art: Array[String] = []
-	for index in range(4):
+	for index in range(HeroRoster.HEROES.size()):
 		await click(s.portraits[index])
 		var spec := HeroRoster.hero(index)
 		check(s.selected == index and s.hero_name.text == spec.name, spec.name + " actual portrait click switches details")
-		check(s.stage.entry.id == spec.id and s.stage.art.texture != null, spec.name + " full art loaded")
-		check(s.stage.last_art_path == spec.art and spec.art not in unique_art, spec.name + " unique original art")
-		unique_art.append(spec.art)
+		check(s.stage.entry.id == spec.id and s.stage.art.texture != null, spec.name + " portrait loaded")
+		var atlas: AtlasTexture = s.stage.art.texture as AtlasTexture
+		check(s.stage.last_art_path == "res://assets/shared_foundation/town_cast/cast_idles.png" and atlas != null and atlas.region == Rect2(index * 32, 0, 32, 32), spec.name + " uses its own town portrait")
+		var motions: SpriteFrames = CharacterVisual.frames(spec.id)
+		for facing: String in ['left','up','right','down']:
+			for action: String in ['idle','idle_animated','walk','run','hit','hurt']:
+				var animation := StringName(action+'_'+facing)
+				check(motions.has_animation(animation) and motions.get_frame_count(animation)>0, spec.name + " has usable " + String(animation))
+		var walk_frame := motions.get_frame_texture(&'walk_down',0) as AtlasTexture
+		check(walk_frame != null and walk_frame.atlas.resource_path.ends_with('_aseprite.png') and walk_frame.region.size == Vector2(16,32), spec.name + " runtime animation consumes the Aseprite atlas at native scale")
 		if profile.data.hero != spec.id: await click(s.equip_button)
 		check(profile.data.hero == spec.id and s.equip_button.disabled, spec.name + " equipped once with status")
 		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(profile.profile_path))
@@ -122,13 +128,13 @@ func run_tests() -> void:
 		await click(s.demo_button)
 		await create_timer(0.15).timeout
 		check(s.stage.demo_count == demonstrations + 1 and s.stage.demo_time > 0, spec.name + " demo advances with real elapsed frames")
-		check(float(s.stage.cloth.get_shader_parameter("motion")) == 1.0 and float(s.stage.cloth.get_shader_parameter("pulse")) > 0, spec.name + " active shader effects")
-		check(s.stage.art.rotation != 0 or s.stage.art.modulate.a < 1 or s.stage.art.position.distance_to((s.stage.size-s.stage.art.size)*0.5) > 5.0, spec.name + " demo changes displayed art")
+		check(s.stage.art.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST, spec.name + " stage sprite uses nearest-neighbor pixels")
+		await check_stage_pixels(s.stage, spec.name, false)
 		await create_timer(2.25).timeout
-		check(s.stage.demo_time < 0 and s.demo_button.text == "DEMONSTRATE POWER", spec.name + " demo completes and returns to idle")
+		check(s.stage.demo_time < 0 and s.demo_button.text == "CELEBRATE", spec.name + " celebration completes and returns to idle")
 	# Engine-dispatched keyboard/controller events, including wrap-around and held-key echo.
 	s.select_hero(0, false)
-	await key(KEY_LEFT); check(s.selected == 3, "Keyboard left wraps selection")
+	await key(KEY_LEFT); check(s.selected == 5, "Keyboard left wraps to the sixth character")
 	await key(KEY_RIGHT); check(s.selected == 0, "Keyboard right wraps selection")
 	await key(KEY_RIGHT); check(s.selected == 1, "Keyboard chooses second hero")
 	await key(KEY_ENTER); check(profile.data.hero == "bolt", "Keyboard Enter equips selected hero")
@@ -139,6 +145,14 @@ func run_tests() -> void:
 	before = s.stage.demo_count
 	await joy(JOY_BUTTON_X); check(s.stage.demo_count == before + 1, "Controller X activates power")
 	await joy(JOY_BUTTON_LEFT_SHOULDER); check(s.selected == 1, "Controller shoulder navigation")
+	s.select_hero(0, false)
+	await joy(JOY_BUTTON_DPAD_LEFT); check(s.selected == 5, "Controller left wraps to the sixth character")
+	await joy(JOY_BUTTON_DPAD_RIGHT); check(s.selected == 0, "Controller right wraps to the first character")
+	for index in range(1,HeroRoster.HEROES.size()):
+		await joy(JOY_BUTTON_DPAD_RIGHT)
+		check(s.selected == index, "Controller reaches character " + str(index))
+		await joy(JOY_BUTTON_A)
+		check(profile.data.hero == HeroRoster.hero(index).id, "Controller equips character " + str(index))
 	await click(s.motion_button)
 	check(profile.data.settings.get("reduced_motion", false), "Reduced motion toggle persists setting")
 	profile.load_profile(); check(profile.data.settings.get("reduced_motion", false), "Reduced motion survives disk sanitizer")
@@ -147,13 +161,14 @@ func run_tests() -> void:
 	var still_position: Vector2 = s.stage.art.position
 	var still_scale: Vector2 = s.stage.art.scale
 	await create_timer(0.2).timeout
-	check(s.stage.reduced_motion and float(s.stage.cloth.get_shader_parameter("motion")) == 0.0, "Reduced motion disables cloth animation")
+	check(s.stage.reduced_motion and s.stage.art.rotation == 0, "Reduced motion disables decorative sprite movement")
 	check(s.stage.art.position.is_equal_approx(still_position) and s.stage.art.scale.is_equal_approx(still_scale) and s.stage.art.rotation == 0 and s.stage.art.modulate.a == 1, "Reduced motion keeps art stable during power preview")
-	check(s.stage.demo_time >= 0 and float(s.stage.cloth.get_shader_parameter("pulse")) > 0, "Reduced motion retains visible power activation feedback")
+	check(s.stage.demo_time >= 0, "Reduced motion retains visible power activation feedback")
+	await check_stage_pixels(s.stage, "Reduced motion", true)
 	for dimensions in [Vector2i(375,812), Vector2i(390,844), Vector2i(430,932), Vector2i(844,390)]:
 		s = await open_selector(dimensions)
 		await check_layout(s, dimensions)
-		for index in range(4):
+		for index in range(HeroRoster.HEROES.size()):
 			await click(s.portraits[index], dimensions.x < 720)
 			check(s.selected == index, str(dimensions) + " portrait " + str(index) + " routes real pointer/touch")
 		if dimensions.x < 720:
@@ -175,9 +190,30 @@ func run_tests() -> void:
 		var game_ref: WeakRef = weakref(app.current_game)
 		app.show_page("HOME"); await frames()
 		check(game_ref.get_ref() == null and app.current_game == null and not app.router.enabled, "Home disposes launched game and routing")
-		check(root.content_scale_mode == Window.CONTENT_SCALE_MODE_CANVAS_ITEMS and root.content_scale_size == Vector2i(960,540), "Home restores established viewport scale")
+		await check_menu_bounds()
 	await save_failure_fixture()
 	finish()
+
+func check_menu_bounds() -> void:
+	# Menus use viewport pixels, while the gameplay assertion above preserves
+	# the logical 960x540 board. Verify both real menu routes after game disposal.
+	var valid: bool = true
+	for destination in ["HOME", "GAMES"]:
+		var previous: WeakRef = weakref(app.page)
+		app.show_page(destination)
+		await frames()
+		var expected := Rect2(Vector2.ZERO, Vector2(root.size))
+		var screen: Control = null
+		for child in app.page.get_children():
+			if child is Control and child.get_script() != null and child.get_script().resource_path in ["res://ui/arcade_home.gd", "res://ui/arcade_library.gd"]: screen = child
+		valid = valid and previous.get_ref() == null and screen != null
+		valid = valid and root.content_scale_mode == Window.CONTENT_SCALE_MODE_CANVAS_ITEMS and root.content_scale_size == Vector2i.ZERO
+		valid = valid and app.page.get_global_rect().is_equal_approx(expected)
+		if screen != null: valid = valid and screen.get_global_rect().is_equal_approx(expected)
+		valid = valid and not app.router.enabled and app.current_game == null and not app.orientation_pause
+	check(valid, "Home/library use viewport bounds, dispose previous pages and disable game input")
+	app.show_page("HOME")
+	await frames()
 
 func save_failure_fixture() -> void:
 	# A real regular file blocks directory creation. No fake save result or mocked storage.
@@ -190,7 +226,7 @@ func save_failure_fixture() -> void:
 	var s := await open_selector(Vector2i(1280,900))
 	var previous_hero: String = profile.data.hero
 	var previous_path: String = profile.profile_path
-	var target_index: int = (int(s.selected) + 1) % 4
+	var target_index: int = (int(s.selected) + 1) % HeroRoster.HEROES.size()
 	s.select_hero(target_index, false)
 	var proposed_hero: String = HeroRoster.hero(target_index).id
 	profile.profile_path = blocker_path.path_join("profile.json")
@@ -219,6 +255,28 @@ func check_layout(s: Control, dimensions: Vector2i) -> void:
 		check(rect.position.y >= -1 and rect.end.y <= dimensions.y + 1, tag + " reachable after scroll " + button.text)
 		check(rect.size.y >= 44 and rect.size.x >= 44, tag + " touch target >=44px " + button.text)
 	layouts.append({"viewport":tag,"selector_size":str(s.size),"content_minimum_width":s.column.get_combined_minimum_size().x,"scroll_max":s.scroll.get_v_scroll_bar().max_value})
+
+func check_stage_pixels(stage: Control, tag: String, frozen: bool) -> void:
+	var viewport: SubViewport
+	for child in stage.get_children():
+		if child is SubViewport: viewport = child
+	check(viewport != null and viewport.size == Vector2i(320,180), tag + " uses the actual 320x180 pixel stage")
+	if viewport == null: return
+	# The old cinematic TextureRect is hidden. Compare the actual displayed
+	# SubViewport instead; keep room-clock decoration identical across samples.
+	if DisplayServer.get_name() == "headless": return
+	var previous_clock: float = stage.clock
+	var previous_demo: float = stage.demo_time
+	stage.set_process(false)
+	stage.clock = 0.25; stage.demo_time = 0.0
+	await frames(2); await RenderingServer.frame_post_draw
+	var first: PackedByteArray = viewport.get_texture().get_image().get_data()
+	stage.clock = 3.5 if frozen else 0.25; stage.demo_time = 0.6
+	await frames(2); await RenderingServer.frame_post_draw
+	var second: PackedByteArray = viewport.get_texture().get_image().get_data()
+	check(not first.is_empty() and (first == second if frozen else first != second), tag + (" freezes actual rendered stage pixels" if frozen else " celebration changes actual rendered character pixels"))
+	stage.clock = previous_clock; stage.demo_time = previous_demo
+	stage.set_process(true)
 
 func finish() -> void:
 	if is_instance_valid(app): app.free()

@@ -1,0 +1,10 @@
+# ball_sort — implemented, awaiting rendered review
+
+- Inspected `docs/agent_team/README.md`, own queue row, `ui/game_presentation.gd`, `docs/UI_ACCEPTANCE_STANDARD.md`, and `microgames/pack_c.gd` setup (23–26), input mapping (217, 243–250), `tube_action` (377–403), and paint (704–717).
+- Viewed `build/visual-before/catalog-qa/ball_sort_board.png`. Baseline has four pale rectangular tubes, red/blue marbles with dark outlines, a generic city contour, instruction line above, and Moves/UNDO/RESET below.
+- Existing active tubes/hit bounds are `(185 + i*150, 100, 110, 280)` for i=0..3; total envelope x185–745/y100–380. Marble centers are `(240 + i*150, 340 - j*74)` with radius30. Instructions start at (190,70); footer controls occupy x570–940/y416–471, with moves at (32,451) and optional message at (32,397).
+- Bespoke setting: an archival marble classification bench. A continuous pale felt pad supports all four real containers. A shallow rear drawer bank and lower bench edge give depth. Outside the active envelope, a parked metal caliper and soft brush suggest inspection; a closed archival register and paper sleeves suggest preservation and classification. No extra decorative marbles or tube silhouettes are added.
+- Presentation is static, deterministic and typed. Reduced motion gets the identical scene; no elapsed effects, RNG, transforms, imports, state/context mutation or gameplay changes.
+- Owned implementation: `ui/game_presentations/ball_sort.gd` (84 lines). Only that file and this report were written. No engine, Git or test process was run.
+- Integration caveat: the inspected ball-sort paint branch has no opaque full-board fill; actual bridge draw order and render visibility remain for parent verification. Existing source selection, error messages, moves and controls supply interaction feedback. Foreground targets/accessibility were not redesigned by this background-only task.
+- Awaiting parent consolidated import, desktop/mobile captures, resting/action-state review, and gameplay/lifecycle acceptance. This report does not claim visual acceptance.

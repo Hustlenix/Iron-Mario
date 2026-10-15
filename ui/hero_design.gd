@@ -1,18 +1,18 @@
 class_name HeroDesign
 extends RefCounted
-const NIGHT := Color('#101c28')
-const PANEL := Color('#1b2c3a')
-const INK := Color('#263d4c')
-const PAPER := Color('#faf3df')
-const MUTED := Color('#a0b6bd')
-const GOLD := Color('#f2c15d')
-const LINE := Color('#36505d')
+const NIGHT := Color('#25243a')
+const PANEL := Color('#f4e7bf')
+const INK := Color('#302b44')
+const PAPER := Color('#fff2d4')
+const MUTED := Color('#71636a')
+const GOLD := Color('#b66c24')
+const LINE := Color('#665772')
 static func style(color: Color, border: Color=LINE, padding: int=16) -> StyleBoxFlat:
 	var s := StyleBoxFlat.new()
-	s.bg_color=color; s.border_color=border; s.set_border_width_all(1); s.set_corner_radius_all(10)
+	s.bg_color=color; s.border_color=border; s.set_border_width_all(2); s.set_corner_radius_all(0)
 	s.content_margin_left=padding; s.content_margin_right=padding; s.content_margin_top=padding; s.content_margin_bottom=padding
 	return s
-static func label(text: String, font_size: int=16, color: Color=PAPER) -> Label:
+static func label(text: String, font_size: int=16, color: Color=INK) -> Label:
 	var node := Label.new()
 	node.text=text; node.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	node.add_theme_font_size_override('font_size',font_size); node.add_theme_color_override('font_color',color)
@@ -22,13 +22,22 @@ static func button(text: String, callback: Callable, color: Color=PANEL) -> Butt
 	var b := Button.new()
 	b.text=text; b.custom_minimum_size.y=48; b.mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND
 	b.add_theme_font_size_override('font_size',15)
-	var text_color: Color=NIGHT if color==GOLD else PAPER
+	var text_color: Color=NIGHT if color==GOLD else INK
 	for key in ['font_color','font_hover_color','font_pressed_color','font_focus_color']: b.add_theme_color_override(key,text_color)
 	b.add_theme_color_override('font_disabled_color',MUTED)
 	b.add_theme_stylebox_override('normal',style(color,LINE,10))
 	b.add_theme_stylebox_override('hover',style(color.lightened(0.12),GOLD,10))
 	b.add_theme_stylebox_override('pressed',style(color.darkened(0.12),GOLD,10))
 	b.add_theme_stylebox_override('disabled',style(PANEL,LINE,10))
+	# Pixel-authored borders stretch only through their quiet middle sections.
+	for state in ['normal','hover','pressed','disabled']:
+		var pixels := StyleBoxTexture.new()
+		pixels.texture=load('res://assets/shared_foundation/town_fx_ui/ui/button_'+state+'.png')
+		for side in [SIDE_LEFT,SIDE_TOP,SIDE_RIGHT,SIDE_BOTTOM]:
+			pixels.set_texture_margin(side,5)
+			pixels.set_content_margin(side,10)
+		b.add_theme_stylebox_override(state,pixels)
+	b.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
 	var focus := style(Color(0,0,0,0),GOLD,0); focus.set_border_width_all(2)
 	b.add_theme_stylebox_override('focus',focus)
 	b.button_down.connect(func()->void:

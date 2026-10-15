@@ -1,23 +1,13 @@
-# Iron-Mario shared asset foundation
+# Iron-Mario shared pixel-art foundation
 
-This directory is the first asset-only layer for the 105-game arcade. It contains original vector zone compositions, the shared palette, UI/effect rules, and source/licensing records. Existing game mechanics and catalog entries are unchanged.
+This asset-only layer is designed around the arcade's warm paper boards, inked outlines, bold rails, and tiny expressive pixel characters. Scene previews use a native 320×180 canvas so the game can scale them with nearest-neighbor filtering. The 105-game catalog and game mechanics remain unchanged.
 
-## Kits
+## Shared kits
 
-| Kit | File | Use |
-|---|---|---|
-| Sky Foundry | `zone_kits/sky_foundry.svg` | launch decks, turbines, cables, warning lights |
-| Neon Workshop | `zone_kits/neon_workshop.svg` | benches, screens, tools, storage |
-| Reactor Core | `zone_kits/reactor_core.svg` | containment, conduits, power chambers |
-| Fungus Underworks | `zone_kits/fungus_underworks.svg` | caves, crystals, spores, organic hazards |
-| Battle Lab | `zone_kits/battle_lab.svg` | arenas, targets, barriers, boss entrances |
-| Chaos Carnival | `zone_kits/chaos_carnival.svg` | signs, comic machinery, surprise props |
+`pixel_kits/` contains six original scene compositions: Sky Foundry, Neon Workshop, Reactor Core, Fungus Underworks, Battle Lab, and Chaos Carnival. `pixel_effects.png` is a transparent four-frame 16×16 effects sheet. `pixel_catalog.json` records dimensions, style provenance, and file hashes.
 
-SVG is intentional here: it stays sharp at 960x480 gameplay scale and at mobile preview sizes, while allowing later rasterization into atlases without losing the style system.
+## Art and source rules
 
-## Source policy
+The kit drawings are original pixel art made to fit the existing game's palette and board composition. Full Modern Interiors by LimeZu may contribute selected licensed pixel pieces, with credit. The free pack is noncommercial. Fantasy Battlers, Fungus Cave, and Character Generator output rights are unverified locally, so those packs remain cataloged but excluded from public assets until their licenses are established. The setup executable is never included in the game.
 
-`source_inventory.json` records the seven supplied folders, observed counts, and current release status. The full Modern Interiors packs are the only supplied third-party sources currently marked public-ready. They require LimeZu credit. Free or unverified sources remain restricted until their licenses are confirmed.
-
-The Character Generator executable and extracted Linux build are recorded as tooling references. No installer or unknown asset license is bundled into the public game.
-
+For screenshots and source licensing notes, see `../SHARED_ASSET_FOUNDATION.md` and `source_inventory.json`.

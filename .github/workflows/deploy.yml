@@ -32,12 +32,13 @@ jobs:
           target="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
           mkdir -p "$target"
           unzip -j -q /tmp/templates.tpz 'templates/windows_*_x86_64.exe' 'templates/web_nothreads_*.zip' 'templates/version.txt' -d "$target"
-      - name: Import and run all fourteen validation suites
+      - name: Import and run arcade validation suites
         run: |
           godot --headless --path . --editor --import --quit
           python tools/run_checks.py godot
       - name: Export Web and Windows
         run: |
+          python -m pip install Pillow
           mkdir -p build/web build/windows
           godot --headless --path . --export-release Web build/web/index.html
           python tools/finish_web.py

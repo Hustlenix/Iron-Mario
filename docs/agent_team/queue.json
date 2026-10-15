@@ -1,0 +1,2395 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-09T15:13:55.613581+00:00",
+  "updated_at": "2026-10-09T16:00:00.868480+00:00",
+  "concurrency_limit_including_root": 4,
+  "allocation_is_not_execution": true,
+  "milestone_gate": "Original four-hero milestone verified publicly at 4802b5d; existing 105-game UI/UX batch active. No new minigames.",
+  "catalog_sources": [
+    "microgames/pack_a.json",
+    "microgames/pack_b.json",
+    "microgames/pack_c.json",
+    "games/classics_a.json",
+    "games/classics_b.json",
+    "games/cabinets.json",
+    "games/chaos.json"
+  ],
+  "source_script_count": 23,
+  "presentation_contract": {
+    "extends": "RefCounted",
+    "method": "draw_background(canvas: Node2D, context: Dictionary) -> void",
+    "context": [
+      "id",
+      "category",
+      "elapsed",
+      "reduced_motion",
+      "board_rect Rect2(0,0,960,480)",
+      "cosmetic"
+    ],
+    "scope": "Background only; no gameplay, hit-area, input, save, scoring or timing changes"
+  },
+  "roles": [
+    {
+      "role_id": "worker-001",
+      "kind": "worker",
+      "game_id": "arc_dash",
+      "title": "Arc Dash visual presentation",
+      "category": "Movement",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/arc_dash_board.png",
+      "owned_paths": [
+        "ui/game_presentations/arc_dash.gd",
+        "docs/agent_team/worker_reports/arc_dash.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_arc_dash",
+      "dispatched_at": "2026-10-09T15:23:24.183773+00:00",
+      "evidence": [
+        "ui/game_presentations/arc_dash.gd",
+        "docs/agent_team/worker_reports/arc_dash.md"
+      ]
+    },
+    {
+      "role_id": "worker-002",
+      "kind": "worker",
+      "game_id": "arc_snake",
+      "title": "Arc Snake visual presentation",
+      "category": "Arcade",
+      "source_script": "res://games/cabinets/arc_snake.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/arc_snake_board.png",
+      "owned_paths": [
+        "ui/game_presentations/arc_snake.gd",
+        "docs/agent_team/worker_reports/arc_snake.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_arc_snake",
+      "dispatched_at": "2026-10-09T15:26:23.410560+00:00",
+      "evidence": [
+        "ui/game_presentations/arc_snake.gd",
+        "docs/agent_team/worker_reports/arc_snake.md"
+      ]
+    },
+    {
+      "role_id": "worker-003",
+      "kind": "worker",
+      "game_id": "armor_repair",
+      "title": "Armor Repair visual presentation",
+      "category": "Precision",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/armor_repair_board.png",
+      "owned_paths": [
+        "ui/game_presentations/armor_repair.gd",
+        "docs/agent_team/worker_reports/armor_repair.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_armor_repair",
+      "dispatched_at": "2026-10-09T15:29:34.158403+00:00",
+      "evidence": [
+        "ui/game_presentations/armor_repair.gd",
+        "docs/agent_team/worker_reports/armor_repair.md"
+      ]
+    },
+    {
+      "role_id": "worker-004",
+      "kind": "worker",
+      "game_id": "ball_sort",
+      "title": "Marble Bureau visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/ball_sort_board.png",
+      "owned_paths": [
+        "ui/game_presentations/ball_sort.gd",
+        "docs/agent_team/worker_reports/ball_sort.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_ball_sort",
+      "dispatched_at": "2026-10-09T15:32:27.567066+00:00",
+      "evidence": [
+        "ui/game_presentations/ball_sort.gd",
+        "docs/agent_team/worker_reports/ball_sort.md"
+      ]
+    },
+    {
+      "role_id": "worker-005",
+      "kind": "worker",
+      "game_id": "balloon_lift",
+      "title": "Balloon Lift visual presentation",
+      "category": "Flying",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/balloon_lift_board.png",
+      "owned_paths": [
+        "ui/game_presentations/balloon_lift.gd",
+        "docs/agent_team/worker_reports/balloon_lift.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_balloon_lift",
+      "dispatched_at": "2026-10-09T15:35:36.060196+00:00",
+      "evidence": [
+        "ui/game_presentations/balloon_lift.gd",
+        "docs/agent_team/worker_reports/balloon_lift.md"
+      ]
+    },
+    {
+      "role_id": "worker-006",
+      "kind": "worker",
+      "game_id": "balloon_pump",
+      "title": "Big Head Energy visual presentation",
+      "category": "speed",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/balloon_pump_board.png",
+      "owned_paths": [
+        "ui/game_presentations/balloon_pump.gd",
+        "docs/agent_team/worker_reports/balloon_pump.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_balloon_pump",
+      "dispatched_at": "2026-10-09T15:38:20.275885+00:00",
+      "evidence": [
+        "ui/game_presentations/balloon_pump.gd",
+        "docs/agent_team/worker_reports/balloon_pump.md"
+      ]
+    },
+    {
+      "role_id": "worker-007",
+      "kind": "worker",
+      "game_id": "boulder_push",
+      "title": "Boulder Push visual presentation",
+      "category": "Movement",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/boulder_push_board.png",
+      "owned_paths": [
+        "ui/game_presentations/boulder_push.gd",
+        "docs/agent_team/worker_reports/boulder_push.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_boulder_push",
+      "dispatched_at": "2026-10-09T15:40:53.686950+00:00",
+      "evidence": [
+        "ui/game_presentations/boulder_push.gd",
+        "docs/agent_team/worker_reports/boulder_push.md"
+      ]
+    },
+    {
+      "role_id": "worker-008",
+      "kind": "worker",
+      "game_id": "brainrot_button_panic",
+      "title": "Brainrot Button Panic visual presentation",
+      "category": "Reaction",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/brainrot_button_panic_board.png",
+      "owned_paths": [
+        "ui/game_presentations/brainrot_button_panic.gd",
+        "docs/agent_team/worker_reports/brainrot_button_panic.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_brainrot_button_panic",
+      "dispatched_at": "2026-10-09T15:44:06.139001+00:00",
+      "evidence": [
+        "ui/game_presentations/brainrot_button_panic.gd",
+        "docs/agent_team/worker_reports/brainrot_button_panic.md"
+      ]
+    },
+    {
+      "role_id": "worker-009",
+      "kind": "worker",
+      "game_id": "brick_reactor",
+      "title": "Brick Reactor visual presentation",
+      "category": "Arcade",
+      "source_script": "res://games/cabinets/brick_reactor.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/brick_reactor_board.png",
+      "owned_paths": [
+        "ui/game_presentations/brick_reactor.gd",
+        "docs/agent_team/worker_reports/brick_reactor.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_brick_reactor",
+      "dispatched_at": "2026-10-09T15:47:00.504014+00:00",
+      "evidence": [
+        "ui/game_presentations/brick_reactor.gd",
+        "docs/agent_team/worker_reports/brick_reactor.md"
+      ]
+    },
+    {
+      "role_id": "worker-010",
+      "kind": "worker",
+      "game_id": "bridge_builder",
+      "title": "Bridge Builder visual presentation",
+      "category": "Precision",
+      "source_script": "res://games/classics_b/bridge_builder.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/bridge_builder_board.png",
+      "owned_paths": [
+        "ui/game_presentations/bridge_builder.gd",
+        "docs/agent_team/worker_reports/bridge_builder.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_bridge_builder",
+      "dispatched_at": "2026-10-09T15:49:36.790495+00:00",
+      "evidence": [
+        "ui/game_presentations/bridge_builder.gd",
+        "docs/agent_team/worker_reports/bridge_builder.md"
+      ]
+    },
+    {
+      "role_id": "worker-011",
+      "kind": "worker",
+      "game_id": "catapult_chaos",
+      "title": "Catapult Chaos visual presentation",
+      "category": "Physics",
+      "source_script": "res://games/classics_a/catapult_chaos.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/catapult_chaos_board.png",
+      "owned_paths": [
+        "ui/game_presentations/catapult_chaos.gd",
+        "docs/agent_team/worker_reports/catapult_chaos.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_catapult_chaos",
+      "dispatched_at": "2026-10-09T15:52:11.572865+00:00",
+      "evidence": [
+        "ui/game_presentations/catapult_chaos.gd",
+        "docs/agent_team/worker_reports/catapult_chaos.md"
+      ]
+    },
+    {
+      "role_id": "worker-012",
+      "kind": "worker",
+      "game_id": "chaos_crossing",
+      "title": "Chaos Crossing visual presentation",
+      "category": "Skill",
+      "source_script": "res://games/classics_a/chaos_crossing.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/chaos_crossing_board.png",
+      "owned_paths": [
+        "ui/game_presentations/chaos_crossing.gd",
+        "docs/agent_team/worker_reports/chaos_crossing.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_chaos_crossing",
+      "dispatched_at": "2026-10-09T15:54:37.679542+00:00",
+      "evidence": [
+        "ui/game_presentations/chaos_crossing.gd",
+        "docs/agent_team/worker_reports/chaos_crossing.md"
+      ]
+    },
+    {
+      "role_id": "worker-013",
+      "kind": "worker",
+      "game_id": "chaos_elevator",
+      "title": "Chaos Elevator visual presentation",
+      "category": "Strategy",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/chaos_elevator_board.png",
+      "owned_paths": [
+        "ui/game_presentations/chaos_elevator.gd",
+        "docs/agent_team/worker_reports/chaos_elevator.md"
+      ],
+      "status": "implemented_awaiting_review",
+      "agent_id": "/root/lead_coo/game_chaos_elevator",
+      "dispatched_at": "2026-10-09T15:57:13.993504+00:00",
+      "evidence": [
+        "ui/game_presentations/chaos_elevator.gd",
+        "docs/agent_team/worker_reports/chaos_elevator.md"
+      ]
+    },
+    {
+      "role_id": "worker-014",
+      "kind": "worker",
+      "game_id": "chess_fork",
+      "title": "Double Trouble visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/chess_fork_board.png",
+      "owned_paths": [
+        "ui/game_presentations/chess_fork.gd",
+        "docs/agent_team/worker_reports/chess_fork.md"
+      ],
+      "status": "running",
+      "agent_id": "/root/lead_coo/game_chess_fork",
+      "dispatched_at": "2026-10-09T16:00:00.868480+00:00",
+      "evidence": []
+    },
+    {
+      "role_id": "worker-015",
+      "kind": "worker",
+      "game_id": "circuit_logic",
+      "title": "Gate Keeper visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/circuit_logic_board.png",
+      "owned_paths": [
+        "ui/game_presentations/circuit_logic.gd",
+        "docs/agent_team/worker_reports/circuit_logic.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-016",
+      "kind": "worker",
+      "game_id": "cloud_ferry",
+      "title": "Cloud Ferry visual presentation",
+      "category": "Movement",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/cloud_ferry_board.png",
+      "owned_paths": [
+        "ui/game_presentations/cloud_ferry.gd",
+        "docs/agent_team/worker_reports/cloud_ferry.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-017",
+      "kind": "worker",
+      "game_id": "code_breaker",
+      "title": "Color Vault visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/code_breaker_board.png",
+      "owned_paths": [
+        "ui/game_presentations/code_breaker.gd",
+        "docs/agent_team/worker_reports/code_breaker.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-018",
+      "kind": "worker",
+      "game_id": "coin_catch",
+      "title": "Pocket Change visual presentation",
+      "category": "precision",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/coin_catch_board.png",
+      "owned_paths": [
+        "ui/game_presentations/coin_catch.gd",
+        "docs/agent_team/worker_reports/coin_catch.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-019",
+      "kind": "worker",
+      "game_id": "color_switch",
+      "title": "Ink Trick visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/color_switch_board.png",
+      "owned_paths": [
+        "ui/game_presentations/color_switch.gd",
+        "docs/agent_team/worker_reports/color_switch.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-020",
+      "kind": "worker",
+      "game_id": "comet_curl",
+      "title": "Comet Curl visual presentation",
+      "category": "Physics",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/comet_curl_board.png",
+      "owned_paths": [
+        "ui/game_presentations/comet_curl.gd",
+        "docs/agent_team/worker_reports/comet_curl.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-021",
+      "kind": "worker",
+      "game_id": "connect_four",
+      "title": "Drop Duel visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/connect_four_board.png",
+      "owned_paths": [
+        "ui/game_presentations/connect_four.gd",
+        "docs/agent_team/worker_reports/connect_four.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-022",
+      "kind": "worker",
+      "game_id": "conveyor_sort",
+      "title": "Conveyor Sort visual presentation",
+      "category": "Sorting",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/conveyor_sort_board.png",
+      "owned_paths": [
+        "ui/game_presentations/conveyor_sort.gd",
+        "docs/agent_team/worker_reports/conveyor_sort.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-023",
+      "kind": "worker",
+      "game_id": "domino",
+      "title": "Number Train visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/domino_board.png",
+      "owned_paths": [
+        "ui/game_presentations/domino.gd",
+        "docs/agent_team/worker_reports/domino.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-024",
+      "kind": "worker",
+      "game_id": "dont_press_red",
+      "title": "Don't Press Red visual presentation",
+      "category": "Reaction",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/dont_press_red_board.png",
+      "owned_paths": [
+        "ui/game_presentations/dont_press_red.gd",
+        "docs/agent_team/worker_reports/dont_press_red.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-025",
+      "kind": "worker",
+      "game_id": "door_peek",
+      "title": "Secret Handshake visual presentation",
+      "category": "reaction",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/door_peek_board.png",
+      "owned_paths": [
+        "ui/game_presentations/door_peek.gd",
+        "docs/agent_team/worker_reports/door_peek.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-026",
+      "kind": "worker",
+      "game_id": "echo_taps",
+      "title": "Echo Chamber visual presentation",
+      "category": "memory",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/echo_taps_board.png",
+      "owned_paths": [
+        "ui/game_presentations/echo_taps.gd",
+        "docs/agent_team/worker_reports/echo_taps.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-027",
+      "kind": "worker",
+      "game_id": "fall_forever",
+      "title": "Fall Forever visual presentation",
+      "category": "Flying",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/fall_forever_board.png",
+      "owned_paths": [
+        "ui/game_presentations/fall_forever.gd",
+        "docs/agent_team/worker_reports/fall_forever.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-028",
+      "kind": "worker",
+      "game_id": "feed_reactor",
+      "title": "Feed the Reactor visual presentation",
+      "category": "Physics",
+      "source_script": "res://games/classics_b/feed_reactor.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/feed_reactor_board.png",
+      "owned_paths": [
+        "ui/game_presentations/feed_reactor.gd",
+        "docs/agent_team/worker_reports/feed_reactor.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-029",
+      "kind": "worker",
+      "game_id": "flappy_bonus",
+      "title": "Flappy Bonus visual presentation",
+      "category": "Flying",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/flappy_bonus_board.png",
+      "owned_paths": [
+        "ui/game_presentations/flappy_bonus.gd",
+        "docs/agent_team/worker_reports/flappy_bonus.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-030",
+      "kind": "worker",
+      "game_id": "fuse_cut",
+      "title": "Wire You Waiting visual presentation",
+      "category": "precision",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/fuse_cut_board.png",
+      "owned_paths": [
+        "ui/game_presentations/fuse_cut.gd",
+        "docs/agent_team/worker_reports/fuse_cut.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-031",
+      "kind": "worker",
+      "game_id": "gear_link",
+      "title": "Gear School visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/gear_link_board.png",
+      "owned_paths": [
+        "ui/game_presentations/gear_link.gd",
+        "docs/agent_team/worker_reports/gear_link.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-032",
+      "kind": "worker",
+      "game_id": "glider_gust",
+      "title": "Glider Gust visual presentation",
+      "category": "Flying",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/glider_gust_board.png",
+      "owned_paths": [
+        "ui/game_presentations/glider_gust.gd",
+        "docs/agent_team/worker_reports/glider_gust.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-033",
+      "kind": "worker",
+      "game_id": "gravity_flip",
+      "title": "Ceiling Fan Club visual presentation",
+      "category": "reaction",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/gravity_flip_board.png",
+      "owned_paths": [
+        "ui/game_presentations/gravity_flip.gd",
+        "docs/agent_team/worker_reports/gravity_flip.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-034",
+      "kind": "worker",
+      "game_id": "hex_rotation",
+      "title": "Honey Circuit visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/hex_rotation_board.png",
+      "owned_paths": [
+        "ui/game_presentations/hex_rotation.gd",
+        "docs/agent_team/worker_reports/hex_rotation.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-035",
+      "kind": "worker",
+      "game_id": "hold_balance",
+      "title": "Perfect Pour visual presentation",
+      "category": "timing",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/hold_balance_board.png",
+      "owned_paths": [
+        "ui/game_presentations/hold_balance.gd",
+        "docs/agent_team/worker_reports/hold_balance.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-036",
+      "kind": "worker",
+      "game_id": "ice_slide",
+      "title": "Ice Slide visual presentation",
+      "category": "Physics",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/ice_slide_board.png",
+      "owned_paths": [
+        "ui/game_presentations/ice_slide.gd",
+        "docs/agent_team/worker_reports/ice_slide.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-037",
+      "kind": "worker",
+      "game_id": "impossible_parking",
+      "title": "Impossible Parking visual presentation",
+      "category": "Racing",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/impossible_parking_board.png",
+      "owned_paths": [
+        "ui/game_presentations/impossible_parking.gd",
+        "docs/agent_team/worker_reports/impossible_parking.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-038",
+      "kind": "worker",
+      "game_id": "jetpack_test_lab",
+      "title": "Jetpack Test Lab visual presentation",
+      "category": "Flying",
+      "source_script": "res://games/classics_a/jetpack_test_lab.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/jetpack_test_lab_board.png",
+      "owned_paths": [
+        "ui/game_presentations/jetpack_test_lab.gd",
+        "docs/agent_team/worker_reports/jetpack_test_lab.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-039",
+      "kind": "worker",
+      "game_id": "knight_tour",
+      "title": "Knight Shift visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/knight_tour_board.png",
+      "owned_paths": [
+        "ui/game_presentations/knight_tour.gd",
+        "docs/agent_team/worker_reports/knight_tour.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-040",
+      "kind": "worker",
+      "game_id": "laser_reflect",
+      "title": "Mirror Mail visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/laser_reflect_board.png",
+      "owned_paths": [
+        "ui/game_presentations/laser_reflect.gd",
+        "docs/agent_team/worker_reports/laser_reflect.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-041",
+      "kind": "worker",
+      "game_id": "laser_tunnel",
+      "title": "Laser Tunnel visual presentation",
+      "category": "Movement",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/laser_tunnel_board.png",
+      "owned_paths": [
+        "ui/game_presentations/laser_tunnel.gd",
+        "docs/agent_team/worker_reports/laser_tunnel.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-042",
+      "kind": "worker",
+      "game_id": "light_out",
+      "title": "Lights Out Lunch visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/light_out_board.png",
+      "owned_paths": [
+        "ui/game_presentations/light_out.gd",
+        "docs/agent_team/worker_reports/light_out.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-043",
+      "kind": "worker",
+      "game_id": "logic_grid",
+      "title": "Whose Tool visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/logic_grid_board.png",
+      "owned_paths": [
+        "ui/game_presentations/logic_grid.gd",
+        "docs/agent_team/worker_reports/logic_grid.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-044",
+      "kind": "worker",
+      "game_id": "magnet_haul",
+      "title": "Magnet Haul visual presentation",
+      "category": "Physics",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/magnet_haul_board.png",
+      "owned_paths": [
+        "ui/game_presentations/magnet_haul.gd",
+        "docs/agent_team/worker_reports/magnet_haul.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-045",
+      "kind": "worker",
+      "game_id": "maze_runner",
+      "title": "Two Wall Trouble visual presentation",
+      "category": "precision",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/maze_runner_board.png",
+      "owned_paths": [
+        "ui/game_presentations/maze_runner.gd",
+        "docs/agent_team/worker_reports/maze_runner.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-046",
+      "kind": "worker",
+      "game_id": "meme_dodge_arena",
+      "title": "Meme Dodge Arena visual presentation",
+      "category": "Survival",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/meme_dodge_arena_board.png",
+      "owned_paths": [
+        "ui/game_presentations/meme_dodge_arena.gd",
+        "docs/agent_team/worker_reports/meme_dodge_arena.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-047",
+      "kind": "worker",
+      "game_id": "memory_pairs",
+      "title": "Weather Twins visual presentation",
+      "category": "memory",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/memory_pairs_board.png",
+      "owned_paths": [
+        "ui/game_presentations/memory_pairs.gd",
+        "docs/agent_team/worker_reports/memory_pairs.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-048",
+      "kind": "worker",
+      "game_id": "meteor_dodge",
+      "title": "Meteor Dodge visual presentation",
+      "category": "Movement",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/meteor_dodge_board.png",
+      "owned_paths": [
+        "ui/game_presentations/meteor_dodge.gd",
+        "docs/agent_team/worker_reports/meteor_dodge.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-049",
+      "kind": "worker",
+      "game_id": "metro_armor_rush",
+      "title": "Metro Armor Rush visual presentation",
+      "category": "Runner",
+      "source_script": "res://games/classics_a/metro_armor_rush.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/metro_armor_rush_board.png",
+      "owned_paths": [
+        "ui/game_presentations/metro_armor_rush.gd",
+        "docs/agent_team/worker_reports/metro_armor_rush.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-050",
+      "kind": "worker",
+      "game_id": "minesweeper",
+      "title": "Safe Tiles visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/minesweeper_board.png",
+      "owned_paths": [
+        "ui/game_presentations/minesweeper.gd",
+        "docs/agent_team/worker_reports/minesweeper.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-051",
+      "kind": "worker",
+      "game_id": "mini_reactor_buddy",
+      "title": "Mini Reactor Buddy visual presentation",
+      "category": "Care",
+      "source_script": "res://games/classics_b/mini_reactor_buddy.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/mini_reactor_buddy_board.png",
+      "owned_paths": [
+        "ui/game_presentations/mini_reactor_buddy.gd",
+        "docs/agent_team/worker_reports/mini_reactor_buddy.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-052",
+      "kind": "worker",
+      "game_id": "mirror_match",
+      "title": "Opposite Day visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/mirror_match_board.png",
+      "owned_paths": [
+        "ui/game_presentations/mirror_match.gd",
+        "docs/agent_team/worker_reports/mirror_match.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-053",
+      "kind": "worker",
+      "game_id": "neon_rhythm_escape",
+      "title": "Neon Rhythm Escape visual presentation",
+      "category": "Rhythm",
+      "source_script": "res://games/classics_b/neon_rhythm_escape.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/neon_rhythm_escape_board.png",
+      "owned_paths": [
+        "ui/game_presentations/neon_rhythm_escape.gd",
+        "docs/agent_team/worker_reports/neon_rhythm_escape.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-054",
+      "kind": "worker",
+      "game_id": "nonogram",
+      "title": "Count The Ink visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/nonogram_board.png",
+      "owned_paths": [
+        "ui/game_presentations/nonogram.gd",
+        "docs/agent_team/worker_reports/nonogram.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-055",
+      "kind": "worker",
+      "game_id": "notebook_platformer",
+      "title": "Notebook Platformer visual presentation",
+      "category": "Platformer",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/notebook_platformer_board.png",
+      "owned_paths": [
+        "ui/game_presentations/notebook_platformer.gd",
+        "docs/agent_team/worker_reports/notebook_platformer.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-056",
+      "kind": "worker",
+      "game_id": "number_order",
+      "title": "Six In A Row visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/number_order_board.png",
+      "owned_paths": [
+        "ui/game_presentations/number_order.gd",
+        "docs/agent_team/worker_reports/number_order.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-057",
+      "kind": "worker",
+      "game_id": "odd_one",
+      "title": "Letter Impostor visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/odd_one_board.png",
+      "owned_paths": [
+        "ui/game_presentations/odd_one.gd",
+        "docs/agent_team/worker_reports/odd_one.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-058",
+      "kind": "worker",
+      "game_id": "one_pixel_survival",
+      "title": "One Pixel Survival visual presentation",
+      "category": "Precision",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/one_pixel_survival_board.png",
+      "owned_paths": [
+        "ui/game_presentations/one_pixel_survival.gd",
+        "docs/agent_team/worker_reports/one_pixel_survival.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-059",
+      "kind": "worker",
+      "game_id": "orbit_escape",
+      "title": "Orbit Escape visual presentation",
+      "category": "Timing",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/orbit_escape_board.png",
+      "owned_paths": [
+        "ui/game_presentations/orbit_escape.gd",
+        "docs/agent_team/worker_reports/orbit_escape.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-060",
+      "kind": "worker",
+      "game_id": "orbit_snap",
+      "title": "Satellite Selfie visual presentation",
+      "category": "timing",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/orbit_snap_board.png",
+      "owned_paths": [
+        "ui/game_presentations/orbit_snap.gd",
+        "docs/agent_team/worker_reports/orbit_snap.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-061",
+      "kind": "worker",
+      "game_id": "paint_frontier",
+      "title": "Paint Frontier visual presentation",
+      "category": "Strategy",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/paint_frontier_board.png",
+      "owned_paths": [
+        "ui/game_presentations/paint_frontier.gd",
+        "docs/agent_team/worker_reports/paint_frontier.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-062",
+      "kind": "worker",
+      "game_id": "paint_skate",
+      "title": "Paint Skate visual presentation",
+      "category": "Movement",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/paint_skate_board.png",
+      "owned_paths": [
+        "ui/game_presentations/paint_skate.gd",
+        "docs/agent_team/worker_reports/paint_skate.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-063",
+      "kind": "worker",
+      "game_id": "parachute_drop",
+      "title": "Parachute Drop visual presentation",
+      "category": "Flying",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/parachute_drop_board.png",
+      "owned_paths": [
+        "ui/game_presentations/parachute_drop.gd",
+        "docs/agent_team/worker_reports/parachute_drop.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-064",
+      "kind": "worker",
+      "game_id": "parcel_catch",
+      "title": "Parcel Catch visual presentation",
+      "category": "Catching",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/parcel_catch_board.png",
+      "owned_paths": [
+        "ui/game_presentations/parcel_catch.gd",
+        "docs/agent_team/worker_reports/parcel_catch.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-065",
+      "kind": "worker",
+      "game_id": "peg_solitaire",
+      "title": "Last Peg Standing visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/peg_solitaire_board.png",
+      "owned_paths": [
+        "ui/game_presentations/peg_solitaire.gd",
+        "docs/agent_team/worker_reports/peg_solitaire.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-066",
+      "kind": "worker",
+      "game_id": "physics_disaster",
+      "title": "Physics Disaster visual presentation",
+      "category": "Physics",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/physics_disaster_board.png",
+      "owned_paths": [
+        "ui/game_presentations/physics_disaster.gd",
+        "docs/agent_team/worker_reports/physics_disaster.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-067",
+      "kind": "worker",
+      "game_id": "pinball_rescue",
+      "title": "Pinball Rescue visual presentation",
+      "category": "Reflex",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/pinball_rescue_board.png",
+      "owned_paths": [
+        "ui/game_presentations/pinball_rescue.gd",
+        "docs/agent_team/worker_reports/pinball_rescue.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-068",
+      "kind": "worker",
+      "game_id": "pipe_flow",
+      "title": "Pipe Dream visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/pipe_flow_board.png",
+      "owned_paths": [
+        "ui/game_presentations/pipe_flow.gd",
+        "docs/agent_team/worker_reports/pipe_flow.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-069",
+      "kind": "worker",
+      "game_id": "pixel_repair",
+      "title": "Pixel Plumber visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/pixel_repair_board.png",
+      "owned_paths": [
+        "ui/game_presentations/pixel_repair.gd",
+        "docs/agent_team/worker_reports/pixel_repair.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-070",
+      "kind": "worker",
+      "game_id": "power_sequence",
+      "title": "Power Sequence visual presentation",
+      "category": "memory",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/power_sequence_board.png",
+      "owned_paths": [
+        "ui/game_presentations/power_sequence.gd",
+        "docs/agent_team/worker_reports/power_sequence.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-071",
+      "kind": "worker",
+      "game_id": "rail_grind",
+      "title": "Rail Grind visual presentation",
+      "category": "Movement",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/rail_grind_board.png",
+      "owned_paths": [
+        "ui/game_presentations/rail_grind.gd",
+        "docs/agent_team/worker_reports/rail_grind.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-072",
+      "kind": "worker",
+      "game_id": "reaction_relay",
+      "title": "Reaction Relay visual presentation",
+      "category": "Reaction",
+      "source_script": "res://games/chaos.gd",
+      "source_shared_worker_count": 11,
+      "baseline_capture": "build/visual-before/catalog-qa/reaction_relay_board.png",
+      "owned_paths": [
+        "ui/game_presentations/reaction_relay.gd",
+        "docs/agent_team/worker_reports/reaction_relay.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-073",
+      "kind": "worker",
+      "game_id": "reactor_merge",
+      "title": "Reactor Merge visual presentation",
+      "category": "Puzzle",
+      "source_script": "res://games/classics_b/reactor_merge.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/reactor_merge_board.png",
+      "owned_paths": [
+        "ui/game_presentations/reactor_merge.gd",
+        "docs/agent_team/worker_reports/reactor_merge.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-074",
+      "kind": "worker",
+      "game_id": "reactor_parry",
+      "title": "Reactor Parry visual presentation",
+      "category": "timing",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/reactor_parry_board.png",
+      "owned_paths": [
+        "ui/game_presentations/reactor_parry.gd",
+        "docs/agent_team/worker_reports/reactor_parry.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-075",
+      "kind": "worker",
+      "game_id": "reactor_slice",
+      "title": "Reactor Slice visual presentation",
+      "category": "Skill",
+      "source_script": "res://games/classics_a/reactor_slice.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/reactor_slice_board.png",
+      "owned_paths": [
+        "ui/game_presentations/reactor_slice.gd",
+        "docs/agent_team/worker_reports/reactor_slice.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-076",
+      "kind": "worker",
+      "game_id": "rhythm_knock",
+      "title": "Knock Knock Beat visual presentation",
+      "category": "rhythm",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/rhythm_knock_board.png",
+      "owned_paths": [
+        "ui/game_presentations/rhythm_knock.gd",
+        "docs/agent_team/worker_reports/rhythm_knock.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-077",
+      "kind": "worker",
+      "game_id": "river_ferry",
+      "title": "Goat Boat visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/river_ferry_board.png",
+      "owned_paths": [
+        "ui/game_presentations/river_ferry.gd",
+        "docs/agent_team/worker_reports/river_ferry.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-078",
+      "kind": "worker",
+      "game_id": "river_hop",
+      "title": "River Hop visual presentation",
+      "category": "Movement",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/river_hop_board.png",
+      "owned_paths": [
+        "ui/game_presentations/river_hop.gd",
+        "docs/agent_team/worker_reports/river_hop.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-079",
+      "kind": "worker",
+      "game_id": "rocket_rescue",
+      "title": "Rocket Rescue visual presentation",
+      "category": "Movement",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/rocket_rescue_board.png",
+      "owned_paths": [
+        "ui/game_presentations/rocket_rescue.gd",
+        "docs/agent_team/worker_reports/rocket_rescue.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-080",
+      "kind": "worker",
+      "game_id": "rooftop_defense",
+      "title": "Rooftop Defense visual presentation",
+      "category": "Strategy",
+      "source_script": "res://games/classics_b/rooftop_defense.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/rooftop_defense_board.png",
+      "owned_paths": [
+        "ui/game_presentations/rooftop_defense.gd",
+        "docs/agent_team/worker_reports/rooftop_defense.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-081",
+      "kind": "worker",
+      "game_id": "rope_bridge",
+      "title": "Rope Bridge visual presentation",
+      "category": "Precision",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/rope_bridge_board.png",
+      "owned_paths": [
+        "ui/game_presentations/rope_bridge.gd",
+        "docs/agent_team/worker_reports/rope_bridge.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-082",
+      "kind": "worker",
+      "game_id": "safe_dial",
+      "title": "Lunchbox Safe visual presentation",
+      "category": "memory",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/safe_dial_board.png",
+      "owned_paths": [
+        "ui/game_presentations/safe_dial.gd",
+        "docs/agent_team/worker_reports/safe_dial.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-083",
+      "kind": "worker",
+      "game_id": "scrap_hill_racer",
+      "title": "Scrap Hill Racer visual presentation",
+      "category": "Racing",
+      "source_script": "res://games/classics_a/scrap_hill_racer.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/scrap_hill_racer_board.png",
+      "owned_paths": [
+        "ui/game_presentations/scrap_hill_racer.gd",
+        "docs/agent_team/worker_reports/scrap_hill_racer.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-084",
+      "kind": "worker",
+      "game_id": "shadow_armor_duel",
+      "title": "Shadow Armor Duel visual presentation",
+      "category": "Fighting",
+      "source_script": "res://games/classics_a/shadow_armor_duel.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/shadow_armor_duel_board.png",
+      "owned_paths": [
+        "ui/game_presentations/shadow_armor_duel.gd",
+        "docs/agent_team/worker_reports/shadow_armor_duel.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-085",
+      "kind": "worker",
+      "game_id": "shield_surf",
+      "title": "Shield Surf visual presentation",
+      "category": "Reflex",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/shield_surf_board.png",
+      "owned_paths": [
+        "ui/game_presentations/shield_surf.gd",
+        "docs/agent_team/worker_reports/shield_surf.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-086",
+      "kind": "worker",
+      "game_id": "shield_turn",
+      "title": "Four Way Shield visual presentation",
+      "category": "reaction",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/shield_turn_board.png",
+      "owned_paths": [
+        "ui/game_presentations/shield_turn.gd",
+        "docs/agent_team/worker_reports/shield_turn.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-087",
+      "kind": "worker",
+      "game_id": "skyline_jumper",
+      "title": "Skyline Jumper visual presentation",
+      "category": "Platformer",
+      "source_script": "res://games/classics_b/skyline_jumper.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/skyline_jumper_board.png",
+      "owned_paths": [
+        "ui/game_presentations/skyline_jumper.gd",
+        "docs/agent_team/worker_reports/skyline_jumper.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-088",
+      "kind": "worker",
+      "game_id": "sliding_puzzle",
+      "title": "Gap Shuffle visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/sliding_puzzle_board.png",
+      "owned_paths": [
+        "ui/game_presentations/sliding_puzzle.gd",
+        "docs/agent_team/worker_reports/sliding_puzzle.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-089",
+      "kind": "worker",
+      "game_id": "sokoban",
+      "title": "Crate Date visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/sokoban_board.png",
+      "owned_paths": [
+        "ui/game_presentations/sokoban.gd",
+        "docs/agent_team/worker_reports/sokoban.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-090",
+      "kind": "worker",
+      "game_id": "spring_vault",
+      "title": "Spring Vault visual presentation",
+      "category": "Physics",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/spring_vault_board.png",
+      "owned_paths": [
+        "ui/game_presentations/spring_vault.gd",
+        "docs/agent_team/worker_reports/spring_vault.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-091",
+      "kind": "worker",
+      "game_id": "stop_bar",
+      "title": "Brake Check visual presentation",
+      "category": "timing",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/stop_bar_board.png",
+      "owned_paths": [
+        "ui/game_presentations/stop_bar.gd",
+        "docs/agent_team/worker_reports/stop_bar.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-092",
+      "kind": "worker",
+      "game_id": "swing_rescue",
+      "title": "Swing Rescue visual presentation",
+      "category": "Physics",
+      "source_script": "res://microgames/pack_b.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/swing_rescue_board.png",
+      "owned_paths": [
+        "ui/game_presentations/swing_rescue.gd",
+        "docs/agent_team/worker_reports/swing_rescue.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-093",
+      "kind": "worker",
+      "game_id": "tangram",
+      "title": "Pocket Packing visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/tangram_board.png",
+      "owned_paths": [
+        "ui/game_presentations/tangram.gd",
+        "docs/agent_team/worker_reports/tangram.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-094",
+      "kind": "worker",
+      "game_id": "target_lock",
+      "title": "Target Lock visual presentation",
+      "category": "reaction",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/target_lock_board.png",
+      "owned_paths": [
+        "ui/game_presentations/target_lock.gd",
+        "docs/agent_team/worker_reports/target_lock.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-095",
+      "kind": "worker",
+      "game_id": "temple_reactor_escape",
+      "title": "Temple Reactor Escape visual presentation",
+      "category": "Runner",
+      "source_script": "res://games/classics_a/temple_reactor_escape.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/temple_reactor_escape_board.png",
+      "owned_paths": [
+        "ui/game_presentations/temple_reactor_escape.gd",
+        "docs/agent_team/worker_reports/temple_reactor_escape.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-096",
+      "kind": "worker",
+      "game_id": "tic_tac_toe",
+      "title": "Crossfire Board visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/tic_tac_toe_board.png",
+      "owned_paths": [
+        "ui/game_presentations/tic_tac_toe.gd",
+        "docs/agent_team/worker_reports/tic_tac_toe.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-097",
+      "kind": "worker",
+      "game_id": "tower_bounce",
+      "title": "Tower Bounce visual presentation",
+      "category": "Arcade",
+      "source_script": "res://games/cabinets/tower_bounce.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/tower_bounce_board.png",
+      "owned_paths": [
+        "ui/game_presentations/tower_bounce.gd",
+        "docs/agent_team/worker_reports/tower_bounce.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-098",
+      "kind": "worker",
+      "game_id": "tower_hanoi",
+      "title": "Disk Delivery visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/tower_hanoi_board.png",
+      "owned_paths": [
+        "ui/game_presentations/tower_hanoi.gd",
+        "docs/agent_team/worker_reports/tower_hanoi.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-099",
+      "kind": "worker",
+      "game_id": "trace_wire",
+      "title": "Live Wire visual presentation",
+      "category": "precision",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/trace_wire_board.png",
+      "owned_paths": [
+        "ui/game_presentations/trace_wire.gd",
+        "docs/agent_team/worker_reports/trace_wire.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-100",
+      "kind": "worker",
+      "game_id": "train_shunt",
+      "title": "Siding Shuffle visual presentation",
+      "category": "strategy",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/train_shunt_board.png",
+      "owned_paths": [
+        "ui/game_presentations/train_shunt.gd",
+        "docs/agent_team/worker_reports/train_shunt.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-101",
+      "kind": "worker",
+      "game_id": "turbo_flapper",
+      "title": "Turbo Flapper visual presentation",
+      "category": "Flying",
+      "source_script": "res://games/classics_b/turbo_flapper.gd",
+      "source_shared_worker_count": 1,
+      "baseline_capture": "build/visual-before/catalog-qa/turbo_flapper_board.png",
+      "owned_paths": [
+        "ui/game_presentations/turbo_flapper.gd",
+        "docs/agent_team/worker_reports/turbo_flapper.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-102",
+      "kind": "worker",
+      "game_id": "water_sort",
+      "title": "Reactor Pour visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/water_sort_board.png",
+      "owned_paths": [
+        "ui/game_presentations/water_sort.gd",
+        "docs/agent_team/worker_reports/water_sort.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-103",
+      "kind": "worker",
+      "game_id": "whack_mole",
+      "title": "Pop Quiz Mole visual presentation",
+      "category": "reaction",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/whack_mole_board.png",
+      "owned_paths": [
+        "ui/game_presentations/whack_mole.gd",
+        "docs/agent_team/worker_reports/whack_mole.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-104",
+      "kind": "worker",
+      "game_id": "word_ladder",
+      "title": "Warm Words visual presentation",
+      "category": "puzzle",
+      "source_script": "res://microgames/pack_c.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/word_ladder_board.png",
+      "owned_paths": [
+        "ui/game_presentations/word_ladder.gd",
+        "docs/agent_team/worker_reports/word_ladder.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "worker-105",
+      "kind": "worker",
+      "game_id": "word_sort",
+      "title": "Fruit Or Fix It visual presentation",
+      "category": "speed",
+      "source_script": "res://microgames/pack_a.gd",
+      "source_shared_worker_count": 25,
+      "baseline_capture": "build/visual-before/catalog-qa/word_sort_board.png",
+      "owned_paths": [
+        "ui/game_presentations/word_sort.gd",
+        "docs/agent_team/worker_reports/word_sort.md"
+      ],
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "lead-ceo",
+      "kind": "lead",
+      "title": "CEO - User priorities and scope",
+      "status": "completed",
+      "agent_id": "/root/lead_ceo",
+      "dispatched_at": "2026-10-09T15:13:55.613581+00:00",
+      "evidence": [
+        "docs/UI_ACCEPTANCE_STANDARD.md"
+      ]
+    },
+    {
+      "role_id": "lead-cto",
+      "kind": "lead",
+      "title": "CTO - Shared presentation bridge and technical acceptance",
+      "status": "completed",
+      "agent_id": "/root/lead_cto",
+      "dispatched_at": "2026-10-09T15:13:55.613581+00:00",
+      "evidence": [
+        "ui/game_presentation.gd",
+        "345 checks; zero failures: Pack A and services"
+      ]
+    },
+    {
+      "role_id": "lead-coo",
+      "kind": "lead",
+      "title": "COO - Real dispatch queue and conflict-free ownership",
+      "status": "running",
+      "agent_id": "/root/lead_coo",
+      "dispatched_at": "2026-10-09T15:13:55.613581+00:00",
+      "evidence": []
+    },
+    {
+      "role_id": "lead-design",
+      "kind": "lead",
+      "title": "DESIGN - Art direction and distinctive worlds",
+      "status": "completed",
+      "agent_id": "/root/lead_design",
+      "dispatched_at": "2026-10-09T15:23:24.183773+00:00",
+      "evidence": [
+        "docs/agent_team/design-lead.md",
+        "App 324 checks zero failures; native menus 1744 checks zero failures; hero tests 270 pass and 4 obsolete assertions pending QA."
+      ]
+    },
+    {
+      "role_id": "lead-qa",
+      "kind": "lead",
+      "title": "QA - Rendered acceptance and regressions",
+      "status": "completed",
+      "agent_id": "/root/lead_qa",
+      "dispatched_at": "2026-10-09T15:41:39.393173+00:00",
+      "evidence": [
+        "docs/agent_team/qa-lead.md",
+        "Hero UI 274 pass; presentation tests 116 checks, 7 plugins, zero failures; audit 105 rows, 9 sources, zero errors."
+      ],
+      "owned_paths": [
+        "tests/ui_visual_test.gd",
+        "tests/presentation_test.gd",
+        "tools/presentation_audit.py",
+        "docs/agent_team/qa-lead.md"
+      ]
+    },
+    {
+      "role_id": "specialist-01",
+      "kind": "specialist",
+      "title": "Hero-selection interaction",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-02",
+      "kind": "specialist",
+      "title": "Original roster silhouette review",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-03",
+      "kind": "specialist",
+      "title": "Hero entrance motion",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-04",
+      "kind": "specialist",
+      "title": "Hero power demonstration",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-05",
+      "kind": "specialist",
+      "title": "Portrait crop readability",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-06",
+      "kind": "specialist",
+      "title": "375px mobile layout",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-07",
+      "kind": "specialist",
+      "title": "390px mobile layout",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-08",
+      "kind": "specialist",
+      "title": "430px mobile layout",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-09",
+      "kind": "specialist",
+      "title": "Mobile landscape layout",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-10",
+      "kind": "specialist",
+      "title": "Keyboard navigation",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-11",
+      "kind": "specialist",
+      "title": "Controller navigation",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-12",
+      "kind": "specialist",
+      "title": "Touch target review",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-13",
+      "kind": "specialist",
+      "title": "Reduced motion review",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-14",
+      "kind": "specialist",
+      "title": "Sound feedback and mute",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-15",
+      "kind": "specialist",
+      "title": "Color contrast",
+      "status": "completed",
+      "agent_id": "/root/specialist_15_contrast",
+      "dispatched_at": "2026-10-09T15:53:04.406896+00:00",
+      "evidence": [
+        "docs/agent_team/specialist_reports/15-contrast.md",
+        "Measured theme contrast 6.76 to 15.55:1; root runtime review pending."
+      ],
+      "owned_paths": [
+        "ui/design.gd",
+        "docs/agent_team/specialist_reports/15-contrast.md"
+      ]
+    },
+    {
+      "role_id": "specialist-16",
+      "kind": "specialist",
+      "title": "Font hierarchy",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-17",
+      "kind": "specialist",
+      "title": "Navigation discovery",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-18",
+      "kind": "specialist",
+      "title": "Game card preview quality",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-19",
+      "kind": "specialist",
+      "title": "Onboarding clarity",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-20",
+      "kind": "specialist",
+      "title": "Pause and resume UX",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-21",
+      "kind": "specialist",
+      "title": "Results screen readability",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-22",
+      "kind": "specialist",
+      "title": "Replay flow",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-23",
+      "kind": "specialist",
+      "title": "Settings accessibility",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-24",
+      "kind": "specialist",
+      "title": "Save and equipped hero persistence",
+      "status": "running",
+      "agent_id": "/root/specialist_24_browser_save",
+      "dispatched_at": "2026-10-09T15:58:02.097358+00:00",
+      "evidence": [],
+      "owned_paths": [
+        "core/save_store.gd",
+        "docs/agent_team/specialist_reports/24-browser-save.md"
+      ]
+    },
+    {
+      "role_id": "specialist-25",
+      "kind": "specialist",
+      "title": "Focus visibility",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-26",
+      "kind": "specialist",
+      "title": "Visual performance budget",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-27",
+      "kind": "specialist",
+      "title": "Web export asset size",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-28",
+      "kind": "specialist",
+      "title": "Windows export validation",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-29",
+      "kind": "specialist",
+      "title": "Public versus private asset separation",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-30",
+      "kind": "specialist",
+      "title": "Local asset licensing",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-31",
+      "kind": "specialist",
+      "title": "Room backdrop integration",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-32",
+      "kind": "specialist",
+      "title": "Reaction game readability",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-33",
+      "kind": "specialist",
+      "title": "Puzzle board readability",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-34",
+      "kind": "specialist",
+      "title": "Platformer depth and navigation",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-35",
+      "kind": "specialist",
+      "title": "Racer visual cues",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-36",
+      "kind": "specialist",
+      "title": "Physics game readability",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-37",
+      "kind": "specialist",
+      "title": "Rhythm feedback clarity",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-38",
+      "kind": "specialist",
+      "title": "Chaos scene readability",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-39",
+      "kind": "specialist",
+      "title": "Regression suite integration",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    },
+    {
+      "role_id": "specialist-40",
+      "kind": "specialist",
+      "title": "Live deployment evidence",
+      "status": "queued",
+      "agent_id": null,
+      "dispatched_at": null,
+      "evidence": []
+    }
+  ]
+}

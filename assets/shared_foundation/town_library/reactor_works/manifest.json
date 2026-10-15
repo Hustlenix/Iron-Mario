@@ -1,0 +1,22 @@
+{
+  "id": "reactor_works",
+  "name": "Reactor Works",
+  "tiles": 48,
+  "prop_assignments": 24,
+  "shared_workshop_prop_assignments": 12,
+  "thematic_prop_assignments": 12,
+  "hazard_assignments": 4,
+  "animated_object_assignments": [
+    "control_screens",
+    "server_lights",
+    "warm_chimney",
+    "bubbling_cauldron"
+  ],
+  "unique_animated_objects_in_library": 5,
+  "interior": "reactor_works/interior.png",
+  "exterior": "reactor_works/exterior.png",
+  "status": "native_art_and_modular_assets_exported_for_review",
+  "remaining": [
+    "Review and adaptation inside representative games; exported preview scenes do not change minigame mechanics."
+  ]
+}

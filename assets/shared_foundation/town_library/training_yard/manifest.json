@@ -1,0 +1,22 @@
+{
+  "id": "training_yard",
+  "name": "Training Yard",
+  "tiles": 48,
+  "prop_assignments": 24,
+  "shared_workshop_prop_assignments": 12,
+  "thematic_prop_assignments": 12,
+  "hazard_assignments": 4,
+  "animated_object_assignments": [
+    "punching_bag",
+    "control_screens",
+    "server_lights",
+    "warm_chimney"
+  ],
+  "unique_animated_objects_in_library": 5,
+  "interior": "training_yard/interior.png",
+  "exterior": "training_yard/exterior.png",
+  "status": "native_art_and_modular_assets_exported_for_review",
+  "remaining": [
+    "Review and adaptation inside representative games; exported preview scenes do not change minigame mechanics."
+  ]
+}

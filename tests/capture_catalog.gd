@@ -63,7 +63,7 @@ func capture_sheets(manifest: Array[Dictionary]) -> void:
 		var tiles: Array[Dictionary] = []
 		for index in range(sheet_number * 25, mini(manifest.size(), (sheet_number + 1) * 25)):
 			var item: Dictionary = manifest[index]
-			var image := Image.load_from_file(output + "/" + item.thumbnail)
+			var image := Image.load_from_file(ProjectSettings.globalize_path(output + "/" + item.thumbnail))
 			tiles.append({"id": item.id, "texture": ImageTexture.create_from_image(image), "position": Vector2((index % 25) % 5 * 240, (index % 25) / 5 * 150)})
 		sheet.draw.connect(func() -> void:
 			sheet.draw_rect(Rect2(0, 0, 1200, 750), Color("fff4d7"))

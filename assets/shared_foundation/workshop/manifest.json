@@ -1,0 +1,244 @@
+{
+  "credit": "Modern Interiors by LimeZu - https://limezu.itch.io/",
+  "license": "Full Modern Interiors commercial/noncommercial game use with credit; no standalone redistribution",
+  "canvas": [
+    320,
+    180
+  ],
+  "props": [
+    {
+      "id": "ladder",
+      "rect": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_64.png",
+      "native_size": [
+        32,
+        32
+      ]
+    },
+    {
+      "id": "workbench",
+      "rect": [
+        64,
+        0,
+        32,
+        48
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_85.png",
+      "native_size": [
+        32,
+        48
+      ]
+    },
+    {
+      "id": "stool",
+      "rect": [
+        128,
+        0,
+        16,
+        32
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_103.png",
+      "native_size": [
+        16,
+        32
+      ]
+    },
+    {
+      "id": "monitor",
+      "rect": [
+        192,
+        0,
+        32,
+        32
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_163.png",
+      "native_size": [
+        32,
+        32
+      ]
+    },
+    {
+      "id": "desk_lamp",
+      "rect": [
+        256,
+        0,
+        16,
+        32
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_167.png",
+      "native_size": [
+        16,
+        32
+      ]
+    },
+    {
+      "id": "desktop_computer",
+      "rect": [
+        320,
+        0,
+        16,
+        32
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_174.png",
+      "native_size": [
+        16,
+        32
+      ]
+    },
+    {
+      "id": "keyboard",
+      "rect": [
+        0,
+        128,
+        16,
+        16
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_173.png",
+      "native_size": [
+        16,
+        16
+      ]
+    },
+    {
+      "id": "desktop_tower",
+      "rect": [
+        64,
+        128,
+        32,
+        16
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_177.png",
+      "native_size": [
+        32,
+        16
+      ]
+    },
+    {
+      "id": "equipment_rack",
+      "rect": [
+        128,
+        128,
+        32,
+        48
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_194.png",
+      "native_size": [
+        32,
+        48
+      ]
+    },
+    {
+      "id": "railing",
+      "rect": [
+        192,
+        128,
+        32,
+        48
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_196.png",
+      "native_size": [
+        32,
+        48
+      ]
+    },
+    {
+      "id": "vending_machine",
+      "rect": [
+        256,
+        128,
+        16,
+        48
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_219.png",
+      "native_size": [
+        16,
+        48
+      ]
+    },
+    {
+      "id": "landscape_picture",
+      "rect": [
+        320,
+        128,
+        32,
+        32
+      ],
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\1_Interiors\\16x16\\Theme_Sorter_Shadowless_Singles\\14_Basement_Singles_Shadowless\\Basement_Singles_Shadowless_225.png",
+      "native_size": [
+        32,
+        32
+      ]
+    }
+  ],
+  "animated": [
+    {
+      "id": "control_room_screens",
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\3_Animated_objects\\16x16\\spritesheets\\animated_control_room_screens.png",
+      "file": "control_room_screens.png",
+      "cell": [
+        64,
+        48
+      ],
+      "frames": 11,
+      "fps": 5,
+      "position": [
+        172,
+        10
+      ],
+      "reduced_motion_frame": 0
+    },
+    {
+      "id": "control_room_server",
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\3_Animated_objects\\16x16\\spritesheets\\animated_control_room_server.png",
+      "file": "control_room_server.png",
+      "cell": [
+        16,
+        48
+      ],
+      "frames": 3,
+      "fps": 4,
+      "position": [
+        283,
+        20
+      ],
+      "reduced_motion_frame": 0
+    },
+    {
+      "id": "cat",
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\3_Animated_objects\\16x16\\spritesheets\\animated_cat.png",
+      "file": "cat.png",
+      "cell": [
+        48,
+        16
+      ],
+      "frames": 12,
+      "fps": 6,
+      "position": [
+        30,
+        150
+      ],
+      "reduced_motion_frame": 0
+    },
+    {
+      "id": "amplifier",
+      "source": "C:\\Users\\LalithReddy.b\\Downloads\\moderninteriors-win\\3_Animated_objects\\16x16\\spritesheets\\animated_amplifier.png",
+      "file": "amplifier.png",
+      "cell": [
+        16,
+        32
+      ],
+      "frames": 3,
+      "fps": 4,
+      "position": [
+        20,
+        53
+      ],
+      "reduced_motion_frame": 0
+    }
+  ]
+}

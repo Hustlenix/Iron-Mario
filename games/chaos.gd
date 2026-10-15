@@ -249,7 +249,7 @@ func platform_rects() -> Array[Rect2]:
 	return [Rect2(30,360,220,30),Rect2(270,300,180,25),Rect2(480,245,180,25),Rect2(690,300,230,25)]
 
 func paint() -> void:
-	if room!=null and game in ['impossible_parking','chaos_elevator']: draw_texture_rect(room,Rect2(30,75,900,320),false)
+	if presentation==null and room!=null and game in ['impossible_parking','chaos_elevator']: draw_texture_rect(room,Rect2(30,75,900,320),false)
 	hud(spec.name.to_upper())
 	match game:
 		'brainrot_button_panic':

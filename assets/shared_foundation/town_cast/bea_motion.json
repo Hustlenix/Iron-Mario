@@ -1,0 +1,48 @@
+{
+  "cell": [
+    16,
+    32
+  ],
+  "anchor": [
+    8,
+    32
+  ],
+  "directions": [
+    "left",
+    "up",
+    "right",
+    "down"
+  ],
+  "guide": "Spritesheet_animations_GUIDE.png",
+  "idle": {
+    "row": 0,
+    "frames_per_direction": 1,
+    "fps": 1
+  },
+  "walk": {
+    "row": 1,
+    "frames_per_direction": 6,
+    "fps": 7
+  },
+  "run": {
+    "row": 1,
+    "frames_per_direction": 6,
+    "fps": 10,
+    "note": "Walk poses played faster; no separate run source"
+  },
+  "idle_animated": {
+    "row": 2,
+    "frames_per_direction": 6,
+    "fps": 5
+  },
+  "hit": {
+    "row": 3,
+    "frames_per_direction": 6,
+    "fps": 10
+  },
+  "hurt": {
+    "row": 4,
+    "frames_per_direction": 3,
+    "fps": 8
+  }
+}

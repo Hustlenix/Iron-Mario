@@ -1,0 +1,950 @@
+{
+  "scope": "Full presentation replacement; shared character renderer alone does not mark a game complete",
+  "games": [
+    {
+      "id": "target_lock",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "reactor_parry",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "power_sequence",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "stop_bar",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "odd_one",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "rhythm_knock",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "whack_mole",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "coin_catch",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "shield_turn",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "trace_wire",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "balloon_pump",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "hold_balance",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "color_switch",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "number_order",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "mirror_match",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "orbit_snap",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "light_out",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "safe_dial",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "fuse_cut",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "pixel_repair",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "maze_runner",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "gravity_flip",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "word_sort",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "echo_taps",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "door_peek",
+      "source": "microgames/pack_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "arc_dash",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "laser_tunnel",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "armor_repair",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "rocket_rescue",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "flappy_bonus",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "swing_rescue",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "meteor_dodge",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "parcel_catch",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "ice_slide",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "rail_grind",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "balloon_lift",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "magnet_haul",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "rope_bridge",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "paint_skate",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "shield_surf",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "boulder_push",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "river_hop",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "glider_gust",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "orbit_escape",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "spring_vault",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "cloud_ferry",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "parachute_drop",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "pinball_rescue",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "conveyor_sort",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "comet_curl",
+      "source": "microgames/pack_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "water_sort",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "ball_sort",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "sliding_puzzle",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "sokoban",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "minesweeper",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "tangram",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "nonogram",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "domino",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "pipe_flow",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "laser_reflect",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "tic_tac_toe",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "connect_four",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "hex_rotation",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "word_ladder",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "tower_hanoi",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "memory_pairs",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "chess_fork",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "knight_tour",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "river_ferry",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "peg_solitaire",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "logic_grid",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "train_shunt",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "circuit_logic",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "gear_link",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "code_breaker",
+      "source": "microgames/pack_c.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "metro_armor_rush",
+      "source": "games/classics_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "shadow_armor_duel",
+      "source": "games/classics_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "scrap_hill_racer",
+      "source": "games/classics_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "temple_reactor_escape",
+      "source": "games/classics_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "reactor_slice",
+      "source": "games/classics_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "jetpack_test_lab",
+      "source": "games/classics_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "chaos_crossing",
+      "source": "games/classics_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "catapult_chaos",
+      "source": "games/classics_a.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "feed_reactor",
+      "source": "games/classics_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "neon_rhythm_escape",
+      "source": "games/classics_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "skyline_jumper",
+      "source": "games/classics_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "turbo_flapper",
+      "source": "games/classics_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "bridge_builder",
+      "source": "games/classics_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "reactor_merge",
+      "source": "games/classics_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "rooftop_defense",
+      "source": "games/classics_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "mini_reactor_buddy",
+      "source": "games/classics_b.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "arc_snake",
+      "source": "games/cabinets.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "brick_reactor",
+      "source": "games/cabinets.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "tower_bounce",
+      "source": "games/cabinets.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "brainrot_button_panic",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "meme_dodge_arena",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "one_pixel_survival",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "impossible_parking",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "reaction_relay",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "chaos_elevator",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "dont_press_red",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "fall_forever",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "physics_disaster",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "paint_frontier",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    },
+    {
+      "id": "notebook_platformer",
+      "source": "games/chaos.json",
+      "status": "planned",
+      "district": null,
+      "assets": [],
+      "visual_review": null,
+      "behavior_verification": null
+    }
+  ]
+}

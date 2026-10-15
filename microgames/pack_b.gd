@@ -405,8 +405,9 @@ func goal(pos: Vector2, label: String = "HOME") -> void:
 	text_at(pos + Vector2(-62, 9), label, 25, INK)
 
 func paint() -> void:
-	box(Rect2(0, 0, 960, 480), PAPER)
-	for i in range(16): stroke(Vector2(i * 65, 450), Vector2(i * 65 + 28, 453), Color("dbcdaa"), 3)
+	if presentation == null:
+		box(Rect2(0, 0, 960, 480), PAPER)
+		for i in range(16): stroke(Vector2(i * 65, 450), Vector2(i * 65 + 28, 453), Color("dbcdaa"), 3)
 	match game:
 		"arc_dash":
 			stroke(Vector2(50, 215), Vector2(910, 215), BLUE, 7)

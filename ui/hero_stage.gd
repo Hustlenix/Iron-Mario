@@ -14,15 +14,47 @@ var last_art_path: String=''
 func _ready() -> void:
 	clip_contents=true; mouse_filter=Control.MOUSE_FILTER_IGNORE
 	art=TextureRect.new(); art.expand_mode=TextureRect.EXPAND_IGNORE_SIZE; art.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	art.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
 	art.mouse_filter=Control.MOUSE_FILTER_IGNORE; add_child(art)
-	cloth=ShaderMaterial.new(); cloth.shader=load('res://ui/hero_cloth.gdshader'); art.material=cloth
+	# Keep the hero art clean and chunky: the arcade sprites are intentionally low resolution.
+	cloth=null
 	foreground=Node2D.new(); add_child(foreground); foreground.draw.connect(draw_power)
 	set_hero(entry)
+	art.visible=false
+	foreground.visible=false
+	var viewport := SubViewport.new()
+	viewport.size=Vector2i(320,180)
+	viewport.render_target_update_mode=SubViewport.UPDATE_ALWAYS
+	viewport.canvas_item_default_texture_filter=Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
+	add_child(viewport)
+	var world := preload('res://ui/pixel_diorama.gd').new()
+	world.host=self
+	viewport.add_child(world)
+	var matte := ColorRect.new()
+	matte.color=Color('#252844')
+	matte.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	matte.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(matte)
+	var screen := TextureRect.new()
+	screen.texture=viewport.get_texture()
+	screen.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+	screen.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+	screen.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	screen.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(screen)
 func set_hero(spec: Dictionary) -> void:
 	entry=spec; entrance=0; demo_time=-1; last_art_path=''
 	if is_instance_valid(art):
-		var path: String=entry.art
-		if ResourceLoader.exists(path): art.texture=load(path); last_art_path=path
+		var path := 'res://assets/shared_foundation/town_cast/cast_idles.png'
+		if ResourceLoader.exists(path):
+			var atlas := AtlasTexture.new()
+			atlas.atlas=load(path)
+			var hero_index := 0
+			for i in HeroRoster.HEROES.size():
+				if HeroRoster.hero(i).id==entry.id: hero_index=i; break
+			atlas.region=Rect2(hero_index*32,0,32,32)
+			art.texture=atlas; last_art_path=path
 		else: art.texture=null
 	queue_redraw()
 func demonstrate() -> void:
@@ -54,8 +86,9 @@ func _process(delta: float) -> void:
 		art.position=(size-target_size)*0.5+offset
 		art.scale=Vector2.ONE*(1.0 if reduced_motion else (0.96+0.04*entrance+sin(clock*1.7)*0.002))
 		art.rotation=rotation_amount; art.modulate=Color(1,1,1,alpha)
-		cloth.set_shader_parameter('motion',0.0 if reduced_motion else 1.0)
-		cloth.set_shader_parameter('pulse',0.5 if demo_time>=0 else 0.0)
+		if cloth != null:
+			cloth.set_shader_parameter('motion',0.0 if reduced_motion else 1.0)
+			cloth.set_shader_parameter('pulse',0.5 if demo_time>=0 else 0.0)
 	queue_redraw()
 	if is_instance_valid(foreground): foreground.queue_redraw()
 func _draw() -> void:

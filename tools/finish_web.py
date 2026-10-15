@@ -10,13 +10,13 @@ count = sum(len(json.loads(path.read_text(encoding='utf-8'))) for folder in ['mi
             for path in (project / folder).glob('*.json'))
 manifest_path = root / 'index.manifest.json'
 manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
-manifest.update(short_name='Micro Heroes', id='./', scope='./', theme_color='#fff4d7',
-                description=f'{count} playable adventures. One hand-drawn arcade universe.')
+manifest.update(name='Iron-Mario Pixel Town',short_name='Iron-Mario', id='./', scope='./', theme_color='#fff2d4',
+                description=f'{count} arcade adventures with six pixel town characters.')
 for icon in manifest['icons']:
     icon['purpose'] = 'any maskable'
 manifest_path.write_text(json.dumps(manifest, separators=(',', ':')), encoding='utf-8')
 shutil.copytree(project / 'web' / 'previews', root / 'previews', dirs_exist_ok=True)
-shutil.copy2(project / 'assets' / 'roster' / 'solstice.png', root / 'previews' / 'solstice-roster.png')
+shutil.copy2(project / 'assets' / 'shared_foundation' / 'town_cast' / 'cast_idles.png', root / 'previews' / 'town-cast.png')
 assert (root / 'index.wasm').stat().st_size > 1_000_000
 assert (root / 'index.pck').stat().st_size > 100_000
 # Content-address runtime assets so an old service worker or CDN cannot mix
@@ -38,3 +38,5 @@ for name in ('index.html', 'index.service.worker.js'):
 for before, after in renames.items():
     (root / before).rename(root / after)
 print('PWA metadata and runtime files verified')
+import subprocess,sys
+subprocess.run([sys.executable,str(project/'tools/package_asset_review.py')],check=True,cwd=project)

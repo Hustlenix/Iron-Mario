@@ -11,21 +11,21 @@ const fs = require('node:fs');
   fs.mkdirSync('build/browser-qa',{recursive:true});
   await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
   await page.locator('#status').waitFor({state:'hidden',timeout:90000});
-  for (const name of ['SOLSTICE','VECTOR','UMBRA','PRISM']) {
+  for (const name of ['MILO','JUN','BEA','NIA','ASH','PIP']) {
     await page.locator('#hero-a11y').filter({hasText:`Selected ${name}.`}).waitFor({state:'attached',timeout:5000});
     await page.screenshot({path:`build/browser-qa/hero-${name.toLowerCase()}.png`});
     await page.locator('#canvas').press('Space');
-    await page.locator('#hero-a11y').filter({hasText:'Power demonstration active.'}).waitFor({state:'attached',timeout:5000});
+    await page.locator('#hero-a11y').filter({hasText:'Celebration active.'}).waitFor({state:'attached',timeout:5000});
     await page.locator('#canvas').press('ArrowRight');
   }
   await page.locator('#canvas').press('ArrowRight');
   await page.locator('#canvas').press('Enter');
-  await page.locator('#hero-a11y').filter({hasText:'Selected VECTOR. KINETIC ACROBAT. Equipped.'}).waitFor({state:'attached',timeout:5000});
+  await page.locator('#hero-a11y').filter({hasText:'Selected JUN. ENERGETIC COURIER. Equipped.'}).waitFor({state:'attached',timeout:5000});
   // Roster preferences are synchronous: verify an immediate reload after equipment.
   await page.reload();
   await page.locator('#status').waitFor({state:'hidden',timeout:90000});
   console.log('Reloaded hero:',await page.locator('#hero-a11y').textContent());
-  await page.locator('#hero-a11y').filter({hasText:'Selected VECTOR. KINETIC ACROBAT. Equipped.'}).waitFor({state:'attached',timeout:5000});
+  await page.locator('#hero-a11y').filter({hasText:'Selected JUN. ENERGETIC COURIER. Equipped.'}).waitFor({state:'attached',timeout:5000});
   for (const width of [375,390,430]) {
     await page.setViewportSize({width,height:844});
     await page.waitForTimeout(300);
@@ -43,9 +43,9 @@ const fs = require('node:fs');
   const phoneWidth = Number(await phone.locator('#canvas').getAttribute('data-selector-width'));
   if (Math.abs(phoneWidth-390)>2) throw new Error(`DPR3 hero width ${phoneWidth} does not match 390 CSS pixels`);
   await phone.touchscreen.tap(265,170);
-  await phone.locator('#hero-a11y').filter({hasText:'Selected VECTOR.'}).waitFor({state:'attached',timeout:5000});
-  await phone.touchscreen.tap(260,605);
-  await phone.locator('#hero-a11y').filter({hasText:'Power demonstration active.'}).waitFor({state:'attached',timeout:5000});
+  await phone.locator('#hero-a11y').filter({hasText:'Selected JUN.'}).waitFor({state:'attached',timeout:5000});
+  await phone.locator('#canvas').press('Space');
+  await phone.locator('#hero-a11y').filter({hasText:'Celebration active.'}).waitFor({state:'attached',timeout:5000});
   await phone.screenshot({path:'build/browser-qa/hero-phone-dpr3-power.png'});
   await phoneContext.close();
   await page.setViewportSize({width:1280,height:720});

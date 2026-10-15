@@ -1,0 +1,1347 @@
+{
+  "title": "Pixel Town shared feedback and UI",
+  "version": 1,
+  "source": "Original integer-grid art created for Iron-Mario by the build_town_fx_ui.py asset tool; no third-party pixels included",
+  "license_status": "ready-original",
+  "attribution": "Iron-Mario Pixel Town original UI and feedback art",
+  "palette": {
+    "ink": "#252c42",
+    "shade": "#434961",
+    "muted": "#747588",
+    "paper": "#f4e6be",
+    "light": "#fff3d2",
+    "sand": "#cbaa80",
+    "teal": "#527f83",
+    "mint": "#8fc5ad",
+    "cyan": "#a7d9ce",
+    "coral": "#d57971",
+    "red": "#ad535e",
+    "gold": "#e8b95d",
+    "ochre": "#ae793d",
+    "violet": "#8c7caa",
+    "purple": "#62587c"
+  },
+  "sampling": "nearest",
+  "pixel_grid": 1,
+  "alpha": "transparent outside silhouettes; no antialiasing",
+  "effects_atlas": {
+    "file": "effects_atlas.png",
+    "size": [
+      256,
+      384
+    ],
+    "layout": "one effect row, eight 32x32 frames left-to-right"
+  },
+  "icon_atlas": {
+    "file": "ui/icons_atlas.png",
+    "size": [
+      128,
+      64
+    ]
+  },
+  "font": {
+    "file": "ui/font_5x7.png",
+    "glyph_order": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "!",
+      "?",
+      "-",
+      ".",
+      " "
+    ],
+    "columns": 16,
+    "cell": [
+      6,
+      8
+    ],
+    "visible_glyph": [
+      5,
+      7
+    ],
+    "advance": 6,
+    "baseline": 7,
+    "filter": "nearest"
+  },
+  "assets": [
+    {
+      "id": "spark_weld",
+      "family": "effects",
+      "file": "effects/spark_weld.png",
+      "atlas_rect": [
+        0,
+        0,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 14,
+      "loop": false,
+      "anchor": [
+        16,
+        22
+      ],
+      "reduced_motion": {
+        "file": "effects/spark_weld_still.png",
+        "frame": 2,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Welding, repairs and metal impacts",
+      "ready": true
+    },
+    {
+      "id": "dust_step",
+      "family": "effects",
+      "file": "effects/dust_step.png",
+      "atlas_rect": [
+        0,
+        32,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 12,
+      "loop": false,
+      "anchor": [
+        16,
+        26
+      ],
+      "reduced_motion": {
+        "file": "effects/dust_step_still.png",
+        "frame": 3,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Footsteps and quick changes of direction",
+      "ready": true
+    },
+    {
+      "id": "smoke_vent",
+      "family": "effects",
+      "file": "effects/smoke_vent.png",
+      "atlas_rect": [
+        0,
+        64,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 7,
+      "loop": true,
+      "anchor": [
+        16,
+        28
+      ],
+      "reduced_motion": {
+        "file": "effects/smoke_vent_still.png",
+        "frame": 4,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Warm machinery and ventilation",
+      "ready": true
+    },
+    {
+      "id": "slime_splash",
+      "family": "effects",
+      "file": "effects/slime_splash.png",
+      "atlas_rect": [
+        0,
+        96,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 11,
+      "loop": false,
+      "anchor": [
+        16,
+        26
+      ],
+      "reduced_motion": {
+        "file": "effects/slime_splash_still.png",
+        "frame": 4,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Organic hazards and goo landings",
+      "ready": true
+    },
+    {
+      "id": "energy_arc",
+      "family": "effects",
+      "file": "effects/energy_arc.png",
+      "atlas_rect": [
+        0,
+        128,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 12,
+      "loop": false,
+      "anchor": [
+        16,
+        16
+      ],
+      "reduced_motion": {
+        "file": "effects/energy_arc_still.png",
+        "frame": 2,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Short circuit between two nearby terminals",
+      "ready": true
+    },
+    {
+      "id": "hit_flash",
+      "family": "effects",
+      "file": "effects/hit_flash.png",
+      "atlas_rect": [
+        0,
+        160,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 16,
+      "loop": false,
+      "anchor": [
+        16,
+        16
+      ],
+      "reduced_motion": {
+        "file": "effects/hit_flash_still.png",
+        "frame": 3,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Single local hit marker, never fullscreen",
+      "ready": true
+    },
+    {
+      "id": "portal_fold",
+      "family": "effects",
+      "file": "effects/portal_fold.png",
+      "atlas_rect": [
+        0,
+        192,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        16,
+        28
+      ],
+      "reduced_motion": {
+        "file": "effects/portal_fold_still.png",
+        "frame": 2,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Small dimensional door or district transition",
+      "ready": true
+    },
+    {
+      "id": "warning_ping",
+      "family": "effects",
+      "file": "effects/warning_ping.png",
+      "atlas_rect": [
+        0,
+        224,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        16,
+        27
+      ],
+      "reduced_motion": {
+        "file": "effects/warning_ping_still.png",
+        "frame": 0,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "World hazard cue paired with text or icon",
+      "ready": true
+    },
+    {
+      "id": "success_burst",
+      "family": "effects",
+      "file": "effects/success_burst.png",
+      "atlas_rect": [
+        0,
+        256,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 12,
+      "loop": false,
+      "anchor": [
+        16,
+        16
+      ],
+      "reduced_motion": {
+        "file": "effects/success_burst_still.png",
+        "frame": 3,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Completed repair or successful round",
+      "ready": true
+    },
+    {
+      "id": "failure_fizzle",
+      "family": "effects",
+      "file": "effects/failure_fizzle.png",
+      "atlas_rect": [
+        0,
+        288,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 10,
+      "loop": false,
+      "anchor": [
+        16,
+        26
+      ],
+      "reduced_motion": {
+        "file": "effects/failure_fizzle_still.png",
+        "frame": 0,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Failure result or damage feedback",
+      "ready": true
+    },
+    {
+      "id": "landing_ring",
+      "family": "effects",
+      "file": "effects/landing_ring.png",
+      "atlas_rect": [
+        0,
+        320,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 12,
+      "loop": false,
+      "anchor": [
+        16,
+        26
+      ],
+      "reduced_motion": {
+        "file": "effects/landing_ring_still.png",
+        "frame": 2,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Ground contact and safe landing",
+      "ready": true
+    },
+    {
+      "id": "charge_orbit",
+      "family": "effects",
+      "file": "effects/charge_orbit.png",
+      "atlas_rect": [
+        0,
+        352,
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frame_count": 8,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        16,
+        16
+      ],
+      "reduced_motion": {
+        "file": "effects/charge_orbit_still.png",
+        "frame": 0,
+        "behavior": "Static image; no flicker, movement, scaling or rotation"
+      },
+      "use": "Charging interactable or special object",
+      "ready": true
+    },
+    {
+      "id": "paper_panel",
+      "family": "ui_panel",
+      "file": "ui/paper_panel.png",
+      "size": [
+        32,
+        32
+      ],
+      "nine_slice_margins": {
+        "left": 6,
+        "top": 6,
+        "right": 6,
+        "bottom": 8
+      },
+      "content_margins": [
+        8,
+        8,
+        8,
+        10
+      ],
+      "min_size": [
+        24,
+        24
+      ],
+      "ready": true
+    },
+    {
+      "id": "workshop_panel",
+      "family": "ui_panel",
+      "file": "ui/workshop_panel.png",
+      "size": [
+        32,
+        32
+      ],
+      "nine_slice_margins": {
+        "left": 6,
+        "top": 6,
+        "right": 6,
+        "bottom": 8
+      },
+      "content_margins": [
+        8,
+        8,
+        8,
+        10
+      ],
+      "min_size": [
+        24,
+        24
+      ],
+      "ready": true
+    },
+    {
+      "id": "focused_panel",
+      "family": "ui_panel",
+      "file": "ui/focused_panel.png",
+      "size": [
+        32,
+        32
+      ],
+      "nine_slice_margins": {
+        "left": 6,
+        "top": 6,
+        "right": 6,
+        "bottom": 8
+      },
+      "content_margins": [
+        8,
+        8,
+        8,
+        10
+      ],
+      "min_size": [
+        24,
+        24
+      ],
+      "ready": true
+    },
+    {
+      "id": "night_panel",
+      "family": "ui_panel",
+      "file": "ui/night_panel.png",
+      "size": [
+        32,
+        32
+      ],
+      "nine_slice_margins": {
+        "left": 6,
+        "top": 6,
+        "right": 6,
+        "bottom": 8
+      },
+      "content_margins": [
+        8,
+        8,
+        8,
+        10
+      ],
+      "min_size": [
+        24,
+        24
+      ],
+      "ready": true
+    },
+    {
+      "id": "button_normal",
+      "family": "ui_button",
+      "file": "ui/button_normal.png",
+      "size": [
+        64,
+        24
+      ],
+      "nine_slice_margins": {
+        "left": 6,
+        "top": 6,
+        "right": 6,
+        "bottom": 8
+      },
+      "text_color": "#252c42",
+      "text_offset": [
+        0,
+        0
+      ],
+      "mobile_min_hit_target": [
+        48,
+        48
+      ],
+      "ready": true
+    },
+    {
+      "id": "button_hover",
+      "family": "ui_button",
+      "file": "ui/button_hover.png",
+      "size": [
+        64,
+        24
+      ],
+      "nine_slice_margins": {
+        "left": 6,
+        "top": 6,
+        "right": 6,
+        "bottom": 8
+      },
+      "text_color": "#fff3d2",
+      "text_offset": [
+        0,
+        0
+      ],
+      "mobile_min_hit_target": [
+        48,
+        48
+      ],
+      "ready": true
+    },
+    {
+      "id": "button_pressed",
+      "family": "ui_button",
+      "file": "ui/button_pressed.png",
+      "size": [
+        64,
+        24
+      ],
+      "nine_slice_margins": {
+        "left": 6,
+        "top": 6,
+        "right": 6,
+        "bottom": 8
+      },
+      "text_color": "#fff3d2",
+      "text_offset": [
+        0,
+        1
+      ],
+      "mobile_min_hit_target": [
+        48,
+        48
+      ],
+      "ready": true
+    },
+    {
+      "id": "button_disabled",
+      "family": "ui_button",
+      "file": "ui/button_disabled.png",
+      "size": [
+        64,
+        24
+      ],
+      "nine_slice_margins": {
+        "left": 6,
+        "top": 6,
+        "right": 6,
+        "bottom": 8
+      },
+      "text_color": "#252c42",
+      "text_offset": [
+        0,
+        0
+      ],
+      "mobile_min_hit_target": [
+        48,
+        48
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_wrench",
+      "family": "ui_icon",
+      "file": "ui/icons/wrench.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_bolt",
+      "family": "ui_icon",
+      "file": "ui/icons/bolt.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        16,
+        0,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_gear",
+      "family": "ui_icon",
+      "file": "ui/icons/gear.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        32,
+        0,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_mushroom",
+      "family": "ui_icon",
+      "file": "ui/icons/mushroom.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        48,
+        0,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_flag",
+      "family": "ui_icon",
+      "file": "ui/icons/flag.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        64,
+        0,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_ticket",
+      "family": "ui_icon",
+      "file": "ui/icons/ticket.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        80,
+        0,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_person",
+      "family": "ui_icon",
+      "file": "ui/icons/person.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        96,
+        0,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_heart",
+      "family": "ui_icon",
+      "file": "ui/icons/heart.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        112,
+        0,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_heart_empty",
+      "family": "ui_icon",
+      "file": "ui/icons/heart_empty.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        0,
+        16,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_coin",
+      "family": "ui_icon",
+      "file": "ui/icons/coin.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        16,
+        16,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_sound",
+      "family": "ui_icon",
+      "file": "ui/icons/sound.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        32,
+        16,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_mute",
+      "family": "ui_icon",
+      "file": "ui/icons/mute.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        48,
+        16,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_play",
+      "family": "ui_icon",
+      "file": "ui/icons/play.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        64,
+        16,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_back",
+      "family": "ui_icon",
+      "file": "ui/icons/back.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        80,
+        16,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_pause",
+      "family": "ui_icon",
+      "file": "ui/icons/pause.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        96,
+        16,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_check",
+      "family": "ui_icon",
+      "file": "ui/icons/check.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        112,
+        16,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_close",
+      "family": "ui_icon",
+      "file": "ui/icons/close.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        0,
+        32,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_search",
+      "family": "ui_icon",
+      "file": "ui/icons/search.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        16,
+        32,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_lock",
+      "family": "ui_icon",
+      "file": "ui/icons/lock.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        32,
+        32,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_home",
+      "family": "ui_icon",
+      "file": "ui/icons/home.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        48,
+        32,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_star",
+      "family": "ui_icon",
+      "file": "ui/icons/star.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        64,
+        32,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_moon",
+      "family": "ui_icon",
+      "file": "ui/icons/moon.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        80,
+        32,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_bag",
+      "family": "ui_icon",
+      "file": "ui/icons/bag.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        96,
+        32,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_jump",
+      "family": "ui_icon",
+      "file": "ui/icons/jump.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        112,
+        32,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_keyboard",
+      "family": "ui_icon",
+      "file": "ui/icons/keyboard.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        0,
+        48,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_turbine",
+      "family": "ui_icon",
+      "file": "ui/icons/turbine.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        16,
+        48,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_target",
+      "family": "ui_icon",
+      "file": "ui/icons/target.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        32,
+        48,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_reactor",
+      "family": "ui_icon",
+      "file": "ui/icons/reactor.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        48,
+        48,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "icon_carnival",
+      "family": "ui_icon",
+      "file": "ui/icons/carnival.png",
+      "size": [
+        16,
+        16
+      ],
+      "atlas_rect": [
+        64,
+        48,
+        16,
+        16
+      ],
+      "ready": true
+    },
+    {
+      "id": "badge_sky_foundry",
+      "family": "ui_badge",
+      "file": "ui/badges/sky_foundry.png",
+      "size": [
+        24,
+        28
+      ],
+      "district": "sky_foundry",
+      "ready": true
+    },
+    {
+      "id": "badge_neon_workshop",
+      "family": "ui_badge",
+      "file": "ui/badges/neon_workshop.png",
+      "size": [
+        24,
+        28
+      ],
+      "district": "neon_workshop",
+      "ready": true
+    },
+    {
+      "id": "badge_reactor_works",
+      "family": "ui_badge",
+      "file": "ui/badges/reactor_works.png",
+      "size": [
+        24,
+        28
+      ],
+      "district": "reactor_works",
+      "ready": true
+    },
+    {
+      "id": "badge_fungus_underworks",
+      "family": "ui_badge",
+      "file": "ui/badges/fungus_underworks.png",
+      "size": [
+        24,
+        28
+      ],
+      "district": "fungus_underworks",
+      "ready": true
+    },
+    {
+      "id": "badge_training_yard",
+      "family": "ui_badge",
+      "file": "ui/badges/training_yard.png",
+      "size": [
+        24,
+        28
+      ],
+      "district": "training_yard",
+      "ready": true
+    },
+    {
+      "id": "badge_chaos_carnival",
+      "family": "ui_badge",
+      "file": "ui/badges/chaos_carnival.png",
+      "size": [
+        24,
+        28
+      ],
+      "district": "chaos_carnival",
+      "ready": true
+    },
+    {
+      "id": "banner_round_clear",
+      "family": "ui_banner",
+      "file": "ui/banners/round_clear.png",
+      "size": [
+        144,
+        32
+      ],
+      "text": "ROUND CLEAR!",
+      "safe_inset": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "ready": true
+    },
+    {
+      "id": "banner_try_again",
+      "family": "ui_banner",
+      "file": "ui/banners/try_again.png",
+      "size": [
+        144,
+        32
+      ],
+      "text": "TRY AGAIN",
+      "safe_inset": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "ready": true
+    },
+    {
+      "id": "banner_new_best",
+      "family": "ui_banner",
+      "file": "ui/banners/new_best.png",
+      "size": [
+        144,
+        32
+      ],
+      "text": "NEW BEST!",
+      "safe_inset": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "ready": true
+    },
+    {
+      "id": "banner_district_ready",
+      "family": "ui_banner",
+      "file": "ui/banners/district_ready.png",
+      "size": [
+        144,
+        32
+      ],
+      "text": "DISTRICT READY",
+      "safe_inset": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "ready": true
+    },
+    {
+      "id": "meter_track",
+      "family": "ui_meter",
+      "file": "ui/meter_track.png",
+      "size": [
+        80,
+        12
+      ],
+      "fill_rect": [
+        4,
+        4,
+        72,
+        3
+      ],
+      "ready": true
+    },
+    {
+      "id": "meter_fill",
+      "family": "ui_meter",
+      "file": "ui/meter_fill.png",
+      "size": [
+        1,
+        3
+      ],
+      "stretch": "horizontal nearest; clip width to value",
+      "ready": true
+    },
+    {
+      "id": "town_5x7",
+      "family": "ui_font",
+      "file": "ui/font_5x7.png",
+      "glyph_order": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "!",
+        "?",
+        "-",
+        ".",
+        " "
+      ],
+      "columns": 16,
+      "cell": [
+        6,
+        8
+      ],
+      "visible_glyph": [
+        5,
+        7
+      ],
+      "advance": 6,
+      "baseline": 7,
+      "filter": "nearest",
+      "ready": true
+    }
+  ],
+  "integration": {
+    "Godot": "CanvasItem.texture_filter = TEXTURE_FILTER_NEAREST; SpriteFrames duration uses fps; all animation frame indices are zero based",
+    "nine_slice": "Use StyleBoxTexture or NinePatchRect with the listed margins. Retain corner pixels at integer scale. Add text via runtime Label for localization.",
+    "mobile": "UI artwork is native size, independent of hit targets. Use >=48x48 logical touch targets and keep banners within safe-area margins.",
+    "reduced_motion": "Use each effect's _still.png. A single time-limited static marker may appear without loop, flash or tween. Retain text/icon cues.",
+    "fx_anchor": "Anchor coordinates are source pixels measured from frame top-left; position sprite so anchor meets contact point."
+  }
+}

@@ -33,6 +33,7 @@ var cursor_layer: Node2D
 var services := PlatformServices.new()
 var library_page: int = 0
 var library_sort: String = 'A-Z'
+var menu_narrow: bool = false
 
 func _ready() -> void:
 	theme = Design.theme()
@@ -56,6 +57,7 @@ func _ready() -> void:
 	if OS.has_feature('web'):
 		var requested: Variant=JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('screen')",true)
 		if requested=='arcade': initial_page='HOME'
+		elif requested=='games': initial_page='GAMES'
 	show_page(initial_page)
 	if initial_page=='HOME' and not Profile.data.get('onboarded',false):
 		show_modal('A TINY WORLD. A BIG HERO.','One command. A few seconds. You have got this.',[
@@ -89,7 +91,7 @@ func clear_page() -> void:
 	page.add_child(background)
 	var margin := MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	for side in ['left','right']: margin.add_theme_constant_override('margin_'+side,32)
+	for side in ['left','right']: margin.add_theme_constant_override('margin_'+side,16 if size.x<600 else 32)
 	for side in ['top','bottom']: margin.add_theme_constant_override('margin_'+side,18)
 	page.add_child(margin)
 	body = Design.column(16)
@@ -100,14 +102,22 @@ func show_page(name: String) -> void:
 	transitioning = false
 	run = null
 	current_page = name
+	announce_web('Iron-Mario. '+name.capitalize()+'.'+(' Left and Right switch heroes, Space demonstrates power, Enter equips.' if name=='HEROES' else ''),name)
+	menu_narrow=size.x<650
 	clear_page()
-	set_selector_scale(name=='HEROES')
+	set_selector_scale(true)
 	Music.play_menu(Profile.data.hero)
 	if name=='HEROES':
 		var selector := HeroSelection.new()
 		page.add_child(selector)
 		selector.exit_requested.connect(func()->void:show_page('HOME'))
 		selector.play_requested.connect(func(id: String)->void:start_run('single',id))
+		layout_game()
+		return
+	if name in ['HOME','GAMES']:
+		var screen: Control=ArcadeHome.new() if name=='HOME' else ArcadeLibrary.new()
+		screen.app=self
+		page.add_child(screen)
 		layout_game()
 		return
 	build_top()
@@ -125,13 +135,26 @@ func show_page(name: String) -> void:
 		'SHOP': build_shop()
 		'PROFILE': build_profile()
 		'SETTINGS': build_settings()
-	var nav := Design.row(10)
+	var nav := GridContainer.new()
+	nav.columns=3
+	nav.add_theme_constant_override('h_separation',8)
+	nav.add_theme_constant_override('v_separation',8)
 	body.add_child(nav)
 	for destination in ['HOME','GAMES','HEROES','MISSIONS','SHOP','PROFILE']:
-		var btn := Design.button(destination,func() -> void: show_page(destination),Design.GOLD if destination==name else Design.PAPER)
+		var btn := HeroDesign.button(destination,func() -> void: show_page(destination),HeroDesign.GOLD if destination==name else HeroDesign.PANEL)
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		nav.add_child(btn)
+	make_menu_responsive(page)
 	layout_game()
+
+func make_menu_responsive(node: Node) -> void:
+	# Legacy secondary pages must not impose unwrapped desktop text widths.
+	if node is Label:
+		node.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+		node.custom_minimum_size.x=0
+	if node is Button:
+		node.add_theme_font_size_override('font_size',16)
+	for child in node.get_children(): make_menu_responsive(child)
 
 func set_selector_scale(active: bool) -> void:
 	# Match CSS pixels on high-DPI browsers, while games keep their 960×540 canvas.
@@ -143,16 +166,21 @@ func set_selector_scale(active: bool) -> void:
 		if ratio is float or ratio is int: pixel_ratio=maxf(0.25,float(ratio))
 	get_tree().root.content_scale_factor=pixel_ratio
 
+func announce_web(message: String, screen: String) -> void:
+	if not OS.has_feature('web'): return
+	var payload: String=JSON.stringify({'message':message,'screen':screen,'game':current_id if screen in ['PLAY','PAUSED','RESULT'] else ''})
+	JavaScriptBridge.eval("(()=>{const s="+payload+";const n=document.getElementById('arcade-a11y');if(n){n.textContent=s.message;n.dataset.screen=s.screen;n.dataset.game=s.game;}const c=document.getElementById('canvas');if(c)c.setAttribute('aria-label',s.message);})()",true)
+
 func build_top() -> void:
 	top = Design.row(16)
 	body.add_child(top)
-	profile_label = Design.label('LV %d  /  %d XP' % [1+int(Profile.data.xp)/250,int(Profile.data.xp)%250],22)
+	profile_label = HeroDesign.label('LV %d / %d XP' % [1+int(Profile.data.xp)/250,int(Profile.data.xp)%250],14)
 	top.add_child(profile_label)
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(spacer)
-	top.add_child(Design.label('%d COINS' % int(Profile.data.coins),24))
-	top.add_child(Design.button('SETTINGS',func() -> void: show_page('SETTINGS')))
+	top.add_child(HeroDesign.label('%d COINS' % int(Profile.data.coins),14))
+	top.add_child(HeroDesign.button('SETTINGS',func() -> void: show_page('SETTINGS')))
 
 func heading(kicker: String, name: String, subtitle: String = '') -> void:
 	content.add_child(Design.label(kicker,19,Design.RED))
@@ -172,7 +200,7 @@ func build_home() -> void:
 	play.custom_minimum_size.y = 64
 	play.add_theme_font_size_override('font_size',38)
 	left.add_child(play)
-	left.add_child(Design.button('MEET THE ORIGINAL FOUR',func()->void:show_page('HEROES'),Design.BLUE))
+	left.add_child(Design.button('MEET THE TOWN SIX',func()->void:show_page('HEROES'),Design.BLUE))
 	var modes := Design.row()
 	left.add_child(modes)
 	for choice in ['TOURNAMENT','DAILY CHALLENGE']:
@@ -321,7 +349,9 @@ func build_missions() -> void:
 	for mission in Profile.mission_progress():
 		var card := Design.panel()
 		content.add_child(card)
-		var row := Design.row(20)
+		var row := BoxContainer.new()
+		row.vertical=size.x<650
+		row.add_theme_constant_override('separation',12)
 		card.add_child(row)
 		var text := Design.label('%s  /  %d of %d' % [mission.get('title',mission.id),mission.progress,mission.target],25)
 		text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -341,7 +371,9 @@ func build_shop() -> void:
 	for item in [['confetti','CONFETTI CREW',100,'Double paint splashes'],['midnight','MIDNIGHT INK',180,'Blue arena paper'],['sunshine','SUNSHINE PAPER',180,'Yellow arena paper']]:
 		var card := Design.panel()
 		content.add_child(card)
-		var row := Design.row(20)
+		var row := BoxContainer.new()
+		row.vertical=size.x<650
+		row.add_theme_constant_override('separation',12)
 		card.add_child(row)
 		var title := Design.label(item[1]+'  /  '+item[3],25)
 		title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -369,22 +401,25 @@ func build_profile() -> void:
 func build_settings() -> void:
 	heading('MAKE YOURSELF AT HOME','SOUND & COMFORT')
 	for setting in [['volume','SOUND EFFECTS'],['music_volume','MUSIC']]:
-		var row := Design.row()
+		var row := BoxContainer.new()
+		row.vertical=size.x<650
+		row.add_theme_constant_override('separation',12)
 		content.add_child(row)
 		var label := Design.label(setting[1],25)
-		label.custom_minimum_size.x = 260
+		label.custom_minimum_size.x = 0 if size.x<650 else 200
 		row.add_child(label)
 		var slider := HSlider.new()
 		slider.min_value = 0
 		slider.max_value = 100
 		slider.value = Profile.data.settings.get(setting[0],70)
-		slider.custom_minimum_size = Vector2(450,60)
+		slider.custom_minimum_size = Vector2(0 if size.x<650 else 320,60)
+		slider.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 		slider.value_changed.connect(func(value: float) -> void:
 			Profile.data.settings[setting[0]] = value
 			apply_settings()
 			Profile.save_profile())
 		row.add_child(slider)
-	for setting in [['shake','SCREEN REACTIONS'],['haptics','TOUCH VIBRATION']]:
+	for setting in [['shake','SCREEN REACTIONS'],['haptics','TOUCH VIBRATION'],['reduced_motion','REDUCED MOTION']]:
 		var toggle := CheckButton.new()
 		toggle.text = setting[1]
 		toggle.button_pressed = Profile.data.settings.get(setting[0],true)
@@ -469,16 +504,34 @@ func launch_game() -> void:
 	body.add_child(area)
 	game_layer = Node2D.new()
 	page.add_child(game_layer)
+	# Render the existing board onto a real 320x160 pixel surface. Keep the
+	# logical board unchanged so timing, collisions and routed input still agree.
+	var pixel_view := SubViewport.new()
+	pixel_view.size = Vector2i(320, 160)
+	pixel_view.size_2d_override = Vector2i(960, 480)
+	pixel_view.size_2d_override_stretch = true
+	pixel_view.transparent_bg = true
+	pixel_view.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	pixel_view.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
+	game_layer.add_child(pixel_view)
+	var pixel_screen := Sprite2D.new()
+	pixel_screen.texture = pixel_view.get_texture()
+	pixel_screen.centered = false
+	pixel_screen.scale = Vector2(3, 3)
+	pixel_screen.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	game_layer.add_child(pixel_screen)
 	current_game = registry.create(current_id)
-	game_layer.add_child(current_game)
+	pixel_view.add_child(current_game)
 	current_game.completed.connect(game_completed)
 	current_game.impact.connect(game_impact)
 	var difficulty: float = standalone_difficulty if run.mode in ['single','quick'] else run.difficulty
 	var seed_value: int = (Time.get_date_string_from_system(true)+current_id+str(run.round_index)).hash() if run.mode=='daily' else 0
 	current_game.start(spec,difficulty,seed_value)
+	announce_web(String(spec.name)+'. '+String(spec.objective)+'. Escape pauses.', 'PLAY')
 	services.log_event('game_started',{'id':current_id,'mode':run.mode})
 	current_game.hero_id = Profile.data.hero
 	current_game.cosmetic = Profile.data.equipped_cosmetic
+	current_game.reduced_motion = Profile.data.settings.get('reduced_motion',false)
 	current_game.active = false
 	if run.special_round: title_label.text = 'CHAOS ROUND!  /  '+String(spec.objective)
 	elif run.mode=='tournament' and run.round_index>0 and run.round_index%5==0: title_label.text = 'SPEED UP!  /  '+String(spec.objective)
@@ -542,6 +595,8 @@ func game_completed(won: bool, score: int) -> void:
 		launch_game()
 
 func show_results(won: bool) -> void:
+	announce_web('Round complete. '+('Victory. ' if won else 'Try again. ')+str(run.score)+' points.', 'RESULT')
+	set_selector_scale(true)
 	var old_run: RunDirector = run
 	Profile.finish_run(run.mode,run.score,run.best_streak)
 	clear_page()
@@ -552,15 +607,26 @@ func show_results(won: bool) -> void:
 	result_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	result_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	body.add_child(result_scroll)
-	var row := Design.row(35)
+	var row := BoxContainer.new()
+	row.vertical=size.x<700
+	row.add_theme_constant_override('separation',24)
 	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	result_scroll.add_child(row)
-	var world := PaintWorld.new()
-	world.hero_id = Profile.data.hero
-	world.pose = 'victory' if won or run.score>0 else 'defeat'
+	var equipped: Dictionary=HeroRoster.by_id(String(Profile.data.hero))
+	var world: Control
+	if not equipped.is_empty():
+		var hero_preview := HeroStage.new()
+		hero_preview.reduced_motion=Profile.data.settings.get('reduced_motion',false)
+		world=hero_preview
+	else:
+		var legacy_preview := PaintWorld.new()
+		legacy_preview.hero_id=Profile.data.hero
+		legacy_preview.pose='victory' if won or run.score>0 else 'defeat'
+		world=legacy_preview
 	world.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	world.custom_minimum_size.x = 300
+	world.custom_minimum_size=Vector2(0 if size.x<700 else 300,220)
 	row.add_child(world)
+	if world is HeroStage: world.set_hero(equipped)
 	var col := Design.column(14)
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(col)
@@ -571,7 +637,7 @@ func show_results(won: bool) -> void:
 	col.add_child(reward_label)
 	reward_label.modulate = Color(1,1,1,0.2)
 	create_tween().tween_property(reward_label,'modulate',Color.WHITE,0.3)
-	col.add_child(Design.label('%s MASTERY  %d' % [String(Profile.data.hero).to_upper(),Profile.data.mastery.get(Profile.data.hero,0)],22))
+	col.add_child(Design.label('%s MASTERY  %d' % [String(equipped.get('name',String(Profile.data.hero).to_upper())),Profile.data.mastery.get(Profile.data.hero,0)],22))
 	var xp := ProgressBar.new()
 	xp.max_value = 250
 	xp.custom_minimum_size.y = 24
@@ -589,6 +655,11 @@ func update_hint() -> void:
 	hint_label.text = input_hint+'   /   '+suffix
 
 func layout_game() -> void:
+	if current_page in ['MISSIONS','SHOP','PROFILE','SETTINGS'] and menu_narrow!=(size.x<650):
+		menu_narrow=size.x<650
+		var token: int=generation
+		var destination: String=current_page
+		call_deferred('rebuild_secondary_menu',token,destination)
 	if is_instance_valid(game_layer) and is_instance_valid(body):
 		var area: Control = body.get_node_or_null('Arena')
 		if area:
@@ -596,7 +667,7 @@ func layout_game() -> void:
 			game_layer.scale = Vector2.ONE*amount
 			game_layer.position = area.global_position+(area.size-Vector2(960,480)*amount)/2
 			router.board = Rect2(game_layer.position,Vector2(960,480)*amount)
-	var portrait: bool = size.y>size.x and current_page!='HEROES'
+	var portrait: bool = size.y>size.x and is_instance_valid(current_game)
 	if portrait != orientation_pause:
 		orientation_pause = portrait
 		if portrait:
@@ -617,6 +688,9 @@ func layout_game() -> void:
 			if is_instance_valid(rotate_cover): rotate_cover.queue_free()
 		refresh_pause()
 
+func rebuild_secondary_menu(token: int, destination: String) -> void:
+	if generation==token and current_page==destination: show_page(destination)
+
 func toggle_pause() -> void:
 	if not is_instance_valid(current_game) or current_game.finished: return
 	manual_pause = not manual_pause
@@ -632,6 +706,8 @@ func refresh_pause() -> void:
 	var active: bool = not manual_pause and not orientation_pause and not transitioning
 	if is_instance_valid(current_game):
 		current_game.active = active
+		if not current_game.finished:
+			announce_web('Game paused. Resume, restart or go home.' if manual_pause else ('Rotate your device to play.' if orientation_pause else String(current_game.spec.objective)), 'PAUSED' if manual_pause or orientation_pause else 'PLAY')
 		if not active: current_game.cancel_input()
 	router.enabled = active and is_instance_valid(current_game) and not current_game.finished
 	if not active: router.reset()
@@ -664,18 +740,19 @@ func show_modal(title: String, detail: String, actions: Array) -> void:
 	var center := CenterContainer.new()
 	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	modal.add_child(center)
-	var panel := Design.panel()
+	var panel := PanelContainer.new()
+	panel.add_theme_stylebox_override('panel',HeroDesign.style(HeroDesign.PANEL))
 	panel.custom_minimum_size.x = minf(size.x-64,750)
 	center.add_child(panel)
 	var col := Design.column(18)
 	panel.add_child(col)
-	col.add_child(Design.label(title,35))
-	var description := Design.label(detail,23)
+	col.add_child(HeroDesign.label(title,28))
+	var description := HeroDesign.label(detail,18)
 	description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	description.custom_minimum_size.x = minf(size.x-120,670)
 	col.add_child(description)
 	for i in actions.size():
-		col.add_child(Design.button(actions[i][0],actions[i][1],Design.GOLD if i==0 else Design.PAPER))
+		col.add_child(HeroDesign.button(actions[i][0],actions[i][1],HeroDesign.GOLD if i==0 else HeroDesign.PANEL))
 
 func close_modal() -> void:
 	if is_instance_valid(modal):

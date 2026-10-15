@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#fff8e7">
-  <meta name="description" content="Meet four original superheroes, preview their powers and discover the 105-game Iron-Mario arcade.">
+  <meta name="theme-color" content="#101c28">
+  <meta name="description" content="Meet six pixel town characters and explore the 105-game Iron-Mario arcade.">
   <meta name="application-name" content="Super-Micro Heroes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Super-Micro Heroes 2.0 — Big fun. Tiny games.">
-  <meta property="og:description" content="Jump, dodge, draw and discover a whole box of hand-painted microgames. Free to play, made for little victories.">
+  <meta property="og:title" content="IRON-MARIO — Pixel Town Arcade">
+  <meta property="og:description" content="Six pixel town characters. 105 arcade challenges.">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Super-Micro Heroes 2.0">
-  <meta name="twitter:description" content="Big fun. Tiny games. Your next little victory starts here.">
-  <title>IRON-MARIO — Choose Your Extraordinary</title>
+  <meta name="twitter:title" content="IRON-MARIO — Pixel Town Arcade">
+  <meta name="twitter:description" content="Six pixel town characters and 105 arcade challenges.">
+  <title>IRON-MARIO — Pixel Town Arcade</title>
   <!-- Godot adds the exported PWA manifest, icons and service worker configuration here. -->
   $GODOT_HEAD_INCLUDE
   <style>
@@ -28,7 +28,7 @@
     #status[hidden] { display: none; }
     .sheet { width: min(100%, 580px); text-align: center; }
     .edition { margin: 0 0 14px; font-weight: bold; letter-spacing: .2em; font-size: 12px; }
-    .hero-art { display: block; width: min(100%, 230px); height: 32vh; object-fit: contain; margin: 0 auto 14px; }
+    .hero-art { display: block; width: min(100%, 230px); height: 32vh; object-fit: contain; image-rendering: pixelated; margin: 0 auto 14px; }
     h1 { margin: 0; font-size: clamp(35px, 8vw, 58px); line-height: .98; letter-spacing: -.065em; font-weight: 900; transform: rotate(-2deg); }
     h1 span { display: block; color: var(--red); }
     .tagline { margin: 22px 0 26px; font-size: clamp(16px, 4vw, 21px); }
@@ -58,12 +58,13 @@
 <body>
   <div id="viewport"><canvas id="canvas" tabindex="0" aria-label="Iron-Mario game. Hero selection: Left and Right switch, Space demonstrates power, Enter equips.">Your browser needs canvas support to play.</canvas></div>
   <p id="hero-a11y" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+  <p id="arcade-a11y" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
   <section id="status" aria-label="Loading Super-Micro Heroes">
     <div class="sheet">
       <p class="edition">IRON-MARIO / 105 GAME ARCADE / 3.0</p>
-      <img class="hero-art" src="previews/solstice-roster.png" alt="Solstice, an original turbine-armored hero with an energy lance">
+      <img class="hero-art" src="previews/town-cast.png" alt="Milo, Jun, Bea, Nia, Ash and Pip">
       <h1>IRON-MARIO</h1>
-      <p class="tagline">Choose your extraordinary.</p>
+      <p class="tagline">A little town. A lot of adventures.</p>
       <div class="loader" id="loader">
         <div class="load-row"><span id="loading-label">OPENING THE GAME BOX</span><span id="percentage">0%</span></div>
         <progress id="progress" value="0" max="100" aria-label="Game download progress"></progress>
@@ -161,7 +162,7 @@
         }
       }});
       gameStarted = true;
-      document.title = 'IRON-MARIO — Choose Your Extraordinary';
+      document.title = 'IRON-MARIO — Pixel Town Arcade';
       status.hidden = true;
       // The game has its own fullscreen control; keep the arena free for taps.
       fullscreen.hidden = true;
