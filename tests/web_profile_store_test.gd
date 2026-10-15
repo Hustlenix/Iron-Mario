@@ -153,6 +153,12 @@ func _run() -> void:
 	native.load_profile()
 	check(native.save_profile() and FileAccess.file_exists(native.profile_path), "Native file save still succeeds")
 	native.free()
+	fake.values.clear()
+	user_profile = profile(fake)
+	user_profile.profile_path = folder + "/fresh-browser.json"
+	user_profile.load_profile()
+	check(user_profile.data.hero == "dart" and user_profile.last_error.is_empty() and fake.values.has(WebStoreScript.PRIMARY_KEY), "First browser visit without legacy character keys initializes and persists a default profile")
+	user_profile.free()
 	for filename: String in DirAccess.get_files_at(folder):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(folder.path_join(filename)))
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(folder))

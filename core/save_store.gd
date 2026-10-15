@@ -113,7 +113,7 @@ func _load_browser_profile() -> void:
 			_migrate_config()
 		if not _future_version:
 			var preferences: Dictionary = result.preferences
-			if preferences.get("hero") in HERO_IDS:
+			if preferences.get("hero") is String and preferences.hero in HERO_IDS:
 				data.hero = town_character(preferences.hero)
 			if preferences.get("reduced_motion") is bool:
 				data.settings.reduced_motion = preferences.reduced_motion
