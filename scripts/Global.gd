@@ -11,6 +11,7 @@ var flappy_best: int = 0
 var tower_bounce_best: int = 0
 var brick_reactor_best: int = 0
 var arc_snake_best: int = 0
+var arc_break_best: int = 0
 var arcade_games_played: int = 0
 var arcade_total_wins: int = 0
 var arcade_bests: Dictionary = {}
@@ -24,6 +25,7 @@ const ACHIEVEMENTS := {
 	"first_personal_best": "BEAT THE BOARD",
 	"tower_100m": "TOWER CLIMBER",
 	"random_encounter": "RANDOM ENCOUNTER",
+	"arc_break_clear": "CONTAINMENT RESTORED",
 }
 var volume: float = 80.0
 ## Music sits lower than SFX by default: it is continuous, so it would
@@ -89,6 +91,7 @@ func save() -> void:
 		"tower_bounce_best": tower_bounce_best,
 		"brick_reactor_best": brick_reactor_best,
 		"arc_snake_best": arc_snake_best,
+		"arc_break_best": arc_break_best,
 		"arcade_games_played": arcade_games_played,
 		"arcade_total_wins": arcade_total_wins,
 		"arcade_bests": arcade_bests,
@@ -116,6 +119,7 @@ func load_save() -> void:
 		tower_bounce_best = int(data.get("tower_bounce_best", 0))
 		brick_reactor_best = int(data.get("brick_reactor_best", 0))
 		arc_snake_best = int(data.get("arc_snake_best", 0))
+		arc_break_best = int(data.get("arc_break_best", 0))
 		arcade_games_played = maxi(0, int(data.get("arcade_games_played", 0)))
 		arcade_total_wins = maxi(0, int(data.get("arcade_total_wins", 0)))
 		var loaded_bests: Variant = data.get("arcade_bests", {})

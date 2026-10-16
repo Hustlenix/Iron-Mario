@@ -119,6 +119,20 @@ Internal registry of every game that currently exists in the repo.
 - **Keep / Rework:** Keep; add restrained hazards after the base loop gets more playtime.
 - **Quality:** 5/10 (new playable baseline)
 
+## Game: Arc Break (arc_break)
+- **Scene:** `res://scenes/arc_break.tscn`
+- **Script:** `scenes/arc_break.gd`
+- **Genre:** Top-down action / energy puzzle
+- **Status:** First playable story slice
+- **Core mechanic:** Repulsor bolts charge resonance relays; the current travels through the lab's fungus network to unlock a cave route, where the same mechanic exposes and defeats the breach core.
+- **Controls:** WASD/arrows to move, E/Shift to fire, Space to talk, Escape to return.
+- **Mobile:** Dedicated four-way touch pad + REPULSOR button.
+- **Round length:** About 2–3 minutes.
+- **Scoring:** Relay links and boss hits; persistent best score.
+- **Assets:** Modern Interiors Full resonance-machine/screen art and a Character Generator premade scientist; custom-drawn cave, mycelium, repulsor, hero/boss accents. Credit is required for Modern Interiors; unlicensed Fungus Cave/Fantasy Battlers art is not included.
+- **Keep / Rework:** Keep as the first narrative anchor; expand its sector chain only after player feel is validated.
+- **Quality:** 5/10 (first playable prototype)
+
 ## Game Shell: Title / Hero Select / Level Intermission
 - **Scenes:** `title_screen.tscn`, `hero_select.tscn`, `level_scene.tscn`, `timer_screen.tscn`, `settings_scene.tscn`, `death_scene.tscn`, `winner_scene.tscn`
 - **Status:** Functional

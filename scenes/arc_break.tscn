@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/arc_break.gd" id="1_arc_break"]
+[ext_resource type="Texture2D" path="res://assets/heroes/pulse.svg" id="2_pulse_hero"]
+[ext_resource type="PackedScene" path="res://scenes/arc_break_controls.tscn" id="3_controls"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_player"]
+
+[node name="ArcBreak" type="Node2D"]
+script = ExtResource("1_arc_break")
+
+[node name="WorldColliders" type="Node2D" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(144, 374)
+motion_mode = 1
+collision_layer = 1
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_player")
+
+[node name="Sprite" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_pulse_hero")
+scale = Vector2(0.9, 0.9)
+texture_filter = 1
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="StageLabel" type="Label" parent="HUD"]
+offset_left = 40.0
+offset_top = 20.0
+offset_right = 790.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.83, 0.92, 0.98, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.02, 0.05, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 23
+text = "ARC BREAK / 01 — CONTAINMENT LAB"
+
+[node name="ObjectiveLabel" type="Label" parent="HUD"]
+offset_left = 40.0
+offset_top = 61.0
+offset_right = 440.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(1, 0.79, 0.27, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.02, 0.05, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "CHARGE RELAYS 0 / 3"
+
+[node name="EnergyLabel" type="Label" parent="HUD"]
+offset_left = 845.0
+offset_top = 20.0
+offset_right = 1040.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.43, 0.9, 1, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.02, 0.05, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 23
+text = "ARC 084%"
+horizontal_alignment = 2
+
+[node name="HealthLabel" type="Label" parent="HUD"]
+offset_left = 1050.0
+offset_top = 20.0
+offset_right = 1240.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 0.47, 0.43, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.02, 0.05, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 23
+text = "CORE ◆◆◆"
+horizontal_alignment = 2
+
+[node name="MessageLabel" type="Label" parent="HUD"]
+offset_left = 235.0
+offset_top = 608.0
+offset_right = 1045.0
+offset_bottom = 655.0
+theme_override_colors/font_color = Color(0.9, 0.96, 0.98, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.02, 0.05, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 23
+text = "THE REACTOR IS LEAKING. CHARGE THE LINKED RELAYS."
+horizontal_alignment = 1
+
+[node name="ControlsHint" type="Label" parent="HUD"]
+offset_left = 245.0
+offset_top = 666.0
+offset_right = 1035.0
+offset_bottom = 704.0
+theme_override_colors/font_color = Color(0.68, 0.8, 0.88, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.02, 0.05, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 16
+text = "WASD / ARROWS MOVE · E REPULSOR · SPACE TALK · ESC ARCADE"
+horizontal_alignment = 1
+
+[node name="TouchControls" parent="." instance=ExtResource("3_controls")]

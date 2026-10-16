@@ -25,6 +25,18 @@ func _populate_registry() -> void:
 	registry.add(def)
 
 	def = GameDefinition.new()
+	def.id = "arc_break"
+	def.display_name = "Arc Break"
+	def.scene_path = "res://scenes/arc_break.tscn"
+	def.category = "ACTION"
+	def.tags = ["exploration", "repulsor", "pixel-comic", "story"]
+	def.difficulty = 3
+	def.estimated_duration_sec = 180
+	def.supports_touch = true
+	def.supports_keyboard = true
+	registry.add(def)
+
+	def = GameDefinition.new()
 	def.id = "arc_snake"
 	def.display_name = "Arc Snake"
 	def.scene_path = "res://scenes/arc_snake.tscn"

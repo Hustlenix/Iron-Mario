@@ -50,23 +50,40 @@ const server = http.createServer((req, res) => {
   await page.waitForTimeout(1800);
   await page.screenshot({ path: path.join(out, "arcade.png") });
 
-  // The second catalogue row is Arc Snake. Confirm that relative turning,
-  // boosting, and the return route work in the Web export.
+  // The second catalogue row is Arc Break. Walk to the first relay, fire the
+  // repulsor, and check that the energy puzzle advances through actual input.
   await page.mouse.click(420, 355);
   await page.waitForTimeout(1800);
+  await page.screenshot({ path: path.join(out, "arc-break-lab.png") });
+  await page.keyboard.down("ArrowRight");
+  await page.waitForTimeout(1050);
+  await page.keyboard.up("ArrowRight");
+  await page.keyboard.down("ArrowUp");
+  await page.waitForTimeout(280);
+  await page.keyboard.up("ArrowUp");
+  await page.keyboard.press("e");
+  await page.waitForTimeout(500);
+  await page.screenshot({ path: path.join(out, "arc-break-relay-hit.png") });
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(1200);
+
+  // The third catalogue row is Arc Snake. Confirm relative turning, boosting,
+  // and return work in the Web export.
+  await page.mouse.click(420, 435);
+  await page.waitForTimeout(1500);
   await page.screenshot({ path: path.join(out, "arc-snake.png") });
   await page.keyboard.down("ArrowLeft");
   await page.waitForTimeout(250);
   await page.keyboard.up("ArrowLeft");
   await page.keyboard.down("Space");
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(350);
   await page.keyboard.up("Space");
   await page.keyboard.press("Escape");
-  await page.waitForTimeout(1200);
+  await page.waitForTimeout(1000);
 
-  // The third catalogue row is Brick Reactor. Confirm that the cabinet launches,
+  // The fourth catalogue row is Brick Reactor. Confirm that the cabinet launches,
   // responds to left/right and launch, and the return route works.
-  await page.mouse.click(420, 435);
+  await page.mouse.click(420, 515);
   await page.waitForTimeout(1200);
   await page.screenshot({ path: path.join(out, "brick-reactor-ready.png") });
   await page.keyboard.down("ArrowLeft");
@@ -79,8 +96,12 @@ const server = http.createServer((req, res) => {
   await page.waitForTimeout(1200);
   await page.screenshot({ path: path.join(out, "returned.png") });
 
-  // The fourth catalogue row is Tower Bounce. Exercise its launch and return.
-  await page.mouse.click(420, 515);
+  // Tower Bounce is the fifth row, so scroll the catalogue to reach it.
+  await page.mouse.move(1000, 520);
+  await page.mouse.wheel(0, 500);
+  await page.waitForTimeout(450);
+  await page.screenshot({ path: path.join(out, "arcade-scrolled.png") });
+  await page.mouse.click(420, 400);
   await page.waitForTimeout(1200);
   await page.screenshot({ path: path.join(out, "tower-bounce.png") });
   await page.keyboard.press("Escape");
@@ -91,7 +112,7 @@ const server = http.createServer((req, res) => {
   await page.waitForTimeout(500);
   await page.screenshot({ path: path.join(out, "recent-filter.png") });
 
-  console.log(`title -> arcade -> Arc Snake -> Brick Reactor -> Tower Bounce -> returns completed`);
+  console.log(`title -> arcade -> Arc Break relay -> Arc Snake -> Brick Reactor -> Tower Bounce -> returns completed`);
   console.log(`console errors: ${errors.length}`);
   if (errors.length) console.log(errors.join("\n"));
   await browser.close();

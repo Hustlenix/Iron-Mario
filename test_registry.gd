@@ -28,13 +28,14 @@ func _run() -> void:
 		return
 
 	var games := GameLauncher.registry.all()
-	_check("catalog has current games", games.size() >= 9, "got %d" % games.size())
+	_check("catalog has current games", games.size() >= 10, "got %d" % games.size())
 	_check("hero select is registered", GameLauncher.registry.get_game("hero_select") != null)
 	_check("all four numbered minigames are registered", _has_all_minigames())
 	_check("Flappy is registered", GameLauncher.registry.get_game("flappy") != null)
 	_check("Tower Bounce is registered", GameLauncher.registry.get_game("tower_bounce") != null)
 	_check("Brick Reactor is registered", GameLauncher.registry.get_game("brick_reactor") != null)
 	_check("Arc Snake is registered", GameLauncher.registry.get_game("arc_snake") != null)
+	_check("Arc Break is registered", GameLauncher.registry.get_game("arc_break") != null)
 	_check("every definition has an id", _all_have_ids(games))
 	_check("every scene path exists", _all_paths_exist(games))
 	_check("action category has games", not GameLauncher.registry.get_by_category("ACTION").is_empty())

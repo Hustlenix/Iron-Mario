@@ -10,9 +10,57 @@ var _failed := 0
 var _save_path := ""
 var _had_save := false
 var _save_backup := ""
+var _profile_snapshot: Dictionary = {}
 
 func _ready() -> void:
+	_save_path = ProjectSettings.globalize_path(Global.SAVE_PATH)
+	_had_save = FileAccess.file_exists(_save_path)
+	_save_backup = FileAccess.get_file_as_string(_save_path) if _had_save else ""
+	_profile_snapshot = _capture_profile()
 	await _run()
+	_restore_save(_save_path, _had_save, _save_backup)
+	_restore_profile(_profile_snapshot)
+	get_tree().quit(1 if _failed > 0 else 0)
+
+func _capture_profile() -> Dictionary:
+	return {
+		"best_streak": Global.best_streak,
+		"volume": Global.volume,
+		"music_volume": Global.music_volume,
+		"flappy_best": Global.flappy_best,
+		"tower_bounce_best": Global.tower_bounce_best,
+		"brick_reactor_best": Global.brick_reactor_best,
+		"arc_snake_best": Global.arc_snake_best,
+		"arc_break_best": Global.arc_break_best,
+		"arcade_games_played": Global.arcade_games_played,
+		"arcade_total_wins": Global.arcade_total_wins,
+		"arcade_bests": Global.arcade_bests.duplicate(),
+		"arcade_recent_games": Global.arcade_recent_games.duplicate(),
+		"arcade_unique_games": Global.arcade_unique_games.duplicate(),
+		"achievements_unlocked": Global.achievements_unlocked.duplicate(),
+		"touch_controls_enabled": Global.touch_controls_enabled,
+		"low_quality": Global.low_quality,
+		"selected_hero": Global.selected_hero,
+	}
+
+func _restore_profile(snapshot: Dictionary) -> void:
+	Global.best_streak = snapshot.best_streak
+	Global.volume = snapshot.volume
+	Global.music_volume = snapshot.music_volume
+	Global.flappy_best = snapshot.flappy_best
+	Global.tower_bounce_best = snapshot.tower_bounce_best
+	Global.brick_reactor_best = snapshot.brick_reactor_best
+	Global.arc_snake_best = snapshot.arc_snake_best
+	Global.arc_break_best = snapshot.arc_break_best
+	Global.arcade_games_played = snapshot.arcade_games_played
+	Global.arcade_total_wins = snapshot.arcade_total_wins
+	Global.arcade_bests = snapshot.arcade_bests
+	Global.arcade_recent_games = snapshot.arcade_recent_games
+	Global.arcade_unique_games = snapshot.arcade_unique_games
+	Global.achievements_unlocked = snapshot.achievements_unlocked
+	Global.touch_controls_enabled = snapshot.touch_controls_enabled
+	Global.low_quality = snapshot.low_quality
+	Global.selected_hero = snapshot.selected_hero
 
 func _check(label: String, ok: bool, detail: String = "") -> void:
 	_checks += 1
@@ -30,14 +78,11 @@ func _run() -> void:
 	await _verify_tower_bounce()
 	await _verify_brick_reactor()
 	await _verify_arc_snake()
+	await _verify_arc_break()
 	print("\n--- %d checks, %d failed ---" % [_checks, _failed])
-	get_tree().quit(1 if _failed > 0 else 0)
 
 func _verify_backward_compatible_save() -> void:
 	print("\n--- backward-compatible save ---")
-	_save_path = ProjectSettings.globalize_path(Global.SAVE_PATH)
-	_had_save = FileAccess.file_exists(_save_path)
-	_save_backup = FileAccess.get_file_as_string(_save_path) if _had_save else ""
 	var legacy := FileAccess.open(Global.SAVE_PATH, FileAccess.WRITE)
 	legacy.store_string(JSON.stringify({
 		"best_streak": 7,
@@ -67,7 +112,7 @@ func _verify_gauntlet_escape_contract() -> void:
 	_check("legacy save keeps existing Flappy best", Global.flappy_best == 17)
 	_check("legacy save defaults missing arcade profile", Global.arcade_games_played == 0)
 	_check("legacy save defaults missing cabinet bests", Global.arcade_bests.is_empty())
-	_check("legacy save defaults missing new best fields", Global.tower_bounce_best == 0 and Global.brick_reactor_best == 0 and Global.arc_snake_best == 0)
+	_check("legacy save defaults missing new best fields", Global.tower_bounce_best == 0 and Global.brick_reactor_best == 0 and Global.arc_snake_best == 0 and Global.arc_break_best == 0)
 	_check("legacy save keeps preferences", not Global.touch_controls_enabled and Global.selected_hero == "not-a-real-hero")
 	_restore_save(_save_path, _had_save, _save_backup)
 	Global.load_save()
@@ -170,6 +215,50 @@ func _verify_arc_snake() -> void:
 	scene.queue_free()
 	await get_tree().process_frame
 	Global.arc_snake_best = old_best
+	GameLauncher.return_scene_path = old_return_scene
+	Global.save()
+
+func _verify_arc_break() -> void:
+	print("\n--- Arc Break ---")
+	var old_best := Global.arc_break_best
+	var old_return_scene := GameLauncher.return_scene_path
+	var old_achievements := Global.achievements_unlocked.duplicate()
+	GameLauncher.return_scene_path = "res://scenes/arcade_menu.tscn"
+	var scene := (load("res://scenes/arc_break.tscn") as PackedScene).instantiate()
+	add_child(scene)
+	await get_tree().process_frame
+	_check("Arc Break starts in containment lab", scene.stage == scene.Stage.LAB and scene.relay_nodes.size() == 3)
+	var controls: Node = scene.get_node("TouchControls")
+	var touch_buttons: Dictionary = controls.get("_buttons")
+	var up_button := touch_buttons.get("arc_up") as Button
+	up_button.emit_signal("button_down")
+	_check("Touch up button holds the movement action", Input.is_action_pressed("arc_up"))
+	up_button.emit_signal("button_up")
+	_check("Touch up button releases movement cleanly", not Input.is_action_pressed("arc_up"))
+	Input.action_press("arc_up")
+	var move_input: Vector2 = scene.call("_movement_input")
+	Input.action_release("arc_up")
+	_check("Keyboard up action maps to north movement", move_input.y < -0.9 and is_zero_approx(move_input.x))
+	var old_energy: float = scene.energy
+	scene.call("_fire_repulsor")
+	_check("Repulsor consumes energy and spawns a bolt", scene.energy < old_energy and scene.bolts.size() == 1)
+	for i in 3:
+		scene.call("_charge_relay", i)
+	_check("Lab relays open cave hatch", scene.stage == scene.Stage.LAB and scene._all_relays_charged())
+	scene.call("_enter_cave")
+	_check("Player enters the fungus cave", scene.stage == scene.Stage.CAVE)
+	for i in 3:
+		scene.call("_charge_relay", i)
+	_check("Cave network exposes the breach core", scene.stage == scene.Stage.BOSS)
+	for _hit in 3:
+		scene.call("_hit_boss")
+	_check("Three repulsor hits end the boss encounter", scene.stage == scene.Stage.WON)
+	_check("Arc Break unlocks its completion achievement", Global.achievements_unlocked.has("arc_break_clear"))
+	_check("Arc Break stores a best score", Global.arc_break_best == scene.score)
+	scene.queue_free()
+	await get_tree().process_frame
+	Global.arc_break_best = old_best
+	Global.achievements_unlocked = old_achievements
 	GameLauncher.return_scene_path = old_return_scene
 	Global.save()
 
