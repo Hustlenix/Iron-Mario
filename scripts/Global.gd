@@ -17,6 +17,7 @@ var arcade_total_wins: int = 0
 var arcade_bests: Dictionary = {}
 var arcade_recent_games: Array[String] = []
 var arcade_unique_games: Array[String] = []
+var arcade_favorites: Array[String] = []
 var achievements_unlocked: Array[String] = []
 
 const ACHIEVEMENTS := {
@@ -97,6 +98,7 @@ func save() -> void:
 		"arcade_bests": arcade_bests,
 		"arcade_recent_games": arcade_recent_games,
 		"arcade_unique_games": arcade_unique_games,
+		"arcade_favorites": arcade_favorites,
 		"achievements_unlocked": achievements_unlocked,
 		"touch_controls_enabled": touch_controls_enabled,
 		"low_quality": low_quality,
@@ -128,6 +130,8 @@ func load_save() -> void:
 		arcade_recent_games = _clean_string_list(loaded_recent, 8)
 		var loaded_unique: Variant = data.get("arcade_unique_games", [])
 		arcade_unique_games = _clean_string_list(loaded_unique, 1000)
+		var loaded_favorites: Variant = data.get("arcade_favorites", [])
+		arcade_favorites = _clean_string_list(loaded_favorites, 100)
 		var loaded_achievements: Variant = data.get("achievements_unlocked", [])
 		achievements_unlocked = _clean_string_list(loaded_achievements, ACHIEVEMENTS.size())
 		touch_controls_enabled = bool(data.get("touch_controls_enabled", true))
@@ -165,6 +169,23 @@ func record_arcade_result(game_id: String, score: int, won: bool) -> void:
 
 func arcade_best(game_id: String) -> int:
 	return int(arcade_bests.get(game_id, 0))
+
+## Favorites are a player preference like selected_hero: they live in the
+## save file and survive reset(). Newest first so display order stays stable.
+func is_favorite(game_id: String) -> bool:
+	return arcade_favorites.has(game_id)
+
+func toggle_favorite(game_id: String) -> bool:
+	if game_id.is_empty():
+		return false
+	if arcade_favorites.has(game_id):
+		arcade_favorites.erase(game_id)
+	else:
+		arcade_favorites.push_front(game_id)
+		if arcade_favorites.size() > 100:
+			arcade_favorites.resize(100)
+	save()
+	return arcade_favorites.has(game_id)
 
 func unlock_achievement(id: String) -> void:
 	if not ACHIEVEMENTS.has(id) or achievements_unlocked.has(id):

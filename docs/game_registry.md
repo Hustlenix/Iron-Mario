@@ -134,11 +134,24 @@ Internal registry of every game that currently exists in the repo.
 - **Quality:** 5/10 (first playable prototype)
 
 ## Game Shell: Title / Hero Select / Level Intermission
-- **Scenes:** `title_screen.tscn`, `hero_select.tscn`, `level_scene.tscn`, `timer_screen.tscn`, `settings_scene.tscn`, `death_scene.tscn`, `winner_scene.tscn`
+- **Scenes:** `title_screen.tscn`, `arcade_menu.tscn`, `hero_select.tscn`, `level_scene.tscn`, `timer_screen.tscn`, `settings_scene.tscn`, `death_scene.tscn`, `winner_scene.tscn`
 - **Status:** Functional
 - **Core mechanic:** Menu, gauntlet routing, lives, streaks, countdown, win/lose.
-- **Major problems:** No arcade category menu yet; powers are keyboard-only for touch; registry doc did not exist until now.
-- **Keep / Rework:** Rework into arcade hub later.
+- **Major problems:** Powers are keyboard-only for touch; the arcade hub (below) now fronts every cabinet, but the legacy gauntlet flow still uses its own routing.
+- **Keep / Rework:** Keep as the gauntlet shell; the arcade hub menu is the expansion direction.
+- **Quality:** 7/10
+
+## Shell: Arcade Hub Menu (arcade_menu)
+- **Scene:** `arcade_menu.tscn`
+- **Script:** `scripts/arcade_menu.gd`
+- **Status:** Functional
+- **Core mechanic:** One card per registered cabinet (cover or initial-letter tile, name, category, round length, difficulty, best score); category chips and a search field filter by name, category, or tag; the star on a card pins a favorite that persists through Global's save; RANDOM GAME draws from the filtered pool and unlocks RANDOM ENCOUNTER.
+- **Controls:** Mouse / touch / keyboard-controller focus traversal; BACK TO TITLE returns to `title_screen.tscn`.
+- **Mobile:** Cards and chips are full 44px+ touch targets; the wall scrolls vertically only.
+- **Round length:** n/a (hub)
+- **Scoring:** n/a (hub); surfaces each cabinet's persistent best.
+- **Major problems:** Cover art is an initial-letter tile until per-cabinet SVG covers land; no confirm step before launching a cabinet.
+- **Keep / Rework:** Keep — this is the front door for every future cabinet.
 - **Quality:** 7/10
 
 ## Assets / Resource Provenance Snapshot
@@ -154,4 +167,4 @@ Internal registry of every game that currently exists in the repo.
 
 ---
 
-*Last audited: 2026-10-06. Any new scene/script must appear here before it is counted toward the 100+ target.*
+*Last audited: 2026-10-16. Any new scene/script must appear here before it is counted toward the 100+ target.*
