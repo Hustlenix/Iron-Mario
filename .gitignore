@@ -1,6 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 
+# Nested personal project — not part of this repository
+IRON-MARIO/
+
 # OS / editor files
 .DS_Store
 Thumbs.db
@@ -9,3 +12,9 @@ Thumbs.db
 *.tmp
 build/
 exports/
+
+# Generated reports and local tooling output
+artifacts/
+
+# Node tooling for browser smoke tests
+node_modules/
