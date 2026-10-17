@@ -1,0 +1,112 @@
+{
+  "url": "http://127.0.0.1:8785/arcade/?qa=1",
+  "stateInjection": false,
+  "desktop": {
+    "rock": {
+      "score": 75,
+      "status": "playing",
+      "shots": 15,
+      "destroyed": 2,
+      "lives": 3,
+      "ticks": 193,
+      "input": "keyboard rotation, thrust and fire",
+      "lifecycle": {
+        "pauseFreezes": true,
+        "resume": true,
+        "restart": true,
+        "exit": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    "sky": {
+      "score": 50,
+      "status": "playing",
+      "intercepted": 1,
+      "shots": 1,
+      "ammo": 13,
+      "lives": 4,
+      "ticks": 198,
+      "targets": [
+        1
+      ],
+      "input": "keyboard reticle and real pointer aim/click",
+      "lifecycle": {
+        "pauseFreezes": true,
+        "resume": true,
+        "restart": true,
+        "exit": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    "viewport": {
+      "width": 1365,
+      "scrollWidth": 1365
+    }
+  },
+  "mobile": {
+    "rock": {
+      "score": 150,
+      "status": "playing",
+      "shots": 15,
+      "destroyed": 4,
+      "lives": 3,
+      "ticks": 203,
+      "input": "CDP real multitouch D-pad and action",
+      "lifecycle": {
+        "pauseFreezes": true,
+        "resume": true,
+        "restart": true,
+        "exit": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    "sky": {
+      "score": 50,
+      "status": "playing",
+      "intercepted": 1,
+      "shots": 1,
+      "ammo": 13,
+      "lives": 4,
+      "ticks": 196,
+      "targets": [
+        1
+      ],
+      "input": "touch D-pad and real canvas tap",
+      "lifecycle": {
+        "pauseFreezes": true,
+        "resume": true,
+        "restart": true,
+        "exit": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    "viewport": {
+      "width": 375,
+      "scrollWidth": 375
+    }
+  },
+  "errors": [],
+  "failedRequests": [],
+  "externalRequests": [],
+  "passed": true
+}

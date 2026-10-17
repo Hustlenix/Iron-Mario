@@ -23,12 +23,12 @@ export const GAMES=[
     "era": "1950s",
     "category": "Sports",
     "tagline": "A little gravity changes everything.",
-    "description": "Lob over the net and time your returns.",
-    "controls": "",
+    "description": "A gravity court with one bounce per side. Move under the ball, choose a lob or drive, and time a swing against the computer. First to five wins.",
+    "controls": "← → / A D or drag move · ↑ lob / ↓ drive · Hold Action to swing and serve",
     "art": "sidecourt",
     "source": "https://www.bnl.gov/about/history/firstvideo.php",
-    "status": "PLANNED",
-    "module": null,
+    "status": "TESTED",
+    "module": "./games/sidecourt.js",
     "assets": []
   },
   {
@@ -68,12 +68,12 @@ export const GAMES=[
     "era": "1970s",
     "category": "Puzzle",
     "tagline": "Listen before you take a step.",
-    "description": "Read warnings, track a creature and escape.",
-    "controls": "",
+    "description": "Explore the tunnels, read nearby danger warnings, hunt the cave creature with limited arrows, and return to the entrance. Two caches reward careful exploration.",
+    "controls": "← → select tunnel · Action enter / fire · Z toggle aim mode · Tap tunnel cards",
     "art": "dark_cavern",
     "source": "",
-    "status": "PLANNED",
-    "module": null,
+    "status": "TESTED",
+    "module": "./games/dark-cavern.js",
     "assets": []
   },
   {
@@ -143,13 +143,16 @@ export const GAMES=[
     "era": "1970s",
     "category": "Action",
     "tagline": "Space has no brakes.",
-    "description": "Thrust, rotate and break drifting rocks.",
-    "controls": "",
+    "description": "Pilot an inertial ship through three debris fields. Turn, thrust and coast; split the drifting rocks, protect three lives, and clear the waves.",
+    "controls": "← → turn · ↑ thrust · ↓ / Z brake · Hold Action fire",
     "art": "rock_drift",
     "source": "",
-    "status": "PLANNED",
-    "module": null,
-    "assets": []
+    "status": "TESTED",
+    "module": "./games/rock-drift.js",
+    "assets": [
+      "pieces_ship",
+      "pieces_rock"
+    ]
   },
   {
     "id": "soft-landing",
@@ -173,12 +176,12 @@ export const GAMES=[
     "era": "1980s",
     "category": "Racing",
     "tagline": "Small streets. Big getaway.",
-    "description": "Collect flags and outmaneuver pursuit.",
-    "controls": "",
+    "description": "Collect six flags and return to the marked exit through three districts. Outmaneuver pursuing cars, watch your fuel, and spend smoke to escape.",
+    "controls": "Arrows / WASD / Dpad steer · Drag toward a direction · Action smoke (costs 12 fuel)",
     "art": "flag_run",
     "source": "",
-    "status": "PLANNED",
-    "module": null,
+    "status": "TESTED",
+    "module": "./games/flag-run.js",
     "assets": []
   },
   {
@@ -203,13 +206,15 @@ export const GAMES=[
     "era": "1980s",
     "category": "Action",
     "tagline": "Make every interception count.",
-    "description": "Protect outposts with carefully timed bursts.",
-    "controls": "",
+    "description": "Protect your outposts across three missile waves. Aim ahead and launch limited-ammo interceptors; expanding bursts can trigger chain reactions.",
+    "controls": "Arrows / WASD aim · Action fire · Move pointer and click or tap to aim and fire",
     "art": "sky_shield",
     "source": "",
-    "status": "PLANNED",
-    "module": null,
-    "assets": []
+    "status": "TESTED",
+    "module": "./games/sky-shield.js",
+    "assets": [
+      "pieces_turret"
+    ]
   },
   {
     "id": "bug-blaster",
@@ -233,12 +238,12 @@ export const GAMES=[
     "era": "1980s",
     "category": "Precision",
     "tagline": "Look both ways. Then look again.",
-    "description": "Cross traffic and floating platforms to reach safety.",
-    "controls": "",
+    "description": "Cross traffic, ride the floating logs, and reach four distinct home bays. Complete three rounds while managing four lives and the crossing timer.",
+    "controls": "Arrows / WASD / Dpad hop · Action hops forward · Tap toward a direction",
     "art": "hopway",
-    "source": "",
-    "status": "PLANNED",
-    "module": null,
+    "source": "https://artsandculture.google.com/asset/arcade-game-frogger/VwFdTWvOkRkBdg?hl=en",
+    "status": "TESTED",
+    "module": "./games/hopway.js",
     "assets": []
   },
   {
@@ -248,13 +253,16 @@ export const GAMES=[
     "era": "1980s",
     "category": "Puzzle",
     "tagline": "One hop. A whole new color.",
-    "description": "Color a stepped pyramid while avoiding a pursuer.",
-    "controls": "",
+    "description": "Hop across every tile to paint the pyramid. Avoid the pursuing scrap bug, use one recall per level, and finish three pyramids.",
+    "controls": "← down-left · ↓ down-right · ↑ up-left · → up-right · Action recall / next pyramid",
     "art": "color_steps",
     "source": "",
-    "status": "PLANNED",
-    "module": null,
-    "assets": []
+    "status": "TESTED",
+    "module": "./games/color-steps.js",
+    "assets": [
+      "pieces_robot",
+      "pieces_bug"
+    ]
   },
   {
     "id": "crate-shift",

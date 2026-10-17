@@ -1,0 +1,62 @@
+{
+  "checks": 7,
+  "passed": 7,
+  "failed": 0,
+  "errors": [],
+  "failedRequests": [],
+  "results": [
+    {
+      "name": "Sidecourt real keyboard movement, aim, swing and scored return",
+      "pass": true,
+      "detail": {
+        "score": 110,
+        "hits": 1,
+        "playerPoints": 1,
+        "cpuPoints": 0
+      }
+    },
+    {
+      "name": "Hopway real forward hops score, traffic causes a life loss",
+      "pass": true,
+      "detail": {
+        "score": 10,
+        "lives": 3,
+        "reason": "Traffic bump! Wait for a gap. 3 lives left."
+      }
+    },
+    {
+      "name": "Flag Run actual movement collects a flag, fuel and deploys smoke",
+      "pass": true,
+      "detail": {
+        "score": 125,
+        "flags": 1,
+        "fuel": 87.91333333333336
+      }
+    },
+    {
+      "name": "No normal-play page errors or HTTP failures",
+      "pass": true
+    },
+    {
+      "name": "sidecourt mobile touch, pause, restart and cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375
+      }
+    },
+    {
+      "name": "hopway mobile touch, pause, restart and cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375
+      }
+    },
+    {
+      "name": "flag-run mobile touch, pause, restart and cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375
+      }
+    }
+  ]
+}

@@ -22,7 +22,7 @@ function monitor(page) {
 async function home(page) {
   if(await page.locator('#game-view').isVisible()) await page.locator('.back-link').click();
   await page.locator('#home-view').waitFor({state:'visible'});
-  assert.equal(await page.locator('[data-game]').count(),6);
+  const available=await page.evaluate(()=>window.__arcade.catalog().filter(g=>['PLAYABLE','TESTED','RELEASE READY'].includes(g.status)).length);assert.equal(await page.locator('[data-game]').count(),available);
 }
 async function launch(page,id,touch=false) {
   await home(page);

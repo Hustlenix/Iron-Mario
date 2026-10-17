@@ -11,8 +11,8 @@ rtk proxy python -m http.server 8785 --bind 127.0.0.1 --directory build/web
 Open http://127.0.0.1:8785/arcade/ . Existing art review is /history-assets/ and the legacy arcade is /portal/.
 No install, bundler, account, external CDN, or production server is needed.
 
-## First checkpoint
-Six independent games have been implemented: Grid X, Paddle Panic, Byte Munch, Brick Burst, Crate Shift, Stackfall. The other fourteen remain planned until their own rules and QA pass. See STATUS.md for the current verification boundary.
+## Current checkpoint
+Thirteen independent games are tested: Grid X, Paddle Panic, Byte Munch, Brick Burst, Crate Shift, Stackfall, Sidecourt, Dark Cavern, Rock Drift, Sky Shield, Hopway, Flag Run and Color Steps. The final seven remain planned until their own rules and QA pass. See STATUS.md for the current verification boundary.
 
 Controls appear beside each game. Every game supports keyboard and on-screen touch controls. Grid X and Crate Shift also support direct board taps; Paddle Panic supports pointer aiming and Brick Burst supports dragging. Pause with P/Escape, restart with R, or use the visible buttons. Scores, best reached levels, plays and achievements stay in local browser storage. There are no accounts or cloud saves. Sessions restart fresh; interrupted boards are not resumed.
 

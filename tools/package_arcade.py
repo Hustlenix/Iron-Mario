@@ -3,6 +3,7 @@ from pathlib import Path
 import shutil,subprocess,sys
 ROOT=Path(__file__).resolve().parents[1]
 source=ROOT/'onlyeducation/arcade';target=ROOT/'build/web/arcade'
+subprocess.run(['node',str(ROOT/'tools/validate_arcade.mjs')],check=True,cwd=ROOT)
 subprocess.run([sys.executable,str(ROOT/'tools/package_history_assets.py')],check=True,cwd=ROOT)
 target.mkdir(parents=True,exist_ok=True)
 for p in source.rglob('*'):

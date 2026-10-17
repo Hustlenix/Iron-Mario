@@ -1,12 +1,12 @@
 # Asset and license register
 
-The current arcade uses the existing 95-asset original history kit; no additional raw pack assets are needed for Wave A.
+The current arcade uses the existing 95-asset original history kit; no additional raw pack assets are needed for Waves A and B.
 Original exports are under assets/shared_foundation/history_arcade, with per-file hashes and provenance in manifest.json. Editable pixel art timelines live under source_art/history_arcade. Aseprite previously produced ten validated timelines (seven original kit sources and three private character studies); those outputs were reverified, not unnecessarily regenerated.
 
 | Family | Use | Publication decision |
 | --- | --- | --- |
 | Original history scenes, concept boards and medallions | Collection, timeline and featured cabinet | Original project artwork |
-| Original terminal, scout, crate and steel tile | Grid X and Crate Shift gameplay | Original project artwork |
+| Original terminal, scout, crate, steel tile, robot, bug, ship, rock and turret | Gameplay across both waves | Original project artwork |
 | Original OE mark | Brand and favicon | Original project artwork |
 | Canvas primitives and synthesized tones | Game objects, feedback and HUD | Newly authored implementation |
 | Modern Interiors full pack | Previously used for private curator source-layer studies | Not included in this arcade package |
@@ -17,4 +17,6 @@ Original exports are under assets/shared_foundation/history_arcade, with per-fil
 
 The three private curator studies and all third-party source packs remain excluded. The full Modern Interiors license permits use in games with LimeZu credit but not standalone redistribution. The new arcade does not need those images. No new public redistribution license is asserted for the project's own work; owner licensing remains a release decision.
 
-Game-specific historical references are in grid-crate.md, byte-brick.md and stackfall.md. Paddle Panic references the Computer History Museum's Pong exhibit: https://www.computerhistory.org/revolution/computer-games/16/183 . History dates identify inspirations, not the publication dates of these new games.
+Game-specific historical references are in grid-crate.md, byte-brick.md, stackfall.md, cavern-color.md, court-hop-flag.md and rock-sky.md. Paddle Panic references the Computer History Museum's Pong exhibit: https://www.computerhistory.org/revolution/computer-games/16/183 . History dates identify inspirations, not the publication dates of these new games.
+
+Aseprite was invoked again on 2026-10-17 to export shared_pieces.aseprite. All 24 frames matched the existing PNG sprites exactly; see aseprite-roundtrip.json.

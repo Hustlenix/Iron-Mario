@@ -1,0 +1,99 @@
+{
+  "stateInjection": false,
+  "url": "http://127.0.0.1:8785/arcade/?qa=1",
+  "desktop": {
+    "dark-cavern": {
+      "pauseFreezes": true,
+      "resume": true,
+      "restartReadyTicksZero": true,
+      "win": true,
+      "loss": true,
+      "score": 965,
+      "moves": 9,
+      "shotsUsed": 1,
+      "keyboard": true,
+      "pointerDoor": true,
+      "solverGuidance": "Read-only seeded hazard layout; all moves and shots through UI",
+      "resources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "color-steps": {
+      "pauseFreezes": true,
+      "resume": true,
+      "restartReadyTicksZero": true,
+      "win": true,
+      "edgeLoss": true,
+      "score": 3980,
+      "hops": 78,
+      "keyboardMoves": 78,
+      "recalls": 1,
+      "enemySeen": true,
+      "levels": [
+        {
+          "level": 1,
+          "score": 430,
+          "lives": 3
+        },
+        {
+          "level": 2,
+          "score": 1490,
+          "lives": 2
+        },
+        {
+          "level": 3,
+          "score": 3980,
+          "lives": 2
+        }
+      ],
+      "resources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    }
+  },
+  "mobile": {
+    "dark-cavern": {
+      "dpad": true,
+      "action": true,
+      "score": 10,
+      "width": {
+        "viewport": 375,
+        "scroll": 375
+      },
+      "resources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "color-steps": {
+      "dpad": true,
+      "action": true,
+      "score": 20,
+      "width": {
+        "viewport": 375,
+        "scroll": 375
+      },
+      "resources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    }
+  },
+  "errors": [],
+  "failedRequests": [],
+  "passed": true
+}

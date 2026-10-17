@@ -7,6 +7,10 @@ rtk proxy python tools/validate_history_assets.py
 rtk proxy python tools/package_arcade.py
 rtk proxy node tools/arcade_wave_a_browser.cjs
 rtk proxy node tests/arcade/platform-browser.cjs
+rtk proxy node tools/cavern_color_browser.cjs
+rtk proxy node tools/court_hop_flag_browser.cjs
+rtk proxy node tools/rock_sky_browser.cjs
+rtk proxy node tools/fullscreen_touch_browser.cjs
 ```
 Browser commands expect the local server on port 8785. Node and the already installed Playwright are development tools; neither is shipped to players.
 
