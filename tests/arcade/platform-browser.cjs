@@ -120,8 +120,10 @@ async function home(page) { await page.locator('.back-link').click(); await page
     const entered = await page.evaluate(() => !!document.fullscreenElement);
     assert(entered, 'Fullscreen click did not enter fullscreen');
     assert.equal(await page.locator('#fullscreen').innerText(), 'Exit fullscreen');
-    // The toolbar is outside the fullscreen shell. Escape is the available native exit.
-    await page.keyboard.press('Escape');
+    // Toolbar and touch controls remain available inside fullscreen.
+    assert(await page.locator('#fullscreen').isVisible());
+    assert(await page.locator('[data-input="action"]').isVisible());
+    await page.locator('#fullscreen').click();
     await page.waitForTimeout(100);
     if (await page.evaluate(() => !!document.fullscreenElement)) await page.evaluate(() => document.exitFullscreen());
     assert.equal(await page.evaluate(() => !!document.fullscreenElement), false);

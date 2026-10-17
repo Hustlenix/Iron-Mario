@@ -48,7 +48,7 @@ $('#restart').onclick=()=>{if(!runtime)return;saveRun();lastSave='';runtime.rest
 function mute(){sound.muted=!sound.muted;store.mute(sound.muted);if(sound.muted)sound.silence();else sound.unlock();updateMute();}
 function updateMute(){$('#mute').textContent=sound.muted?'Sound off':'Sound on';$('#mute').setAttribute('aria-pressed',sound.muted);}
 $('#mute').onclick=mute;updateMute();
-$('#fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await $('#game-shell').requestFullscreen();}catch{$('#game-message').textContent='Fullscreen is unavailable in this browser. The game still works here.';}};
+$('#fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await $('#play-column').requestFullscreen();}catch{$('#game-message').textContent='Fullscreen is unavailable in this browser. The game still works here.';}};
 document.addEventListener('fullscreenchange',()=>{$('#fullscreen').textContent=document.fullscreenElement?'Exit fullscreen':'Fullscreen';});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)runtime?.pause();});
 window.addEventListener('blur',()=>runtime?.pause());
