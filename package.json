@@ -1,0 +1,11 @@
+{
+  "name": "iron-mario-tools",
+  "private": true,
+  "description": "Dev tooling for Super-Micro Heroes: headless-browser smoke tests for the web export.",
+  "scripts": {
+    "smoke": "node tools/arcade_smoke.js build/web artifacts/smoke"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.1"
+  }
+}
