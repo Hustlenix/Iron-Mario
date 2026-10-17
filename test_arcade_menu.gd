@@ -41,6 +41,7 @@ func _run() -> void:
 	Global.arcade_recent_games = []
 	_menu._refresh_games()
 	await _verify_card_wall()
+	await _verify_covers()
 	await _verify_category_chips()
 	await _verify_search()
 	await _verify_recent()
@@ -55,6 +56,22 @@ func _verify_card_wall() -> void:
 	_check("card wall mirrors registry order", ids == expected, str(ids))
 	_check("count label reports ten cabinets", _count_text() == "10 CABINETS", _count_text())
 	_check("empty state hidden with results", not _menu._empty_label.visible)
+
+func _verify_covers() -> void:
+	print("-- covers --")
+	var missing := PackedStringArray()
+	var broken := PackedStringArray()
+	for game in GameLauncher.registry.all():
+		if game.thumbnail_path.is_empty():
+			missing.append(game.id)
+			continue
+		if not ResourceLoader.exists(game.thumbnail_path):
+			broken.append(game.id)
+			continue
+		if not (load(game.thumbnail_path) is Texture2D):
+			broken.append(game.id)
+	_check("every cabinet declares a cover", missing.is_empty(), ", ".join(missing))
+	_check("every cover loads as a texture", broken.is_empty(), ", ".join(broken))
 
 func _verify_category_chips() -> void:
 	print("-- category chips --")

@@ -17,6 +17,7 @@ func _populate_registry() -> void:
 	def.id = "hero_select"
 	def.display_name = "Hero Select"
 	def.scene_path = "res://scenes/hero_select.tscn"
+	def.thumbnail_path = "res://assets/covers/hero_select_cover.svg"
 	def.category = "ACTION"
 	def.difficulty = 2
 	def.estimated_duration_sec = 30
@@ -28,6 +29,7 @@ func _populate_registry() -> void:
 	def.id = "arc_break"
 	def.display_name = "Arc Break"
 	def.scene_path = "res://scenes/arc_break.tscn"
+	def.thumbnail_path = "res://assets/covers/arc_break_cover.svg"
 	def.category = "ACTION"
 	def.tags = ["exploration", "repulsor", "pixel-comic", "story"]
 	def.difficulty = 3
@@ -40,6 +42,7 @@ func _populate_registry() -> void:
 	def.id = "arc_snake"
 	def.display_name = "Arc Snake"
 	def.scene_path = "res://scenes/arc_snake.tscn"
+	def.thumbnail_path = "res://assets/covers/arc_snake_cover.svg"
 	def.category = "QUICK"
 	def.tags = ["snake", "score", "reaction"]
 	def.difficulty = 3
@@ -52,6 +55,7 @@ func _populate_registry() -> void:
 	def.id = "brick_reactor"
 	def.display_name = "Brick Reactor"
 	def.scene_path = "res://scenes/brick_reactor.tscn"
+	def.thumbnail_path = "res://assets/covers/brick_reactor_cover.svg"
 	def.category = "ACTION"
 	def.tags = ["breakout", "arcade", "score"]
 	def.difficulty = 3
@@ -64,6 +68,7 @@ func _populate_registry() -> void:
 	def.id = "tower_bounce"
 	def.display_name = "Tower Bounce"
 	def.scene_path = "res://scenes/tower_bounce.tscn"
+	def.thumbnail_path = "res://assets/covers/tower_bounce_cover.svg"
 	def.category = "SKILL"
 	def.tags = ["vertical", "one-button", "arcade"]
 	def.difficulty = 3
@@ -76,6 +81,7 @@ func _populate_registry() -> void:
 	def.id = "minigame_1"
 	def.display_name = "Platformer Gauntlet"
 	def.scene_path = "res://scenes/minigame_1.tscn"
+	def.thumbnail_path = "res://assets/covers/minigame_1_cover.svg"
 	def.category = "ACTION"
 	def.difficulty = 3
 	def.estimated_duration_sec = 15
@@ -87,6 +93,7 @@ func _populate_registry() -> void:
 	def.id = "minigame_2"
 	def.display_name = "Target Tag"
 	def.scene_path = "res://scenes/minigame_2.tscn"
+	def.thumbnail_path = "res://assets/covers/minigame_2_cover.svg"
 	def.category = "SKILL"
 	def.difficulty = 2
 	def.estimated_duration_sec = 15
@@ -98,6 +105,7 @@ func _populate_registry() -> void:
 	def.id = "minigame_3"
 	def.display_name = "Dodge the Lasers"
 	def.scene_path = "res://scenes/minigame_3.tscn"
+	def.thumbnail_path = "res://assets/covers/minigame_3_cover.svg"
 	def.category = "ACTION"
 	def.difficulty = 3
 	def.estimated_duration_sec = 15
@@ -109,6 +117,7 @@ func _populate_registry() -> void:
 	def.id = "minigame_4"
 	def.display_name = "Gauge Parry"
 	def.scene_path = "res://scenes/minigame_4.tscn"
+	def.thumbnail_path = "res://assets/covers/minigame_4_cover.svg"
 	def.category = "SKILL"
 	def.difficulty = 4
 	def.estimated_duration_sec = 15
@@ -120,6 +129,7 @@ func _populate_registry() -> void:
 	def.id = "flappy"
 	def.display_name = "Flappy Bonus"
 	def.scene_path = "res://scenes/flappy_bird.tscn"
+	def.thumbnail_path = "res://assets/covers/flappy_cover.svg"
 	def.category = "QUICK"
 	def.difficulty = 3
 	def.estimated_duration_sec = 45
