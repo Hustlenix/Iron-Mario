@@ -1,5 +1,5 @@
 {
-  "name": "iron-mario-tools",
+  "name": "super-micro-heroes-tools",
   "private": true,
   "description": "Dev tooling for Super-Micro Heroes: headless-browser smoke tests for the web export.",
   "scripts": {
