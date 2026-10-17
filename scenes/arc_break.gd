@@ -85,11 +85,12 @@ func _process(delta: float) -> void:
 		controls_hint.text = _controls_text()
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		_return_to_library()
+		return
 	if stage == Stage.WON or stage == Stage.LOST:
 		if Input.is_action_just_pressed("power"):
 			_restart()
-		elif Input.is_action_just_pressed("ui_cancel"):
-			_return_to_library()
 		return
 
 	var movement := _movement_input()

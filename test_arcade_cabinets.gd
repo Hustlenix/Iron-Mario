@@ -74,6 +74,7 @@ func _run() -> void:
 	print("\n=== ARCADE CABINET VERIFICATION ===")
 	await _verify_backward_compatible_save()
 	await _verify_gauntlet_escape_contract()
+	await _verify_polled_escape_wiring()
 	await _verify_flappy()
 	await _verify_tower_bounce()
 	await _verify_brick_reactor()
@@ -116,6 +117,20 @@ func _verify_gauntlet_escape_contract() -> void:
 	_check("legacy save keeps preferences", not Global.touch_controls_enabled and Global.selected_hero == "not-a-real-hero")
 	_restore_save(_save_path, _had_save, _save_backup)
 	Global.load_save()
+
+func _verify_polled_escape_wiring() -> void:
+	# The polled cabinets (arc_break and friends) read ui_cancel at the top of
+	# their physics/process loop, before any stage or state guard. This asserts
+	# that wiring still sits at the function's top level, so an "ESC ARCADE"
+	# hint can never again advertise a return that only works on an end screen.
+	print("\n--- polled escape wiring ---")
+	var pattern := RegEx.new()
+	pattern.compile('(?m)^\\tif Input\\.is_action_just_pressed\\("ui_cancel"\\):\\r?\\n\\t\\t_return_to_library\\(\\)')
+	for id in ["arc_break", "arc_snake", "brick_reactor", "tower_bounce"]:
+		var definition = GameLauncher.registry.get_game(id)
+		var script_path: String = definition.scene_path.get_basename() + ".gd"
+		var source := FileAccess.get_file_as_string(script_path)
+		_check("%s polls escape before any stage/state guard" % id, not source.is_empty() and pattern.search(source) != null, script_path)
 
 func _verify_flappy() -> void:
 	print("\n--- Flappy Bonus ---")
