@@ -1,0 +1,11 @@
+# OnlyEducation - playable history visual kit
+- 1950s: quiet monochrome instrument displays, green/teal highlights, clear signals.
+- 1960s: thin vectors drawn on an integer grid, open space, warm stars.
+- 1970s: bright geometric signals, cabinet shapes, focused fields of play.
+- 1980s: distinct creatures, colorful tiles, small readable environments.
+- Shared UI: dark ink, warm cream, gold focus indicators, no blur or gradients.
+- Pieces: 32x32; tiles: 16x16; scene compositions: 320x180.
+- Use manifest frame regions and anchors. Never stretch a sprite sheet as one sprite.
+- UI nine-patches include explicit margins. Nearest-neighbor, no mipmaps.
+- Effects provide a first-frame reduced-motion alternative.
+- Planned game cards are labeled as concepts until real gameplay passes its release gate.

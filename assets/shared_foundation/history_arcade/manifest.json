@@ -1,0 +1,2672 @@
+{
+  "version": 1,
+  "title": "OnlyEducation - History Arcade Shared Kit",
+  "native_scene": [
+    320,
+    180
+  ],
+  "palettes": [
+    {
+      "id": "1950s",
+      "name": "The laboratory",
+      "accent": "#6bb9a7",
+      "bg": "#142e2c",
+      "note": "Monochrome displays, switches and experimental play."
+    },
+    {
+      "id": "1960s",
+      "name": "Into orbit",
+      "accent": "#82d8df",
+      "bg": "#18243b",
+      "note": "Sparse vectors, stars and orbital motion."
+    },
+    {
+      "id": "1970s",
+      "name": "The arcade arrives",
+      "accent": "#efbd56",
+      "bg": "#322a31",
+      "note": "Paddles, grids, chunky machines and bright signals."
+    },
+    {
+      "id": "1980s",
+      "name": "A world of pixels",
+      "accent": "#e18375",
+      "bg": "#28263e",
+      "note": "Colorful tiles, creatures and readable little worlds."
+    }
+  ],
+  "assets": [
+    {
+      "id": "pieces_ball",
+      "file": "pieces/ball.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "a6d6f21c09d400359ed7fc7bf9c152dab4149b724701b02a03a17d2981cf2e31"
+    },
+    {
+      "id": "pieces_paddle",
+      "file": "pieces/paddle.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "8f96e316f5d92a92620d46fc4fa7a73ad0131e0653aae3f3f4dc336895e00118"
+    },
+    {
+      "id": "pieces_ship",
+      "file": "pieces/ship.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "70b0eb20e71d5803b165900c3fa0cfa6eaacdf1a8c95e3e52231e8abb8b2d5bb"
+    },
+    {
+      "id": "pieces_lander",
+      "file": "pieces/lander.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "8657e109007fc76f4f8db20a4da5967240830abb8f4ff4bcc7eb8d678cc33c8a"
+    },
+    {
+      "id": "pieces_rock",
+      "file": "pieces/rock.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "79af4dd2778dca6ee1b4287ed45308cb58b72c84638ea06ba9981a2f5e1f002c"
+    },
+    {
+      "id": "pieces_crate",
+      "file": "pieces/crate.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "ae9756e5bbbfbf27e9aef2f7e33be88800d4f8c7cf3667928523567c3d78133d"
+    },
+    {
+      "id": "pieces_goal",
+      "file": "pieces/goal.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "41ed32c1ae00d29297c1e752a4a6ac3ec337fbb49477fd329b95fe657a6efa11"
+    },
+    {
+      "id": "pieces_gem",
+      "file": "pieces/gem.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "a6b85ba8c406e2f7d07b51cad6017b1b14f35752de851351fac20b00ce64d669"
+    },
+    {
+      "id": "pieces_bug",
+      "file": "pieces/bug.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "6452ce0077e00edc014e56336ab78b6bb855086571f4283ef5ed7fc305bf6fea"
+    },
+    {
+      "id": "pieces_scout",
+      "file": "pieces/scout.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "252cea893ddeeda8b4e0c0188c3f2b8aff7688de3f3fa0df9b9f3010867f5598"
+    },
+    {
+      "id": "pieces_tank",
+      "file": "pieces/tank.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "e0d511ffd547965a2d7a9c0b5f51afffe97290bfe563f3b8118fb19b2101b49e"
+    },
+    {
+      "id": "pieces_flag",
+      "file": "pieces/flag.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "bce624df4a06b7fd1c33a85c52a26e76bf520201db0fd1e50bb2af1dbd73d10e"
+    },
+    {
+      "id": "pieces_log",
+      "file": "pieces/log.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "c9836b5098a24488aafda02968a905c07417905af0493451df5594d77eff6bf4"
+    },
+    {
+      "id": "pieces_brick",
+      "file": "pieces/brick.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "40558efdf0829a72ecd055bbe33f6fb513e5db80d2a409480c9533771ddad9a9"
+    },
+    {
+      "id": "pieces_robot",
+      "file": "pieces/robot.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "2e35ea435cd0b12ec0993099e12cbeaf11fa75b9dd83e1893cd9cd98c9217678"
+    },
+    {
+      "id": "pieces_key",
+      "file": "pieces/key.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "422bd8ce0507ac92737d2cc9430f1fd2e009c86248d1d410592fcd09a5429769"
+    },
+    {
+      "id": "pieces_token",
+      "file": "pieces/token.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "cb9b3721e6ecf3a5f5fe8beb08f695f6e1181bc7e93ab7a8178628523a9d8b16"
+    },
+    {
+      "id": "pieces_heart",
+      "file": "pieces/heart.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "2d51edf008aca10caa839787f967c159b6793006e15738adf1856254edb2d014"
+    },
+    {
+      "id": "pieces_fungus",
+      "file": "pieces/fungus.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "cc6959c387b26b3b5c3f155136edfcdd4d615d0d69adaa2d27db6df4b48afaa3"
+    },
+    {
+      "id": "pieces_terminal",
+      "file": "pieces/terminal.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "3c697e7408af8a43e3c4d79522d3ca334c601c3f928def2565bbfdef9bb232f5"
+    },
+    {
+      "id": "pieces_car",
+      "file": "pieces/car.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "0bac8d88b59caca371865752ffa1e0257cd9f1ee71d6b21a18f430ba74e83870"
+    },
+    {
+      "id": "pieces_star",
+      "file": "pieces/star.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "4a0b2bb0e54fdc67346b9377e76657c9cd7036974effb07e2577310356d7d4db"
+    },
+    {
+      "id": "pieces_turret",
+      "file": "pieces/turret.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "8146a386f6e5367c7479b3b3731f403c0f380de159e84450096d3305c6db9a32"
+    },
+    {
+      "id": "pieces_gate",
+      "file": "pieces/gate.png",
+      "family": "pieces",
+      "era": "shared",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "be37d2f0b7c420e3de0eeffbf26cf86258c78d89623f807794be6a086589aa1e"
+    },
+    {
+      "id": "concepts_grid_x",
+      "file": "concepts/grid_x.png",
+      "family": "concepts",
+      "era": "1950s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "grid_x",
+      "title": "Grid X",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "04119af6333f0a72526934a64006e2f67cd71592af918b2df5c41ba481ee4f79"
+    },
+    {
+      "id": "medallions_grid_x",
+      "file": "medallions/grid_x.png",
+      "family": "medallions",
+      "era": "1950s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "grid_x",
+      "title": "Grid X",
+      "sha256": "eab325395bcd5db91e8e39498a35572fd7faf96231063d131d508418c51bd516"
+    },
+    {
+      "id": "concepts_sidecourt",
+      "file": "concepts/sidecourt.png",
+      "family": "concepts",
+      "era": "1950s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "sidecourt",
+      "title": "Sidecourt",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "b8730560d2741615265a4ecd7ba8fc63b0922089bfbbc8eaf2e7e17e9feaa477"
+    },
+    {
+      "id": "medallions_sidecourt",
+      "file": "medallions/sidecourt.png",
+      "family": "medallions",
+      "era": "1950s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "sidecourt",
+      "title": "Sidecourt",
+      "sha256": "d05e069dc979924f84845ed35af8f33be2acd48c3f7e9ff06c9b6f4600da00ed"
+    },
+    {
+      "id": "concepts_orbit_duel",
+      "file": "concepts/orbit_duel.png",
+      "family": "concepts",
+      "era": "1960s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "orbit_duel",
+      "title": "Orbit Duel",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "ff4f1167bf0418e264df6507348946c09f323a0c112e8c9490f9a0a226ab5c79"
+    },
+    {
+      "id": "medallions_orbit_duel",
+      "file": "medallions/orbit_duel.png",
+      "family": "medallions",
+      "era": "1960s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "orbit_duel",
+      "title": "Orbit Duel",
+      "sha256": "fd5cfc541bcb55923e527f36511e21363a9cbc33bd1cbe937c4105ea8578c5a0"
+    },
+    {
+      "id": "concepts_paddle_panic",
+      "file": "concepts/paddle_panic.png",
+      "family": "concepts",
+      "era": "1970s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "paddle_panic",
+      "title": "Paddle Panic",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "f508b41bc04c328881f04c078d99469a5f1d0b7b87df647166e2ce96a20c1b2e"
+    },
+    {
+      "id": "medallions_paddle_panic",
+      "file": "medallions/paddle_panic.png",
+      "family": "medallions",
+      "era": "1970s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "paddle_panic",
+      "title": "Paddle Panic",
+      "sha256": "fb5b7683a92e8cf8b8901231c22c7f0fcb0634a84cc3841e35dfb7b399c1eced"
+    },
+    {
+      "id": "concepts_dark_cavern",
+      "file": "concepts/dark_cavern.png",
+      "family": "concepts",
+      "era": "1970s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "dark_cavern",
+      "title": "Dark Cavern",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "07aa2ac933938fe441c6465fb4810bd3b1ae333c71be363f097b30b43e2aef4f"
+    },
+    {
+      "id": "medallions_dark_cavern",
+      "file": "medallions/dark_cavern.png",
+      "family": "medallions",
+      "era": "1970s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "dark_cavern",
+      "title": "Dark Cavern",
+      "sha256": "910a6e1c8ad2a522ce1878eacfe5c355ade8f6f9383bfa670c0434d83c840e49"
+    },
+    {
+      "id": "concepts_armored_arena",
+      "file": "concepts/armored_arena.png",
+      "family": "concepts",
+      "era": "1970s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "armored_arena",
+      "title": "Armored Arena",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "a9c337958e3a55ef599a500da142d1d4ebf60fc428d6813200b41ae1be661e3d"
+    },
+    {
+      "id": "medallions_armored_arena",
+      "file": "medallions/armored_arena.png",
+      "family": "medallions",
+      "era": "1970s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "armored_arena",
+      "title": "Armored Arena",
+      "sha256": "fc2758268f65b3fa1c8dff1246608192fdebf055ac1df5c03bbba90bd8271cd3"
+    },
+    {
+      "id": "concepts_brick_burst",
+      "file": "concepts/brick_burst.png",
+      "family": "concepts",
+      "era": "1970s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "brick_burst",
+      "title": "Brick Burst",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "6e222e80e9bd6c4bc574e2734d9909357c990c019de1e9f62c3a02d713727a92"
+    },
+    {
+      "id": "medallions_brick_burst",
+      "file": "medallions/brick_burst.png",
+      "family": "medallions",
+      "era": "1970s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "brick_burst",
+      "title": "Brick Burst",
+      "sha256": "bc2688d5850bef79c91e02bc98d59ad5a3f46535a736414933d774ae3b29787a"
+    },
+    {
+      "id": "concepts_byte_munch",
+      "file": "concepts/byte_munch.png",
+      "family": "concepts",
+      "era": "1970s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "byte_munch",
+      "title": "Byte Munch",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "0c1414a0ce51c996e8cb7c82d1fea861d59df6968ef6dfeb0d675d98ee37c5b8"
+    },
+    {
+      "id": "medallions_byte_munch",
+      "file": "medallions/byte_munch.png",
+      "family": "medallions",
+      "era": "1970s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "byte_munch",
+      "title": "Byte Munch",
+      "sha256": "0c44b93442e34207c99ec74a5198b386609853568a67777df82416e0427b6b38"
+    },
+    {
+      "id": "concepts_invader_patrol",
+      "file": "concepts/invader_patrol.png",
+      "family": "concepts",
+      "era": "1970s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "invader_patrol",
+      "title": "Invader Patrol",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "376ff64c408c064a9f55e016faa2d34800b3bbf4c05c47977eb626b3cd0c28d5"
+    },
+    {
+      "id": "medallions_invader_patrol",
+      "file": "medallions/invader_patrol.png",
+      "family": "medallions",
+      "era": "1970s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "invader_patrol",
+      "title": "Invader Patrol",
+      "sha256": "189898e28d155629ab763e5ed915e4d289888e02874f0aa918d545379b0e1bd3"
+    },
+    {
+      "id": "concepts_rock_drift",
+      "file": "concepts/rock_drift.png",
+      "family": "concepts",
+      "era": "1970s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "rock_drift",
+      "title": "Rock Drift",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "6476927bf4554a3e79d68625545bd33e0073e07bb249e74281577ddcaef7d07a"
+    },
+    {
+      "id": "medallions_rock_drift",
+      "file": "medallions/rock_drift.png",
+      "family": "medallions",
+      "era": "1970s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "rock_drift",
+      "title": "Rock Drift",
+      "sha256": "8d9bb563e28ff0d4e8fb979da41606e24fda26017f00853c15d819d869a6352c"
+    },
+    {
+      "id": "concepts_soft_landing",
+      "file": "concepts/soft_landing.png",
+      "family": "concepts",
+      "era": "1970s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "soft_landing",
+      "title": "Soft Landing",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "f462cf6494b7818f74fa94608ee4cb55325406c4bc9af4ef68c2b656edc312d3"
+    },
+    {
+      "id": "medallions_soft_landing",
+      "file": "medallions/soft_landing.png",
+      "family": "medallions",
+      "era": "1970s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "soft_landing",
+      "title": "Soft Landing",
+      "sha256": "2c9adbcdb454bd9bb4234ca18ccfa6b3620820af996b90ac42f33964f1386556"
+    },
+    {
+      "id": "concepts_flag_run",
+      "file": "concepts/flag_run.png",
+      "family": "concepts",
+      "era": "1980s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "flag_run",
+      "title": "Flag Run",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "d31daeffdf7fcfd686fe2cec75536a9fa22ef2444ef9698d28f60eed98ff7ad1"
+    },
+    {
+      "id": "medallions_flag_run",
+      "file": "medallions/flag_run.png",
+      "family": "medallions",
+      "era": "1980s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "flag_run",
+      "title": "Flag Run",
+      "sha256": "9909b0722591e214b9443b6a37cfa57de67e6c98347d3fda38b54a6722e7755c"
+    },
+    {
+      "id": "concepts_dot_gobbler",
+      "file": "concepts/dot_gobbler.png",
+      "family": "concepts",
+      "era": "1980s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "dot_gobbler",
+      "title": "Dot Gobbler",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "80bba47aca07f303d97ad43463ee59e1d0e3f79f2a4eedcef36d225a4205b85f"
+    },
+    {
+      "id": "medallions_dot_gobbler",
+      "file": "medallions/dot_gobbler.png",
+      "family": "medallions",
+      "era": "1980s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "dot_gobbler",
+      "title": "Dot Gobbler",
+      "sha256": "bad4643ce7ae76c00f5532ce22f8345e1d3cd4c077da38cc3bc0db12235b741d"
+    },
+    {
+      "id": "concepts_sky_shield",
+      "file": "concepts/sky_shield.png",
+      "family": "concepts",
+      "era": "1980s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "sky_shield",
+      "title": "Sky Shield",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "4a74152f84e1023530638b37b0adf2058a2d8315ecd515d87fcd0f5200abd98f"
+    },
+    {
+      "id": "medallions_sky_shield",
+      "file": "medallions/sky_shield.png",
+      "family": "medallions",
+      "era": "1980s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "sky_shield",
+      "title": "Sky Shield",
+      "sha256": "2322dce6e80b730d698e30d15c63885481154e5da6cf13261b6c57af9f638acd"
+    },
+    {
+      "id": "concepts_bug_blaster",
+      "file": "concepts/bug_blaster.png",
+      "family": "concepts",
+      "era": "1980s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "bug_blaster",
+      "title": "Bug Blaster",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "17236d7478666d32dba02246bc51730825144cd743d41251d0d7d60d9070a688"
+    },
+    {
+      "id": "medallions_bug_blaster",
+      "file": "medallions/bug_blaster.png",
+      "family": "medallions",
+      "era": "1980s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "bug_blaster",
+      "title": "Bug Blaster",
+      "sha256": "fd23f67e832f98b01bff363bb5d855d0e29bf1dce99ba4f2dd1739c3c1f553ad"
+    },
+    {
+      "id": "concepts_hopway",
+      "file": "concepts/hopway.png",
+      "family": "concepts",
+      "era": "1980s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "hopway",
+      "title": "Hopway",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "6a6da3baa2ed5394ad08a2bfe9330838f18bfde8fbcbcd92bbbd19a8c37d7fe1"
+    },
+    {
+      "id": "medallions_hopway",
+      "file": "medallions/hopway.png",
+      "family": "medallions",
+      "era": "1980s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "hopway",
+      "title": "Hopway",
+      "sha256": "7d855ddefcc30507930818ea970306b5d1e0809fcc210ee6ebb792066dc44837"
+    },
+    {
+      "id": "concepts_color_steps",
+      "file": "concepts/color_steps.png",
+      "family": "concepts",
+      "era": "1980s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "color_steps",
+      "title": "Color Steps",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "62708220fe7714dfc6a26427c76fb8c74d2fc535c40ef7ad7ec5952aa7fab5fa"
+    },
+    {
+      "id": "medallions_color_steps",
+      "file": "medallions/color_steps.png",
+      "family": "medallions",
+      "era": "1980s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "color_steps",
+      "title": "Color Steps",
+      "sha256": "957f12eaf86ef59fa5cbd20a6552c3b40c36608961bceeaf06cd3b15ba4026b6"
+    },
+    {
+      "id": "concepts_crate_shift",
+      "file": "concepts/crate_shift.png",
+      "family": "concepts",
+      "era": "1980s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "crate_shift",
+      "title": "Crate Shift",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "af2086834580eb50a487908a6afa6395ec00e207cc80c9d8841ea8052bc7b735"
+    },
+    {
+      "id": "medallions_crate_shift",
+      "file": "medallions/crate_shift.png",
+      "family": "medallions",
+      "era": "1980s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "crate_shift",
+      "title": "Crate Shift",
+      "sha256": "6dd0fb72fe4b10794a2616e13c540395323ca951153e3f17fba792fc1a0de634"
+    },
+    {
+      "id": "concepts_stackfall",
+      "file": "concepts/stackfall.png",
+      "family": "concepts",
+      "era": "1980s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "stackfall",
+      "title": "Stackfall",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "f9a2c79b385d1609b9697ed63d5b03025281271e4a8446be9942c39de67a918a"
+    },
+    {
+      "id": "medallions_stackfall",
+      "file": "medallions/stackfall.png",
+      "family": "medallions",
+      "era": "1980s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "stackfall",
+      "title": "Stackfall",
+      "sha256": "ead2db1fa9b3f4318830b863eed9210fb919483edbe54d1036843af3efc2a65c"
+    },
+    {
+      "id": "concepts_rockfall_mines",
+      "file": "concepts/rockfall_mines.png",
+      "family": "concepts",
+      "era": "1980s",
+      "size": [
+        128,
+        80
+      ],
+      "frame_size": [
+        128,
+        80
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        64,
+        80
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "rockfall_mines",
+      "title": "Rockfall Mines",
+      "note": "Asset composition only; this does not claim an implemented game.",
+      "sha256": "9c583c708bd25b9ba45c23ba50d4179bf488118bc74f3487da55b81f6e083576"
+    },
+    {
+      "id": "medallions_rockfall_mines",
+      "file": "medallions/rockfall_mines.png",
+      "family": "medallions",
+      "era": "1980s",
+      "size": [
+        32,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "game": "rockfall_mines",
+      "title": "Rockfall Mines",
+      "sha256": "3c25e6a0d8a906bee563513651c9bbc560f5ae37644246b91629e3a943e4326d"
+    },
+    {
+      "id": "ui_button_normal",
+      "file": "ui/button_normal.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        64,
+        24
+      ],
+      "frame_size": [
+        64,
+        24
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        32,
+        24
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "nine_patch": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "sha256": "8b5edb87d36aa7d2393a04f2cedc3b1eea9d07ba5ea3874a8ef9517da244880a"
+    },
+    {
+      "id": "ui_button_hover",
+      "file": "ui/button_hover.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        64,
+        24
+      ],
+      "frame_size": [
+        64,
+        24
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        32,
+        24
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "nine_patch": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "sha256": "6fd881d5ada82707ed890b9e2d2e5caaa77da21f17d1e8f9724060b8c41b2dff"
+    },
+    {
+      "id": "ui_button_pressed",
+      "file": "ui/button_pressed.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        64,
+        24
+      ],
+      "frame_size": [
+        64,
+        24
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        32,
+        24
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "nine_patch": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "sha256": "2697ec8fb79137048fcee2feb9c9f1aafda95cb95eb697fd121529d6f6b1f563"
+    },
+    {
+      "id": "ui_button_disabled",
+      "file": "ui/button_disabled.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        64,
+        24
+      ],
+      "frame_size": [
+        64,
+        24
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        32,
+        24
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "nine_patch": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "sha256": "f1fb1f65f3d9a744ace55d5ef30a07254fa7638e0008b689874ae3e8318ffac4"
+    },
+    {
+      "id": "ui_panel_paper",
+      "file": "ui/panel_paper.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        64,
+        40
+      ],
+      "frame_size": [
+        64,
+        40
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        32,
+        40
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "nine_patch": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "sha256": "bf78aca67728b1c24d47c6c2f00f7fae84a6555f6571a9ea2bf17cbfd2c6a326"
+    },
+    {
+      "id": "ui_panel_night",
+      "file": "ui/panel_night.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        64,
+        40
+      ],
+      "frame_size": [
+        64,
+        40
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        32,
+        40
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "nine_patch": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "sha256": "1067f3e9b6fd8f13d96d83964611e2869e6fb7cf1e0b9c35edf88297488b5526"
+    },
+    {
+      "id": "ui_panel_selected",
+      "file": "ui/panel_selected.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        64,
+        40
+      ],
+      "frame_size": [
+        64,
+        40
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        32,
+        40
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "nine_patch": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "sha256": "62c0052d9140a5d2c4711a69d76c650cb6c936e5b4df95c2885f7da333440e53"
+    },
+    {
+      "id": "ui_icon_keyboard",
+      "file": "ui/icon_keyboard.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "41ecf2a9a8a6abd20016e8e623e002f4a8d38e9ff07761d54f4224c31b2c233f"
+    },
+    {
+      "id": "ui_icon_touch",
+      "file": "ui/icon_touch.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "a0ad48a13d7ac419a13db8a00ba75b5a86de52e38f341486aeacae1799af199a"
+    },
+    {
+      "id": "ui_icon_sound",
+      "file": "ui/icon_sound.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "96fff9a36765a44778fbd61378b2fd657acc1ce7eca8810103154f36072d57a7"
+    },
+    {
+      "id": "ui_icon_pause",
+      "file": "ui/icon_pause.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "2ffd547ceb1f5930beb662493ded469c2d1c80183ff4cf42b3e4eba5a4dab26f"
+    },
+    {
+      "id": "ui_icon_history",
+      "file": "ui/icon_history.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "86ab5c642b6406cad1ab43683c1a0533d782fa0e8bb76ccfcba26afa413766a7"
+    },
+    {
+      "id": "ui_icon_fullscreen",
+      "file": "ui/icon_fullscreen.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "32e2e49fb18af3fb928a4644c2a5dca32e631ee5d07710f17f8696832080ad34"
+    },
+    {
+      "id": "ui_icon_restart",
+      "file": "ui/icon_restart.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "4805709b951906d269270d1d9905b8e4e9938c6aa1699d41bcac4a7f4b72c1da"
+    },
+    {
+      "id": "ui_icon_heart",
+      "file": "ui/icon_heart.png",
+      "family": "ui",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "1346fac8045d94bab252ead1a14d834e1cd5f8623f8c8dd6b8fb4f293cbd85e6"
+    },
+    {
+      "id": "tiles_circuit",
+      "file": "tiles/circuit.png",
+      "family": "tiles",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "tileable": true,
+      "sha256": "206fa38b552c1924fe819ed210dd81a10b621f1c2a0518f80d544c7e7635d5b0"
+    },
+    {
+      "id": "tiles_steel",
+      "file": "tiles/steel.png",
+      "family": "tiles",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "tileable": true,
+      "sha256": "26fd6580f08f90c5897bde4003f33bb405c5bc3a5f94b73d40535e6280ffe0d6"
+    },
+    {
+      "id": "tiles_brick",
+      "file": "tiles/brick.png",
+      "family": "tiles",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "tileable": true,
+      "sha256": "f4332e7d95147fbdad795d1d0149ad27de48418e0efa12471f595b2917f2a14e"
+    },
+    {
+      "id": "tiles_cave",
+      "file": "tiles/cave.png",
+      "family": "tiles",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "tileable": true,
+      "sha256": "7b75855be7523a50cbc01aaa3ed7966c0602020d3c24b739e7d5e769dd573a1a"
+    },
+    {
+      "id": "tiles_grass",
+      "file": "tiles/grass.png",
+      "family": "tiles",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "tileable": true,
+      "sha256": "63762dab25c344393cfb59fad9e6ddf850e9f3ef2ce24e2c94d2508c9c2af015"
+    },
+    {
+      "id": "tiles_river",
+      "file": "tiles/river.png",
+      "family": "tiles",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "tileable": true,
+      "sha256": "802fe0209eb1264659d3f67cb295dd1f5856da955c0f6894ed15dde8730c1a13"
+    },
+    {
+      "id": "tiles_road",
+      "file": "tiles/road.png",
+      "family": "tiles",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "tileable": true,
+      "sha256": "48903f965aac08730fce4c59d8fbd8ac150cecd42dc2a98b2b40482c3b88091a"
+    },
+    {
+      "id": "tiles_floor",
+      "file": "tiles/floor.png",
+      "family": "tiles",
+      "era": "shared",
+      "size": [
+        16,
+        16
+      ],
+      "frame_size": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        8,
+        16
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "tileable": true,
+      "sha256": "27115f34560d01a3b40f80d8f3c9c76f073e691a72b2528f000c5f59b60b39dd"
+    },
+    {
+      "id": "effects_score_spark",
+      "file": "effects/score_spark.png",
+      "family": "effects",
+      "era": "shared",
+      "size": [
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 8,
+      "fps": 10,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "reduced_motion_frame": 0,
+      "sha256": "7b39e9e29675225ea2f3a997748e009da88ae44575dfc335af8688f5d86f178b"
+    },
+    {
+      "id": "effects_rocket_thrust",
+      "file": "effects/rocket_thrust.png",
+      "family": "effects",
+      "era": "shared",
+      "size": [
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 8,
+      "fps": 10,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "reduced_motion_frame": 0,
+      "sha256": "3687e4154f009dd21c2bd3890873b20234206a24874d10d78d9ce4d0956ea77b"
+    },
+    {
+      "id": "effects_signal_ping",
+      "file": "effects/signal_ping.png",
+      "family": "effects",
+      "era": "shared",
+      "size": [
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 8,
+      "fps": 10,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "reduced_motion_frame": 0,
+      "sha256": "abdb54944f537a7d8d3e2403191f8fc739fb4cd84603b1fb0449561d3671a1b8"
+    },
+    {
+      "id": "effects_landing_dust",
+      "file": "effects/landing_dust.png",
+      "family": "effects",
+      "era": "shared",
+      "size": [
+        256,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 8,
+      "fps": 10,
+      "anchor": [
+        16,
+        32
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "reduced_motion_frame": 0,
+      "sha256": "2a7fe6333812ae848bd80a044e71aac555a79423f96c60d689658f2cb1d85333"
+    },
+    {
+      "id": "scenes_1950s",
+      "file": "scenes/1950s.png",
+      "family": "scenes",
+      "era": "1950s",
+      "size": [
+        320,
+        180
+      ],
+      "frame_size": [
+        320,
+        180
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        160,
+        180
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "f4daf01fd8516c46a4f5820ac34b357f01088b15da0cf8c5fbc233263b99c6cf"
+    },
+    {
+      "id": "scenes_1960s",
+      "file": "scenes/1960s.png",
+      "family": "scenes",
+      "era": "1960s",
+      "size": [
+        320,
+        180
+      ],
+      "frame_size": [
+        320,
+        180
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        160,
+        180
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "96abc6dd443b6981a1ae0f6d500ad767cc5a42621e6dadf80a372048684e93b0"
+    },
+    {
+      "id": "scenes_1970s",
+      "file": "scenes/1970s.png",
+      "family": "scenes",
+      "era": "1970s",
+      "size": [
+        320,
+        180
+      ],
+      "frame_size": [
+        320,
+        180
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        160,
+        180
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "e5cd75c2dadbb4e3d99e941ecb3a7a61bb7fb73141d730e7962547973aa51a9a"
+    },
+    {
+      "id": "scenes_1980s",
+      "file": "scenes/1980s.png",
+      "family": "scenes",
+      "era": "1980s",
+      "size": [
+        320,
+        180
+      ],
+      "frame_size": [
+        320,
+        180
+      ],
+      "frames": 1,
+      "fps": 1,
+      "anchor": [
+        160,
+        180
+      ],
+      "license": "project_original",
+      "status": "ready",
+      "source": "Independently drawn integer-grid pixel primitives",
+      "sha256": "436acb4d84ed0d4205c94117fb639fd89dbc2e57408ad741016c3aa069705dde"
+    }
+  ],
+  "roadmap": [
+    {
+      "id": "grid_x",
+      "name": "Grid X",
+      "era": "1950s",
+      "inspiration": "OXO / tic-tac-toe",
+      "concept": "concepts_grid_x",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "sidecourt",
+      "name": "Sidecourt",
+      "era": "1950s",
+      "inspiration": "Tennis for Two",
+      "concept": "concepts_sidecourt",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "orbit_duel",
+      "name": "Orbit Duel",
+      "era": "1960s",
+      "inspiration": "Spacewar!",
+      "concept": "concepts_orbit_duel",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "paddle_panic",
+      "name": "Paddle Panic",
+      "era": "1970s",
+      "inspiration": "Pong",
+      "concept": "concepts_paddle_panic",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "dark_cavern",
+      "name": "Dark Cavern",
+      "era": "1970s",
+      "inspiration": "Hunt the Wumpus",
+      "concept": "concepts_dark_cavern",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "armored_arena",
+      "name": "Armored Arena",
+      "era": "1970s",
+      "inspiration": "Tank",
+      "concept": "concepts_armored_arena",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "brick_burst",
+      "name": "Brick Burst",
+      "era": "1970s",
+      "inspiration": "Breakout",
+      "concept": "concepts_brick_burst",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "byte_munch",
+      "name": "Byte Munch",
+      "era": "1970s",
+      "inspiration": "Snake / Blockade",
+      "concept": "concepts_byte_munch",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "invader_patrol",
+      "name": "Invader Patrol",
+      "era": "1970s",
+      "inspiration": "Space Invaders",
+      "concept": "concepts_invader_patrol",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "rock_drift",
+      "name": "Rock Drift",
+      "era": "1970s",
+      "inspiration": "Asteroids",
+      "concept": "concepts_rock_drift",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "soft_landing",
+      "name": "Soft Landing",
+      "era": "1970s",
+      "inspiration": "Lunar Lander",
+      "concept": "concepts_soft_landing",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "flag_run",
+      "name": "Flag Run",
+      "era": "1980s",
+      "inspiration": "Rally-X",
+      "concept": "concepts_flag_run",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "dot_gobbler",
+      "name": "Dot Gobbler",
+      "era": "1980s",
+      "inspiration": "Pac-Man",
+      "concept": "concepts_dot_gobbler",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "sky_shield",
+      "name": "Sky Shield",
+      "era": "1980s",
+      "inspiration": "Missile Command",
+      "concept": "concepts_sky_shield",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "bug_blaster",
+      "name": "Bug Blaster",
+      "era": "1980s",
+      "inspiration": "Centipede",
+      "concept": "concepts_bug_blaster",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "hopway",
+      "name": "Hopway",
+      "era": "1980s",
+      "inspiration": "Frogger",
+      "concept": "concepts_hopway",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "color_steps",
+      "name": "Color Steps",
+      "era": "1980s",
+      "inspiration": "Q*bert",
+      "concept": "concepts_color_steps",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "crate_shift",
+      "name": "Crate Shift",
+      "era": "1980s",
+      "inspiration": "Sokoban",
+      "concept": "concepts_crate_shift",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "stackfall",
+      "name": "Stackfall",
+      "era": "1980s",
+      "inspiration": "Tetris",
+      "concept": "concepts_stackfall",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    },
+    {
+      "id": "rockfall_mines",
+      "name": "Rockfall Mines",
+      "era": "1980s",
+      "inspiration": "Boulder Dash",
+      "concept": "concepts_rockfall_mines",
+      "status": "planned",
+      "note": "Art is ready; a new game implementation is not claimed."
+    }
+  ],
+  "colors": {
+    "ink": "#172332",
+    "shade": "#35465b",
+    "paper": "#f6e9c7",
+    "white": "#fff8e7",
+    "gold": "#efbd56",
+    "teal": "#6bb9a7",
+    "cyan": "#82d8df",
+    "blue": "#5485bb",
+    "coral": "#e18375",
+    "red": "#b95c68",
+    "violet": "#a08bbd",
+    "green": "#92ae6b",
+    "brown": "#8d705c",
+    "dim": "#566773"
+  }
+}

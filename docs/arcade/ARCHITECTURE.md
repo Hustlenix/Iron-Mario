@@ -1,0 +1,25 @@
+# Architecture
+
+## Runtime ownership
+One Runtime owns one game, one requestAnimationFrame callback and one Input instance. A 60Hz fixed simulation step uses a seeded LCG. Wall-clock frame accumulation is capped at 100ms to avoid an unbounded catch-up spiral after stalls. Input edges are consumed after one simulation tick; continuous inputs remain held. Simulation does not use Date, timers or unseeded randomness. Drawing is separate from update.
+
+Ready and paused games render once and stop scheduling animation frames. Resume clears input and accumulated wall time. Visibility loss and browser blur pause. Exit aborts event listeners, cancels the animation callback, clears the HUD interval, stops oscillator voices and disposes the module exactly once. Module errors are caught and lead to a retry screen. Async route generation tokens prevent a slower old load from replacing a newer selection.
+
+## Modules
+A game exports createGame(api), returning state, update(dt,input), draw(ctx), optional dispose(). The state includes status, score, message and game-specific variables. Pure functions and stateful module instances are testable under Node. No game registers global listeners or timers.
+
+Games load via independent dynamic imports. An asset ID list per catalog entry selects only necessary runtime sprite images; artwork previews load lazily in the collection. There are no external JavaScript dependencies in the browser. The existing manifest renderer validates dimensions and frame ranges and disables interpolation.
+
+The 480x320 logical canvas scales responsively with image-rendering:pixelated. Native integer geometry is preferred. Collision uses each game's actual rules: grid occupancy, rectangle contacts, substeps for fast Breakout balls, falling-piece occupied cells, or paddle crossing tests.
+
+## State boundaries
+Host states: ready -> playing <-> paused -> ended, with error and disposed exits.
+Game status: playing -> won/lost.
+Progression within games does not create additional runtimes.
+SaveStore validates stored types and finite numbers. LocalStorage read/write failure falls back to the current in-memory session. Saves contain personal best, plays, wins and best reached level, not accounts or identifying data. Audio is synthesized only after a user gesture and is muted independently.
+
+## Test access
+?qa=1 exposes read-only JSON snapshots, save copies and resource counts through window.__arcade. There is no state setter, clock skipper, or outcome override. Browser tests use actual keyboard, pointer and touch events. Precise collision and terminal boundary fixtures belong to the Node tests and are labeled separately.
+
+## Expansion
+A catalog entry names its independent module, era, controls, assets and honest status. Add a module, unit tests, browser input evidence, screenshot and source note; then promote to TESTED. Keep the legacy Godot tree untouched. Packaging copies the new platform into build/web/arcade and the original history assets into its sibling directory.

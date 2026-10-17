@@ -1,0 +1,1 @@
+const path=require('node:path'),os=require('node:os');try{module.exports=require('playwright');}catch(e){try{module.exports=require(path.join(os.homedir(),'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));}catch{throw new Error('Install Playwright for browser QA or enable the Codex bundled runtime. '+e.message);}}

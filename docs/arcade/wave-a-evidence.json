@@ -1,0 +1,314 @@
+{
+  "url": "http://127.0.0.1:8785/arcade/?qa=1",
+  "stateInjection": false,
+  "desktop": {
+    "grid-x": {
+      "pauseFreezes": true,
+      "resume": true,
+      "restartReady": true,
+      "restartTicks": 0,
+      "status": "won",
+      "score": 840,
+      "wins": 2,
+      "draws": 1,
+      "keyboardSelection": true,
+      "pointerMoves": [
+        {
+          "round": 1,
+          "square": 0
+        },
+        {
+          "round": 1,
+          "square": 1
+        },
+        {
+          "round": 1,
+          "square": 6
+        },
+        {
+          "round": 1,
+          "square": 3
+        },
+        {
+          "round": 2,
+          "square": 0
+        },
+        {
+          "round": 2,
+          "square": 1
+        },
+        {
+          "round": 2,
+          "square": 4
+        },
+        {
+          "round": 2,
+          "square": 7
+        },
+        {
+          "round": 3,
+          "square": 0
+        },
+        {
+          "round": 3,
+          "square": 1
+        },
+        {
+          "round": 3,
+          "square": 6
+        },
+        {
+          "round": 3,
+          "square": 5
+        },
+        {
+          "round": 3,
+          "square": 7
+        }
+      ],
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "crate-shift": {
+      "pauseFreezes": true,
+      "resume": true,
+      "restartReady": true,
+      "restartTicks": 0,
+      "status": "won",
+      "score": 3267,
+      "adjacentTap": true,
+      "undo": true,
+      "rooms": [
+        {
+          "room": 1,
+          "steps": 2,
+          "pushes": 2,
+          "score": 490
+        },
+        {
+          "room": 2,
+          "steps": 6,
+          "pushes": 2,
+          "score": 1068
+        },
+        {
+          "room": 3,
+          "steps": 7,
+          "pushes": 4,
+          "score": 1739
+        },
+        {
+          "room": 4,
+          "steps": 17,
+          "pushes": 8,
+          "score": 2472
+        },
+        {
+          "room": 5,
+          "steps": 27,
+          "pushes": 12,
+          "score": 3267
+        }
+      ],
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "byte-munch": {
+      "pauseFreezes": true,
+      "resume": true,
+      "restartReady": true,
+      "restartTicks": 0,
+      "status": "lost",
+      "score": 20,
+      "eaten": 1,
+      "guidedKeyboardTurns": 1,
+      "message": "Circuit edge! Your byte train reached 5 cells.",
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "stackfall": {
+      "pauseFreezes": true,
+      "resume": true,
+      "restartReady": true,
+      "restartTicks": 0,
+      "status": "lost",
+      "score": 128,
+      "lockedPieces": 8,
+      "hardDrops": 8,
+      "keyboardMove": true,
+      "keyboardRotate": true,
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "brick-burst": {
+      "pauseFreezes": true,
+      "resume": true,
+      "restartReady": true,
+      "restartTicks": 0,
+      "status": "lost",
+      "score": 81,
+      "hits": 3,
+      "destroyed": 3,
+      "lives": 0,
+      "keyboardLaunch": true,
+      "keyboardPaddle": true,
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "paddle-panic": {
+      "pauseFreezes": true,
+      "resume": true,
+      "restartReady": true,
+      "restartTicks": 0,
+      "status": "lost",
+      "score": 5,
+      "playerPoints": 0,
+      "cpuPoints": 5,
+      "pointerTrackingSamples": 17,
+      "keyboardMove": true,
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    }
+  },
+  "mobile": {
+    "grid-x": {
+      "touchDpad": true,
+      "touchAction": true,
+      "touchUndo": false,
+      "width": {
+        "viewport": 375,
+        "document": 375
+      },
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "crate-shift": {
+      "touchDpad": true,
+      "touchAction": false,
+      "touchUndo": true,
+      "width": {
+        "viewport": 375,
+        "document": 375
+      },
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "byte-munch": {
+      "touchDpad": true,
+      "touchAction": false,
+      "touchUndo": false,
+      "width": {
+        "viewport": 375,
+        "document": 375
+      },
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "stackfall": {
+      "touchDpad": true,
+      "touchAction": true,
+      "touchUndo": false,
+      "width": {
+        "viewport": 375,
+        "document": 375
+      },
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "brick-burst": {
+      "touchDpad": true,
+      "touchAction": true,
+      "touchUndo": false,
+      "width": {
+        "viewport": 375,
+        "document": 375
+      },
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    },
+    "paddle-panic": {
+      "touchDpad": true,
+      "touchAction": false,
+      "touchUndo": false,
+      "width": {
+        "viewport": 375,
+        "document": 375
+      },
+      "exitResources": {
+        "active": 0,
+        "inputListeners": 0,
+        "raf": 0,
+        "hudTimer": 0,
+        "voices": 0
+      }
+    }
+  },
+  "errors": [],
+  "failedRequests": [],
+  "externalRequests": [],
+  "persistence": {
+    "wins": 2,
+    "achievements": [
+      "first-score",
+      "first-win",
+      "six-cabinets"
+    ],
+    "reload": true
+  },
+  "passed": true
+}
