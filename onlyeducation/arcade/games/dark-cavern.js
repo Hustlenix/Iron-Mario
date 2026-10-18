@@ -78,8 +78,8 @@ export function createGame(api) {
     ctx.textAlign='left';ctx.fillStyle=C.gold;ctx.font='bold 13px monospace';ctx.fillText('ROOM '+String(state.room+1).padStart(2,'0'),288,58);
     ctx.font='10px monospace';ctx.fillStyle=C.paper;cavernWarnings(state).forEach((line,i)=>ctx.fillText(line,282,81+i*16));
     ctx.fillStyle=C.dim;ctx.fillText(state.monsterDefeated?'CREATURE: CLEARED':'CREATURE: LURKING',288,135);ctx.fillText('SCORE '+state.score,288,151);
-    ctx.fillStyle=state.mode==='shoot'?C.coral:'#36515e';ctx.fillRect(288,168,168,30);ctx.fillStyle=state.mode==='shoot'?C.ink:C.paper;ctx.font='bold 11px monospace';ctx.fillText(state.mode==='shoot'?'AIM MODE [Z]':'WALK MODE [Z]',300,188);
-    ctx.font='10px monospace';ctx.fillStyle=C.dim;ctx.fillText('Arrows: choose tunnel',288,216);ctx.fillText('Action: move / fire',288,232);
+    ctx.fillStyle=state.mode==='shoot'?C.coral:C.teal;ctx.fillRect(288,168,168,30);ctx.fillStyle=C.ink;ctx.font='bold 11px monospace';ctx.fillText(state.mode==='shoot'?'AIM MODE [Z]':'WALK MODE [Z]',300,188);
+    ctx.font='10px monospace';ctx.fillStyle=C.dim;ctx.fillText('Arrows: choose tunnel',288,216);ctx.fillStyle=state.mode==='shoot'?C.coral:C.teal;ctx.fillText(state.mode==='shoot'?'ACTION: FIRE 1 BOLT':'ACTION: ENTER TUNNEL',282,232);
     ctx.fillStyle=C.paper;ctx.font='10px monospace';ctx.fillText(state.message,20,251);
     near.forEach((room,i)=>{const x=20+i*152;ctx.fillStyle=i===state.selected?C.gold:'#304b59';ctx.fillRect(x,262,136,40);ctx.fillStyle=i===state.selected?C.ink:C.paper;ctx.font='bold 12px monospace';ctx.fillText((state.mode==='shoot'?'FIRE > ':'TUNNEL ')+String(room+1).padStart(2,'0'),x+13,286);});
     ctx.font='9px monospace';ctx.fillStyle=C.dim;ctx.fillText('LISTEN > DEDUCE > HUNT > RECOVER > RETURN TO ROOM 01',20,315);

@@ -1,0 +1,84 @@
+{
+  "stateInjection": false,
+  "checks": [
+    {
+      "name": "Discovery tiles are visible immediately with gameplay artwork",
+      "detail": {
+        "firstTileTop": 296,
+        "tiles": 20
+      },
+      "pass": true
+    },
+    {
+      "name": "Favorites persist and provide a usable filtered list",
+      "pass": true
+    },
+    {
+      "name": "Opening the game switcher pauses; Escape returns to the same run",
+      "pass": true
+    },
+    {
+      "name": "Switcher search opens a different game without returning to collection",
+      "pass": true
+    },
+    {
+      "name": "Play-next thumbnails and previous/next buttons navigate directly",
+      "pass": true
+    },
+    {
+      "name": "Repeated in-player switches leave one runtime and stable listener counts",
+      "detail": {
+        "switches": 28,
+        "listeners": 33
+      },
+      "pass": true
+    },
+    {
+      "name": "Already-paused games stay paused after browsing",
+      "pass": true
+    },
+    {
+      "name": "Fullscreen keeps the Games switcher reachable",
+      "pass": true
+    },
+    {
+      "name": "Recent games reflect real started sessions and browser reload",
+      "pass": true
+    },
+    {
+      "name": "Global search is reachable from the player",
+      "pass": true
+    },
+    {
+      "name": "Returning to the collection restores the previous scroll position",
+      "detail": {
+        "scroll": 911
+      },
+      "pass": true
+    },
+    {
+      "name": "Touch navigation and all game layouts at 320px",
+      "detail": {
+        "games": 20
+      },
+      "pass": true
+    },
+    {
+      "name": "Touch navigation and all game layouts at 375px",
+      "detail": {
+        "games": 20
+      },
+      "pass": true
+    },
+    {
+      "name": "Touch navigation and all game layouts at 768px",
+      "detail": {
+        "games": 20
+      },
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "passed": true
+}

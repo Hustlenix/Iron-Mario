@@ -1,0 +1,829 @@
+{
+  "scope": "local twenty-game beta",
+  "stateInjection": false,
+  "humanReviews": 0,
+  "checks": [
+    {
+      "name": "dino-dash / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "dino-dash / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 17,
+        "score": 6
+      }
+    },
+    {
+      "name": "dino-dash / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "dino-dash / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "dino-dash / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "grid-x / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "grid-x / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "grid-x / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "grid-x / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "grid-x / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "sidecourt / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "sidecourt / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 59,
+        "score": 0
+      }
+    },
+    {
+      "name": "sidecourt / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "sidecourt / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "sidecourt / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "orbit-duel / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "orbit-duel / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "orbit-duel / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "orbit-duel / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "orbit-duel / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "paddle-panic / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "paddle-panic / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "paddle-panic / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "paddle-panic / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "paddle-panic / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "dark-cavern / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "dark-cavern / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "dark-cavern / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "dark-cavern / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "dark-cavern / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "armored-arena / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "armored-arena / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "armored-arena / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "armored-arena / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "armored-arena / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "brick-burst / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "brick-burst / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "brick-burst / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "brick-burst / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "brick-burst / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "byte-munch / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "byte-munch / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "byte-munch / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "byte-munch / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "byte-munch / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "invader-patrol / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "invader-patrol / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "invader-patrol / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "invader-patrol / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "invader-patrol / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "rock-drift / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "rock-drift / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "rock-drift / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "rock-drift / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "rock-drift / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "soft-landing / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "soft-landing / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "soft-landing / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "soft-landing / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "soft-landing / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "flag-run / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "flag-run / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "flag-run / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "flag-run / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "flag-run / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "dot-gobbler / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "dot-gobbler / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 17,
+        "score": 20
+      }
+    },
+    {
+      "name": "dot-gobbler / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "dot-gobbler / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "dot-gobbler / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "sky-shield / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "sky-shield / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 17,
+        "score": 0
+      }
+    },
+    {
+      "name": "sky-shield / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "sky-shield / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "sky-shield / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "bug-blaster / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "bug-blaster / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 0
+      }
+    },
+    {
+      "name": "bug-blaster / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "bug-blaster / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "bug-blaster / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "hopway / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "hopway / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 18,
+        "score": 10
+      }
+    },
+    {
+      "name": "hopway / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "hopway / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "hopway / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "color-steps / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "color-steps / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 17,
+        "score": 40
+      }
+    },
+    {
+      "name": "color-steps / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "color-steps / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "color-steps / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "crate-shift / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "crate-shift / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 17,
+        "score": 490
+      }
+    },
+    {
+      "name": "crate-shift / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "crate-shift / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "crate-shift / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "stackfall / ready and artwork",
+      "pass": true,
+      "detail": {
+        "native": [
+          480,
+          320
+        ],
+        "readyDoesNotAdvance": true
+      }
+    },
+    {
+      "name": "stackfall / keyboard changes play",
+      "pass": true,
+      "detail": {
+        "ticks": 17,
+        "score": 34
+      }
+    },
+    {
+      "name": "stackfall / pause freezes and resumes",
+      "pass": true
+    },
+    {
+      "name": "stackfall / restart restores seeded cabinet",
+      "pass": true
+    },
+    {
+      "name": "stackfall / mobile touch and exit cleanup",
+      "pass": true,
+      "detail": {
+        "width": 375,
+        "cleanup": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}

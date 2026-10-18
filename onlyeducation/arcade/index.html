@@ -21,7 +21,7 @@
 </aside>
 <main id="main">
 <section id="home-view">
- <div class="discover-heading"><div><p class="eyebrow">THE GOOD OLD DAYS. A NEW HIGH SCORE.</p><h1 id="library-title">A little escape. One more game.</h1><p id="library-description">Original pixel games. Free to play. Yours to explore.</p></div><span class="live-pill"><i></i><span id="playable-total">14</span> games to play</span></div>
+ <div class="discover-heading"><div><p class="eyebrow">THE GOOD OLD DAYS. A NEW HIGH SCORE.</p><h1 id="library-title">A little escape. One more game.</h1><p id="library-description">Original pixel games. Free to play. Yours to explore.</p></div><span class="live-pill"><i></i><span id="playable-total">20</span> games to play</span></div>
  <section id="recent-row" class="recent-section" hidden><div class="row-heading"><h2>Back for another go?</h2><button data-library="recent">See recently played →</button></div><div id="recent-games" class="recent-strip"></div></section>
  <section id="collection" class="collection" aria-label="Game collection">
  <div class="filters"><div id="categories" role="group" aria-label="Game categories"></div><label class="era-select">ERA <select id="era-filter" aria-label="Filter by era"><option value="">Every era</option><option value="Prehistoric">67 million years ago</option><option>1950s</option><option>1960s</option><option>1970s</option><option>1980s</option></select></label></div>
@@ -42,13 +42,13 @@
  <div class="play-layout">
   <div class="play-column" id="play-column">
    <div class="game-toolbar"><div class="score-group"><span id="score" aria-live="off">SCORE 0</span><span id="best">BEST 0</span></div><div class="play-tools"><button id="switch-game" data-open-switch>▦ Games</button><button id="pause" disabled>Pause</button><button id="restart" disabled>Restart</button><button id="mute" aria-pressed="false">Sound on</button><button id="fullscreen">Fullscreen</button></div></div>
-   <div class="game-shell" id="game-shell"><canvas id="game-canvas" width="480" height="320" tabindex="0" aria-label="Game screen"></canvas><div id="game-overlay" class="overlay"><div class="overlay-card"><span id="overlay-kicker" class="eyebrow"></span><h2 id="overlay-title">Loading…</h2><p id="overlay-copy"></p><button id="start" class="button primary" hidden>PLAY NOW ▸</button></div></div></div>
+   <div class="game-shell" id="game-shell"><canvas id="game-canvas" width="480" height="320" tabindex="0" aria-label="Game screen"></canvas><div id="game-overlay" class="overlay"><div class="overlay-card"><span id="overlay-kicker" class="eyebrow"></span><h2 id="overlay-title">Loading…</h2><p id="overlay-copy"></p><div id="first-play" class="first-play" hidden></div><button id="start" class="button primary" hidden>PLAY NOW ▸</button><a id="result-next" class="button result-next" hidden></a></div></div></div>
    <div id="touch-controls" class="touch-controls" aria-label="Touch game controls"><div class="dpad"><button data-input="up" aria-label="Move up">↑</button><button data-input="left" aria-label="Move left">←</button><button data-input="down" aria-label="Move down">↓</button><button data-input="right" aria-label="Move right">→</button></div><div class="actions"><button data-input="secondary">Z / ALT</button><button data-input="action" class="action-key">ACTION</button></div></div>
    <div class="stage-status"><p id="game-message" role="status"></p><button id="touch-toggle" class="touch-toggle" aria-pressed="false">Touch controls</button></div>
   </div>
   <aside class="quick-rail"><div class="row-heading"><h2>Play next</h2><button data-open-switch aria-label="Browse all games">View all →</button></div><div id="play-next"></div></aside>
  </div>
- <div class="game-info"><div class="control-guide"><h2>How to play</h2><p id="game-controls"></p><p class="shortcut-guide"><kbd>P</kbd> Pause <kbd>R</kbd> Restart <kbd>G</kbd> Switch games</p></div><details class="history-note"><summary>About this game <span>↓</span></summary><p id="game-description"></p><p id="history-copy"></p><a id="history-source" target="_blank" rel="noreferrer">Historical reference ↗</a></details><p id="save-note"></p></div>
+ <div class="game-info"><div class="control-guide"><h2>How to play</h2><p id="game-controls"></p><p id="personal-goal" class="personal-goal"></p><p class="shortcut-guide"><kbd>P</kbd> Pause <kbd>R</kbd> Restart <kbd>G</kbd> Switch games</p></div><details class="history-note"><summary>About this game <span>↓</span></summary><p id="game-description"></p><p id="history-copy"></p><a id="history-source" target="_blank" rel="noreferrer">Historical reference ↗</a></details><p id="save-note"></p></div>
 </section>
 <footer><a class="footer-brand" href="#collection">OE <span>OnlyEducation</span></a><span>A HUSTLENIX PROJECT</span><div><a href="../history-assets/">Asset lab ↗</a><a href="docs/README.md">Project notes</a><a href="docs/ASSETS.md">Credits</a></div></footer>
 </main>

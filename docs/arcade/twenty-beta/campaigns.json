@@ -1,0 +1,141 @@
+{
+  "scope": "legal-input deterministic simulation, not human or browser play",
+  "stateInjection": false,
+  "results": [
+    {
+      "id": "orbit-duel",
+      "seed": 1,
+      "status": "won",
+      "score": 3080,
+      "level": 3,
+      "lives": 3,
+      "remaining": 3
+    },
+    {
+      "id": "orbit-duel",
+      "seed": 2,
+      "status": "won",
+      "score": 3080,
+      "level": 3,
+      "lives": 3,
+      "remaining": 3
+    },
+    {
+      "id": "orbit-duel",
+      "seed": 3,
+      "status": "won",
+      "score": 3080,
+      "level": 3,
+      "lives": 3,
+      "remaining": 3
+    },
+    {
+      "id": "armored-arena",
+      "seed": 1,
+      "status": "won",
+      "score": 2250,
+      "level": 3,
+      "lives": 1,
+      "remaining": 0
+    },
+    {
+      "id": "armored-arena",
+      "seed": 2,
+      "status": "won",
+      "score": 2250,
+      "level": 3,
+      "lives": 1,
+      "remaining": 0
+    },
+    {
+      "id": "armored-arena",
+      "seed": 3,
+      "status": "won",
+      "score": 2250,
+      "level": 3,
+      "lives": 1,
+      "remaining": 0
+    },
+    {
+      "id": "invader-patrol",
+      "seed": 1,
+      "status": "won",
+      "score": 4950,
+      "level": 3,
+      "lives": 3,
+      "remaining": 0
+    },
+    {
+      "id": "invader-patrol",
+      "seed": 2,
+      "status": "won",
+      "score": 4800,
+      "level": 3,
+      "lives": 2,
+      "remaining": 0
+    },
+    {
+      "id": "invader-patrol",
+      "seed": 3,
+      "status": "won",
+      "score": 4650,
+      "level": 3,
+      "lives": 1,
+      "remaining": 0
+    },
+    {
+      "id": "dot-gobbler",
+      "seed": 1,
+      "status": "won",
+      "score": 3920,
+      "level": 2,
+      "lives": 2,
+      "remaining": 0
+    },
+    {
+      "id": "dot-gobbler",
+      "seed": 2,
+      "status": "won",
+      "score": 3920,
+      "level": 2,
+      "lives": 2,
+      "remaining": 0
+    },
+    {
+      "id": "dot-gobbler",
+      "seed": 3,
+      "status": "won",
+      "score": 3920,
+      "level": 2,
+      "lives": 2,
+      "remaining": 0
+    },
+    {
+      "id": "bug-blaster",
+      "seed": 1,
+      "status": "won",
+      "score": 4645,
+      "level": 3,
+      "lives": 3,
+      "remaining": 0
+    },
+    {
+      "id": "bug-blaster",
+      "seed": 2,
+      "status": "won",
+      "score": 4630,
+      "level": 3,
+      "lives": 3,
+      "remaining": 0
+    },
+    {
+      "id": "bug-blaster",
+      "seed": 3,
+      "status": "won",
+      "score": 4660,
+      "level": 3,
+      "lives": 3,
+      "remaining": 0
+    }
+  ]
+}

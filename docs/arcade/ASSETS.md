@@ -25,7 +25,7 @@ Aseprite was invoked again on 2026-10-17 to export shared_pieces.aseprite. All 2
 Original runtime sprite strip and cover: onlyeducation/arcade/art/. Editable five-frame Aseprite timeline: source_art/dino_dash/runner.aseprite. Both were authored for OnlyEducation and contain no third-party pixels. The game-specific manifest keeps the base 95-asset history kit intact.
 
 ## Gameplay discovery thumbnails
-All fourteen public previews in onlyeducation/arcade/art/previews are native 480x320 captures of the actual original game canvases. tools/capture_arcade_thumbnails.cjs records normal-input gameplay and exports only the rendered canvas. No third-party site art or logos are included.
+All twenty local beta previews in onlyeducation/arcade/art/previews are native 480x320 captures of the actual original game canvases. tools/capture_arcade_thumbnails.cjs records normal-input gameplay and exports only the rendered canvas. No third-party site art or logos are included.
 
 
 ## Playground feature art

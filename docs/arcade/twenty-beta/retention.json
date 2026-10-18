@@ -1,0 +1,33 @@
+{
+  "stateInjection": false,
+  "results": [
+    {
+      "name": "color-steps safe ready demonstration",
+      "pass": true
+    },
+    {
+      "name": "rock-drift safe ready demonstration",
+      "pass": true
+    },
+    {
+      "name": "soft-landing safe ready demonstration",
+      "pass": true
+    },
+    {
+      "name": "Reduced-motion cues are static",
+      "pass": true
+    },
+    {
+      "name": "Cavern action follows actual walk/aim mode",
+      "pass": true
+    },
+    {
+      "name": "Smoke labels and feedback disclose actual cost",
+      "pass": true
+    },
+    {
+      "name": "One-action retry restarts; end screen offers next game",
+      "pass": true
+    }
+  ]
+}

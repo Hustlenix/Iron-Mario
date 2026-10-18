@@ -11,7 +11,7 @@ Legacy Godot arcade: https://hustlenix.github.io/Iron-Mario/legacy.html
 
 1. Commit and push the reviewed source branch.
 2. Run tools/package_arcade.py to validate the catalog and package the original assets and arcade.
-3. Run tools/deploy_arcade_pages.py. It reads the existing gh-pages tree into an isolated temporary index, preserves existing legacy assets, adds arcade/ and history-assets/, and publishes one normal non-force commit. It saves the old Godot entry as legacy.html and adds a portal/ compatibility redirect for the existing Legacy arcade navigation link.
+3. For a 20-game release, record actual human observations in playtests.json and run tools/check_arcade_release.py first. The publisher checks this gate before remote changes. Then run tools/deploy_arcade_pages.py. It reads the existing gh-pages tree into an isolated temporary index, preserves existing legacy assets, adds arcade/ and history-assets/, and publishes one normal non-force commit. It saves the old Godot entry as legacy.html and adds a portal/ compatibility redirect for the existing Legacy arcade navigation link.
 4. Verify the matching GitHub Pages build completes and fetch arcade/deployment.json to confirm the exact source revision.
 5. Verify the public application, assets, normal keyboard/touch gameplay, switching and mobile layout. Local verification alone is not a public deployment check.
 

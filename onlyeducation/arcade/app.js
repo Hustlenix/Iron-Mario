@@ -9,7 +9,7 @@ const playable=()=>GAMES.filter(g=>['PLAYABLE','TESTED','RELEASE READY'].include
 const library=new Library(playable().map(g=>g.id));
 document.body.classList.toggle('touch-device',navigator.maxTouchPoints>0||matchMedia('(any-pointer:coarse)').matches);
 let runtime=null,current=null,loadToken=0,category='All',libraryView='all';
-let lastScore=-1,lastMessage='',lastSave='',hudTimer=0,homeScroll=0,returnGame=null;
+let lastScore=-1,lastMessage='',lastSave='',hudTimer=0,homeScroll=0,returnGame=null,personalTarget=0;
 let pickerResume=false,pickerGame=null,pickerFocus=null,navResume=false,navGame=null;
 const dialog=$('#game-switcher');
 const isGame=()=>!$('#game-view').hidden;
@@ -99,7 +99,7 @@ $('#favorite-game').onclick=()=>{if(current){library.toggle(current.id);renderFa
 function renderPlayNext(id){
  const all=playable(),index=all.findIndex(g=>g.id===id),g=all[index];
  $('#previous-game').href='#game/'+all[(index-1+all.length)%all.length].id;
- $('#next-game').href='#game/'+all[(index+1)%all.length].id;
+ $('#next-game').href='#game/'+all[(index+1)%all.length].id;$('#next-game').setAttribute('aria-label','Next game: '+all[(index+1)%all.length].title);$('#previous-game').setAttribute('aria-label','Previous game: '+all[(index-1+all.length)%all.length].title);
  const next=all.filter(x=>x.id!==id).sort((a,b)=>Number(b.category===g?.category)-Number(a.category===g?.category)).slice(0,8);
  $('#play-next').replaceChildren(...next.map(x=>mini(x,'next-card')));
 }
@@ -150,8 +150,13 @@ $('#touch-toggle').onclick=()=>{const enabled=document.body.classList.toggle('sh
 function saveRun(){if(!runtime||!current)return;const s=runtime.game.state,sig=[s.score,s.status,s.level].join(':');if(sig!==lastSave){store.record(current.id,s);lastSave=sig;}}
 function stop(){loadToken++;if(runtime){saveRun();runtime.destroy();runtime=null;}clearInterval(hudTimer);hudTimer=0;lastSave='';current=null;sound.silence();}
 function overlay(kicker,title,copy,button,hidden=false){$('#game-overlay').hidden=hidden;$('#overlay-kicker').textContent=kicker;$('#overlay-title').textContent=title;$('#overlay-copy').textContent=copy;$('#start').hidden=!button;$('#start').textContent=button||'';}
+const FIRST_PLAY={"color-steps":[["← ↙","Down-left"],["↓ ↘","Down-right"],["↑ ↖ → ↗","Back up"]],"rock-drift":[["← →","Turn first"],["↑","Short thrust"],["↓ / Z","Brake"]],"soft-landing":[["← →","Tilt"],["↑ / ACTION","Thrust"],["↓","Level feet"]],"orbit-duel":[["← →","Turn"],["↑ / ↓","Thrust / brake"],["ACTION","Fire"]],"armored-arena":[["ARROWS","Move + face"],["ACTION","Hold to fire"]],"invader-patrol":[["← →","Dodge"],["ACTION","Hold to fire"]],"bug-blaster":[["ARROWS","Move"],["ACTION","Hold to fire"]],"dot-gobbler":[["ARROWS","Steer"],["◆ CRYSTAL","7s power"]],"dino-dash":[["↑ / ACTION","Jump"],["↓ / Z","Hold to duck"]],"sidecourt":[["← →","Get under ball"],["ACTION","Hold to swing"]],"dark-cavern":[["Z","Walk ↔ aim"],["ACTION","Enter / fire"]],"flag-run":[["ARROWS","Steer"],["ACTION","Smoke: 12 fuel"]]};
+function firstPlay(mode){
+ const n=$('#first-play');n.hidden=mode!=='ready'||!FIRST_PLAY[current?.id];n.replaceChildren(...(FIRST_PLAY[current?.id]||[]).map(([key,label],i)=>{const cell=el('span','learn-step');cell.style.setProperty('--step',i);cell.append(el('b','',key),el('small','',label));return cell;}));
+ const next=$('#result-next');next.hidden=mode!=='ended';if(mode==='ended'){const list=playable(),g=list[(list.findIndex(g=>g.id===current.id)+1)%list.length];next.href='#game/'+g.id;next.textContent='NEXT: '+g.title+' →';}
+}
 function stateChanged(){
- if(!runtime)return;const mode=runtime.mode,s=runtime.game.state;
+ if(!runtime)return;const mode=runtime.mode,s=runtime.game.state;firstPlay(mode);
  $('#pause').disabled=!['playing','paused'].includes(mode);$('#pause').textContent=mode==='paused'?'Resume':'Pause';$('#restart').disabled=mode==='error';
  if(mode==='ready')overlay((current.dateLabel||current.era)+' · '+current.category.toUpperCase(),current.title,current.tagline,'PLAY NOW ▸');
  if(mode==='playing')overlay('','','','',true);
@@ -160,14 +165,14 @@ function stateChanged(){
  updateHUD();
 }
 function updateHUD(){
- if(!runtime)return;const s=runtime.game.state;$('#score').textContent='SCORE '+s.score;$('#best').textContent='BEST '+Math.max(store.data.games[current.id]?.best||0,s.score);
+ if(!runtime)return;const s=runtime.game.state;$('#score').textContent='SCORE '+s.score;const best=personalTarget;$('#personal-goal').textContent=s.score>best?'New personal best! Previous: '+best+' points.':best?'Your next goal: beat '+best+' points.':'First goal: finish a round and set your own best.';if(current.id==='dark-cavern'){const aiming=s.mode==='shoot';for(const b of $('#touch-controls').querySelectorAll('[data-input]'))if(['action','secondary'].includes(b.dataset.input)){b.textContent=b.dataset.input==='action'?(aiming?'FIRE 1 BOLT':'ENTER TUNNEL'):(aiming?'WALK MODE':'AIM MODE');b.setAttribute('aria-label',b.dataset.input+': '+b.textContent);}}$('#best').textContent='BEST '+Math.max(store.data.games[current.id]?.best||0,s.score);
  if(s.message!==lastMessage){$('#game-message').textContent=s.message||'';lastMessage=s.message;}
  if(s.score!==lastScore){saveRun();lastScore=s.score;}$('#save-note').textContent=store.available?'Best scores are saved on this device.':'Storage unavailable: scores last for this session only.';
 }
 function failure(error){console.error('Arcade load/runtime error:',error);if(runtime){runtime.destroy();runtime=null;}clearInterval(hudTimer);hudTimer=0;$('#pause').disabled=true;$('#restart').disabled=true;overlay('CABINET NEEDS A MOMENT','Could not start.','This cabinet could not load. Check your connection and try again.','TRY AGAIN ↻');}
 function controlHints(id){
  $('#touch-controls').classList.toggle('runner-controls',id==='dino-dash');
- const labels={'dino-dash':{action:'JUMP',secondary:'DUCK (HOLD)'},'grid-x':{action:'PLACE'},'crate-shift':{action:'NEXT',secondary:'UNDO'},'stackfall':{action:'DROP',secondary:'ROTATE ↶'},'brick-burst':{action:'LAUNCH'},'dark-cavern':{action:'GO / FIRE',secondary:'AIM MODE'},'color-steps':{left:'↙',down:'↘',up:'↖',right:'↗',action:'RECALL / NEXT'},'sidecourt':{action:'SWING'},'sky-shield':{action:'FIRE'},'rock-drift':{action:'FIRE'},'flag-run':{action:'SMOKE'}}[id]||{};
+ const labels={'dino-dash':{action:'JUMP',secondary:'DUCK (HOLD)'},'grid-x':{action:'PLACE'},'crate-shift':{action:'NEXT',secondary:'UNDO'},'stackfall':{action:'DROP',secondary:'ROTATE ↶'},'brick-burst':{action:'LAUNCH'},'dark-cavern':{action:'GO / FIRE',secondary:'AIM MODE'},'color-steps':{left:'↙',down:'↘',up:'↖',right:'↗',action:'RECALL / NEXT'},'sidecourt':{action:'SWING'},'sky-shield':{action:'FIRE'},'rock-drift':{action:'FIRE'},'flag-run':{action:'SMOKE · 12 FUEL'},'soft-landing':{action:'THRUST',secondary:'LEVEL FEET'},'orbit-duel':{action:'FIRE',secondary:'BRAKE'},'armored-arena':{action:'FIRE'},'invader-patrol':{action:'FIRE'},'bug-blaster':{action:'FIRE'}}[id]||{};
  const defaults={left:'←',right:'→',up:'↑',down:'↓',action:'ACTION',secondary:'Z / ALT'};
  for(const b of $('#touch-controls').querySelectorAll('[data-input]')){b.textContent=labels[b.dataset.input]||defaults[b.dataset.input];b.setAttribute('aria-label',b.dataset.input+': '+b.textContent);}
 }
@@ -176,10 +181,10 @@ async function loadGame(id){
  if(!current||!playable().includes(current)){
   $('#pause').disabled=true;$('#restart').disabled=true;$('#score').textContent='SCORE —';$('#best').textContent='BEST —';$('#game-message').textContent='';$('#game-description').textContent='This game is still in development.';$('#game-controls').textContent='Choose another game using Games or the Play next strip.';$('#history-copy').textContent='';$('#history-source').hidden=true;$('#game-era').textContent='PLANNED';$('#game-title').textContent='On the workbench';$('#game-tagline').textContent='Choose a playable game to keep going.';overlay('COMING LATER','Not playable yet.','Choose a game from Play next or open the game switcher.',null);return;
  }
- controlHints(id);document.title=current.title+' — OnlyEducation';$('#game-title').textContent=current.title;$('#game-era').textContent=(current.dateLabel||current.era)+' · '+current.category;
+ personalTarget=store.data.games[id]?.best||0;controlHints(id);document.title=current.title+' — OnlyEducation';$('#game-title').textContent=current.title;$('#game-era').textContent=(current.dateLabel||current.era)+' · '+current.category;
  $('#game-tagline').textContent=current.tagline;$('#game-description').textContent=current.description;$('#game-controls').textContent=current.controls;$('#history-copy').textContent=current.historyNote||'Inspired by a '+current.year+' gameplay idea. Original code, visuals and levels by OnlyEducation.';
  $('#history-source').hidden=!current.source;$('#history-source').href=current.source||'#';$('#pause').disabled=true;$('#restart').disabled=true;lastScore=-1;lastMessage='';$('#game-message').textContent='';$('#score').textContent='SCORE 0';$('#best').textContent='BEST '+(store.data.games[id]?.best||0);
- overlay('WARMING UP','Loading cabinet…','Preparing the game and its pixel artwork.',null);
+ $('#first-play').hidden=true;$('#result-next').hidden=true;overlay('WARMING UP','Loading cabinet…','Preparing the game and its pixel artwork.',null);
  try{
   const [module,assets]=await Promise.all([import('./games/'+id+'.js'),PixelAssets.load(current.assetManifest||'../history-assets/assets/manifest.json',{ids:current.assets||[]})]);if(token!==loadToken)return;
   runtime=new Runtime({canvas:$('#game-canvas'),controls:$('#touch-controls'),module,assets,sound,onState:stateChanged,onError:failure,seed:1972});stateChanged();hudTimer=setInterval(updateHUD,120);$('#start').focus({preventScroll:true});
@@ -187,9 +192,9 @@ async function loadGame(id){
 }
 async function start(){
  await sound.unlock();if(!runtime){if(current)location.reload();return;}
- if(runtime.mode==='ready'){library.play(current.id);store.record(current.id,runtime.game.state,{started:true});runtime.start();}
+ if(runtime.mode==='ready'){personalTarget=store.data.games[current.id]?.best||0;library.play(current.id);store.record(current.id,runtime.game.state,{started:true});runtime.start();}
  else if(runtime.mode==='paused')runtime.resume();
- else if(runtime.mode==='ended'){lastSave='';if(runtime.game.state.status==='lost'&&typeof runtime.game.retry==='function')runtime.retry();else{runtime.restart();if(!runtime)return;library.play(current.id);store.record(current.id,runtime.game.state,{started:true});runtime.start();}}
+ else if(runtime.mode==='ended'){lastSave='';if(runtime.game.state.status==='lost'&&typeof runtime.game.retry==='function')runtime.retry();else{personalTarget=store.data.games[current.id]?.best||0;runtime.restart();if(!runtime)return;library.play(current.id);store.record(current.id,runtime.game.state,{started:true});runtime.start();}}
  $('#game-canvas').focus();
 }
 $('#start').onclick=start;

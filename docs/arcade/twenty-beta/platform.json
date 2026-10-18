@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-10-18T05:15:05.338Z",
+  "base": "http://127.0.0.1:8785/arcade/?qa=1",
+  "checks": 23,
+  "passed": 23,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Home shows only playable cabinets and clear planned items",
+      "pass": true,
+      "detail": {
+        "count": 20,
+        "planned": 1
+      }
+    },
+    {
+      "name": "Empty search and combined filters recover through clear filters",
+      "pass": true
+    },
+    {
+      "name": "Ready cabinet has no continuously running RAF",
+      "pass": true
+    },
+    {
+      "name": "Focused ready button starts with Enter",
+      "pass": true
+    },
+    {
+      "name": "Canvas focus accepts held gameplay keys",
+      "pass": true
+    },
+    {
+      "name": "Focused toolbar button activates with Space",
+      "pass": true
+    },
+    {
+      "name": "Mute works, immediately silences voices, and persists after reload",
+      "pass": true
+    },
+    {
+      "name": "Played sessions persist after reload",
+      "pass": true
+    },
+    {
+      "name": "Returning home releases all per-game resources",
+      "pass": true
+    },
+    {
+      "name": "Fullscreen enters and exits through the real browser API",
+      "pass": true
+    },
+    {
+      "name": "Repeated cabinet switches do not accumulate active runtimes or listeners",
+      "pass": true,
+      "detail": {
+        "inputListenersPerGame": 33
+      }
+    },
+    {
+      "name": "Invalid cabinet route shows unavailable state with no stale active controls",
+      "pass": true
+    },
+    {
+      "name": "Normal browsing has no page errors or HTTP failures",
+      "pass": true
+    },
+    {
+      "name": "Delayed module shows a loading state then opens correctly",
+      "pass": true
+    },
+    {
+      "name": "Leaving during an in-flight load never resurrects the closed cabinet",
+      "pass": true
+    },
+    {
+      "name": "Failed module load has clear recovery UI and retry succeeds after network returns",
+      "pass": true
+    },
+    {
+      "name": "Blocked localStorage still permits play and says scores are session-only",
+      "pass": true
+    },
+    {
+      "name": "Corrupt save is ignored safely without losing playability",
+      "pass": true
+    },
+    {
+      "name": "Reduced motion disables animated hover and smooth scroll",
+      "pass": true
+    },
+    {
+      "name": "Mobile layout 320px fits and touch controls stay tappable",
+      "pass": true,
+      "detail": {
+        "buttons": 6
+      }
+    },
+    {
+      "name": "Mobile layout 375px fits and touch controls stay tappable",
+      "pass": true,
+      "detail": {
+        "buttons": 6
+      }
+    },
+    {
+      "name": "Mobile layout 430px fits and touch controls stay tappable",
+      "pass": true,
+      "detail": {
+        "buttons": 6
+      }
+    },
+    {
+      "name": "Mobile layout 768px fits and touch controls stay tappable",
+      "pass": true,
+      "detail": {
+        "buttons": 6
+      }
+    }
+  ],
+  "findings": []
+}

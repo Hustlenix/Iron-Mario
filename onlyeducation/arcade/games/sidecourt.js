@@ -2,7 +2,7 @@ const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const GROUND=278, GRAVITY=330;
 export function createGame(api){
  const sound=n=>api.sound?.(n);
- const state={status:'playing',score:0,message:'Move under the ball. Hold ACTION to swing. UP lob / DOWN drive.',level:1,playerPoints:0,cpuPoints:0,playerX:104,cpuX:370,aim:'lob',ball:{x:120,y:220,vx:0,vy:0},lastHit:'cpu',bounceSide:null,bounces:0,serveOwner:'player',serveDelay:.7,serveReady:true,rally:0,swings:0,hits:0,swingTime:0,swingCooldown:0,cpuCooldown:0,cpuError:0,time:0,pointFlash:0,trail:[]};
+ const state={status:'playing',score:0,message:'Move under the ball. Hold ACTION to swing. UP lob / DOWN drive.',level:1,playerPoints:0,cpuPoints:0,playerX:104,cpuX:370,aim:'lob',ball:{x:120,y:220,vx:0,vy:0},lastHit:'cpu',bounceSide:null,bounces:0,serveOwner:'player',serveDelay:.7,serveReady:true,rally:0,swings:0,hits:0,swingTime:0,swingCooldown:0,cpuCooldown:0,cpuError:0,time:0,pointFlash:0,hitFlash:0,trail:[]};
  function resetPoint(owner){
   state.serveOwner=owner;state.serveDelay=.8;state.serveReady=true;state.playerX=104;state.cpuX=370;
   state.ball={x:owner==='player'?120:354,y:220,vx:0,vy:0};
@@ -30,7 +30,7 @@ export function createGame(api){
   b.vy=Math.min(vy,(197-b.y-.5*GRAVITY*netTime*netTime)/netTime);
   b.vy=Math.max(-370,b.vy);
   state.lastHit=side;state.bounces=0;state.bounceSide=null;state.rally++;
-  if(player){state.hits++;if(!serve)state.score+=10;state.swingTime=.22;}
+  if(player){state.hits++;state.hitFlash=.28;if(!serve)state.score+=10;state.swingTime=.22;}
   state.cpuError=(api.rng()-.5)*(38-Math.min(18,state.level*3));
   state.cpuCooldown=.22;state.serveReady=false;state.trail=[];sound('hit');
  }
@@ -47,7 +47,7 @@ export function createGame(api){
  }
  function update(dt,input){
   if(state.status!=='playing')return;
-  state.time+=dt;state.swingTime=Math.max(0,state.swingTime-dt);state.swingCooldown=Math.max(0,state.swingCooldown-dt);
+  state.time+=dt;state.hitFlash=Math.max(0,state.hitFlash-dt);state.swingTime=Math.max(0,state.swingTime-dt);state.swingCooldown=Math.max(0,state.swingCooldown-dt);
   state.cpuCooldown=Math.max(0,state.cpuCooldown-dt);state.pointFlash=Math.max(0,state.pointFlash-dt);
   if(input.pressed('up'))state.aim='lob';if(input.pressed('down'))state.aim='drive';
   let move=Number(input.down('right'))-Number(input.down('left'));
@@ -106,6 +106,8 @@ export function createGame(api){
   c.fillStyle='#afc4cc';c.fillRect(238,207,4,71);c.fillRect(233,207,14,3);c.fillStyle='#537175';for(let y=216;y<278;y+=8)c.fillRect(234,y,12,1);
   person(c,state.playerX,'#61d5c8',false,state.swingTime>0);person(c,state.cpuX,'#fa8068',true,state.cpuCooldown>.12&&!state.serveReady);
   for(let i=0;i<state.trail.length;i++){const p=state.trail[i];c.fillStyle=i<4?'#43605d':'#81a78a';c.fillRect(Math.round(p.x)-2,Math.round(p.y)-2,4,4);}
+  if(reachable('player')&&!state.serveReady){c.strokeStyle='#61d5c8';c.lineWidth=2;c.strokeRect(Math.max(16,state.playerX-58),150,Math.min(236,state.playerX+58)-Math.max(16,state.playerX-58),126);c.fillStyle='#61d5c8';c.font='bold 12px monospace';c.textAlign='center';c.fillText('SWING NOW',120,126);}
+  if(state.hitFlash>0){c.fillStyle='#ffc56a';c.font='bold 12px monospace';c.textAlign='center';c.fillText('CLEAN CONTACT!',120,106);}
   c.fillStyle='#ffc56a';c.fillRect(Math.round(state.ball.x)-4,Math.round(state.ball.y)-4,8,8);c.fillStyle='#fff0cf';c.fillRect(Math.round(state.ball.x)-3,Math.round(state.ball.y)-3,3,3);
   c.textAlign='center';c.font='bold 11px monospace';c.fillStyle='#fff0cf';
   if(state.serveReady)c.fillText(state.serveDelay>0?'GET READY':state.serveOwner==='player'?'ACTION TO SERVE':'OPPONENT SERVES',240,94);

@@ -5,15 +5,15 @@ export function dinoBounds(s){return {x:RUNNER.x,y:s.bottom-(s.ducking?22:42),w:
 export function obstacleBounds(o){return {x:o.x+4,y:o.y+4,w:o.w-8,h:o.h-4};}
 const intersects=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
 export function createGame(api){
- const state={status:'playing',score:0,message:'SPACE / tap to jump. Hold DOWN or DUCK for low flyers.',elapsed:0,distance:0,speed:RUNNER.speed,bottom:RUNNER.floor,vy:0,grounded:true,ducking:false,jumpBuffer:0,spawnIn:1.5,spawned:0,cleared:0,level:1,obstacles:[]};
+ const state={status:'playing',score:0,message:'SPACE / tap to jump. Hold DOWN or DUCK for low flyers.',elapsed:0,distance:0,speed:RUNNER.speed,bottom:RUNNER.floor,vy:0,grounded:true,ducking:false,jumpBuffer:0,spawnIn:2.2,spawned:0,cleared:0,level:1,obstacles:[]};
  const sound=n=>api.sound?.(n);
  function spawn(){
   const flyer=state.spawned>=5&&state.spawned%3===2;
-  const w=flyer?36:state.spawned===0?22:22+Math.floor(api.rng()*3)*6;
-  const h=flyer?18:state.spawned===0?28:28+Math.floor(api.rng()*3)*8;
+  const w=flyer?36:state.spawned<3?[18,22,26][state.spawned]:22+Math.floor(api.rng()*3)*6;
+  const h=flyer?18:state.spawned<3?[20,24,28][state.spawned]:28+Math.floor(api.rng()*3)*8;
   state.obstacles.push({x:500,y:flyer?214:RUNNER.floor-h,w,h,kind:flyer?'flyer':'thorn',passed:false});
   state.spawned++;
-  state.spawnIn+=1.35+api.rng()*.45;
+  state.spawnIn+=(state.spawned<=3?1.8:1.35)+api.rng()*.45;
   if(flyer)state.message='Low flyer ahead! Hold DOWN or DUCK, or time a high jump.';
  }
  function update(dt,input){

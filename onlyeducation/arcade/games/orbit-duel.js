@@ -1,0 +1,24 @@
+import{PAL,clamp,hit,frame,text,ship,banner}from'../engine/presentation.js';
+export const ORBIT={cx:240,cy:163,sun:30,gravity:680000};
+export const angleDelta=(a,b)=>Math.atan2(Math.sin(a-b),Math.cos(a-b));
+export function createGame(api){
+ const s={status:'playing',score:0,message:'Turn toward the rival. Thrust in short bursts; avoid the sun.',level:1,lives:3,wins:0,time:0,phase:'duel',wait:0,player:{x:80,y:165,vx:0,vy:0,angle:0,hp:3,shield:2},enemy:{x:398,y:163,vx:0,vy:0,angle:Math.PI,hp:3,shield:1},bullets:[],shot:0,enemyShot:2,flash:0};
+ const sound=n=>api.sound?.(n);const stars=Array.from({length:45},()=>({x:api.rng()*480,y:36+api.rng()*255}));
+ function reset(){s.player={x:80,y:165,vx:0,vy:0,angle:0,hp:3,shield:2};s.enemy={x:398,y:163,vx:0,vy:0,angle:Math.PI,hp:3,shield:1};s.bullets=[];s.shot=0;s.enemyShot=2;s.phase='duel';}
+ function harm(p,amount=1){if(p.shield>0)return false;p.hp-=amount;p.shield=1.1;s.flash=.2;sound('hit');if(p.hp>0)return true;if(p===s.enemy){s.wins++;s.score+=500*s.level;if(s.wins===3){s.status='won';s.message='Three rival drones outflown. Orbit secured!';sound('win');}else{s.level++;s.phase='round';s.wait=1.5;s.message='Rival down. New pilot approaching.';}}else{s.lives--;if(!s.lives){s.status='lost';s.message='Hull lost. Brake before the sun and lead your shots.';sound('lose');}else{s.phase='round';s.wait=1.5;s.message='New hull ready. Rivals cleared stay cleared.';}}return true;}
+ function fire(p,owner){s.bullets.push({x:p.x+Math.cos(p.angle)*15,y:p.y+Math.sin(p.angle)*15,vx:Math.cos(p.angle)*(owner==='you'?260:145)+p.vx*.3,vy:Math.sin(p.angle)*(owner==='you'?260:145)+p.vy*.3,life:2.3,owner});sound('move');}
+ function move(p,dt,thrust,brake){const dx=ORBIT.cx-p.x,dy=ORBIT.cy-p.y,d=Math.hypot(dx,dy)||1,a=Math.min(90,ORBIT.gravity/(d*d));p.vx+=(dx/d*a+Math.cos(p.angle)*thrust)*dt;p.vy+=(dy/d*a+Math.sin(p.angle)*thrust)*dt;if(brake){p.vx*=Math.exp(-3*dt);p.vy*=Math.exp(-3*dt);}const speed=Math.hypot(p.vx,p.vy),limit=p===s.player?165:100;if(speed>limit){p.vx*=limit/speed;p.vy*=limit/speed;}p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<12||p.x>468){p.x=clamp(p.x,12,468);p.vx*=-.6;}if(p.y<47||p.y>282){p.y=clamp(p.y,47,282);p.vy*=-.6;}p.shield=Math.max(0,p.shield-dt);if(hit(p,{x:ORBIT.cx,y:ORBIT.cy},ORBIT.sun+8)){harm(p);const n=Math.hypot(dx,dy)||1;p.x=ORBIT.cx-dx/n*48;p.y=ORBIT.cy-dy/n*48;p.vx=-dx/n*80;p.vy=-dy/n*80;}}
+ function update(dt,i){if(s.status!=='playing'||!Number.isFinite(dt)||dt<=0)return;dt=Math.min(.05,dt);s.time+=dt;s.flash=Math.max(0,s.flash-dt);if(s.phase==='round'){s.wait-=dt;if(s.wait<=0)reset();return;}
+  const p=s.player,e=s.enemy;p.angle+=(Number(i.down('right'))-Number(i.down('left')))*3*dt;
+  if(i.pointer?.active&&i.pointer.down)p.angle=Math.atan2(i.pointer.y-p.y,i.pointer.x-p.x);
+  s.shot=Math.max(0,s.shot-dt);if((i.down('action')||i.pressed('action')||i.pointer?.pressed)&&s.shot===0){fire(p,'you');s.shot=.24;}
+  const desired=Math.atan2(p.y-e.y,p.x-e.x);e.angle+=clamp(angleDelta(desired,e.angle),-1.8*dt,1.8*dt);s.enemyShot-=dt;
+  if(s.enemyShot<=0){fire(e,'rival');s.enemyShot=Math.max(.9,2-s.level*.22);}
+  const steps=Math.ceil(dt*180),sub=dt/steps;for(let n=0;n<steps&&s.phase==='duel'&&s.status==='playing';n++){move(p,sub,i.down('up')?130:0,i.down('down')||i.down('secondary'));move(e,sub,Math.hypot(p.x-e.x,p.y-e.y)>180?35:0,true);
+   if(hit(p,e,20)){harm(p);harm(e);p.vx*=-1;e.vx*=-1;}
+   for(const b of s.bullets){if(b.life<=0)continue;b.life-=sub;b.x+=b.vx*sub;b.y+=b.vy*sub;if(b.x<0||b.x>480||b.y<33||b.y>296||hit(b,{x:240,y:163},30)){b.life=0;continue;}const target=b.owner==='you'?e:p;if(hit(b,target,12)){const damaged=harm(target);b.life=0;if(b.owner==='you'&&damaged)s.score+=40;}}
+  }s.bullets=s.bullets.filter(b=>b.life>0);
+ }
+ function draw(c){frame(c,'ORBIT DUEL',s.score,'LEFT/RIGHT TURN  UP THRUST  DOWN BRAKE  HOLD ACTION FIRE');for(const p of stars){c.fillStyle='#577184';c.fillRect(Math.round(p.x),Math.round(p.y),1,1);}c.strokeStyle='#3b5260';c.beginPath();c.arc(240,163,62,0,Math.PI*2);c.stroke();c.fillStyle=PAL.gold;c.fillRect(215,140,50,46);c.fillRect(220,134,40,58);c.fillStyle=PAL.coral;c.fillRect(226,149,28,28);text(c,'SUN: KEEP CLEAR',240,240,10,PAL.gold,'center');for(const b of s.bullets){c.fillStyle=b.owner==='you'?PAL.teal:PAL.coral;c.fillRect(Math.round(b.x)-2,Math.round(b.y)-2,4,4);}ship(c,s.player,PAL.teal);ship(c,s.enemy,s.enemyShot<.5?PAL.gold:PAL.coral);for(const p of [s.player,s.enemy])if(p.shield>0){c.strokeStyle=p===s.player?PAL.teal:PAL.coral;c.strokeRect(p.x-18,p.y-18,36,36);}text(c,'HULL '+s.player.hp+'  LIVES '+s.lives,16,51,11,PAL.teal);text(c,'RIVAL '+s.enemy.hp+'  DUELS '+s.wins+'/3',464,51,11,PAL.coral,'right');if(s.enemyShot<.5)text(c,'RIVAL CHARGING',464,70,10,PAL.gold,'right');if(s.phase==='round')banner(c,'RESETTING ORBIT',s.message);}
+ return{state:s,update,draw};
+}

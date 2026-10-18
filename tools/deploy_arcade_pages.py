@@ -4,6 +4,8 @@ Run after package_arcade.py; an isolated temporary Git index keeps the source ch
 from pathlib import Path
 import datetime, hashlib, json, os, subprocess, sys
 ROOT=Path(__file__).resolve().parents[1]
+from check_arcade_release import check_release
+playable_count=check_release() # Verify the requested human-playtest gate before any remote mutation.
 OUT=ROOT/'build/pages-release'
 OUT.mkdir(parents=True,exist_ok=True)
 def git(*args,input=None,env=None):
@@ -43,7 +45,7 @@ for family in ('arcade','history-assets'):
             assert not any(p in file.parts for p in ('node_modules','source_art','curators'))
             assert file.stat().st_size<50_000_000
             files[family+'/'+file.relative_to(folder).as_posix()]=file
-metadata={'sourceCommit':source,'sourceBranch':branch,'publishedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'entry':'/Iron-Mario/arcade/','legacy':'/Iron-Mario/legacy.html','games':14}
+metadata={'sourceCommit':source,'sourceBranch':branch,'publishedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'entry':'/Iron-Mario/arcade/','legacy':'/Iron-Mario/legacy.html','games':playable_count}
 (OUT/'deployment.json').write_text(json.dumps(metadata,indent=2)+'\n',encoding='utf8');files['arcade/deployment.json']=OUT/'deployment.json'
 index=OUT/('publish-'+source[:12]+'.index')
 assert not index.exists(),'An existing publication index requires review'

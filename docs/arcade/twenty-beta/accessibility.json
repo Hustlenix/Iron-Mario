@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "Home keyboard switcher preserves return position",
+    "Mobile closed menu is hidden and switch icon has a label",
+    "Menu Escape resumes the run and returns focus"
+  ],
+  "errors": [],
+  "passed": true
+}

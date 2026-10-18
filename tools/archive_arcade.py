@@ -15,7 +15,7 @@ with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
                 rel=p.relative_to(ROOT/'build/web')
                 assert not any(v in rel.parts for v in ('curators','source_art','node_modules'))
                 z.write(p,rel.as_posix())
-    z.writestr('START_HERE.txt','OnlyEducation local review checkpoint.\nRun python -m http.server 8785 in this extracted folder, then open http://127.0.0.1:8785/arcade/ .\n14 tested games including the prehistoric Dino Dash bonus; 7 planned. Legacy arcade links need the original workspace. No production release is implied.\n')
+    z.writestr('START_HERE.txt','OnlyEducation local review checkpoint.\nRun python -m http.server 8785 in this extracted folder, then open http://127.0.0.1:8785/arcade/ .\n20 automatically tested games including Dino Dash; one planned. Real human playtesting is still pending. Legacy arcade links need the original workspace. No production release is implied.\n')
 with zipfile.ZipFile(out) as z:
     assert z.testzip() is None
     assert 'arcade/index.html' in z.namelist() and 'history-assets/assets/manifest.json' in z.namelist()

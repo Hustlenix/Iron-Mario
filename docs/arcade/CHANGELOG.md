@@ -1,3 +1,7 @@
+## 2026-10-18 — Twenty-game local beta
+
+Added six independent cabinets and native gameplay previews. Improved first-play guidance, smoke cost/mode labels, contact feedback, fixed personal-best targets and replay handoff. Fixed tablet navigation overflow. See TWENTY_GAME_BETA.md for 179 rule tests and 100 local browser checks, plus separate platform/navigation evidence. Genuine human playtesting remains pending; this is not a new public Pages release.
+
 # Changelog
 
 ## 2026-10-16 — Historical arcade checkpoint

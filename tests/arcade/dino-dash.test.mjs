@@ -52,3 +52,5 @@ test('Dino Dash authored jump arc and spawn gaps permit 30 hazards across 24 see
  }
  assert.ok(flyers>0);
 });
+
+test('Dino Dash opens with three small separated ground hazards before flyers',()=>{const g=game();g.update(.1,idle);assert.equal(g.state.obstacles.length,0);assert.ok(g.state.spawnIn>2);const sizes=[];let last=0;for(let n=0;n<700&&sizes.length<3;n++){g.state.spawnIn=0;g.update(1/60,idle);if(g.state.spawned>last){const o=g.state.obstacles.at(-1);sizes.push([o.w,o.h,o.kind]);assert.ok(g.state.spawnIn>=1.78);last=g.state.spawned;}g.state.obstacles=[];}assert.deepEqual(sizes,[[18,20,'thorn'],[22,24,'thorn'],[26,28,'thorn']]);});

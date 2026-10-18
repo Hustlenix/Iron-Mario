@@ -1,3 +1,5 @@
+> Current 20-game beta evidence and commands: [TWENTY_GAME_BETA.md](TWENTY_GAME_BETA.md). Counts below describe earlier checkpoints unless explicitly updated.
+
 # Verification
 
 ## Commands

@@ -34,3 +34,13 @@ footer{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:32px;p
 @media(max-width:960px){.menu-toggle,.mobile-search,.surprise{width:44px;height:44px;min-width:44px}.game-nav .icon-button,.next-game{width:44px;height:44px}.play-tools button{min-height:44px}}
 @media(hover:none){.card-play{display:none}.tile:has(.game-card:hover){transform:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.tile:has(.game-card:hover){transform:none}}
+
+/* First-play demonstrations never advance the simulation. */
+.first-play{display:flex;gap:6px;margin:10px 0 14px;justify-content:center}.learn-step{flex:1;min-width:0;padding:6px 3px;border:1px solid #4a6479;border-radius:5px;animation:learn-cue 3.6s infinite;animation-delay:calc(var(--step)*1.2s)}.learn-step b,.learn-step small{display:block}.learn-step b{font:700 11px var(--mono);color:var(--gold);margin-bottom:3px}.learn-step small{font-size:10px;color:#d4dfec}.personal-goal{color:var(--gold)!important}.result-next{display:block;margin-top:10px;font-size:11px;min-height:44px;padding:12px 8px}.overlay-card{max-height:100%;overflow:auto}
+@keyframes learn-cue{0%,28%{background:#324c5c;border-color:#61d5c8}33%,100%{background:#1c2639;border-color:#4a6479}}
+@media(max-width:700px){.overlay{padding:8px}.overlay-card{padding:12px}.overlay h2{font-size:23px;margin:5px 0}.overlay p{margin-bottom:8px;font-size:11px;line-height:1.4}.first-play{margin:6px 0 8px}.learn-step{padding:4px 2px}.learn-step small{font-size:9px}.learn-step b{font-size:9px}.result-next{margin-top:6px}}
+@media(prefers-reduced-motion:reduce){.learn-step{animation:none;border-color:#61d5c8}}
+
+.quick-rail{min-width:0}#play-next{max-width:100%}.next-card{flex-shrink:0}
+
+@media(max-width:960px){.next-game{width:44px;height:44px;font-size:0;padding:9px;text-align:center}.next-game:after{content:"→";font-size:20px}}

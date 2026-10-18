@@ -43,8 +43,8 @@ export function createGame(api){
   state.message=reason+' '+state.lives+' lives left. Collected flags stay safe.';
  }
  function smoke(){
-  if(state.smokeCooldown>0||state.fuel<12)return;
-  state.fuel-=12;state.smokeCooldown=1.1;
+  if(state.smokeCooldown>0){state.message='Smoke recharging. Cost: 12 fuel.';return;}if(state.fuel<12){state.message='Smoke needs 12 fuel. Find a fuel can first.';return;}
+  state.fuel-=12;state.smokeCooldown=1.1;state.message='Smoke deployed · 12 fuel spent.';
   state.smoke.push({x:state.car.x,y:state.car.y,remaining:3.4});sound('move');
  }
  function pickups(){

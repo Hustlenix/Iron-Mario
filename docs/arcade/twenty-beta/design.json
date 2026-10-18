@@ -1,0 +1,73 @@
+{
+  "checks": [
+    {
+      "name": "Collection shell follows design tokens and shows original feature artwork",
+      "pass": true
+    },
+    {
+      "name": "Player navigation collapses and expands with a keyboard-operable button",
+      "pass": true
+    },
+    {
+      "name": "Player switching retains pause and focus behavior",
+      "pass": true
+    },
+    {
+      "name": "Responsive shell at 320",
+      "pass": true,
+      "detail": {
+        "width": 320
+      }
+    },
+    {
+      "name": "Responsive shell at 375",
+      "pass": true,
+      "detail": {
+        "width": 375
+      }
+    },
+    {
+      "name": "Responsive shell at 768",
+      "pass": true,
+      "detail": {
+        "width": 768
+      }
+    },
+    {
+      "name": "Responsive shell at 960",
+      "pass": true,
+      "detail": {
+        "width": 960
+      }
+    },
+    {
+      "name": "Responsive shell at 961",
+      "pass": true,
+      "detail": {
+        "width": 961
+      }
+    },
+    {
+      "name": "Responsive shell at 1366",
+      "pass": true,
+      "detail": {
+        "width": 1366
+      }
+    },
+    {
+      "name": "Responsive shell at 1920",
+      "pass": true,
+      "detail": {
+        "width": 1920
+      }
+    },
+    {
+      "name": "Mobile drawer keyboard loop and search handoff preserve the run",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "stateInjection": false,
+  "passed": true
+}
