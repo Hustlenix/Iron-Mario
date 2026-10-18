@@ -59,7 +59,7 @@ export function createGame(api) {
     if (outcome === null) return false;
     state.roundResult = outcome;
     if (outcome === 2) {
-      state.status = 'lost'; state.message = 'The terminal made three. Try another route!'; sound('lose');
+      state.status = 'lost'; state.message = 'Terminal wins. Retry here; earlier clears are safe.'; sound('lose');
     } else {
       state.score += outcome === 1 ? 200 * state.round : 80 * state.round;
       if (outcome === 1) state.wins++; else state.draws++;
@@ -81,7 +81,7 @@ export function createGame(api) {
     if (state.roundComplete) {
       if (input.pressed('action') || (p.active && p.pressed && p.x >= 274 && p.x < 458 && p.y >= 220 && p.y < 258)) {
         state.round++; state.board = Array(9).fill(0); state.turn = 'player'; state.roundComplete = false; state.roundResult = null; state.cursor = 4;
-        state.message = 'Your turn. Make a line of three.'; sound('move');
+        state.message = state.round === 3 ? 'Expert defence: a draw clears this terminal.' : 'Your turn. Make a line of three.'; sound('move');
       }
       return;
     }
@@ -135,5 +135,12 @@ export function createGame(api) {
     ctx.fillStyle = C.paper; ctx.font = '12px monospace'; ctx.fillText(state.message,24,281);
     ctx.fillStyle = C.dim; ctx.font = '10px monospace'; ctx.fillText('TAP A SQUARE  /  DPAD + ACTION  /  NO TIME LIMIT',24,303);
   }
-  return { state, update, draw };
+  function retry() {
+    if (state.status !== 'lost') return false;
+    Object.assign(state, { status:'playing', board:Array(9).fill(0), turn:'player', roundComplete:false, roundResult:null, cursor:4, aiTime:0,
+      message:state.round === 3 ? 'Expert defence: a draw clears this terminal.' : 'Try this terminal again. Earlier clears are safe.' });
+    sound('move');
+    return true;
+  }
+  return { state, update, draw, retry };
 }

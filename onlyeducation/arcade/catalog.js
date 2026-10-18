@@ -1,12 +1,34 @@
 export const GAMES=[
   {
+    "id": "dino-dash",
+    "title": "Dino Dash",
+    "year": 2026,
+    "era": "Prehistoric",
+    "dateLabel": "67 million years ago",
+    "bonus": true,
+    "category": "Precision",
+    "tagline": "One more run. Before the meteor.",
+    "description": "An endless prehistoric sprint. Jump over thorn clusters, duck under low flyers, and beat your distance record as the trail gets faster.",
+    "controls": "Space / Enter / ↑ jump · ↓ / Z hold to duck · Tap the game to jump · Touch JUMP and DUCK buttons",
+    "art": "dino_dash",
+    "cover": "./art/dino-dash-card.png",
+    "assetManifest": "./art/dino-manifest.json",
+    "historyNote": "A playful prehistoric detour set 67 million years ago. An original OnlyEducation runner with fresh pixel artwork.",
+    "source": "",
+    "status": "TESTED",
+    "module": "./games/dino-dash.js",
+    "assets": [
+      "dino_runner"
+    ]
+  },
+  {
     "id": "grid-x",
     "title": "Grid X",
     "year": 1952,
     "era": "1950s",
     "category": "Puzzle",
     "tagline": "Three marks. One good plan.",
-    "description": "Place a mark with the arrows + action, or tap a cell. Beat three increasingly clever opponents.",
+    "description": "Clear three increasingly clever terminals. Wins or draws advance. Retry a lost terminal while keeping earlier clears.",
     "controls": "Arrow keys / WASD select · Space / Enter place · Tap a cell",
     "art": "grid_x",
     "source": "https://www.computerhistory.org/timeline/1952/",

@@ -398,3 +398,21 @@ test('touch capture loss releases pointer and clear removes held button feedback
     if (previous) Object.defineProperty(globalThis, 'window', previous); else delete globalThis.window;
   }
 });
+
+test('runtime retry preserves the game and score, clears old inputs, and schedules one fresh loop',()=>{
+ runtimeFixture(({runtime,frame,frames})=>{
+  frame(100);const original=runtime.game;Object.assign(original.state,{score:200,status:'lost'});
+  original.retry=()=>{original.state.status='playing';return true;};runtime.mode='ended';
+  runtime.input.keys.add('action');runtime.input.edges.add('action');runtime.last=1234;runtime.acc=.09;
+  assert.equal(runtime.retry(),true);assert.equal(runtime.game,original);assert.equal(runtime.game.state.score,200);
+  assert.equal(runtime.mode,'playing');assert.equal(runtime.input.down('action'),false);assert.equal(runtime.acc,0);
+  assert.equal(frames.size,1);assert.equal(runtime.retry(),false);frame(9000);assert.equal(runtime.ticks,0);
+ });
+});
+test('runtime retry failure follows the normal cleanup path',()=>{
+ runtimeFixture(({runtime,frame,frames,errors})=>{
+  frame(100);runtime.mode='ended';runtime.game.state.status='lost';runtime.game.retry=()=>{throw Error('retry failed');};
+  assert.equal(runtime.retry(),false);assert.equal(runtime.mode,'error');assert.equal(runtime.input.listeners,0);
+  assert.equal(frames.size,0);assert.equal(errors.length,1);
+ });
+});

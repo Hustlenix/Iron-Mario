@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {Library} from '../../onlyeducation/arcade/engine/library.js';
+const ids=Array.from({length:14},(_,i)=>'game-'+i);
+const storage=()=>({value:null,getItem(){return this.value;},setItem(k,v){this.value=v;}});
+test('library persists favorites and played order without accounts',()=>{const s=storage(),a=new Library(ids,s);a.toggle('game-1');a.play('game-1');a.play('game-2');const b=new Library(ids,s);assert.equal(b.has('game-1'),true);assert.deepEqual(b.recent,['game-2','game-1']);a.toggle('game-1');assert.equal(a.has('game-1'),false);});
+test('library deduplicates recents and bounds history to ten playable games',()=>{const a=new Library(ids,storage());for(const id of ids)a.play(id);a.play('game-8');assert.equal(a.recent.length,10);assert.equal(a.recent[0],'game-8');assert.equal(new Set(a.recent).size,10);});
+test('library rejects corrupt, unknown and unplayable saved IDs',()=>{for(const raw of ['bad','{"version":9,"favorites":["game-1"]}','{"version":1,"favorites":["game-1","game-1","missing",null],"recent":["missing","game-2",5]}']){const s=storage();s.value=raw;const a=new Library(ids,s);assert.equal(a.has('missing'),false);a.toggle('missing');a.play('missing');assert.ok(!a.recent.includes('missing'));assert.ok(a.favorites.length<=1);}});
+test('library storage denial still supports session favorites and recents',()=>{const a=new Library(ids,{getItem(){throw Error('denied');},setItem(){throw Error('quota');}});a.toggle('game-1');a.play('game-1');assert.equal(a.available,false);assert.equal(a.has('game-1'),true);assert.deepEqual(a.recent,['game-1']);});
+test('library handles a restricted localStorage getter',()=>{const prev=Object.getOwnPropertyDescriptor(globalThis,'localStorage');try{Object.defineProperty(globalThis,'localStorage',{configurable:true,get(){throw Error('SecurityError');}});const a=new Library(ids);a.toggle('game-1');assert.equal(a.has('game-1'),true);assert.equal(a.available,false);}finally{if(prev)Object.defineProperty(globalThis,'localStorage',prev);else delete globalThis.localStorage;}});

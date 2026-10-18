@@ -9,6 +9,7 @@ export class Runtime{
  pause(){if(this.mode==='playing'){this.mode='paused';this.input.clear();this.sound.silence();this.onState?.(this);}}
  resume(){if(this.mode==='paused'){this.mode='playing';this.input.clear();this.last=0;this.acc=0;this.onState?.(this);if(!this.raf)this.raf=requestAnimationFrame(this.bound);}}
  restart(){if(this.faulted||this.mode==='disposed')return;try{this.disposeGame();this.input.clear();this.sound.silence();this.ticks=0;this.acc=0;this.last=0;this.create();this.mode='ready';this.onState?.(this);if(!this.raf)this.raf=requestAnimationFrame(this.bound);}catch(e){this.fail(e);}}
+ retry(){if(this.faulted||this.mode!=='ended'||this.game.state.status!=='lost'||typeof this.game.retry!=='function')return false;try{if(!this.game.retry())return false;this.input.clear();this.sound.silence();this.acc=0;this.last=0;this.mode='playing';this.onState?.(this);if(!this.raf)this.raf=requestAnimationFrame(this.bound);return true;}catch(e){this.fail(e);return false;}}
  frame(time){
   this.raf=0;if(this.mode==='disposed')return;
   try{

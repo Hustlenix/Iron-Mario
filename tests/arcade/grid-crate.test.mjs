@@ -180,3 +180,17 @@ test('Crate Shift all five room solutions reach earned win through input and res
   const final=structuredClone(a.state);a.update(1/60,press('secondary'));assert.deepEqual(a.state,final);
   assert.deepEqual(createCrate(api(42)).state,createCrate(api(42)).state);
 });
+
+test('Grid X retry preserves earlier clears and cannot farm score through repeated losses',()=>{
+ const game=createGrid({rng:()=>0,sound(){}});
+ for(const move of [0,2,1]){gridTap(game,move);finishAI(game);}
+ game.update(1/60,press('action'));assert.equal(game.state.round,2);
+ const saved={score:game.state.score,wins:game.state.wins,draws:game.state.draws};
+ for(let n=0;n<3;n++){
+  Object.assign(game.state,{board:[2,2,0,1,1,0,0,0,1],turn:'ai',aiTime:0});game.update(1/60,idle);
+  assert.equal(game.state.status,'lost');assert.equal(game.retry(),true);assert.equal(game.state.round,2);
+  assert.deepEqual({score:game.state.score,wins:game.state.wins,draws:game.state.draws},saved);
+  assert.deepEqual(game.state.board,Array(9).fill(0));assert.equal(game.state.turn,'player');assert.equal(game.retry(),false);
+ }
+ game.state.status='won';assert.equal(game.retry(),false);
+});

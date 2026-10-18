@@ -1,0 +1,1 @@
+These are native 480x320 PNG exports from the actual OnlyEducation game canvases. tools/capture_arcade_thumbnails.cjs captures them through normal browser input. All game code and artwork are project-original.

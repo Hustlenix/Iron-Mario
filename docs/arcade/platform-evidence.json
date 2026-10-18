@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-17T09:14:19.646Z",
+  "timestamp": "2026-10-17T15:11:35.298Z",
   "base": "http://127.0.0.1:8785/arcade/?qa=1",
   "checks": 23,
   "passed": 23,
@@ -9,7 +9,7 @@
       "name": "Home shows only playable cabinets and clear planned items",
       "pass": true,
       "detail": {
-        "count": 13,
+        "count": 14,
         "planned": 7
       }
     },

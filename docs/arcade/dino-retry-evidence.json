@@ -1,0 +1,85 @@
+{
+  "stateInjection": false,
+  "errors": [],
+  "failedRequests": [],
+  "checks": [
+    {
+      "name": "Prehistoric filter and age label open Dino Dash",
+      "pass": true,
+      "detail": {
+        "ageLabel": true,
+        "playfulHistoryNote": true
+      }
+    },
+    {
+      "name": "Desktop runner jumps, ducks and clears seven actual hazards",
+      "pass": true,
+      "detail": {
+        "score": 500,
+        "cleared": 7,
+        "jumps": 6,
+        "duckedLowFlyer": true,
+        "pauseFreezes": true,
+        "canvasTap": true
+      }
+    },
+    {
+      "name": "Runner restart, real collision, replay and score persistence work",
+      "pass": true,
+      "detail": {
+        "realCollision": true,
+        "replay": true,
+        "best": 505,
+        "exit": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "Grid X later-round loss retries the current terminal with progress intact",
+      "pass": true,
+      "detail": {
+        "lostRound": 3,
+        "retainedScore": 360,
+        "retainedClears": 2,
+        "retryCountsAsSameSession": true,
+        "fullRestart": true,
+        "exit": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    },
+    {
+      "name": "Phone touch runner clears seven hazards with JUMP and held DUCK",
+      "pass": true,
+      "detail": {
+        "score": 500,
+        "cleared": 7,
+        "jumps": 6,
+        "duckedLowFlyer": true,
+        "pauseFreezes": true,
+        "canvasTap": false,
+        "widths": {
+          "viewport": 375,
+          "scroll": 375
+        },
+        "exit": {
+          "active": 0,
+          "inputListeners": 0,
+          "raf": 0,
+          "hudTimer": 0,
+          "voices": 0
+        }
+      }
+    }
+  ],
+  "passed": true
+}

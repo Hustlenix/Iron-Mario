@@ -1,18 +1,63 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#142d2b"><meta name="description" content="OnlyEducation by Hustlenix. Original pixel games inspired by gaming history. Play instantly, free in your browser."><title>OnlyEducation — Play the Past. Build the Future.</title><link rel="icon" href="oe-mark.png"><link rel="stylesheet" href="style.css"></head><body>
-<a class="skip" href="#main">Skip to content</a>
-<header><a class="brand" href="#home" aria-label="OnlyEducation home"><img src="oe-mark.png" width="36" height="36" alt=""><span>ONLY<span class="brand-light">EDUCATION</span><small>A HUSTLENIX PROJECT</small></span></a><nav aria-label="Main"><a href="#collection">THE GAMES</a><a href="#history">THE TIMELINE</a><a href="../history-assets/">ASSET LAB ↗</a></nav><span class="open-sign"><i></i> FREE PLAY</span></header>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111625"><meta name="description" content="OnlyEducation. Original pixel games, one click away. Free browser arcade by Hustlenix."><title>OnlyEducation — Your pixel playground</title><link rel="icon" href="oe-mark.png"><link rel="stylesheet" href="style.css?v=playground3final"></head>
+<body>
+<a class="skip" href="#main">Skip to games</a>
+<header class="topbar">
+ <button id="menu-toggle" class="icon-button menu-toggle" aria-label="Collapse navigation" aria-expanded="true" aria-controls="sidebar">☰</button>
+ <a class="brand" href="#collection" aria-label="OnlyEducation home"><img src="oe-mark.png" width="36" height="36" alt=""><span>Only<span>Education</span><small>BY HUSTLENIX</small></span></a>
+ <button id="mobile-search" class="icon-button mobile-search" aria-label="Search games" title="Search games">⌕</button>
+ <div class="global-search"><span aria-hidden="true">⌕</span><label for="search" class="sr-only">Search games</label><input id="search" type="search" placeholder="Search your next favorite…" autocomplete="off"><kbd>/</kbd></div>
+ <button class="top-switch" aria-label="Switch game" title="Switch game" data-open-switch data-only-game hidden>▦ <span>Switch game</span><kbd>G</kbd></button>
+ <button id="surprise" class="surprise" aria-label="Surprise me with a game" title="Open a random game">⤨ <span>Surprise me</span></button>
+</header>
+<button id="nav-scrim" class="nav-scrim" aria-label="Close navigation" hidden></button>
+<aside id="sidebar" class="sidebar" aria-label="Arcade navigation">
+ <div class="nav-group"><span class="nav-label">YOUR ARCADE</span>
+ <button data-library="all" id="nav-all"><span class="nav-icon">▦</span><span class="nav-text">All games</span><b id="game-count"></b></button>
+ <button data-library="recent"><span class="nav-icon">◷</span><span class="nav-text">Recently played</span></button>
+ <button data-library="favorites"><span class="nav-icon">☆</span><span class="nav-text">Favorites</span><b id="favorite-count"></b></button></div>
+ <div class="nav-group"><span class="nav-label">FIND YOUR MOOD</span><div id="side-categories"></div></div>
+ <div class="sidebar-bottom"><span class="pixel-spark">✦</span><strong>One more go?</strong><p>Small pixels.<br>Big memories.</p><span id="library-note">Saved on this device</span><a href="../portal/">Legacy arcade ↗</a></div>
+</aside>
 <main id="main">
 <section id="home-view">
-<div class="hero"><div class="hero-copy"><div class="eyebrow">EST. IN CURIOSITY · MADE OF PIXELS</div><h1>Play the past.<br><em>Build the future.</em></h1><p>The games that made us stay for “one more go.”<br>Reimagined, one pixel at a time.</p><a class="button gold" href="#game/paddle-panic">START WITH A CLASSIC <span>↗</span></a><div class="hero-foot"><span>NO DOWNLOADS</span><b>✦</b><span>NO ACCOUNT</span><b>✦</b><span>JUST PLAY</span></div></div>
-<a href="#game/paddle-panic" class="cabinet" aria-label="Play featured Paddle Panic"><div class="marquee"><span>ONLYEDUCATION</span><span>★ FREE PLAY ★</span></div><div class="cabinet-screen"><span class="screen-top">1972 · THE ARCADE ARRIVES</span><img src="../history-assets/assets/concepts/paddle_panic.png" alt="Original Paddle Panic pixel game artwork"><span class="screen-bottom">PADDLE PANIC <b>PRESS PLAY ▸</b></span></div><div class="cabinet-controls"><span class="joystick"></span><i></i><i></i><small>ONE MORE GO.</small></div></a></div>
-<div class="ticker" aria-hidden="true"><span>SMALL PIXELS.</span><b>✦</b><span>BIG MEMORIES.</span><b>✦</b><span>ORIGINAL GAMES.</span><b>✦</b><span>ALWAYS FREE TO PLAY.</span></div>
-<section id="collection" class="collection"><div class="section-top"><div><span class="eyebrow">PICK A CABINET</span><h2>Your next “one more go.”</h2></div><div class="search-wrap"><label for="search" class="sr-only">Search games</label><input id="search" type="search" placeholder="Find your next favorite…" autocomplete="off"><span>⌕</span></div></div>
-<div class="filters"><div id="categories" role="group" aria-label="Game categories"></div><label>ERA <select id="era-filter" aria-label="Filter by era"><option value="">Every era</option><option>1950s</option><option>1960s</option><option>1970s</option><option>1980s</option></select></label></div>
-<div class="collection-meta"><p id="results" role="status">Loading cabinets…</p><span>HANDMADE RULES · SHARED PIXEL WORLD</span></div><div id="games" class="game-grid"></div><div id="empty" class="empty" hidden><h3>No cabinets found.</h3><p>Try another title, category or era.</p><button id="reset-filters">Clear filters</button></div></section>
-<section id="history" class="history"><div><span class="eyebrow">A LITTLE TIME TRAVEL</span><h2>From lab screens<br>to late-night legends.</h2><p>Explore the ideas that shaped play. Our games use original code and artwork; the dates mark their historical inspirations.</p></div><div id="timeline" class="timeline"></div></section>
-<section class="progress"><div><span class="eyebrow">YOUR LOCAL PLAYBOOK</span><h2>Good runs deserve a record.</h2><p id="progress-copy">Your scores stay in this browser.</p></div><div id="badges" class="badges"></div></section>
-<section class="roadmap"><span class="eyebrow">NEXT ON THE WORKBENCH</span><h2>History has a lot more to play.</h2><p>These cabinets are planned. They open only after gameplay and browser checks pass.</p><div id="planned"></div></section>
+ <div class="discover-heading"><div><p class="eyebrow">THE GOOD OLD DAYS. A NEW HIGH SCORE.</p><h1 id="library-title">A little escape. One more game.</h1><p id="library-description">Original pixel games. Free to play. Yours to explore.</p></div><span class="live-pill"><i></i><span id="playable-total">14</span> games to play</span></div>
+ <section id="recent-row" class="recent-section" hidden><div class="row-heading"><h2>Back for another go?</h2><button data-library="recent">See recently played →</button></div><div id="recent-games" class="recent-strip"></div></section>
+ <section id="collection" class="collection" aria-label="Game collection">
+ <div class="filters"><div id="categories" role="group" aria-label="Game categories"></div><label class="era-select">ERA <select id="era-filter" aria-label="Filter by era"><option value="">Every era</option><option value="Prehistoric">67 million years ago</option><option>1950s</option><option>1960s</option><option>1970s</option><option>1980s</option></select></label></div>
+ <div class="collection-meta"><p id="results" role="status"></p><span>Made for your next “one more go.”</span></div>
+ <div id="games" class="game-grid"></div>
+ <div id="empty" class="empty" hidden><span>⌕</span><h2 id="empty-title">No games found.</h2><p id="empty-copy">Try another title, category or era.</p><button id="reset-filters" class="button primary">Show all games</button></div>
+ </section>
+ <details id="history" class="extra-section"><summary><span>◷ A little time travel</span><small>Explore the eras ↓</small></summary><p>Original games inspired by gaming history, with a playful prehistoric detour.</p><div id="timeline" class="timeline"></div></details>
+ <details class="extra-section roadmap"><summary><span>On the workbench</span><small>Coming later ↓</small></summary><p>These games open when they are ready to play.</p><div id="planned"></div></details>
+ <div class="progress"><p id="progress-copy"></p><div id="badges" class="badges"></div></div>
 </section>
-<section id="game-view" hidden><div class="game-heading"><a href="#collection" class="back-link">← BACK TO THE ARCADE</a><span id="game-era" class="eyebrow"></span><h1 id="game-title"></h1><p id="game-tagline"></p></div><div class="play-layout"><div class="play-column" id="play-column"><div class="game-toolbar"><span id="score" aria-live="off">SCORE 0</span><span id="best">BEST 0</span><button id="pause" disabled>Pause</button><button id="restart" disabled>Restart</button><button id="mute" aria-pressed="false">Sound on</button><button id="fullscreen">Fullscreen</button></div><div class="game-shell" id="game-shell"><canvas id="game-canvas" width="480" height="320" tabindex="0" aria-label="Game screen"></canvas><div id="game-overlay" class="overlay"><span id="overlay-kicker" class="eyebrow"></span><h2 id="overlay-title">Loading…</h2><p id="overlay-copy"></p><button id="start" class="button gold" hidden>LET'S PLAY ▸</button></div></div><div id="touch-controls" class="touch-controls" aria-label="Touch game controls"><div class="dpad"><button data-input="up" aria-label="Move up">↑</button><button data-input="left" aria-label="Move left">←</button><button data-input="down" aria-label="Move down">↓</button><button data-input="right" aria-label="Move right">→</button></div><div class="actions"><button data-input="secondary">Z / ALT</button><button data-input="action" class="action-key">ACTION</button></div></div><p id="game-message" role="status"></p></div><aside class="game-info"><span class="eyebrow">THE SHORT VERSION</span><h2>Small rules.<br>Good instincts.</h2><p id="game-description"></p><div class="control-guide"><h3>HOW TO PLAY</h3><p id="game-controls"></p><p>Pause: P or Escape<br>Restart: R or the button above</p></div><div class="history-note"><h3>BEHIND THE PIXELS</h3><p id="history-copy"></p><a id="history-source" target="_blank" rel="noreferrer">Read the historical reference ↗</a></div><p id="save-note">Scores and progress are saved on this device.</p></aside></div></section>
-</main><footer><a class="footer-brand" href="#home">OE<span>ONLYEDUCATION</span></a><p>REBUILDING GAMING HISTORY — ONE GAME AT A TIME.</p><div><a href="docs/README.md">PROJECT NOTES</a><a href="docs/ASSETS.md">ASSET CREDITS</a><a href="../portal/">LEGACY ARCADE ↗</a></div><small>Original code & pixel artwork · Built with AI assistance and human creative direction.</small></footer>
-<noscript><p class="empty">JavaScript is needed to play. Enable it in this browser and reload.</p></noscript><script type="module" src="app.js"></script></body></html>
+<section id="game-view" hidden>
+ <div class="game-heading">
+  <div class="game-heading-main"><a href="#collection" class="back-link" aria-label="Back to game collection">← All games</a><span class="heading-divider">/</span><h1 id="game-title"></h1><span id="game-era" class="eyebrow"></span></div>
+  <div class="game-nav"><a id="previous-game" class="icon-button" aria-label="Previous game">←</a><button id="favorite-game" class="icon-button" aria-label="Favorite this game" aria-pressed="false">☆</button><a id="next-game" class="next-game" aria-label="Next game">Next game →</a></div>
+ </div>
+ <p id="game-tagline" class="game-tagline"></p>
+ <div class="play-layout">
+  <div class="play-column" id="play-column">
+   <div class="game-toolbar"><div class="score-group"><span id="score" aria-live="off">SCORE 0</span><span id="best">BEST 0</span></div><div class="play-tools"><button id="switch-game" data-open-switch>▦ Games</button><button id="pause" disabled>Pause</button><button id="restart" disabled>Restart</button><button id="mute" aria-pressed="false">Sound on</button><button id="fullscreen">Fullscreen</button></div></div>
+   <div class="game-shell" id="game-shell"><canvas id="game-canvas" width="480" height="320" tabindex="0" aria-label="Game screen"></canvas><div id="game-overlay" class="overlay"><div class="overlay-card"><span id="overlay-kicker" class="eyebrow"></span><h2 id="overlay-title">Loading…</h2><p id="overlay-copy"></p><button id="start" class="button primary" hidden>PLAY NOW ▸</button></div></div></div>
+   <div id="touch-controls" class="touch-controls" aria-label="Touch game controls"><div class="dpad"><button data-input="up" aria-label="Move up">↑</button><button data-input="left" aria-label="Move left">←</button><button data-input="down" aria-label="Move down">↓</button><button data-input="right" aria-label="Move right">→</button></div><div class="actions"><button data-input="secondary">Z / ALT</button><button data-input="action" class="action-key">ACTION</button></div></div>
+   <div class="stage-status"><p id="game-message" role="status"></p><button id="touch-toggle" class="touch-toggle" aria-pressed="false">Touch controls</button></div>
+  </div>
+  <aside class="quick-rail"><div class="row-heading"><h2>Play next</h2><button data-open-switch aria-label="Browse all games">View all →</button></div><div id="play-next"></div></aside>
+ </div>
+ <div class="game-info"><div class="control-guide"><h2>How to play</h2><p id="game-controls"></p><p class="shortcut-guide"><kbd>P</kbd> Pause <kbd>R</kbd> Restart <kbd>G</kbd> Switch games</p></div><details class="history-note"><summary>About this game <span>↓</span></summary><p id="game-description"></p><p id="history-copy"></p><a id="history-source" target="_blank" rel="noreferrer">Historical reference ↗</a></details><p id="save-note"></p></div>
+</section>
+<footer><a class="footer-brand" href="#collection">OE <span>OnlyEducation</span></a><span>A HUSTLENIX PROJECT</span><div><a href="../history-assets/">Asset lab ↗</a><a href="docs/README.md">Project notes</a><a href="docs/ASSETS.md">Credits</a></div></footer>
+</main>
+<dialog id="game-switcher" aria-labelledby="switch-title">
+ <div class="switch-heading"><div><p class="eyebrow">YOUR NEXT ONE MORE GO</p><h2 id="switch-title">Switch games</h2></div><button id="close-switcher" class="icon-button" aria-label="Close game switcher">×</button></div>
+ <label for="switch-search" class="sr-only">Find a game to switch to</label><input id="switch-search" type="search" placeholder="Find a game…" autocomplete="off">
+ <p id="switch-count" role="status"></p><div id="switch-results"></div><p id="switch-empty" hidden>No games match. Try a different name or category.</p>
+ <div class="switch-footer"><span>Your current game pauses while you browse.</span><kbd>ESC to close</kbd></div>
+</dialog>
+<noscript><p class="empty">JavaScript is needed to play. Enable it in your browser and reload.</p></noscript>
+<script type="module" src="app.js?v=playground3final"></script>
+</body></html>

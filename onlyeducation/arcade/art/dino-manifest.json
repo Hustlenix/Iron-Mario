@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "title": "OnlyEducation Dino Dash original artwork",
+  "assets": [
+    {
+      "id": "dino_runner",
+      "file": "dino-runner.png",
+      "size": [
+        160,
+        32
+      ],
+      "frame_size": [
+        32,
+        32
+      ],
+      "frames": 5,
+      "fps": 10,
+      "reduced_motion_frame": 0,
+      "license": "project_original",
+      "source": "Original Moss Rex silhouette; integer-grid artwork, Aseprite timeline export.",
+      "status": "ready"
+    }
+  ]
+}

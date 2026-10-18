@@ -20,3 +20,13 @@ The three private curator studies and all third-party source packs remain exclud
 Game-specific historical references are in grid-crate.md, byte-brick.md, stackfall.md, cavern-color.md, court-hop-flag.md and rock-sky.md. Paddle Panic references the Computer History Museum's Pong exhibit: https://www.computerhistory.org/revolution/computer-games/16/183 . History dates identify inspirations, not the publication dates of these new games.
 
 Aseprite was invoked again on 2026-10-17 to export shared_pieces.aseprite. All 24 frames matched the existing PNG sprites exactly; see aseprite-roundtrip.json.
+
+## Dino Dash bonus
+Original runtime sprite strip and cover: onlyeducation/arcade/art/. Editable five-frame Aseprite timeline: source_art/dino_dash/runner.aseprite. Both were authored for OnlyEducation and contain no third-party pixels. The game-specific manifest keeps the base 95-asset history kit intact.
+
+## Gameplay discovery thumbnails
+All fourteen public previews in onlyeducation/arcade/art/previews are native 480x320 captures of the actual original game canvases. tools/capture_arcade_thumbnails.cjs records normal-input gameplay and exports only the rendered canvas. No third-party site art or logos are included.
+
+
+## Playground feature art
+The redesigned collection uses the existing project-original art/dino-dash-card.png for its feature. Standard card previews, recommendation images and switcher images retain the native gameplay captures. No external artwork or font bundles were imported.

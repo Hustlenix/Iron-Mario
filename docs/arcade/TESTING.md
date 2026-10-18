@@ -31,3 +31,15 @@ The prior asset check count covers image formats, source provenance and preserva
 - [ ] Owner confirms project licensing and production domain configuration.
 
 Current evidence and remaining work are in STATUS.md.
+
+## Dinosaur and retry checkpoint
+144 rule/engine tests now pass. Run rtk proxy node tools/dino_retry_browser.cjs for real desktop/touch jump-and-duck play, collision/replay, scoring, resource cleanup and later-terminal Grid X recovery. The browser suite observes state through read-only snapshots; it never injects outcomes. See dino-retry.md and dino-retry-evidence.json.
+
+## Navigation redesign
+Run rtk proxy node tools/navigation_browser.cjs for 14 navigation checks: game search, favorites, recency, focus, fullscreen switching, 28 direct switches, back-scroll restoration and all 14 game layouts at 320/375/768px. The complete rule/engine/library suite now has 149 passing tests. The platform suite retains all 23 checks. Current reports: navigation-evidence.json, navigation-accessibility-evidence.json, platform-evidence.json.
+
+The focused follow-up checks are reproducible with rtk proxy node tools/navigation_accessibility_browser.cjs. The current Dino/terminal suite also passes with immediate real CDP touch events under the redesigned player.
+
+
+## Playground design verification
+Run `rtk proxy node tools/playground_design_browser.cjs` for the 11 responsive shell, mobile drawer, keyboard and player-fit checks. See [the redesign report](PLAYGROUND_REDESIGN.md) for the complete verified scope.

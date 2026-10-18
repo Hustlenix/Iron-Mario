@@ -1,0 +1,3308 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-17T14:41:38.547Z",
+  "method": "Public HTTP HTML and CSS inspection; no rendered pixel or live interaction measurement",
+  "scope": "6 selected pages and their linked CSS only; no recursive crawl, JS bundles, fonts, images, games, source maps, accounts or private settings",
+  "pages": [
+    {
+      "url": "https://poki.com/",
+      "status": 200,
+      "bytes": 428052,
+      "sha256": "75a5f45ce08d4d3490e383fd2777068a091c34661aad442431b34378de83ce4d",
+      "title": "Free Online Games at Poki - Play Now!",
+      "htmlAttributes": "<html data-theme=\"playground-light\" dir=\"ltr\" lang=\"en\" translate=\"no\">",
+      "bodyAttributes": "<body class=\"desktopVersion\">",
+      "stylesheets": [
+        "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+        "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Pill~76b0464009c1e7412d0c.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Logo~b02be8f14f0892129810.css",
+        "https://a.poki-cdn.com/assets/client~app-components-NavButtons~a74b5475fbcdec3d2aa2.css",
+        "https://a.poki-cdn.com/assets/client~app-components-NavButtonProfile~cd7de6bd5f87880d7349.css",
+        "https://a.poki-cdn.com/assets/client~app-components-PageHome-e96e9bea~e6d583567608f2e1f53b.css",
+        "https://a.poki-cdn.com/assets/client~app-components-CategoryTile~4f7ff85dc0a1c59f383e.css",
+        "https://a.poki-cdn.com/assets/client~app-components-contentTypes-PokiKids~cf944a2194acdf169f56.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Description~b75f76d19cd81c4af633.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Footer~5948360794f9a9f06412.css",
+        "https://a.poki-cdn.com/assets/client~app-components-SocialLinks~ad8c08ed020b8c30348b.css"
+      ]
+    },
+    {
+      "url": "https://poki.com/en/arcade",
+      "status": 200,
+      "bytes": 655455,
+      "sha256": "27da17211dd9deab46c246ad95b0a83028ce6da1149f2a37c8ce8b9899828252",
+      "title": "Arcade Games 🕹️ - Play Online for Free! | Poki",
+      "htmlAttributes": "<html data-theme=\"playground-light\" dir=\"ltr\" lang=\"en\" translate=\"no\">",
+      "bodyAttributes": "<body class=\"desktopVersion\">",
+      "stylesheets": [
+        "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+        "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Pill~76b0464009c1e7412d0c.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Logo~b02be8f14f0892129810.css",
+        "https://a.poki-cdn.com/assets/client~app-components-NavButtons~a74b5475fbcdec3d2aa2.css",
+        "https://a.poki-cdn.com/assets/client~app-components-NavButtonProfile~cd7de6bd5f87880d7349.css",
+        "https://a.poki-cdn.com/assets/client~app-components-PageCategory-2949d96e~b75f76d19cd81c4af633.css",
+        "https://a.poki-cdn.com/assets/client~app-components-contentTypes-TitleBox~09796f73f4575fc55c02.css",
+        "https://a.poki-cdn.com/assets/client~app-components-CategoryTile~4f7ff85dc0a1c59f383e.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Description~b75f76d19cd81c4af633.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Breadcrumbs~f99205fb5f869d6f153c.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Footer~5948360794f9a9f06412.css",
+        "https://a.poki-cdn.com/assets/client~app-components-SocialLinks~ad8c08ed020b8c30348b.css"
+      ]
+    },
+    {
+      "url": "https://poki.com/en/g/subway-surfers",
+      "status": 200,
+      "bytes": 422438,
+      "sha256": "186f7b7d03ce9c2fcb0521b2a567c3016f91786b6c944083bef06dcdc78f2be8",
+      "title": "Subway Surfers - Play Online for Free! | Poki",
+      "htmlAttributes": "<html data-theme=\"playground-light\" dir=\"ltr\" lang=\"en\" translate=\"no\">",
+      "bodyAttributes": "<body class=\"desktopVersion\">",
+      "stylesheets": [
+        "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+        "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+        "https://a.poki-cdn.com/assets/client~app-components-PageBackground~730229180c91c6f00272.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Pill~76b0464009c1e7412d0c.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Logo~b02be8f14f0892129810.css",
+        "https://a.poki-cdn.com/assets/client~app-components-NavButtons~a74b5475fbcdec3d2aa2.css",
+        "https://a.poki-cdn.com/assets/client~app-components-NavButtonProfile~cd7de6bd5f87880d7349.css",
+        "https://a.poki-cdn.com/assets/client~app-components-PageGame-63393a95~207145bd22d808618576.css",
+        "https://a.poki-cdn.com/assets/client~app-components-GamePlayer~0ab1cc095d5cc2716d60.css",
+        "https://a.poki-cdn.com/assets/client~app-components-GameContentTile~19c28ccb9dbe849cf57b.css",
+        "https://a.poki-cdn.com/assets/client~app-components-GameBarButton~0995f6e37b8f573c2737.css",
+        "https://a.poki-cdn.com/assets/client~app-components-CategoryTile~4f7ff85dc0a1c59f383e.css",
+        "https://a.poki-cdn.com/assets/client~app-components-GameDescription~d2d7b9b8abfb1126c241.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Breadcrumbs~f99205fb5f869d6f153c.css",
+        "https://a.poki-cdn.com/assets/client~app-components-GameStats~03bfd51bf1fbaa59387c.css",
+        "https://a.poki-cdn.com/assets/client~app-components-MediaGallery~3f970db59ecd69374e9e.css",
+        "https://a.poki-cdn.com/assets/client~app-components-GameFactList~0a92fdedf022eaf7782a.css",
+        "https://a.poki-cdn.com/assets/client~app-components-StoreLinks~2c0c4689e9cb7b72aabd.css",
+        "https://a.poki-cdn.com/assets/client~app-components-Footer~5948360794f9a9f06412.css",
+        "https://a.poki-cdn.com/assets/client~app-components-SocialLinks~ad8c08ed020b8c30348b.css"
+      ]
+    },
+    {
+      "url": "https://www.crazygames.com/",
+      "status": 200,
+      "bytes": 291705,
+      "sha256": "1f12c1034e6705b6b2eeb1575195fa38da0a853f46c4878a1c9cc8ed2c70477d",
+      "title": "Free Online Games on CrazyGames | Play Now! ",
+      "htmlAttributes": "<html lang=\"en\" dir=\"ltr\" translate=\"no\">",
+      "bodyAttributes": "<body dir=\"ltr\" class=\"__variable_0e5976 __variable_79cb63 __variable_655fd5\">",
+      "stylesheets": [
+        "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/034d58822652ee3f.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/128a243c1dc274d3.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/932e49797bd6951a.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/262205154ce793ec.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/007c4fc47700a588.css"
+      ]
+    },
+    {
+      "url": "https://www.crazygames.com/c/arcade",
+      "status": 200,
+      "bytes": 343008,
+      "sha256": "2f190de5950ad9465314a99c40b18af375c4ac975858aa353ebad7d32648085b",
+      "title": "Arcade Games 🕹️ Play on CrazyGames ",
+      "htmlAttributes": "<html lang=\"en\" dir=\"ltr\" translate=\"no\">",
+      "bodyAttributes": "<body dir=\"ltr\" class=\"__variable_0e5976 __variable_79cb63 __variable_655fd5\">",
+      "stylesheets": [
+        "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/034d58822652ee3f.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/128a243c1dc274d3.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/1ab95fe96c545eb4.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/78d1f21e182b0d09.css"
+      ]
+    },
+    {
+      "url": "https://www.crazygames.com/game/space-waves",
+      "status": 200,
+      "bytes": 169573,
+      "sha256": "fb81829b6d312b1979961b376cde646a4d4e37b8471a29a1af3b6597eac5fef8",
+      "title": "Space Waves 🛸 Play on CrazyGames",
+      "htmlAttributes": "<html lang=\"en\" dir=\"ltr\" translate=\"no\">",
+      "bodyAttributes": "<body dir=\"ltr\" class=\"__variable_0e5976 __variable_79cb63 __variable_655fd5\">",
+      "stylesheets": [
+        "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/034d58822652ee3f.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/128a243c1dc274d3.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/dfb0d98eb821b416.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/7deffa60fe068947.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/373ba0f4eaf0c10c.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/bceae994fb7e8e5e.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/6e17e3e2fee6cc32.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/df4cd6762b88fa5f.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/7e40c0bb1d392910.css",
+        "https://builds.crazygames.com/portal-web/_next/static/css/7f15d71819bb77dd.css"
+      ]
+    }
+  ],
+  "stylesheets": [
+    {
+      "url": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "status": 200,
+      "bytes": 36353,
+      "sha256": "2d5e249249cf5e9c5ca160bb2a845c4e520ca99a6850269dc012117d8583965a"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "status": 200,
+      "bytes": 45462,
+      "sha256": "8ee684ddbd2ab4079df6e5cf22d9f641207b74d626276d1e9648d869b95b70e8"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-Pill~76b0464009c1e7412d0c.css",
+      "status": 200,
+      "bytes": 19486,
+      "sha256": "09f007d3fd0675d5627a8e781b37af925976cf9a0f0c537f056d841daa8f0ace"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-Logo~b02be8f14f0892129810.css",
+      "status": 200,
+      "bytes": 260,
+      "sha256": "8c9cce9b81d8d3a3e5fc43cd6cbbe7e1049706d142b0bd95eadaf8f3f618da47"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-NavButtons~a74b5475fbcdec3d2aa2.css",
+      "status": 200,
+      "bytes": 2900,
+      "sha256": "f0037840b8224247b6c22d11fba0b39a023aee390b311f67f356d3d1c41e7286"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-NavButtonProfile~cd7de6bd5f87880d7349.css",
+      "status": 200,
+      "bytes": 1354,
+      "sha256": "c22d5b23609fb65f5d06cf28a7e0e557cd078608f7a5de6bc898979e775218d8"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-PageHome-e96e9bea~e6d583567608f2e1f53b.css",
+      "status": 200,
+      "bytes": 15240,
+      "sha256": "31c390e15bbb309c13d9a48a05bd8770f037819ff1bab1bc77a2d0e2c9df739a"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-CategoryTile~4f7ff85dc0a1c59f383e.css",
+      "status": 200,
+      "bytes": 1543,
+      "sha256": "6c3baafcdd300220c906a0319afc6e39194f49bd6a5a13b98432be4286d46557"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-contentTypes-PokiKids~cf944a2194acdf169f56.css",
+      "status": 200,
+      "bytes": 461,
+      "sha256": "6eceba06ad514762c746140d06695bef8282cdeab2f3965a3c3df7f8b41880fa"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-Description~b75f76d19cd81c4af633.css",
+      "status": 200,
+      "bytes": 4173,
+      "sha256": "0b548c348bbed2200f14015a95add67626a80d71b9bdc38c55015605fe86f89f"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-Footer~5948360794f9a9f06412.css",
+      "status": 200,
+      "bytes": 8397,
+      "sha256": "fd8c026641fb2d4a36cd1a9fcbc668820b5c748ce0d5790ab22bf8d7100ccb92"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-SocialLinks~ad8c08ed020b8c30348b.css",
+      "status": 200,
+      "bytes": 914,
+      "sha256": "b515459dff4db6da7ee19b8efba7a25618e5c6e0d4b7e68aa419ec8d0897d236"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-PageCategory-2949d96e~b75f76d19cd81c4af633.css",
+      "status": 200,
+      "bytes": 4183,
+      "sha256": "b3918d7f1c8956f2ec74d616bc8c851a952c8434899c767c483e9581c3791d97"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-contentTypes-TitleBox~09796f73f4575fc55c02.css",
+      "status": 200,
+      "bytes": 923,
+      "sha256": "c44b70a054c281c29fcce2058a11c66b5dd9a98bfef1411578c765a7b92f8d5d"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-Breadcrumbs~f99205fb5f869d6f153c.css",
+      "status": 200,
+      "bytes": 835,
+      "sha256": "f23e3107371a0b9aa0f9bf990944d7d9ce9c1aded5ec38f233cdbe244de70cab"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "status": 200,
+      "bytes": 36661,
+      "sha256": "85a308790a305141b52c27c138402568beade48ee968746c97b403f7d8f933e3"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "status": 200,
+      "bytes": 47298,
+      "sha256": "0c949d22222f7b477c710c5f1cd95bb174446dcbd4fe03d012e682d36430861b"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-PageBackground~730229180c91c6f00272.css",
+      "status": 200,
+      "bytes": 2721,
+      "sha256": "c8490ae63ab107e7bc2c857f6012a6ec416e860c0d4970a8b0df6c699f047b5f"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-PageGame-63393a95~207145bd22d808618576.css",
+      "status": 200,
+      "bytes": 11274,
+      "sha256": "170838f2b222ebd5dc3f2acea82920ca3bb7d819c9ea4881aeb554d20416158e"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-GamePlayer~0ab1cc095d5cc2716d60.css",
+      "status": 200,
+      "bytes": 5061,
+      "sha256": "97abe77c1e86408fec897c93266e348ef643ec9751362ee3bce0d8758942e0b9"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-GameContentTile~19c28ccb9dbe849cf57b.css",
+      "status": 200,
+      "bytes": 738,
+      "sha256": "342e2b3fbeb1480c1ce2f3ffd762b1e4f4be139a29f6210b7895438da59c3394"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-GameBarButton~0995f6e37b8f573c2737.css",
+      "status": 200,
+      "bytes": 4057,
+      "sha256": "9bdb9823c8e9a6501072de6f3be7ed0166b247762d8b15e210d846a9f5dede37"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-GameDescription~d2d7b9b8abfb1126c241.css",
+      "status": 200,
+      "bytes": 6734,
+      "sha256": "dc96d67a4c876cd46edfa2ba374695916b75ac08d7306ca0b86b0cba9a78b113"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-GameStats~03bfd51bf1fbaa59387c.css",
+      "status": 200,
+      "bytes": 11488,
+      "sha256": "3200fef6b53d3ec051b3d6d22e008139d6a6d277753fe886989a6de0c4b0285e"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-MediaGallery~3f970db59ecd69374e9e.css",
+      "status": 200,
+      "bytes": 13678,
+      "sha256": "32e659bc0f02630c117e64b2459785962b48f94663531ee61598daa75cb27f16"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-GameFactList~0a92fdedf022eaf7782a.css",
+      "status": 200,
+      "bytes": 1181,
+      "sha256": "2a018aea349a311a1a4a08621a0f1c3f675458d638f0253b259867e4afba75a6"
+    },
+    {
+      "url": "https://a.poki-cdn.com/assets/client~app-components-StoreLinks~2c0c4689e9cb7b72aabd.css",
+      "status": 200,
+      "bytes": 409,
+      "sha256": "7b53645d1e89756655bdd2463050968995a07c460ec654447dfd00bcaa663dec"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "status": 200,
+      "bytes": 431782,
+      "sha256": "94fb5872d04838c7f73d6a67b37da85d315eef323a1d636b1d1f1c8212f678b5"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/034d58822652ee3f.css",
+      "status": 200,
+      "bytes": 77320,
+      "sha256": "746ba65ee567e1dfc75475b01063ddb5eac5341c33b143b03c2b5d37f8b5e1c6"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/128a243c1dc274d3.css",
+      "status": 200,
+      "bytes": 65435,
+      "sha256": "45091f229f84f8f059664ce974b52004c928bef935f8d4a1001c3a1be558e451"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/932e49797bd6951a.css",
+      "status": 200,
+      "bytes": 188460,
+      "sha256": "0470d645cf496426c4e94a8e75a44b00f127767b6909d2ce08fd6df00fb62a8e"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/262205154ce793ec.css",
+      "status": 200,
+      "bytes": 16578,
+      "sha256": "62b480fe0b0a3e9148eb3e2f1bfb028f36c5f46fb2f008a9e2ca1366888d409a"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/007c4fc47700a588.css",
+      "status": 200,
+      "bytes": 12797,
+      "sha256": "aacfa53e13ec77b2ff08448f0d435ffa9c3a5df6669f0e0f0a29635e45aa3585"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/1ab95fe96c545eb4.css",
+      "status": 200,
+      "bytes": 25407,
+      "sha256": "d88d0c4e269a56e24b1715e9c260decd0d0bc033c02b1c753a0e4fcdc58e8ac0"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/78d1f21e182b0d09.css",
+      "status": 200,
+      "bytes": 39417,
+      "sha256": "cbc8d253f9f5243d2a7a312f7cac0035300e37d9727cd8f952e14a02292c4852"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/dfb0d98eb821b416.css",
+      "status": 200,
+      "bytes": 93141,
+      "sha256": "1fab97aec098b5e08aba84ab2c97cf48d6dd26a7029a569f8619c6e16a664a32"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/7deffa60fe068947.css",
+      "status": 200,
+      "bytes": 22800,
+      "sha256": "d8d54267742c5f03d2c1f2e4e2e60df3718cbe14a6cb51eae9407fe4c3532837"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/373ba0f4eaf0c10c.css",
+      "status": 200,
+      "bytes": 119,
+      "sha256": "bf43fc888c88767f5b85947145c22b2e97ad9f909ab2f620e2d918ec13fc5074"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/bceae994fb7e8e5e.css",
+      "status": 200,
+      "bytes": 17032,
+      "sha256": "adf3424b3e2501531b852809a78dee6f3d5a1c706bd0742f169ea626a0a63e4f"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/6e17e3e2fee6cc32.css",
+      "status": 200,
+      "bytes": 32027,
+      "sha256": "1b198b7f25f9aad2a0d1034081b4a04de64f07e0688ae3209f6f0501a3e68317"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/df4cd6762b88fa5f.css",
+      "status": 200,
+      "bytes": 91671,
+      "sha256": "6b087478bb14fba2c67ce59de3809dc747ced7a7a023e93e60057f1d3042c248"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/7e40c0bb1d392910.css",
+      "status": 200,
+      "bytes": 38035,
+      "sha256": "3032b7c8d86cf3dbd89a5101a41b06924922526044106325837190af0a67825f"
+    },
+    {
+      "url": "https://builds.crazygames.com/portal-web/_next/static/css/7f15d71819bb77dd.css",
+      "status": 200,
+      "bytes": 43320,
+      "sha256": "5ab9307666d91c1e23d752df7899cce3ccb59046b09e63ddbba80001e71cda9b"
+    }
+  ],
+  "tokens": [
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-0",
+      "value": "0px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-2",
+      "value": "2px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-4",
+      "value": "4px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-8",
+      "value": "8px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-12",
+      "value": "12px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-16",
+      "value": "16px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-20",
+      "value": "20px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-24",
+      "value": "24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-full",
+      "value": "9999px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--shadow-mid-hover",
+      "value": "0px 12px 16px 8px #5d6b844d"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-0",
+      "value": "0px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-2",
+      "value": "2px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-4",
+      "value": "4px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-6",
+      "value": "6px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-8",
+      "value": "8px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-12",
+      "value": "12px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-16",
+      "value": "16px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-24",
+      "value": "24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-32",
+      "value": "32px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-48",
+      "value": "48px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-64",
+      "value": "64px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-96",
+      "value": "96px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-font-family-proxima-nova",
+      "value": "\"Proxima Nova\""
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-font-family-torus",
+      "value": "Torus"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-font-family-press-start-2-p",
+      "value": "\"Press Start 2P\""
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-font-family-sf-mono",
+      "value": "\"SF Mono\""
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1-5pct-12px",
+      "value": "0.18px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1-5pct-14px",
+      "value": "0.21px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1-5pct-16px",
+      "value": "0.24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1-5pct-18px",
+      "value": "0.27px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1pct-18px",
+      "value": "0.18px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1pct-20px",
+      "value": "0.2px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1pct-24px",
+      "value": "0.24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1pct-28px",
+      "value": "0.28px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1pct-36px",
+      "value": "0.36px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-2-5pct-12px",
+      "value": "0.3px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-none",
+      "value": "0px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--color-background-default",
+      "value": "#fff"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--color-text-default",
+      "value": "#002b50"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--radius-full",
+      "value": "9999px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--radius-l",
+      "value": "16px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--radius-m",
+      "value": "8px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--radius-s",
+      "value": "4px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-l",
+      "value": "24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-m",
+      "value": "12px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-none",
+      "value": "0px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-s",
+      "value": "8px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-xs",
+      "value": "6px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-xxl",
+      "value": "48px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-xxs",
+      "value": "4px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-xxxs",
+      "value": "2px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--fontBody",
+      "value": "\"Proxima Nova\",\"Open Sans\",\"Gill Sans MT\",\"Gill Sans\",\"Noto Sans Arabic\",Arial,sans-serif"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--fontTorus",
+      "value": "\"Torus\",\"Noto Sans Arabic\",sans-serif"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--bezier",
+      "value": "cubic-bezier(.25,.1,.25,1)"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--cellSize",
+      "value": "94px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--cellSizeMax",
+      "value": "144px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--cellSpacing",
+      "value": "16px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--maxPageWidth",
+      "value": "1860px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--shadow-mid",
+      "value": "0px 7px 10px 4px #5d6b844d"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--poki-blue",
+      "value": "#009cff"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-2xs",
+      "value": "4px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-xs",
+      "value": "8px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-s",
+      "value": "12px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-m",
+      "value": "16px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-l",
+      "value": "24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-xl",
+      "value": "32px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-2xl",
+      "value": "48px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-3xl",
+      "value": "64px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--gridColumns",
+      "value": "3"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ":root",
+      "conditions": [
+        "@media (min-width:566px)"
+      ],
+      "name": "--gridColumns",
+      "value": "5"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".BFj5_MRnlqMNxEud7CSZ.BFj5_MRnlqMNxEud7CSZ",
+      "conditions": [
+        "@media (min-width:566px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "5"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "6"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "7"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "9"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "11"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "12"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "14"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "17"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".gubbDR42MGUGFTiYoqWy",
+      "conditions": [
+        "@media (min-width:566px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "5"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "6"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "7"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "9"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "11"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "12"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "14"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "17"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".RlUXPDIHC5o_sVPxHp0G",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "7"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".RlUXPDIHC5o_sVPxHp0G",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "8"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".RlUXPDIHC5o_sVPxHp0G",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "8"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".RlUXPDIHC5o_sVPxHp0G",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "10"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".RlUXPDIHC5o_sVPxHp0G",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "10"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Fs5S79qEs9av8TQAeTeb",
+      "conditions": [
+        "@media (min-width:566px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "5"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "6"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "7"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "9"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "11"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "12"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "14"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "17"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".sVO_yY3sP6R0A04SxJ_L",
+      "conditions": [
+        "@media (min-width:551px) and (max-width:660.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "5"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".sVO_yY3sP6R0A04SxJ_L",
+      "conditions": [
+        "@media (min-width:661px) and (max-width:880.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "6"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".sVO_yY3sP6R0A04SxJ_L",
+      "conditions": [
+        "@media (min-width:881px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "8"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-PageHome-e96e9bea~e6d583567608f2e1f53b.css",
+      "selector": ".NOUpvMWRjNKUIeoCX7Un",
+      "conditions": [],
+      "name": "--button-radius",
+      "value": "var(--radius-full)"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-0",
+      "value": "0px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-2",
+      "value": "2px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-4",
+      "value": "4px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-8",
+      "value": "8px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-12",
+      "value": "12px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-16",
+      "value": "16px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-20",
+      "value": "20px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-24",
+      "value": "24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-full",
+      "value": "9999px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--shadow-mid-hover",
+      "value": "0px 12px 16px 8px #5d6b844d"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-0",
+      "value": "0px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-2",
+      "value": "2px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-4",
+      "value": "4px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-6",
+      "value": "6px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-8",
+      "value": "8px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-12",
+      "value": "12px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-16",
+      "value": "16px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-24",
+      "value": "24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-32",
+      "value": "32px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-48",
+      "value": "48px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-64",
+      "value": "64px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-96",
+      "value": "96px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-font-family-proxima-nova",
+      "value": "\"Proxima Nova\""
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-font-family-torus",
+      "value": "Torus"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-font-family-press-start-2-p",
+      "value": "\"Press Start 2P\""
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-font-family-sf-mono",
+      "value": "\"SF Mono\""
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1-5pct-12px",
+      "value": "0.18px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1-5pct-14px",
+      "value": "0.21px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1-5pct-16px",
+      "value": "0.24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1-5pct-18px",
+      "value": "0.27px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1pct-18px",
+      "value": "0.18px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1pct-20px",
+      "value": "0.2px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1pct-24px",
+      "value": "0.24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1pct-28px",
+      "value": "0.28px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-1pct-36px",
+      "value": "0.36px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-2-5pct-12px",
+      "value": "0.3px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--typography-letter-spacing-none",
+      "value": "0px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--color-background-default",
+      "value": "#fff"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--color-text-default",
+      "value": "#002b50"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--radius-full",
+      "value": "9999px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--radius-l",
+      "value": "16px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--radius-m",
+      "value": "8px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--radius-s",
+      "value": "4px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-l",
+      "value": "24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-m",
+      "value": "12px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-none",
+      "value": "0px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-s",
+      "value": "8px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-xs",
+      "value": "6px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-xxl",
+      "value": "48px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-xxs",
+      "value": "4px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": "[data-theme=playground-light]",
+      "conditions": [],
+      "name": "--gap-xxxs",
+      "value": "2px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--fontBody",
+      "value": "\"Proxima Nova\",\"Open Sans\",\"Gill Sans MT\",\"Gill Sans\",\"Noto Sans Arabic\",Arial,sans-serif"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--fontTorus",
+      "value": "\"Torus\",\"Noto Sans Arabic\",sans-serif"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--bezier",
+      "value": "cubic-bezier(.25,.1,.25,1)"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--cellSize",
+      "value": "94px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--cellSizeMax",
+      "value": "144px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--cellSpacing",
+      "value": "16px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--maxPageWidth",
+      "value": "1860px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--shadow-mid",
+      "value": "0px 7px 10px 4px #5d6b844d"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--poki-blue",
+      "value": "#009cff"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-2xs",
+      "value": "4px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-xs",
+      "value": "8px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-s",
+      "value": "12px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-m",
+      "value": "16px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-l",
+      "value": "24px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-xl",
+      "value": "32px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-2xl",
+      "value": "48px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-3xl",
+      "value": "64px"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--gridColumns",
+      "value": "3"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ":root",
+      "conditions": [
+        "@media (min-width:566px)"
+      ],
+      "name": "--gridColumns",
+      "value": "5"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".BFj5_MRnlqMNxEud7CSZ.BFj5_MRnlqMNxEud7CSZ",
+      "conditions": [
+        "@media (min-width:566px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "5"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "6"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "7"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "9"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "11"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "12"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "14"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "17"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".gubbDR42MGUGFTiYoqWy",
+      "conditions": [
+        "@media (min-width:566px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "5"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "6"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "7"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "9"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "11"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "12"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "14"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "17"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".RlUXPDIHC5o_sVPxHp0G",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "7"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".RlUXPDIHC5o_sVPxHp0G",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "8"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".RlUXPDIHC5o_sVPxHp0G",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "8"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".RlUXPDIHC5o_sVPxHp0G",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "10"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".RlUXPDIHC5o_sVPxHp0G",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "10"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Fs5S79qEs9av8TQAeTeb",
+      "conditions": [
+        "@media (min-width:566px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "5"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "6"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "7"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "9"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "11"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "12"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "14"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "17"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".sVO_yY3sP6R0A04SxJ_L",
+      "conditions": [
+        "@media (min-width:551px) and (max-width:660.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "5"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".sVO_yY3sP6R0A04SxJ_L",
+      "conditions": [
+        "@media (min-width:661px) and (max-width:880.9px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "6"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".sVO_yY3sP6R0A04SxJ_L",
+      "conditions": [
+        "@media (min-width:881px)"
+      ],
+      "name": "--gridTemplateColumns",
+      "value": "8"
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-GameStats~03bfd51bf1fbaa59387c.css",
+      "selector": ".NOUpvMWRjNKUIeoCX7Un",
+      "conditions": [],
+      "name": "--button-radius",
+      "value": "var(--radius-full)"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V",
+      "conditions": [],
+      "name": "--sidebar-width-transition-duration",
+      "value": "0.15s"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".CrazyCarousel_gamesCarouselSection__cDN02,.CrazyCarousel_genericCarouselSection__S_f_x",
+      "conditions": [],
+      "name": "--carousel-slide-spacing",
+      "value": "calc(var(--base-unit) * 0.5)"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--brand-100",
+      "value": "#6842ff"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--black-40",
+      "value": "#373952"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--black-90",
+      "value": "#13141e"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--black-100",
+      "value": "#0c0d14"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--white-50",
+      "value": "#aaadbe"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--white-100",
+      "value": "#f9faff"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--sidebar-width",
+      "value": "200px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--sidebar-collapsed-width",
+      "value": "68px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--sidebar-item-height",
+      "value": "34px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--sidebar-icon-size",
+      "value": "22px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--header-height",
+      "value": "60px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--base-unit",
+      "value": "8px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--font-family-body",
+      "value": "\"APK Protocol\",\"APK Protocol Fallback\",Arial,sans-serif"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--font-family-display",
+      "value": "\"Artex SemiExtended\",\"Artex SemiExtended Fallback\",Arial,sans-serif"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--spacing-unit",
+      "value": "8px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-none",
+      "value": "0px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-sm",
+      "value": "4px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-md",
+      "value": "8px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-lg",
+      "value": "16px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-full",
+      "value": "9999px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-xl",
+      "value": "24px"
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ":root",
+      "conditions": [],
+      "name": "--radius-2xl",
+      "value": "32px"
+    }
+  ],
+  "geometry": [
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ".summaryTile",
+      "conditions": [],
+      "values": {
+        "border-radius": "16px",
+        "transition": "transform .6s var(--bezier)"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ".summaryTile:hover",
+      "conditions": [
+        "@media (hover:hover)"
+      ],
+      "values": {
+        "transform": "scale(1.04) translateY(-4px)",
+        "transition-duration": ".3s"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ".summaryTile__title",
+      "conditions": [
+        "@media (hover:hover)",
+        ".summaryTile:hover"
+      ],
+      "values": {
+        "opacity": "1",
+        "transform": "translate(0)"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ".summaryTile__title",
+      "conditions": [],
+      "values": {
+        "padding": "6px",
+        "z-index": "6",
+        "opacity": "0",
+        "transform": "translateY(8px)",
+        "transition": "transform .3s var(--bezier) .1s,opacity .3s var(--bezier) .1s"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ".summaryTile__title",
+      "conditions": [
+        ".summaryTile_showTitle"
+      ],
+      "values": {
+        "opacity": "1",
+        "transform": "translate(0)"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ".summaryTile__img",
+      "conditions": [],
+      "values": {
+        "border-radius": "inherit"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~316fa29527fdfee8aa44.css",
+      "selector": ".forYouCarousel__content .summaryTile .tile-label",
+      "conditions": [],
+      "values": {
+        "z-index": "3"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".vtbwTfQNi80Hes0DzmGs",
+      "conditions": [],
+      "values": {
+        "grid-auto-rows": "var(--pageGridCellSize)",
+        "padding": "0",
+        "grid-gap": "var(--cellSpacing)",
+        "grid-template-columns": "repeat(var(--gridTemplateColumns,3),var(--pageGridCellSize))"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "6"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "7"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "9"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "11"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "12"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "14"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "17"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "6"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "7"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "9"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "11"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "12"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "14"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "17"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp:not(.RlUXPDIHC5o_sVPxHp0G) .ir0.ir1",
+      "conditions": [
+        "@media (min-width:1321px)"
+      ],
+      "values": {
+        "height": "204px",
+        "width": "204px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "6"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "7"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "9"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "11"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "12"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "14"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~a38c9eeb8f97a6301daa.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "17"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ".summaryTile",
+      "conditions": [],
+      "values": {
+        "border-radius": "16px",
+        "transition": "transform .6s var(--bezier)"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ".summaryTile:hover",
+      "conditions": [
+        "@media (hover:hover)"
+      ],
+      "values": {
+        "transform": "scale(1.04) translateY(-4px)",
+        "transition-duration": ".3s"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ".summaryTile__title",
+      "conditions": [
+        "@media (hover:hover)",
+        ".summaryTile:hover"
+      ],
+      "values": {
+        "opacity": "1",
+        "transform": "translate(0)"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ".summaryTile__title",
+      "conditions": [],
+      "values": {
+        "padding": "6px",
+        "z-index": "6",
+        "opacity": "0",
+        "transform": "translateY(8px)",
+        "transition": "transform .3s var(--bezier) .1s,opacity .3s var(--bezier) .1s"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ".summaryTile__title",
+      "conditions": [
+        ".summaryTile_showTitle"
+      ],
+      "values": {
+        "opacity": "1",
+        "transform": "translate(0)"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ".summaryTile__img",
+      "conditions": [],
+      "values": {
+        "border-radius": "inherit"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-e96e9bea~45e7f5c63593417ef06b.css",
+      "selector": ".forYouCarousel__content .summaryTile .tile-label",
+      "conditions": [],
+      "values": {
+        "z-index": "3"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".vtbwTfQNi80Hes0DzmGs",
+      "conditions": [],
+      "values": {
+        "grid-auto-rows": "var(--pageGridCellSize)",
+        "padding": "0",
+        "grid-gap": "var(--cellSpacing)",
+        "grid-template-columns": "repeat(var(--gridTemplateColumns,3),var(--pageGridCellSize))"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "6"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "7"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "9"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "11"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "12"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "14"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".JgLfL7LclbiAmVJ1BGIg",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "17"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "6"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "7"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "9"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "11"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "12"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "14"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "17"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".KOhrFB4QDKEFN2uykSgp:not(.RlUXPDIHC5o_sVPxHp0G):not(.Xg0U70efJH3qkTBaBZm3) .ir0.ir1",
+      "conditions": [
+        "@media (min-width:1321px)"
+      ],
+      "values": {
+        "height": "204px",
+        "width": "204px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:770.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "6"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:771px) and (max-width:990.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "7"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:991px) and (max-width:1210.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "9"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "11"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "12"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "14"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~main-6ad0ffb1~655a6a99d17ba01a1b76.css",
+      "selector": ".Eu3YePRYW_jQ2bgCbNjr",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "values": {
+        "--gridTemplateColumns": "17"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-PageGame-63393a95~207145bd22d808618576.css",
+      "selector": ".O6aS7QO5ETmydBF0bVB7",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:1210.9px)"
+      ],
+      "values": {
+        "height": "424px",
+        "width": "640px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-PageGame-63393a95~207145bd22d808618576.css",
+      "selector": ".O6aS7QO5ETmydBF0bVB7",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "values": {
+        "height": "534px",
+        "width": "836px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-PageGame-63393a95~207145bd22d808618576.css",
+      "selector": ".O6aS7QO5ETmydBF0bVB7",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "values": {
+        "height": "534px",
+        "width": "836px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-PageGame-63393a95~207145bd22d808618576.css",
+      "selector": ".O6aS7QO5ETmydBF0bVB7",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "values": {
+        "height": "644px",
+        "width": "1031px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-PageGame-63393a95~207145bd22d808618576.css",
+      "selector": ".O6aS7QO5ETmydBF0bVB7",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "values": {
+        "height": "644px",
+        "width": "1031px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-GamePlayer~0ab1cc095d5cc2716d60.css",
+      "selector": ".J91n1ymJasoch_FZq89b",
+      "conditions": [],
+      "values": {
+        "height": "64px",
+        "padding": "0 var(--spacing-s) 0 0",
+        "z-index": "3"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-GamePlayer~0ab1cc095d5cc2716d60.css",
+      "selector": "html[dir=rtl] .J91n1ymJasoch_FZq89b",
+      "conditions": [],
+      "values": {
+        "padding": "0 0 0 var(--spacing-s)"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-GamePlayer~0ab1cc095d5cc2716d60.css",
+      "selector": ".O6aS7QO5ETmydBF0bVB7",
+      "conditions": [
+        "@media (min-width:111px) and (max-width:1210.9px)"
+      ],
+      "values": {
+        "height": "424px",
+        "width": "640px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-GamePlayer~0ab1cc095d5cc2716d60.css",
+      "selector": ".O6aS7QO5ETmydBF0bVB7",
+      "conditions": [
+        "@media (min-width:1211px) and (max-width:1320.9px)"
+      ],
+      "values": {
+        "height": "534px",
+        "width": "836px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-GamePlayer~0ab1cc095d5cc2716d60.css",
+      "selector": ".O6aS7QO5ETmydBF0bVB7",
+      "conditions": [
+        "@media (min-width:1321px) and (max-width:1540.9px)"
+      ],
+      "values": {
+        "height": "534px",
+        "width": "836px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-GamePlayer~0ab1cc095d5cc2716d60.css",
+      "selector": ".O6aS7QO5ETmydBF0bVB7",
+      "conditions": [
+        "@media (min-width:1541px) and (max-width:1870.9px)"
+      ],
+      "values": {
+        "height": "644px",
+        "width": "1031px"
+      }
+    },
+    {
+      "source": "https://a.poki-cdn.com/assets/client~app-components-GamePlayer~0ab1cc095d5cc2716d60.css",
+      "selector": ".O6aS7QO5ETmydBF0bVB7",
+      "conditions": [
+        "@media (min-width:1871px)"
+      ],
+      "values": {
+        "height": "644px",
+        "width": "1031px"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V",
+      "conditions": [],
+      "values": {
+        "width": "var(--sidebar-width)",
+        "height": "100vh",
+        "transition": "visibility 0s,all var(--sidebar-width-transition-duration) ease-in-out",
+        "z-index": "5"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V.Sidebar_isDesktop__aieVO",
+      "conditions": [],
+      "values": {
+        "height": "calc(100vh - var(--header-height))"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V.Sidebar_isGamePage__LehEb:not(.Sidebar_gamePageForcedOpen__BJMuU)",
+      "conditions": [],
+      "values": {
+        "width": "var(--sidebar-collapsed-width)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V.Sidebar_isGamePage__LehEb:not(.Sidebar_gamePageForcedOpen__BJMuU) .Sidebar_link__Tbdup",
+      "conditions": [],
+      "values": {
+        "width": "48px"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V.Sidebar_isGamePage__LehEb:not(.Sidebar_gamePageForcedOpen__BJMuU):hover .Sidebar_link__Tbdup",
+      "conditions": [],
+      "values": {
+        "width": "calc(var(--sidebar-width) - calc(var(--spacing-unit) * 1.25)*2)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V:not(.Sidebar_isDesktop__aieVO)",
+      "conditions": [],
+      "values": {
+        "width": "var(--sidebar-width)!important",
+        "z-index": "var(--mobile-sidebar-zindex)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V.Sidebar_gamePageForcedOpen__BJMuU #sidebar-hidden",
+      "conditions": [],
+      "values": {
+        "max-height": "var(--sidebar-footer-reveal-max-height)",
+        "opacity": "1",
+        "transition": "max-height .2s ease,opacity .15s ease,visibility 0s linear 0s"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V:hover.Sidebar_gamePageForcedOpen__BJMuU,.Sidebar_main___ex0V:hover:not(.Sidebar_isGamePage__LehEb.Sidebar_gameStarted__hJy4t)",
+      "conditions": [],
+      "values": {
+        "width": "var(--sidebar-width)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V:hover.Sidebar_gamePageForcedOpen__BJMuU #sidebar-hidden,.Sidebar_main___ex0V:hover:not(.Sidebar_isGamePage__LehEb.Sidebar_gameStarted__hJy4t) #sidebar-hidden",
+      "conditions": [],
+      "values": {
+        "max-height": "var(--sidebar-footer-reveal-max-height)",
+        "opacity": "1",
+        "transition": "max-height .2s ease var(--sidebar-width-transition-duration),opacity .15s ease var(--sidebar-width-transition-duration),visibility 0s linear 0s"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V",
+      "conditions": [
+        "@media(max-width:1909.98px)"
+      ],
+      "values": {
+        "width": "var(--sidebar-collapsed-width)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V .Sidebar_link__Tbdup",
+      "conditions": [
+        "@media(max-width:1909.98px)"
+      ],
+      "values": {
+        "width": "48px"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V:hover .Sidebar_link__Tbdup",
+      "conditions": [
+        "@media(max-width:1909.98px)"
+      ],
+      "values": {
+        "width": "calc(var(--sidebar-width) - calc(var(--spacing-unit) * 1.25)*2)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_linksContainer__n3z0G .Sidebar_sidebarSpan__fHyyG",
+      "conditions": [],
+      "values": {
+        "font-size": "16px",
+        "line-height": "24px",
+        "font-weight": "400"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_linksContainer__n3z0G .Sidebar_sidebarSpan__fHyyG:hover",
+      "conditions": [],
+      "values": {
+        "opacity": ".8"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_link__Tbdup",
+      "conditions": [],
+      "values": {
+        "width": "calc(var(--sidebar-width) - calc(var(--spacing-unit) * 1.25)*2)",
+        "padding": "calc(var(--spacing-unit)*.5) calc(var(--spacing-unit)*1.25)",
+        "border-radius": "var(--radius-md)",
+        "transition": "all .25s ease-in-out"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_link__Tbdup.Sidebar_disabled__g_rzR",
+      "conditions": [],
+      "values": {
+        "opacity": ".3"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_staticItemsGrid__TCSpg .Sidebar_link__Tbdup",
+      "conditions": [],
+      "values": {
+        "width": "100%",
+        "height": "auto",
+        "padding": "calc(var(--base-unit)*1.5) calc(var(--base-unit)*2)",
+        "border-radius": "calc(var(--base-unit)*2)",
+        "font-size": "var(--font-size-button)",
+        "font-weight": "700",
+        "line-height": "135%"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_staticItemsGrid__TCSpg .Sidebar_link__Tbdup img",
+      "conditions": [],
+      "values": {
+        "width": "auto",
+        "height": "calc(var(--base-unit)*4)",
+        "padding": "0"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_staticItemsGrid__TCSpg .Sidebar_link__Tbdup .Sidebar_labelContainer__qHPDa",
+      "conditions": [],
+      "values": {
+        "opacity": "1",
+        "font-size": "inherit",
+        "font-weight": "inherit"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".Sidebar_main___ex0V.Sidebar_gameStarted__hJy4t:not(.Sidebar_gamePageForcedOpen__BJMuU):hover .Sidebar_link__Tbdup",
+      "conditions": [],
+      "values": {
+        "width": "48px"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_topSearchForm__b9Z8c",
+      "conditions": [
+        "@media(min-width:1082px)"
+      ],
+      "values": {
+        "transform": "translate(-50%,-50%)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_topSearchForm__b9Z8c.TopSearch_isMobileLayout__96sEm",
+      "conditions": [],
+      "values": {
+        "transform": "unset"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_searchInput__Nbapa",
+      "conditions": [],
+      "values": {
+        "border-radius": "30px",
+        "height": "40px",
+        "font-weight": "700",
+        "font-size": "var(--font-size-button)",
+        "transition": "padding .22s ease"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_searchInput__Nbapa::placeholder",
+      "conditions": [],
+      "values": {
+        "opacity": "1"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_topSearchInput__mCCPQ.TopSearch_isDesktop__2eSKm",
+      "conditions": [],
+      "values": {
+        "padding-left": "calc(var(--base-unit)*2)",
+        "padding-right": "calc(var(--base-unit)*2)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_topSearchInput__mCCPQ:not(.TopSearch_isDesktop__2eSKm)",
+      "conditions": [],
+      "values": {
+        "padding-left": "calc(var(--base-unit)*6)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_topSearchInput__mCCPQ",
+      "conditions": [
+        "@media(min-width:1082px)"
+      ],
+      "values": {
+        "width": "460px"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_topSearchInput__mCCPQ",
+      "conditions": [
+        "@media(max-width:1081.98px)"
+      ],
+      "values": {
+        "width": "100%"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_isMobileLayout__96sEm .TopSearch_topSearchInput__mCCPQ",
+      "conditions": [],
+      "values": {
+        "width": "100%"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_topSearchInput__mCCPQ.TopSearch_disabled__pEttp",
+      "conditions": [],
+      "values": {
+        "opacity": ".2"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_topSearchInput__mCCPQ.TopSearch_isMobile__W6aoz",
+      "conditions": [],
+      "values": {
+        "height": "44px"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_topSearchInput__mCCPQ.TopSearch_isMobile__W6aoz::placeholder",
+      "conditions": [],
+      "values": {
+        "font-weight": "700",
+        "opacity": "1"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_resultContainer__Ev21P",
+      "conditions": [],
+      "values": {
+        "max-height": "550px",
+        "width": "100%",
+        "padding": "0",
+        "z-index": "99"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_resultContainer__Ev21P::-webkit-scrollbar",
+      "conditions": [],
+      "values": {
+        "width": "7pxpx",
+        "height": "7pxpx"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_resultContainer__Ev21P::-webkit-scrollbar-thumb",
+      "conditions": [],
+      "values": {
+        "border-radius": "30px"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_resultContainer__Ev21P:not(.TopSearch_isTablet__3qUmm,.TopSearch_isMobile__W6aoz)",
+      "conditions": [],
+      "values": {
+        "border-radius": "10px"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_resultContainer__Ev21P li",
+      "conditions": [],
+      "values": {
+        "padding": "0 calc(var(--base-unit)*2.5)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_resultContainer__Ev21P li.TopSearch_isTag__6Z3KW>a",
+      "conditions": [],
+      "values": {
+        "padding": "calc(var(--base-unit)*1)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_resultContainer__Ev21P li.TopSearch_isGame__NPYae>a",
+      "conditions": [],
+      "values": {
+        "padding": "calc(var(--base-unit)*.5)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_resultContainer__Ev21P li.TopSearch_selectedOption__CtI5l>a:not(.TopSearch_isTablet__3qUmm,.TopSearch_isMobile__W6aoz)",
+      "conditions": [],
+      "values": {
+        "border-radius": "calc(var(--base-unit)*1 + 2px)"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_resultContainer__Ev21P.TopSearch_isMobile__W6aoz,.TopSearch_resultContainer__Ev21P.TopSearch_isTablet__3qUmm",
+      "conditions": [],
+      "values": {
+        "max-height": "unset",
+        "height": "100vh",
+        "width": "min(100vw,500px)",
+        "max-width": "500px",
+        "transform": "translateX(-50%)",
+        "border-radius": "0"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/608124357d51a5d6.css",
+      "selector": ".TopSearch_searchResultItemThumbnail__SELPY",
+      "conditions": [],
+      "values": {
+        "border-radius": "7px",
+        "width": "64px"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/034d58822652ee3f.css",
+      "selector": ".GameThumbShared_gameThumbImage__7EHHi",
+      "conditions": [],
+      "values": {
+        "border-radius": "16px"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/034d58822652ee3f.css",
+      "selector": ".GameThumbShared_gameThumbImage__7EHHi.GameThumbShared_greyedOut__xjzF_",
+      "conditions": [],
+      "values": {
+        "opacity": ".3"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/034d58822652ee3f.css",
+      "selector": ".GameThumbShared_gameThumbImagePositioned__LJJut",
+      "conditions": [],
+      "values": {
+        "border-radius": "16px",
+        "z-index": "1",
+        "width": "100%",
+        "height": "100%"
+      }
+    },
+    {
+      "source": "https://builds.crazygames.com/portal-web/_next/static/css/034d58822652ee3f.css",
+      "selector": ".GameThumbShared_gameThumbImagePositioned__LJJut.GameThumbShared_greyedOut__xjzF_,.GameThumbShared_greyedOut__xjzF_",
+      "conditions": [],
+      "values": {
+        "opacity": ".3"
+      }
+    }
+  ],
+  "limitations": [
+    "Declarations can be overridden or unused; selectors and media conditions are evidence, not computed styles.",
+    "Initial HTML is a server-selected desktop variant. Mobile CSS classes require runtime validation.",
+    "No screenshot comparison, click timing, keyboard behavior, personalized content, or consent/ad variants verified."
+  ]
+}
