@@ -177,3 +177,8 @@ GitHub Actions runs mechanics and scene checks on Linux and Windows, tests the e
 ## AI-use disclosure
 
 AI assistance contributed code, debugging, procedural artwork, test tooling, and documentation. The project owner should review the work, make the final creative decisions, and record their own actual development time honestly.
+
+
+## Restored seven-game edition
+
+This edition is maintained on `classic-seven-games`. It restores the seven-game Home screen, Tournament, bonus Flappy, nine original heroes and two-thumb controls. Web builds use fresh runtime URLs and retire the newer Pixel Town service worker without deleting player saves.

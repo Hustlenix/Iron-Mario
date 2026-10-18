@@ -46,6 +46,7 @@ jobs:
           "$godot" --headless --path . --export-release "Windows Desktop" build/windows/Super-Micro-Heroes.exe
           "$godot" --headless --path . --export-release "Linux" build/linux/Super-Micro-Heroes.x86_64
           "$godot" --headless --path . --export-release "Web" build/web/index.html
+          python tools/prepare_classic_web.py
           cp docs/WINDOWS_README.txt build/windows/README.txt
           chmod +x build/linux/Super-Micro-Heroes.x86_64
           python tools/check_engine.py build/linux/Super-Micro-Heroes.x86_64 --exported
