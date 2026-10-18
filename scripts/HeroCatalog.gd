@@ -2,7 +2,7 @@ extends RefCounted
 ## Original cast. Stable IDs are saved; display names can change safely.
 const IDS := ["ember", "moon", "sun", "tide", "comet", "thread", "cipher", "prism", "copper"]
 const HEROES := {
-	"ember": {"name":"EMBER RIG", "place":"SPARK FOUNDRY", "role":"BUILT TO KEEP GOING", "body":"c84b34", "trim":"edb74a", "light":"b7faff", "sky":"f6dfbc", "scenery":"bf8267", "motif":"forge"},
+	"ember": {"name":"IRON MARIO", "place":"SPARK FOUNDRY", "role":"BUILT TO KEEP GOING", "body":"c84b34", "trim":"edb74a", "light":"b7faff", "sky":"f6dfbc", "scenery":"bf8267", "motif":"forge"},
 	"moon": {"name":"MOON SCOUT", "place":"LUNAR OBSERVATORY", "role":"FOLLOW THE NIGHT SKY", "body":"364868", "trim":"75b7bb", "light":"c4efff", "sky":"bccbdc", "scenery":"7f93b1", "motif":"moon"},
 	"sun": {"name":"SUN COURIER", "place":"FLOATING ISLANDS", "role":"DELIVERY ABOVE THE CLOUDS", "body":"e88339", "trim":"fff1c4", "light":"fff0a6", "sky":"f7e7b8", "scenery":"d7ac78", "motif":"islands"},
 	"tide": {"name":"TIDE WARDEN", "place":"SEA CITADEL", "role":"GUARDIAN OF THE HARBOR", "body":"268b8d", "trim":"d6ad75", "light":"aeffe9", "sky":"c1e4dc", "scenery":"71aaa9", "motif":"sea"},

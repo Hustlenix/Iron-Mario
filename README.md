@@ -1,184 +1,141 @@
-# Super-Micro Heroes
+# IRON-MARIO: The Reactor Rescue
 
-Nine homemade heroes and seven quick games: play any one, or take on the five-life Tournament. Built in Godot, with an intentionally rough MS-Paint look.
+Iron Mario is an original red-and-gold armored hero who jumps, blasts scrap robots, restores the city relays, and takes on the Scrap King in a handmade MS Paint-style adventure.
 
-Formerly **Iron-Mario**. The repository URL and existing save locations stay the same.
+[Play in your browser](https://hustlenix.github.io/Iron-Mario/) · [Active source branch](https://github.com/Hustlenix/Iron-Mario/tree/classic-seven-games)
 
-[Play in your browser](https://hustlenix.github.io/Iron-Mario/) · [Download a release](https://github.com/Hustlenix/Iron-Mario/releases/latest) · [Build status](https://github.com/Hustlenix/Iron-Mario/actions)
+![Iron Mario adventure-first home](docs/paint_title_screen.png)
 
-![Super-Micro Heroes title screen artwork](docs/paint_title_screen.png)
+The images in this README are rendered previews of Godot drawing commands. GitHub Actions also captures actual browser screenshots of the exported game.
 
-*The images here are rendered from the game's drawing commands. They are visual previews, not live gameplay screenshots.*
+## Start playing
 
-## Play
+Choose **START ADVENTURE** on Home. Saved stage progress changes this to **CONTINUE ADVENTURE**. **NEW ADVENTURE** starts at the workshop; existing arcade records remain intact.
 
-**Windows:** download the Windows ZIP from Releases, extract **everything**, and open `Super-Micro-Heroes.exe`. Keep `Super-Micro-Heroes.pck` in the same folder. You do not need Godot installed. Requires 64-bit Windows 10+ and an OpenGL 3.3-capable graphics driver. [Troubleshooting](docs/WINDOWS_README.txt).
+For Windows, extract the entire build ZIP and launch `Super-Micro-Heroes.exe` with its `.pck` beside it. The executable retains its historical filename; the game's title is IRON-MARIO.
 
-**Browser / phones:** open the play link above and press PLAY. Turn phones sideways. Use your left thumb to slide the movement pad and your right thumb to jump. Tap targets and arrow tiles; tap a repair chip and then its socket (dragging also works). The mission pauses when the phone is upright or the app loses focus. FULL SCREEN is optional and depends on the browser.
+From source, open `project.godot` in Godot **4.4.1**, then press F5. The main scene is `res://scenes/title_screen.tscn`. The core game avoids features newer than 4.4. The optional preserved Vault uses its own Godot 4.7.1 export.
 
-The browser version needs WebGL 2. There is no APK or App Store installation in this update. Phone support is delivered through the Web build.
+## The core adventure
 
-**From source:** import `project.godot` in Godot and press **F5**. The main scene is `scenes/title_screen.tscn`. Godot **4.4.1** is the tested build baseline; 4.7.1 remains a compatibility target, not a claimed test result.
+Iron Mario is always the protagonist. Arcade character preferences do not replace him in the story.
 
-## How a run works
+1. **Workshop Escape:** learn movement, collect three fuses, and blast or jump on patrol robots.
+2. **Skyline Relay:** cross gaps on gently moving bridges, reach raised relays, and watch turret warning lights.
+3. **The Molten Works:** navigate lava gaps and steam vents that flash before erupting.
+4. **The Scrap King:** dodge telegraphed ground pulses, exploit the exposed core, and survive escalating attacks.
 
-The home screen displays **all seven games**, a separate **TOURNAMENT** card, and **BONUS: FLAPPY**. Pick a game for one quick round, followed by **PLAY AGAIN** and **HOME**. Single-game results do not change Tournament records.
+Movement has acceleration, air control, jump buffering, coyote time, and short hops when Jump is released. Iron Mario has breathing, running, jumping, blaster, damage, and victory poses. Each stage has a checkpoint; cleared-stage progress is saved. Falling costs a hull and returns to the current checkpoint. Three lost hulls offer a retry of the saved stage. The ending celebrates the restored reactor; failure powers the suit down.
 
-Choose **TOURNAMENT** for the original gauntlet. A three-second briefing shows the next mission's background, one-line objective, and preparation bar. The game loads the scene during that briefing and starts only when both the countdown and loading are complete.
-
-Win to earn score and build your streak. A failed mission costs one reactor and stays in the queue for another attempt. Clear all seven to reach the ending; lose all five lives and the suit powers down. **HARDER MODE** starts another loop with faster hazards, tighter windows, or longer patterns.
-
-The original project's five-life system is preserved.
+![Workshop Escape rendered preview](docs/paint_iron_adventure.png)
 
 ## Controls
 
-| Action | Control |
-| --- | --- |
-| Move | A / D or Left / Right |
-| Jump, parry, sequence up | W / Space / Up |
-| Sequence down | S / Down |
-| Aim or drag parts | Left mouse button |
-| Restart a mission | R |
-| Select menus | Tab / arrows, then Enter |
-| Flappy thrust | W / Space / Up or left click |
-| Flappy retry after a crash | R, jump, or left click |
-| Leave Flappy | Escape |
-| Phone movement | Left thumb: slide the pad left/right; centre stops |
-| Phone jump / timing | Right thumb: large JUMP / PARRY button |
-| Phone targets / memory | Tap drones / arrow tiles |
-| Phone repair | Tap chip, then matching socket; or drag |
-| Phone Flappy | Tap the play area |
-| Phone menu / replay | HOME during play; PLAY AGAIN after a single game |
+| Mode | Keyboard / mouse | Phone |
+|---|---|---|
+| Adventure movement | A/D or arrows | Left thumb on movement pad |
+| Adventure jump | W / Up / Space; release for short hop | Right JUMP button |
+| Adventure blast | Hold E / Enter | Right BLAST button |
+| Arcade directions | Arrows / WASD | Direction pad; direct dragging where supported |
+| Arcade primary | Space / E / Enter | Large labelled action button |
+| Arcade secondary | Z / U | Secondary button when needed |
+| Paddle games | Move keys or mouse position | Drag paddle |
+| Grid X / Sky Shield | Click a cell / interception point | Tap directly |
+| Pause | Escape | PAUSE button |
+| Retry | R | PLAY AGAIN after result |
+| Return Home / Arcade | Pause, then Home / Arcade | Same pause menu |
 
-## The seven missions
+Phone play is landscape. Turning upright or losing app focus pauses the game and clears held inputs. Controls support simultaneous two-finger input. Physical phone hardware testing is still needed; automated browser checks use mobile emulation.
 
-| Mission | Objective |
-| --- | --- |
-| Arc Reactor Dash | Jump between platforms and collect three shards. |
-| Target Lock | Click five or six moving drones. |
-| Laser Tunnel | Jump over the beams until time runs out. |
-| Reactor Parry | Press jump inside the green zone three times. |
-| Armor Repair | Drag three chips onto matching sockets. |
-| Rocket Rescue | Catch five pods before missing three. |
-| Power Core Sequence | Watch the arrow pattern and repeat it. |
+## Optional arcade: twenty cabinets
 
-Each mission lasts roughly 8–12 seconds. Successful inputs can finish a mission early.
+Choose **ARCADE** from Home. All games are available immediately, in four pages with objectives, per-game records, and replay controls. Their lives, scores and timing are independent of the seven-game Tournament.
 
-## Bonus: Flappy flight
+| Cabinet | Goal / progression |
+|---|---|
+| Dino Dash | Endless jump-and-duck runner; first three obstacles are small ground thorns |
+| Grid X | Three tic-tac-toe terminals: exploring AI, wins/blocks AI, then minimax AI; win or draw advances |
+| Sidecourt | Side-view gravity tennis; lob/drive shots; two bounces lose the point; first to five |
+| Orbit Duel | Turn, thrust, brake and fire under solar gravity; defeat three rival drones |
+| Paddle Panic | Paddle position shapes return angles; first to five |
+| Dark Cavern | Twelve linked rooms, clue-based hazards, three bolts, two caches, return to entrance |
+| Armored Arena | Three wall-filled tank arenas; directional gun, enemy firing warnings, three hulls |
+| Brick Burst | Endless brick waves; tougher layouts, edge aiming, WIDE/SLOW chips and three balls |
+| Byte Munch | Endless snake with turn buffering, growing trail and warned obstacle posts |
+| Invader Patrol | Three descending robot formations; destructible barriers repair between waves |
+| Rock Drift | Three inertial debris fields; large rocks split into smaller threats |
+| Soft Landing | Three pads; downward speed <=28, sideways speed <=20, angle <=0.13 radians; fuel and three hulls |
+| Flag Run | Six flags and return to exit in each of three districts; smoke costs exactly 12 fuel |
+| Dot Gobbler | Two original mazes; buffered turns, seven-second power crystals, collected dots survive damage |
+| Sky Shield | Three missile waves; limited ammunition, expanding blasts and chain reactions |
+| Bug Blaster | Three garden waves; mushrooms block shots and redirect advancing bugs |
+| Hopway | Four home bays across three rounds; traffic, rideable logs, crossing timer and four lives |
+| Color Steps | Three diagonal-hopping pyramids; final pyramid needs two coats; one recall per pyramid |
+| Crate Shift | Five original push-only crate rooms; undo; all rooms verified solvable |
+| Stackfall | Seven-piece bag, rotation and wall kicks, ghost, soft/hard drops; clear 24 rows |
 
-Fly through the pipe gaps, earn medals, and collect a shield that absorbs one pipe collision. The floor still ends your flight. The bonus is separate from the seven-mission gauntlet.
+**Rockfall Mines** remains a future proposal; it has no playable cabinet yet.
 
-Flight runs on the physics tick. Pipe openings remain above the floor, and consecutive gaps stay within a bounded vertical distance. Keyboard and mouse use the same immediate flap input. Restart resets the pipes, trail, shield, and score. New records save after every point.
+## Existing games and the larger Vault
 
-## Your pilot profile
+**QUICK GAMES + TOURNAMENT** retains Arc Reactor Dash, Target Lock, Laser Tunnel, Reactor Parry, Armor Repair, Rocket Rescue and Power Core Sequence. Each remains individually playable. Tournament keeps its five reactor lives, random seven-game order, streak scoring, winner/death scenes and harder loops. Bonus Flappy retains its medals, shield pickups and saved best score.
 
-Open **HERO** on the title screen to set a callsign and preview the nine characters. Each card changes the outfit, background, and music immediately. Press **SAVE PROFILE** to equip it. Every character uses the same movement, collision size, and mission rules.
+The nine original arcade hero choices, profile, settings and soundtrack remain available. The Ember Rig profile display name is now **Iron Mario**, using the same stable saved ID `ember`.
 
-| Hero | World |
-| --- | --- |
-| Ember Rig | Spark Foundry |
-| Moon Scout | Lunar Observatory |
-| Sun Courier | Floating Islands |
-| Tide Warden | Sea Citadel |
-| Neon Comet | Comet Launch Port |
-| Thread Runner | Garden Rooftops |
-| Cipher Fox | Midnight Rail Yard |
-| Prism Weaver | Crystal Caverns |
-| Copper Guard | Clockwork Fortress |
+**LARGER ARCADE VAULT** preserves the existing 105-game project as a separate optional Web export at `extended-arcade/`, with a visible return link to Iron Mario. Its source is pinned to `dee29ae9d8ce1e66eafbb84dc9eaa8db3d530359` on the preserved main history. The core homepage stays focused on Iron Mario. The Vault retains its own art, credits and save system; its existing limitations are recorded in that source version's README.
 
-The profile shows high score, best streak, missions cleared, runs won, highest loop with a clear, and Flappy record. Rank advances from Cadet to Defender to Ace as missions are cleared.
+## Godot architecture
 
-Everything is stored **locally on your device**. There is no sign-in or online leaderboard. Profiles and settings use `user://iron_mario_save.cfg`; existing best-streak, volume, and Flappy records migrate from the older `user://save.dat` without deleting it. New lifetime counters begin at zero because old saves did not record them. Browser and desktop profiles are separate.
+| Component | Responsibility |
+|---|---|
+| `Global.gd` | Existing saves/settings; separate arcade records and adventure stage/clear fields |
+| `GameManager.gd` | Existing Tournament state and deferred scene navigation |
+| `AdventureMotor.gd` | Adventure movement, jump buffering, coyote time and variable jump height |
+| `IronAdventure.gd` | Authored stages, collectibles, checkpoints, enemies, steam vents, boss phases and endings |
+| `ArcadeGameBase.gd` | Shared input, two-finger ownership, pause, HUD, records, results and cleanup |
+| `ArcadeCatalog.gd` | Twenty stable cabinet IDs and metadata |
+| `ReflexGames.gd` | Runner, paddle, tennis and brick-ball simulation |
+| `BoardGames.gd` | Grid/maze logic, puzzle rooms, AI and falling blocks |
+| `SpaceGames.gd` | Gravity, inertia, rock splitting and landing |
+| `ActionGames.gd` | Tanks, robots, driving, missiles and garden waves |
+| `MiniGameBase.gd` | Existing short-game timer and Tournament result signals |
+| `Paint.gd` / `IronHero.gd` | Original irregular outlines, flat fills, letter strokes and hero poses |
 
-Old saves select Ember Rig and retain their records. Desktop save locations remain in the original Godot/app_userdata/Iron-Mario folder (lowercase godot on Linux); the rename does not start a new profile.
+The game keeps one `Global` state holder. Arcade sessions do not award Tournament clears or alter its records. Saves use the existing custom data directory and `iron_mario_save.cfg`. New fields default safely for old profiles. The preserved Vault has an independent runtime.
 
-Settings includes volume, mute, **TOUCH: AUTO / ON**, and **RESET PROGRESS**. ON lets a desktop user try the visible touch controls. Reset clears records while keeping the callsign, equipped hero, and preferences.
+## Original assets and audio
 
-![Local pilot profile](docs/paint_profile_scene.png)
+The core adventure and twenty new cabinets use original Godot drawing code: solid fills, deliberately uneven outlines, simple silhouettes, hand-lettered glyphs and no smooth 3D rendering. Existing original SVGs and synthesized sound effects are reused. Original hero music adds a faster boss mood and victory transition. No official franchise artwork or film soundtrack is included. The optional historical Vault retains its own documented asset credits and licenses.
 
-## Art and loading screens
+## Verification and export
 
-The cast has different silhouettes and equipment: hoods, goggles, a courier bag, an energy pack, utility gear, crystal rings, and shields. Idle, flight, damaged, and victory poses share the same drawing code. The equipped character appears in the title, briefings, missions with a player character, Flappy, repair display, and endings.
-
-The artwork keeps its MS Paint look: flat fills, uneven dark outlines, angular shapes, and handmade lettering. It is drawn programmatically, not claimed to be human-painted in Microsoft Paint. These are original characters; no official franchise logos, extracted sprites, downloaded artwork, or asset packs are included.
-
-Every mission has a different briefing backdrop: rooftops and shards, drone radar, a laser corridor, a reactor chamber, a repair bench, rescue-pod skies, or a sequence circuit. The bar measures **mission preparation**: both the three-second briefing and real resource readiness. It is not a fake download percentage.
-
-![Mission briefing artwork](docs/paint_loading_reactor_parry.png)
-
-Each hero has an original instrumental loop with its own motif, tempo, and musical palette. Music crossfades between previews and changes intensity for missions and endings. These are project compositions, not Marvel recordings or recreated film themes. The generator is `tools/generate_hero_music.py` (NumPy required to regenerate; the WAV files are included). Effects and bonus audio remain available.
-
-![Prism Weaver and the character roster](docs/paint_hero_prism.png)
-
-## Endings
-
-**Mission Complete:** the hero celebrates above the city with reactor light and confetti. The screen shows score, streak, and loop, with Play Again, Harder Mode, and Back to Title.
-
-**Suit Powered Down:** the reactor flickers and powers down. The screen shows score and completed missions, with Try Again and Back to Title.
-
-## Project structure
-
-| File or directory | Responsibility |
-| --- | --- |
-| `scripts/Global.gd` | Run state, input actions, local profile, settings, save migration |
-| `scripts/GameManager.gd` | Shuffled mission queue, scoring flow, scene transitions |
-| `scripts/MiniGameBase.gd` | Shared timer, HUD, win/loss signals, restart |
-| `scripts/Intermission.gd` | Threaded scene preparation, countdown, progress display |
-| `scripts/ui/MissionBackdrop.gd` | Seven briefing environments |
-| `scripts/ProfileScene.gd` | Editable callsign, hero previews, saved records |
-| `scripts/HeroCatalog.gd` | Stable hero IDs, outfits, colors, and world names |
-| `scripts/Music.gd` | Persistent music, transitions, and mood |
-| `scripts/ui/TouchControls.gd` | Multiple fingers, action buttons, release cleanup |
-| `scripts/MobileSession.gd` | Focus and portrait pause |
-| `web/mobile_shell.html` | Phone-friendly loading, launch, fullscreen, and rotate prompt |
-| `scripts/ui/IronHero.gd` | Shared suit artwork and poses |
-| `scripts/ui/Paint.gd` | Drawing style and stroke lettering |
-| `scripts/minigames/` | Seven mission implementations |
-| `scenes/flappy_bird.gd` | Bonus flight mechanics |
-| `tools/` | Runtime checks and preview generation |
-
-The original four-game scenes remain for compatibility and reference. Home cards use the shared manager for single games; Tournament queues all seven. `SingleResult.gd` handles the standalone replay/home screen.
-
-## Build and test
-
-Install the matching Godot export templates. On Windows PowerShell, from the project folder:
-
-```powershell
+```sh
 godot --path .
-New-Item -ItemType Directory -Force build/windows, build/linux, build/web
-godot --headless --path . --export-release "Windows Desktop" build/windows/Super-Micro-Heroes.exe
-godot --headless --path . --export-release "Linux" build/linux/Super-Micro-Heroes.x86_64
-godot --headless --path . --export-release "Web" build/web/index.html
-python -m http.server 8000 --directory build/web
-```
-
-Open `http://localhost:8000` for the exported browser version. Serve it over HTTP rather than opening the HTML file directly. The Web preset is single-threaded and needs no cross-origin isolation headers. Native exports use unmodified Godot executables with a separate PCK; never patch an executable to update the game data.
-
-```text
+python tools/solve_warehouses.py
 python tools/validate_project.py
-python tools/check_engine.py /path/to/godot
-python tools/check_engine.py build/windows/Super-Micro-Heroes.exe --exported
+python tools/check_engine.py /absolute/path/to/godot
 ```
 
-GitHub Actions runs mechanics and scene checks on Linux and Windows, tests the exported executables, and tests the Web game in Chromium with desktop and mobile touch emulation. The browser job saves screenshots. Web publication waits for all jobs. [Verification scope](docs/TEST_REPORT.md). Emulation and headless checks do not claim physical Android/iPhone, audio, or graphics-driver validation.
+The source suites cover the original gameplay, profiles and touch behavior, plus 105 adventure/cabinet assertions. The new suite checks legal puzzle inputs, physical scoring boundaries, save reloads, all three authored traversal paths and an automated boss pilot using legal movement/shots with three hulls. The crate solver independently searches all five room layouts.
 
-## Development log
+GitHub Actions validates and exports the core with Godot 4.4.1, launches source and native packages on Windows, and exercises the exported game in Chromium. Browser checks open all twenty cabinets, exercise adventure keyboard/two-finger input, pause and orientation, preserved Flappy, and the separate Vault. Actual phone/speaker/GPU combinations are outside automated coverage.
 
-[DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md) contains a planned **16.5-hour scope**, approximately 16 hours, with blank actual-time fields. Record real development sessions before submitting. Planned hours and AI runtime are not claims of human coding time.
+Install the matching official templates, then:
 
-## Credits
+```sh
+mkdir -p build/windows build/linux build/web
+godot --headless --path . --export-release "Windows Desktop" build/windows/Super-Micro-Heroes.exe
+godot --headless --path . --export-release Linux build/linux/Super-Micro-Heroes.x86_64
+godot --headless --path . --export-release Web build/web/index.html
+python tools/prepare_classic_web.py
+```
 
-- Project owner: Hemanathan SV / Hustlenix.
-- Engine: [Godot](https://godotengine.org/).
-- Pacing inspiration: the WarioWare microgame genre and [Goose Games by gabl18](https://gabl18.itch.io/goose-games).
-- The original prototype acknowledged the “How to Make Your First WarioWare-style Game” tutorial.
-- Character inspirations belong to their respective owners; this project is not affiliated with or endorsed by them.
+The deployment workflow also exports the pinned larger arcade with Godot 4.7.1, places it under `extended-arcade/`, and publishes both after required checks pass. A local core-only export does not bundle that optional Vault.
 
-## AI-use disclosure
+## Development log, credits and AI use
 
-AI assistance contributed code, debugging, procedural artwork, test tooling, and documentation. The project owner should review the work, make the final creative decisions, and record their own actual development time honestly.
+See [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md) for the planned schedule and honest update notes. No untracked coding hours are claimed as completed.
 
+Godot Engine powers the game. The rapid microgame format takes inspiration from WarioWare; the new cabinets use familiar arcade genres with original names, layouts and artwork. The original project and its accumulated arcade work are retained in Git history and the optional Vault.
 
-## Restored seven-game edition
-
-This edition is maintained on `classic-seven-games`. It restores the seven-game Home screen, Tournament, bonus Flappy, nine original heroes and two-thumb controls. Web builds use fresh runtime URLs and retire the newer Pixel Town service worker without deleting player saves.
+AI assisted the implementation, drawing code, original synthesized audio, documentation and automated checks. These are programmatic artworks designed to resemble handmade MS Paint drawings, not a claim that every asset was manually painted in Microsoft Paint.

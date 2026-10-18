@@ -41,13 +41,14 @@ func _draw() -> void:
 	var bright := Color("eb4f3c") if pose != "damaged" else Color("996057")
 	var gold := Color("eebd55") if pose != "damaged" else Color("9b8155")
 	var dark := Color("622c35")
-	var lift := -2.0 if pose == "jump" else 0.0
+	var lift := -2.0 if pose == "jump" else sin(age*2.3)*0.7
 	# Art stays centered on the existing 44 x 64 collision body.
 	# Separate limbs, faceplate, two eye slits, chest plates and repulsors.
 	for direction in [-1.0, 1.0]:
 		var hip := Vector2(direction*6, 13)
-		var knee := Vector2(direction*7, 22 + (2 if pose == "damaged" else 0))
-		var foot := Vector2(direction*9, 30)
+		var stride: float = sin(age*15.0)*direction if pose == "run" else 0.0
+		var knee := Vector2(direction*7+stride*4, 22 + (2 if pose == "damaged" else 0))
+		var foot := Vector2(direction*9+stride*8, 30-absf(stride)*5)
 		_limb(hip, knee, 9, gold)
 		_limb(knee, foot, 9, red)
 		_plate([foot+Vector2(-5,-2),foot+Vector2(4,-2),foot+Vector2(6,3),foot+Vector2(-6,3)], bright)
@@ -56,10 +57,13 @@ func _draw() -> void:
 			_plate([foot+Vector2(-3,4),foot+Vector2(3,4),foot+Vector2(1,11+sin(age*20)*2)], Paint.GOLD)
 		var shoulder := Vector2(direction*15, -7+lift)
 		var elbow := Vector2(direction*19, 3)
-		var hand := Vector2(direction*20, 13)
+		var hand := Vector2(direction*20-stride*6, 13+stride*5)
 		if pose == "victory":
 			elbow = Vector2(direction*23,-16)
 			hand = Vector2(direction*24,-26)
+		elif pose == "blast" and direction > 0:
+			elbow = Vector2(25,-6)
+			hand = Vector2(35,-9)
 		elif pose == "jump":
 			elbow = Vector2(direction*19, 5)
 			hand = Vector2(direction*22, 14)

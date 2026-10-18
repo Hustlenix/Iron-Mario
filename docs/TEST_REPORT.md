@@ -1,3 +1,9 @@
+# Iron Mario: adventure and arcade verification
+
+## New coverage
+
+The new source suite passes 105 assertions covering all twenty cabinet scenes, pause, physical collision/scoring boundaries, AI, puzzles, save reloads, legal traversal of the three authored stages, and a boss pilot with three hulls. The independent warehouse solver finds legal solutions for all five rooms. Existing 82 gameplay and 51 hero/touch assertions remain required. The browser suite now checks the adventure-first home, keyboard and simultaneous two-finger adventure controls, all twenty cabinets, preserved Flappy, and the separate Vault. Physical device and audible playback testing remain unclaimed.
+
 # Super-Micro Heroes verification
 
 ## Home and two-thumb controls

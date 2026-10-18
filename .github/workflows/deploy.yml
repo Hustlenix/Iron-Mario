@@ -1,7 +1,7 @@
 name: Build, test, and publish
 on:
   push:
-    branches: [main]
+    branches: [classic-seven-games]
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,47 @@ env:
   GODOT_VERSION: 4.4.1
 
 jobs:
+  vault:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dee29ae9d8ce1e66eafbb84dc9eaa8db3d530359
+          path: archive-source
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Export preserved 105-game arcade with its matching engine
+        shell: bash
+        run: |
+          base="https://github.com/godotengine/godot-builds/releases/download/4.7.1-stable"
+          curl -fL --retry 3 "$base/Godot_v4.7.1-stable_linux.x86_64.zip" -o /tmp/vault-editor.zip
+          unzip -q /tmp/vault-editor.zip -d /tmp/vault-editor
+          chmod +x /tmp/vault-editor/Godot*
+          curl -fL --retry 3 "$base/Godot_v4.7.1-stable_export_templates.tpz" -o /tmp/vault-templates.tpz
+          target="$HOME/.local/share/godot/export_templates/4.7.1.stable"
+          mkdir -p "$target"
+          unzip -j -q /tmp/vault-templates.tpz 'templates/web_nothreads_*.zip' 'templates/version.txt' -d "$target"
+          python -m pip install Pillow
+          /tmp/vault-editor/Godot* --headless --path archive-source --editor --import --quit
+          mkdir -p archive-source/build/web
+          /tmp/vault-editor/Godot* --headless --path archive-source --export-release Web build/web/index.html
+          python archive-source/tools/finish_web.py
+          python - <<'PYTHON'
+          from pathlib import Path
+          path=Path('archive-source/build/web/index.html')
+          link='<a id="iron-mario-return" href="../" style="position:fixed;right:8px;bottom:8px;z-index:10000;padding:10px;background:#fff6dc;border:3px solid #202022;color:#202022;font:16px monospace;text-decoration:none">IRON MARIO HOME</a>'
+          path.write_text(path.read_text().replace('</body>',link+'</body>'))
+          PYTHON
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extended-arcade-build
+          path: archive-source/build/web/
+          if-no-files-found: error
+
   build:
+    needs: vault
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -60,6 +100,10 @@ jobs:
           name: Super-Micro-Heroes-Linux
           path: build/linux/
           if-no-files-found: error
+      - uses: actions/download-artifact@v4
+        with:
+          name: extended-arcade-build
+          path: build/web/extended-arcade
       - uses: actions/upload-artifact@v4
         with:
           name: web-build

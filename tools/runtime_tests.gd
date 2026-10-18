@@ -315,7 +315,7 @@ func run_tests() -> void:
 	check(get_tree().current_scene.scene_file_path == GameManager.TITLE_SCENE, "Back to title returns correctly")
 	var saved_wins := Global.total_wins
 	var saved_clears := Global.total_clears
-	check(get_tree().current_scene.has_node("Game0") and get_tree().current_scene.has_node("Game8"), "Home exposes seven games, Tournament and Flappy")
+	check(get_tree().current_scene.has_node("Adventure") and get_tree().current_scene.has_node("Arcade"), "Home leads with Iron Mario adventure and keeps Arcade optional")
 	for index in range(7):
 		GameManager.start_single(index)
 		await get_tree().create_timer(0.1).timeout

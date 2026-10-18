@@ -1,6 +1,7 @@
 extends "res://scripts/ui/PaintButton.gd"
 var subtitle := ""
 var badge := ""
+var detail := ""
 
 func _draw() -> void:
 	var shift := Vector2(3,3) if is_pressed() else Vector2.ZERO
@@ -12,5 +13,7 @@ func _draw() -> void:
 	Paint.text(self,text,Vector2(66,42)+shift,22,Paint.INK,size.x-82)
 	Paint.text(self,subtitle,Vector2(20,83)+shift,18,Paint.INK,size.x-36)
 	Paint.text(self,"PLAY >",Vector2(20,115)+shift,18)
+	if not detail.is_empty():
+		Paint.text(self,detail,Vector2(20,145)+shift,16,Paint.INK,size.x-35)
 	if has_focus():
 		Paint.rect(self,Rect2(9,9,size.x-24,size.y-24),Paint.INK,false,2)

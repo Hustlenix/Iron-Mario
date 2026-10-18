@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0 — Iron Mario: The Reactor Rescue
+
+- Made Iron Mario the fixed adventure protagonist and the homepage focus.
+- Added three authored platform stages, checkpoints, moving bridges, telegraphed steam vents, patrol/turret enemies and a three-phase Scrap King boss.
+- Added twenty optional arcade cabinets with shared controls, pause/results, local records and independent lifecycles.
+- Preserved seven quick games, Tournament, Flappy, profile/settings and the larger 105-game project through an optional Vault export.
+- Added independent warehouse solvability searches, 105 new behavior checks and full cabinet/browser navigation coverage.
+
+
 ## 2.1.0 — Pick a game and two-thumb controls
 
 - Added seven standalone game cards, a separate Tournament card, and bonus Flappy on Home.

@@ -4,6 +4,10 @@ const SAVE_PATH := "user://iron_mario_save.cfg"
 const DEFAULT_LIVES := 5
 const Heroes = preload("res://scripts/HeroCatalog.gd")
 var hero_id := "ember"
+var arcade_records: Dictionary = {}
+var adventure_stage := 0
+var adventure_complete := false
+var adventure_wins := 0
 var touch_controls := false
 
 var lives: int = DEFAULT_LIVES
@@ -53,6 +57,10 @@ func reset_records() -> void:
 	total_wins = 0
 	high_score = 0
 	highest_loop = 1
+	arcade_records.clear()
+	adventure_stage = 0
+	adventure_complete = false
+	adventure_wins = 0
 	reset_run()
 	save_data()
 
@@ -133,6 +141,10 @@ func toggle_mute() -> bool:
 
 func save_data() -> void:
 	var config := ConfigFile.new()
+	config.set_value("arcade","records",arcade_records)
+	config.set_value("adventure","stage",adventure_stage)
+	config.set_value("adventure","complete",adventure_complete)
+	config.set_value("adventure","wins",adventure_wins)
 	config.set_value("progress", "best_streak", best_streak)
 	config.set_value("settings", "muted", muted)
 	config.set_value("settings", "volume", volume)
@@ -149,6 +161,11 @@ func save_data() -> void:
 func load_data() -> void:
 	var config := ConfigFile.new()
 	if config.load(SAVE_PATH) == OK:
+		var stored = config.get_value("arcade","records",{})
+		arcade_records = stored if stored is Dictionary else {}
+		adventure_stage = clampi(int(config.get_value("adventure","stage",0)),0,3)
+		adventure_complete = bool(config.get_value("adventure","complete",false))
+		adventure_wins = maxi(0,int(config.get_value("adventure","wins",0)))
 		hero_id = Heroes.valid_id(str(config.get_value("profile", "hero_id", "ember")))
 		touch_controls = bool(config.get_value("settings", "touch_controls", false))
 		best_streak = int(config.get_value("progress", "best_streak", 0))
@@ -175,6 +192,8 @@ func _apply_audio_setting() -> void:
 		AudioServer.set_bus_volume_db(bus_index, linear_to_db(maxf(volume, 0.001) / 100.0))
 
 func _ensure_input_actions() -> void:
+	for entry in [["left",[KEY_A,KEY_LEFT]],["right",[KEY_D,KEY_RIGHT]],["up",[KEY_W,KEY_UP]],["down",[KEY_S,KEY_DOWN]],["primary",[KEY_SPACE,KEY_E,KEY_ENTER]],["secondary",[KEY_Z,KEY_U]]]:
+		_add_key_action("arcade_"+entry[0],entry[1])
 	_add_key_action("left", [KEY_A, KEY_LEFT])
 	_add_key_action("right", [KEY_D, KEY_RIGHT])
 	_add_key_action("move_left", [KEY_A, KEY_LEFT])
@@ -208,3 +227,11 @@ func _add_mouse_action(action_name: StringName, button_index: int) -> void:
 	var event := InputEventMouseButton.new()
 	event.button_index = button_index
 	InputMap.action_add_event(action_name, event)
+
+func record_arcade(id: String, points: int, clear: bool, reached: int) -> void:
+	var record: Dictionary = arcade_records.get(id,{"best":0,"clears":0,"stage":0})
+	record["best"] = maxi(int(record.get("best",0)),points)
+	record["clears"] = int(record.get("clears",0)) + (1 if clear else 0)
+	record["stage"] = maxi(int(record.get("stage",0)),reached)
+	arcade_records[id] = record
+	save_data()

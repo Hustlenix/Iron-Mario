@@ -62,3 +62,15 @@ Add one row after each real development session.
 **What am I proud of?** This update makes the games easier to find and lets players practise a favourite without waiting for random selection.
 
 Implementation and automated test work used AI assistance. Actual coding time for this update: **not yet recorded**. Physical phone feedback is still needed.
+
+## Iron Mario: the core experience
+
+**What did you make?** Iron Mario now leads an authored adventure through a workshop, skyline bridges, molten factory and Scrap King boss fight. The homepage offers that journey first. Twenty arcade cabinets, the seven quick games, Tournament and Flappy sit behind optional menu choices. The larger 105-game project remains available through a separate Vault export.
+
+**What was challenging?** The longer games needed independent lives, scores, checkpoints and endings rather than the ten-second timer used by microgames. The boss needed readable attacks and a usable weakness window. The warehouse layouts needed proof that push-only puzzles could be solved. Browser builds also needed to package the preserved project without mixing its Godot version and save system into the adventure.
+
+**What are you proud of?** Iron Mario has a clear role, movement with short hops and jump buffering, different stage hazards and an actual boss. The arcade work still has a place without taking over the first screen.
+
+**What should testers know?** Start Adventure, try a short and long jump, blast turrets after their warning, and use the checkpoints. The boss core opens after its slam; jump the approaching ground pulse. Try each Arcade card, pause, replay and return Home. For Crate Shift, Z undoes. For Soft Landing, all three landing conditions must be safe. Test two fingers together on a real landscape phone. The separate Vault should open and return through IRON MARIO HOME.
+
+AI assisted code, art generation through drawing commands, audio and tests. Automated checks supplement real playtesting. Actual hours for this update: **not recorded yet**; the earlier planned-hours table is not an actual-time claim.

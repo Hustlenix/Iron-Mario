@@ -23,7 +23,7 @@ func capture_node(node: Node) -> void:
 		capture_node(child)
 
 func capture() -> void:
-	for path in ["title_screen","intermission","minigames/arc_reactor_dash","minigames/target_lock","minigames/laser_tunnel","minigames/reactor_parry","minigames/armor_repair","minigames/rocket_rescue","minigames/power_core_sequence","winner_scene","death_scene","profile_scene","settings_scene","flappy_bird"]:
+	for path in ["adventure/iron_adventure","arcade_library","quick_games"] + preload("res://scripts/arcade/ArcadeCatalog.gd").GAMES.map(func(row): return "arcade/"+row[0]) + ["title_screen","intermission","minigames/arc_reactor_dash","minigames/target_lock","minigames/laser_tunnel","minigames/reactor_parry","minigames/armor_repair","minigames/rocket_rescue","minigames/power_core_sequence","winner_scene","death_scene","profile_scene","settings_scene","flappy_bird"]:
 		var scene = load("res://scenes/" + path + ".tscn").instantiate()
 		add_child(scene)
 		scene.set_process(false)

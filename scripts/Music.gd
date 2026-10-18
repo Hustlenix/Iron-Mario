@@ -19,7 +19,7 @@ func play_theme(id: String, next_mood: String = "menu") -> void:
 	if players.is_empty():
 		return
 	mood = next_mood
-	var target_db := -17.0 if mood == "mission" else -13.0
+	var target_db := -17.0 if mood in ["mission","boss"] else -13.0
 	if mood == "death":
 		target_db = -22.0
 	id = Catalog.valid_id(id)
@@ -43,7 +43,7 @@ func play_theme(id: String, next_mood: String = "menu") -> void:
 		fade.tween_property(players[old], "volume_db", -60.0, 0.4)
 		fade.chain().tween_callback(players[old].stop)
 	fade.tween_property(players[active], "volume_db", target_db, 0.4)
-	fade.tween_property(players[active], "pitch_scale", 0.85 if mood == "death" else (1.04 if mood == "mission" else 1.0), 0.4)
+	fade.tween_property(players[active], "pitch_scale", 0.85 if mood == "death" else (1.11 if mood == "boss" else (1.04 if mood == "mission" else 1.0)), 0.4)
 
 func stop_music() -> void:
 	if fade:
