@@ -58,6 +58,7 @@ tree=git('write-tree',env=env).decode().strip()
 commit=git('commit-tree',tree,'-p',base,'-m','Deploy OnlyEducation playground from '+source[:12]).decode().strip()
 # A normal non-force push rejects a concurrent gh-pages update rather than overwriting it.
 git('push','origin',commit+':refs/heads/gh-pages')
-report={**metadata,'deploymentCommit':commit,'previousPagesCommit':base,'publishedFiles':len(files),'files':{p:hashlib.sha256(files[p].read_bytes()).hexdigest() for p in paths}}
+# Hash the stored Git blobs: checkout filters may normalize text line endings.
+report={**metadata,'deploymentCommit':commit,'previousPagesCommit':base,'publishedFiles':len(files),'files':{p:hashlib.sha256(git('cat-file','blob',blob)).hexdigest() for p,blob in zip(paths,blobs)}}
 (OUT/'release-report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8')
 print(json.dumps({k:v for k,v in report.items() if k!='files'},indent=2))
