@@ -1,48 +1,67 @@
-# IRON-MARIO → ONLYEDUCATION
+# ONLYEDUCATION
 
-Bringing childhood gaming back, one pixel at a time.
+This is my idea in play for a nostalgic gaming platform.
 
-This started as Iron-Mario. Now I am shaping it into **OnlyEducation**, my nostalgic pixel-game platform under **Hustlenix**.
+I want to bring back the games we used to play on sites like Friv, Miniclip and Poki, but with my own little pixel games. You open the website, pick something and play. Thats the idea.
 
-My idea is simple: bring back that feeling of opening a browser, finding a random game, and somehow spending way too long on it🤣. Original little games, chunky pixels, and that “one more try” feeling.
+This used to be **Iron-Mario**. I changed the name because OnlyEducation felt better for what I wanted to build.
 
-**[Play](https://hustlenix.github.io/Iron-Mario/arcade/)** · **[Original Godot arcade](https://hustlenix.github.io/Iron-Mario/legacy.html)** · **[Development branch](https://github.com/Hustlenix/Iron-Mario/tree/codex/onlyeducation-history-arcade)**
+My project: [Iron-Mario on GitHub](https://github.com/Hustlenix/Iron-Mario).
+My idea in play: [OnlyEducation](https://hustlenix.github.io/Iron-Mario/arcade/).
 
-![Original Dino Dash pixel artwork](onlyeducation/arcade/art/dino-dash-card.png)
+![Dino Dash](onlyeducation/arcade/art/dino-dash-card.png)
 
-## What is in it?
+## Play
 
-The current development build has **20 playable games**. There are puzzles, racing, court games, space battles, a landing game, and a dinosaur running around **67 million years ago**. Bro picked a bad time to go for a run💔.
+I published it on GitHub Pages, and am using GitHub for version control.
 
-The latest six are **Orbit Duel, Armored Arena, Invader Patrol, Soft Landing, Dot Gobbler, and Bug Blaster**. Rockfall Mines is still on the workbench.
+**[Play](https://hustlenix.github.io/Iron-Mario/arcade/)** · **[Original Godot game](https://hustlenix.github.io/Iron-Mario/legacy.html)**
 
-You can search games, save favorites, return to recently played games, and keep your best scores on your device. No mandatory account. Keyboard and touch controls are shown inside each game. Press **G** to switch games, **P** to pause, and **R** to restart.
+The website currently has **14 games**. This branch has the **20-game beta**, which still needs actual player feedback before I publish it.
 
-## Wait, which version am I playing?
+And yes, there is a dino game set **67 million years ago**.
 
-As checked on **18 October 2026**, the public website has **14 games**. The source branch has the **20-game beta**. Pushing code to GitHub does not automatically mean that the website got updated too.
+## Verified status
 
-I want some actual play feedback before publishing the beta. Automated tests cannot tell me whether you had fun. That part is on us✌🏻.
+I tested it, but I still need people to actually play it and tell me what feels wrong.
 
-The older **105-game Godot arcade** is preserved separately. I did not turn that into 105 finished games in the new browser catalog. They are two different parts of this project.
+The beta passed **179 rule/engine tests, 100 browser checks and 23 platform checks**. That does not mean 100 people played it🤣.
 
-## Does it work?
+See: [verification evidence and what still needs testing](docs/arcade/TWENTY_GAME_BETA.md).
 
-“Trust me bro” is not the test suite, so here is the actual checkpoint:
+## The plan
 
-- **179** rule, engine, input, and save/library tests passed.
-- **100** local browser checks passed across the 20 games.
-- **23** platform checks passed, including storage failures, loading errors, fullscreen, and responsive controls.
+I asked for way too many games at once before giving them enough attention. That was actually a bad idea.
 
-Those are automated checks. **They are not 100 player reviews.** Physical-device testing and real play feedback still matter.
+Now I want to improve them one by one. Better controls, better pixel art, and games you would actually come back to play.
 
-See [the 20-game beta evidence](docs/arcade/TWENTY_GAME_BETA.md) and [what still needs testing](docs/arcade/PLAYTESTING.md).
+The old 105-game Godot collection is still here. The new browser arcade is a separate collection, so dont confuse those numbers.
 
-## Run it yourself
+## Art and licenses
 
-For the new browser arcade, you need **Node.js and Python**. Godot is needed for the original Godot game, not for this Canvas arcade.
+I use Aseprite for the shared pixel art, and the browser games also use original Canvas drawings. The thumbnails show the actual games.
 
-From the repository root:
+I have packs like **Modern Interiors by LimeZu** for the wider project too. The raw paid packs are not included in this browser arcade.
+
+Asset sources and licenses: [here](docs/arcade/ASSETS.md).
+
+## Architecture
+
+I started this in **Godot**. The newer browser arcade uses **HTML, CSS and JavaScript Canvas**.
+
+The game files are in `onlyeducation/arcade/games/`. The shared engine handles controls, sound, pause and restart.
+
+If you want the original Godot project, open `project.godot` in Godot 4.7.1 with the Compatibility renderer.
+
+## Run it
+
+**Dependencies**
+
+1. Node.js
+2. Python
+3. Godot 4.7.1, if you are working on the original game
+
+**Commands**
 
 ```sh
 node --test tests/arcade/*.test.mjs
@@ -50,32 +69,12 @@ python tools/package_arcade.py
 python -m http.server 8785 --bind 127.0.0.1 --directory build/web
 ```
 
-Then open **http://127.0.0.1:8785/arcade/**. Keep that server terminal running while you play.
+Open **http://127.0.0.1:8785/arcade/**. Keep the terminal running, or the preview stops working.
 
-For the original game, open `project.godot` in **Godot 4.7.1**, using the Compatibility renderer. Its code and scenes are still here.
+The release steps are in [DEPLOYMENT.md](docs/arcade/DEPLOYMENT.md). Pushing this branch does not publish the website by itself.
 
-## How I am building it
+Try the games,
+tell me the annoying parts,
+and **DONT JUST LOOK AT THE THUMBNAILS, ACTUALLY PLAY THEM!**
 
-I use AI coding tools to help write, debug, and test things. I direct the idea and keep changing the parts that feel wrong. There have been a lot of those parts, man🤣.
-
-The newer arcade uses **HTML, CSS, JavaScript, and Canvas**. Each game has its own module in `onlyeducation/arcade/games/`; the shared engine handles input, sound, pause, restart, and cleanup.
-
-The original Iron-Mario side uses **Godot**. The shared pixel-art sources live in `source_art/history_arcade/`, and the reusable exports are in `assets/shared_foundation/history_arcade/`.
-
-## Art and licenses
-
-The new arcade uses original project pixel art, Canvas drawings, and synthesized sounds. Some shared artwork has editable Aseprite sources. The gameplay thumbnails are captures of the actual games.
-
-I also have asset packs such as **Modern Interiors by LimeZu** for the wider project. Owning a pack does not mean its raw files can be uploaded for everybody to download. Those source packs and private studies are excluded from the new arcade package.
-
-See the [arcade asset register](docs/arcade/ASSETS.md) and the [wider project license notes](docs/ASSET_LICENSES.md). This README does not give permission to redistribute third-party packs.
-
-## Build and release
-
-GitHub stores the source. GitHub Pages serves the public arcade from the `gh-pages` branch. They are separate steps; the development branch does not auto-deploy.
-
-The packaging and deployment process is in [DEPLOYMENT.md](docs/arcade/DEPLOYMENT.md). The 20-game publisher checks for recorded human play observations before releasing it.
-
-My plan is to keep making this better, one game at a time. Try a game and tell me the single most annoying thing about it. That is more useful than just saying “nice game.”
-
-Enjoy the pixels. Try to beat your own score. And yes, I am gonna keep working on this✌🏻.
+I am gonna keep building this, man✌🏻
