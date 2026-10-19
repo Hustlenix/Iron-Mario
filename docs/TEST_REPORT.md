@@ -1,5 +1,19 @@
 # Iron Mario: adventure and arcade verification
 
+## Latest workspace check — 19 October 2026
+
+The root workspace now contains the adventure-first source, matching the active
+`classic-seven-games` checkout. Static validation passes for the seven quick games,
+all twenty catalogued cabinets, adventure dependencies, input registration and
+resource paths. All five warehouse layouts pass the independent solver, and the
+browser test script passes Node's syntax check.
+
+The engine results below were obtained during implementation. A fresh engine,
+Windows/browser CI run and live deployment could not be verified in this session:
+GitHub requests timed out and no usable Godot editor is currently installed.
+The new source ZIP is not a claim that a newly exported binary has passed CI.
+Physical phone and audible playback testing remain outstanding.
+
 ## New coverage
 
 The new source suite passes 105 assertions covering all twenty cabinet scenes, pause, physical collision/scoring boundaries, AI, puzzles, save reloads, legal traversal of the three authored stages, and a boss pilot with three hulls. The independent warehouse solver finds legal solutions for all five rooms. Existing 82 gameplay and 51 hero/touch assertions remain required. The browser suite now checks the adventure-first home, keyboard and simultaneous two-finger adventure controls, all twenty cabinets, preserved Flappy, and the separate Vault. Physical device and audible playback testing remain unclaimed.

@@ -18,6 +18,11 @@ REQUIRED_FILES = [
     "scripts/Global.gd",
     "scripts/GameManager.gd",
     "scripts/MiniGameBase.gd",
+    "scenes/adventure/iron_adventure.tscn",
+    "scenes/arcade_library.tscn",
+    "scripts/adventure/AdventureMotor.gd",
+    "scripts/arcade/ArcadeGameBase.gd",
+    "scripts/arcade/ArcadeCatalog.gd",
 ]
 REQUIRED_ACTIONS = ["move_left", "move_right", "jump", "action", "restart", "click"]
 RESOURCE_PATTERN = re.compile(
@@ -38,7 +43,20 @@ def main() -> int:
     if len(minigame_scripts) != 7:
         errors.append(f"expected 7 minigame scripts, found {len(minigame_scripts)}")
 
-    checked_files = list(ROOT.rglob("*.gd")) + list(ROOT.rglob("*.tscn")) + [ROOT / "project.godot"]
+    cabinet_scenes = sorted((ROOT / "scenes/arcade").glob("*.tscn"))
+    catalog = (ROOT / "scripts/arcade/ArcadeCatalog.gd").read_text(encoding="utf-8")
+    cabinet_ids = re.findall(r'^\s*\["([a-z_]+)",', catalog, re.MULTILINE)
+    if len(cabinet_ids) != 20 or len(set(cabinet_ids)) != 20:
+        errors.append("arcade catalog must contain 20 unique cabinets")
+    if {scene.stem for scene in cabinet_scenes} != set(cabinet_ids):
+        errors.append("arcade scenes and catalog IDs do not match")
+
+    # Other checkouts can sit beside this project in a shared workspace.
+    # Their res:// paths belong to their own project, not this one.
+    checked_files = [ROOT / "project.godot"]
+    for directory in ["scripts", "scenes", "tools"]:
+        checked_files.extend((ROOT / directory).rglob("*.gd"))
+        checked_files.extend((ROOT / directory).rglob("*.tscn"))
     combined = ""
     for source in checked_files:
         if not source.is_file():
@@ -70,6 +88,8 @@ def main() -> int:
     print("STATIC VALIDATION PASSED")
     print(f"- {len(minigame_scenes)} minigame scenes")
     print(f"- {len(minigame_scripts)} minigame scripts")
+    print(f"- {len(cabinet_scenes)} arcade scenes match the catalog")
+    print("- adventure, movement, and arcade shared systems exist")
     print("- all res:// file references resolve")
     print("- required InputMap actions are registered")
     print("- shared result signals and five-life state are present")
