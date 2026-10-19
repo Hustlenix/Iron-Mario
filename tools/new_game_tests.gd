@@ -11,20 +11,26 @@ func _ready() -> void:
 	had_save=FileAccess.file_exists(Global.SAVE_PATH)
 	if had_save:saved=FileAccess.get_file_as_string(Global.SAVE_PATH)
 	call_deferred("run")
-func fresh(id: String):
+func fresh(id: String,auto_start: bool = true):
 	GameManager.transition_locked=true
 	var game=load("res://scenes/arcade/"+id+".tscn").instantiate()
 	add_child(game)
 	game.set_physics_process(false)
+	if auto_start:game.begin_play()
 	return game
 func frame(game,delta: float) -> void:
 	var steps=maxi(1,ceili(delta/0.016667))
 	for i in range(steps):game._physics_process(delta/steps)
 func run() -> void:
 	for entry in preload("res://scripts/arcade/ArcadeCatalog.gd").GAMES:
-		var game=fresh(entry[0])
+		var game=fresh(entry[0],false)
 		await get_tree().process_frame
 		check(game.game_id==entry[0] and not game.ended,"Cabinet loads and draws: "+entry[1])
+		check(game.preparing and not game.metadata["controls"].is_empty() and not game.metadata["touch_controls"].is_empty(),"Cabinet has a playable keyboard and phone briefing: "+entry[0])
+		frame(game,0.5)
+		check(game.elapsed==0 and not game.ended,"Reading the briefing cannot lose a life or advance time: "+entry[0])
+		game.action_event("primary",true)
+		check(not game.preparing and game.held.is_empty(),"Start press is consumed before gameplay: "+entry[0])
 		frame(game,1.0/60)
 		game.toggle_pause()
 		var clock:float=game.elapsed
@@ -32,6 +38,7 @@ func run() -> void:
 		check(game.elapsed==clock,"Pause freezes cabinet: "+entry[0])
 		game.toggle_pause()
 		game.free()
+	test_cabinet_regressions()
 	var game=fresh("dino_dash")
 	for i in range(3):game.spawn_clock=0;frame(game,0.01)
 	var ground_only:=true
@@ -42,7 +49,7 @@ func run() -> void:
 	check(game.runner_v<0,"Dino jump responds immediately")
 	game.runner_y=446;game.runner_v=0;game.obstacles.assign([{"rect":Rect2(180,480,28,20),"flyer":false}])
 	frame(game,0.01)
-	check(game.ended and not game.won,"Dino ground collision ends an endless run")
+	check(game.ended and not game.won and game.lives==0,"Dino ground collision ends an endless run and consumes its life")
 	game.free()
 	game=fresh("grid_x")
 	var guard:=0
@@ -99,7 +106,7 @@ func run() -> void:
 	game.queue_turn(Vector2i.RIGHT)
 	check(game.turns.is_empty(),"Snake rejects an immediate reverse turn")
 	game.snake.assign([Vector2i(0,0),Vector2i(1,0)]);game.direction=Vector2i.LEFT;frame(game,0.21)
-	check(game.ended,"Snake wall collision ends survival")
+	check(game.ended and game.lives==0,"Snake wall collision ends survival and consumes its life")
 	game.free()
 	game=fresh("dot_gobbler")
 	for level in [1,2]:
@@ -261,6 +268,71 @@ func run() -> void:
 func cavern_walk(game,target: int) -> void:
 	game.tunnel=game.neighbors(game.room).find(target)
 	game.on_action("primary")
+func test_cabinet_regressions() -> void:
+	var game=fresh("grid_x",false)
+	var start=InputEventKey.new()
+	start.physical_keycode=KEY_ENTER;start.pressed=true
+	game._input(start)
+	check(not game.preparing,"Enter starts a cabinet through the actual InputMap")
+	game.cursor=2;game.on_action("right")
+	check(game.cursor==2,"Grid X selection stops at the right edge of a row")
+	game.cursor=6;game.on_action("left")
+	check(game.cursor==6,"Grid X selection stops at the left edge of a row")
+	game.invulnerable=1;game._physics_process(2)
+	check(is_equal_approx(game.elapsed,0.05) and is_equal_approx(game.invulnerable,0.95),"A slow frame advances timers by the same bounded simulation step")
+	game.stage=2;game.cells=[2,2,2,0,1,0,1,0,0];game.finish_x()
+	game.pointer_event(Vector2(450,220),true)
+	check(game.stage==2 and not game.awaiting and game.cells.count(0)==9,"A board tap retries the lost Grid X terminal without losing earlier clears")
+	game.free()
+	game=fresh("sidecourt")
+	game.player_points=4;game.last_hit=0;game.ready_ball=false
+	game.ball=Vector2(1220,506);game.ball_v=Vector2(0,50);game.bounces=[0,1]
+	frame(game,0)
+	check(game.won and game.player_points==5 and game.rival_points==0,"A tennis bounce beyond the boundary awards exactly one point")
+	game.free()
+	game=fresh("flag_run")
+	var touch=InputEventScreenTouch.new()
+	touch.index=7;touch.pressed=true;touch.position=Vector2(500,480)
+	game._input(touch)
+	frame(game,0.25)
+	var one_drag_x:float=game.player.x
+	check(one_drag_x>190,"Holding a stationary road finger keeps the car driving")
+	touch.pressed=false;game._input(touch)
+	frame(game,0.25)
+	check(is_equal_approx(game.player.x,one_drag_x),"Lifting the road finger stops touch steering")
+	game.player=Vector2(130,480);game.pointer_down=true;game.pointer=Vector2(500,480)
+	for i in range(100):
+		game.on_drag(Vector2(500,480));frame(game,0.0025)
+	check(absf(game.player.x-one_drag_x)<0.1,"Driving speed is independent of drag event frequency")
+	game.free()
+	game=fresh("sky_shield")
+	game.waiting=true
+	game.pointer_event(Vector2(640,300),true)
+	check(game.stage==2 and not game.waiting and game.ammo==24 and game.shots.is_empty(),"A tap starts the next missile wave without wasting ammunition")
+	game.free()
+	game=fresh("rock_drift")
+	game.waiting=true;game.rocks.clear()
+	game.pointer_event(Vector2(640,300),true)
+	check(game.stage==2 and not game.waiting and game.rocks.size()==4,"A tap starts the next debris field")
+	game.free()
+	game=fresh("soft_landing")
+	game.lander_crash();game.pointer_event(Vector2(640,300),true)
+	check(game.stage==1 and game.lives==2 and not game.waiting,"A tap retries the crashed landing pad and preserves the lost hull")
+	game.free()
+	game=fresh("crate_shift")
+	game.on_action("left")
+	check(game.awaiting and game.score==300,"A solved warehouse awards its clear once")
+	game.on_action("secondary")
+	check(not game.awaiting and game.score==0,"Undo rolls back the warehouse clear score")
+	game.on_action("left")
+	check(game.awaiting and game.score==300,"Undo and re-solving cannot farm extra clear points")
+	game.pointer_event(Vector2(640,300),true)
+	check(game.stage==2 and not game.awaiting,"A board tap advances the solved warehouse")
+	game.free()
+	game=fresh("stackfall")
+	game.grid[Vector2i(4,0)]=0;game.spawn_piece()
+	check(game.ended and not game.won and game.lives==0,"Stackfall top-out consumes its single run and reaches the result screen")
+	game.free()
 func paint_walk(game,seen: Dictionary) -> void:
 	if game.awaiting or game.ended:return
 	var origin:Vector2i=game.player

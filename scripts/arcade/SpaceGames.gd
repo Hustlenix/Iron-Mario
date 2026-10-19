@@ -32,6 +32,11 @@ func setup_lander() -> void:
 	waiting=false
 	landed=false
 	pad_x=[910.0,300.0,950.0][clampi(stage-1,0,2)]
+func waiting_for_next() -> bool:
+	return waiting
+func next_button_label() -> String:
+	if game_id=="soft_landing": return "NEXT PAD" if landed else "RETRY PAD"
+	return "NEXT FIELD"
 func on_action(action: String) -> void:
 	if action=="primary" and waiting:
 		if game_id=="soft_landing":

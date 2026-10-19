@@ -28,6 +28,7 @@ func capture() -> void:
 		add_child(scene)
 		scene.set_process(false)
 		scene.set_physics_process(false)
+		if scene.has_method("begin_play"): scene.begin_play()
 		Capture.items.clear()
 		capture_node(scene)
 		var file := FileAccess.open("res://docs/paint_" + path.get_file() + ".svg", FileAccess.WRITE)

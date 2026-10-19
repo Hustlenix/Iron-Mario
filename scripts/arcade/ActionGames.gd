@@ -31,6 +31,8 @@ func setup() -> void:
 		hint="AIM AHEAD. TAP TO INTERCEPT. BLASTS CHAIN. AMMO IS LIMITED."
 		primary_label="LAUNCH"
 	else:make_bugs()
+func waiting_for_next() -> bool:
+	return waiting
 func on_action(action: String) -> void:
 	if action!="primary":return
 	if waiting:
@@ -54,8 +56,9 @@ func on_drag(at: Vector2) -> void:
 		if game_id=="invader_patrol":player.x=clampf(at.x,90,1190)
 		elif game_id=="bug_blaster":player=Vector2(clampf(at.x,90,1190),clampf(at.y,425,515))
 		elif game_id=="flag_run":
-			var dir:Vector2=at-player
-			if dir.length()>15:player=move_blocked(player,dir.normalized()*5)
+			# Steering is integrated in flag_tick so a stationary finger keeps
+			# driving and the speed does not depend on touch event frequency.
+			pointer=at
 func tick(delta: float) -> void:
 	if waiting:return
 	fire_clock=maxf(0,fire_clock-delta)
@@ -109,7 +112,6 @@ func tank_tick(delta: float) -> void:
 			fire(enemy["at"],enemy["face"],true,240)
 		if Vector2(enemy["at"]).distance_to(player)<33:hit_player()
 	for shot in shots:
-		var before:Vector2=shot["at"]
 		shot["at"]+=Vector2(shot["v"])*delta;shot["life"]-=delta
 		for wall in walls:
 			if wall.grow(5).has_point(shot["at"]):shot["life"]=0
@@ -172,6 +174,9 @@ func make_district() -> void:
 func flag_tick(delta: float) -> void:
 	fuel=maxf(0,fuel-3.4*delta);smoke_time=maxf(0,smoke_time-delta)
 	var input=Vector2(axis_x(),axis_y())
+	if pointer_down:
+		var toward=pointer-player
+		input=toward.normalized() if toward.length()>15 else Vector2.ZERO
 	if input!=Vector2.ZERO:player=move_blocked(player,input.normalized()*275*delta)
 	for pickup in pickups:
 		if not pickup["taken"] and player.distance_to(pickup["at"])<30:

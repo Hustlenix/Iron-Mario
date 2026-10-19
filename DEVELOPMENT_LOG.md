@@ -74,3 +74,13 @@ Implementation and automated test work used AI assistance. Actual coding time fo
 **What should testers know?** Start Adventure, try a short and long jump, blast turrets after their warning, and use the checkpoints. The boss core opens after its slam; jump the approaching ground pulse. Try each Arcade card, pause, replay and return Home. For Crate Shift, Z undoes. For Soft Landing, all three landing conditions must be safe. Test two fingers together on a real landscape phone. The separate Vault should open and return through IRON MARIO HOME.
 
 AI assisted code, art generation through drawing commands, audio and tests. Automated checks supplement real playtesting. Actual hours for this update: **not recorded yet**; the earlier planned-hours table is not an actual-time claim.
+
+## Finishing the twenty cabinets — 19 October 2026
+
+**What did you make?** Finished the play flow for all twenty cabinets: each has a short controls screen, an explicit PLAY button, pause, results and replay. Touch players can continue between rounds without a keyboard. The original Iron Mario adventure remains the main experience.
+
+**What was challenging?** A car should move at the same speed whether a phone sends ten drag events or a hundred. Ending a tennis rally on both the floor and boundary also needed to award one point, and undoing a solved crate room needed to undo its score as well.
+
+**What are you proud of?** The arcade is playable as a set of separate games with their own goals and controls, rather than twenty menu entries sharing a short timer. Players can read the controls before a snake, lander or enemy starts moving.
+
+**What should testers know?** Choose ARCADE, select a cabinet, then press Space/Enter or tap PLAY. Test a held road finger in Flag Run, tap to continue a cleared wave, and try undoing and re-solving the first crate room. The official Godot 4.4.1 source checks pass 315 assertions and launch every scene. Real phone and speaker testing is still needed. No actual human coding hours have been recorded for this update.

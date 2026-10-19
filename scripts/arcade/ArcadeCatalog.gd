@@ -21,8 +21,30 @@ const GAMES = [
 	["crate_shift","CRATE SHIFT","Push five rooms of crates onto docks.","Board","5 rooms"],
 	["stackfall","STACKFALL","Build complete rows. Clear 24 to win.","Board","24 rows"]
 ]
+const CONTROLS = {
+	"dino_dash":["SPACE / UP: JUMP   DOWN / Z: DUCK","TAP THE TRAIL TO JUMP. HOLD DUCK FOR FLYERS."],
+	"grid_x":["ARROWS: SELECT   SPACE / ENTER: PLACE   OR CLICK A CELL","TAP A CELL TO PLACE X. WIN OR DRAW TO ADVANCE."],
+	"sidecourt":["LEFT / RIGHT: MOVE   UP: LOB   DOWN: DRIVE   HOLD SPACE: SWING","LEFT PAD: MOVE / SHOT TYPE. HOLD SWING WITH YOUR OTHER THUMB."],
+	"orbit_duel":["LEFT / RIGHT: TURN   UP: THRUST   DOWN / Z: BRAKE   HOLD SPACE: FIRE","LEFT PAD: TURN / THRUST. RIGHT THUMB: FIRE OR BRAKE."],
+	"paddle_panic":["UP / DOWN OR MOUSE: PADDLE   SPACE: SERVE","DRAG YOUR PADDLE. AIM WITH ITS EDGES."],
+	"dark_cavern":["LEFT / RIGHT: TUNNEL   Z: WALK / AIM   SPACE: ENTER / FIRE","TAP A TUNNEL TO WALK. AIM SWITCHES YOUR NEXT TAP TO A BOLT."],
+	"armored_arena":["ARROWS / WASD: MOVE AND FACE   HOLD SPACE: FIRE","LEFT PAD: DRIVE AND FACE. HOLD FIRE WITH YOUR OTHER THUMB."],
+	"brick_burst":["LEFT / RIGHT OR MOUSE: PADDLE   SPACE: LAUNCH","DRAG YOUR PADDLE. TAP THE COURT TO LAUNCH."],
+	"byte_munch":["ARROWS / WASD: TURN   NO REVERSE TURNS","USE THE DIRECTION PAD OR DRAG TOWARD YOUR NEXT TURN."],
+	"invader_patrol":["LEFT / RIGHT: MOVE   HOLD SPACE: FIRE","DRAG TO MOVE. HOLD FIRE WITH YOUR OTHER THUMB."],
+	"rock_drift":["LEFT / RIGHT: TURN   UP: THRUST   DOWN / Z: BRAKE   HOLD SPACE: FIRE","LEFT PAD: TURN / THRUST. RIGHT THUMB: FIRE OR BRAKE."],
+	"soft_landing":["LEFT / RIGHT: TILT   UP / SPACE: THRUST   DOWN / Z: LEVEL","LEFT PAD: TILT. RIGHT THUMB: THRUST OR LEVEL."],
+	"flag_run":["ARROWS / WASD: STEER   SPACE: SMOKE (12 FUEL)","HOLD THE ROAD TOWARD YOUR DESTINATION. OTHER THUMB: SMOKE."],
+	"dot_gobbler":["ARROWS / WASD: BUFFER TURNS   SPACE: NEXT MAZE","USE THE PAD OR DRAG IN YOUR NEXT DIRECTION."],
+	"sky_shield":["ARROWS: AIM   SPACE: FIRE   OR CLICK TO AIM AND FIRE","TAP AHEAD OF MISSILES TO AIM AND LAUNCH."],
+	"bug_blaster":["ARROWS: MOVE   HOLD SPACE: FIRE","DRAG WITH ONE FINGER TO MOVE AND FIRE."],
+	"hopway":["ARROWS: HOP   SPACE: HOP FORWARD","TAP TOWARD THE NEXT HOP OR USE THE PAD."],
+	"color_steps":["LEFT: DOWN-LEFT   DOWN: DOWN-RIGHT   UP: UP-LEFT   RIGHT: UP-RIGHT","PAD ARROWS FOLLOW THE FOUR SLOPES. RECALL RETURNS TO THE PEAK."],
+	"crate_shift":["ARROWS: MOVE / PUSH   Z: UNDO   SPACE: NEXT ROOM","TAP THE PAD TO PUSH. UNDO RESTORES THE LAST MOVE."],
+	"stackfall":["LEFT / RIGHT: MOVE   UP: ROTATE   DOWN: DROP   SPACE: SLAM   Z: REVERSE","LEFT PAD: MOVE / ROTATE. RIGHT DROP: SLAM. OTHER BUTTON: REVERSE."]
+}
 static func get_game(id: String) -> Dictionary:
 	for row in GAMES:
 		if row[0] == id:
-			return {"id":row[0],"name":row[1],"hint":row[2],"category":row[3],"length":row[4]}
+			return {"id":row[0],"name":row[1],"hint":row[2],"category":row[3],"length":row[4],"controls":CONTROLS[id][0],"touch_controls":CONTROLS[id][1]}
 	return {"id":"adventure","name":"IRON MARIO","hint":"MOVE, JUMP, AND BLAST YOUR WAY HOME!","category":"Adventure","length":"4 stages"}

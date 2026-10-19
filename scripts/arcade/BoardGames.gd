@@ -75,9 +75,12 @@ func setup() -> void:
 			use_secondary=true
 		"byte_munch":
 			lives=1
+			use_primary=false
 			snake.assign([Vector2i(6,6),Vector2i(5,6),Vector2i(4,6)])
 			place_food()
-		"dot_gobbler":make_maze()
+		"dot_gobbler":
+			primary_label="NEXT MAZE"
+			make_maze()
 		"hopway":
 			lives=4
 			primary_label="HOP"
@@ -91,12 +94,20 @@ func setup() -> void:
 			use_secondary=true
 			make_room()
 		"stackfall":
+			lives=1
 			primary_label="DROP"
 			secondary_label="ROTATE <"
 			use_secondary=true
 			hint="LEFT/RIGHT MOVE. UP ROTATES. SPACE DROPS. Z REVERSES. CLEAR 24 ROWS."
 			next_kind=take_bag()
 			spawn_piece()
+func waiting_for_next() -> bool:
+	return awaiting
+func next_button_label() -> String:
+	if game_id=="grid_x": return "RETRY" if x_winner(cells)==2 else "NEXT"
+	if game_id=="crate_shift": return "NEXT ROOM"
+	if game_id=="dot_gobbler": return "NEXT MAZE"
+	return "NEXT"
 func tick(delta: float) -> void:
 	hop_clock=maxf(0,hop_clock-delta)
 	repeat_clock=maxf(0,repeat_clock-delta)
@@ -111,7 +122,8 @@ func on_action(action: String) -> void:
 	if action in ["left","up","down","right"]:dir=DIRECTIONS[["left","up","down","right"].find(action)]
 	match game_id:
 		"grid_x":
-			if dir!=Vector2i.ZERO:cursor=clampi(cursor+dir.x+dir.y*3,0,8)
+			if dir!=Vector2i.ZERO:
+				cursor=clampi(cursor%3+dir.x,0,2)+clampi(cursor/3+dir.y,0,2)*3
 			if action=="primary":
 				if awaiting:reset_x()
 				else:place_x(cursor)
@@ -133,7 +145,8 @@ func on_action(action: String) -> void:
 			if dir!=Vector2i.ZERO:push_crate(dir)
 			if action=="secondary" and not history.is_empty():
 				var snapshot=history.pop_back()
-				player=snapshot[0];crates.assign(snapshot[1]);awaiting=false
+				player=snapshot[0];crates.assign(snapshot[1]);score=snapshot[2];awaiting=false
+				status="ROOM %d / 5   MOVE UNDONE" % stage
 			if action=="primary" and awaiting:stage+=1;make_room()
 		"stackfall":
 			if action=="left":move_piece(Vector2i.LEFT);repeat_clock=0.18
@@ -261,7 +274,10 @@ func snake_tick(delta: float) -> void:
 		var grows=head==food
 		var body=snake.duplicate()
 		if not grows:body.pop_back()
-		if head.x<0 or head.y<0 or head.x>=24 or head.y>=12 or walls.has(head) or body.has(head):complete(false,"BYTE TRAIN LENGTH %d / FOOD %d" % [snake.size(),meals]);return
+		if head.x<0 or head.y<0 or head.x>=24 or head.y>=12 or walls.has(head) or body.has(head):
+			invulnerable=0
+			damage("BYTE TRAIN LENGTH %d / FOOD %d" % [snake.size(),meals])
+			return
 		snake.push_front(head)
 		if grows:
 			meals+=1;score+=100;SoundFX.play_collect();place_food()
@@ -425,7 +441,7 @@ func push_crate(dir: Vector2i) -> void:
 	if walls.has(next):return
 	var index=crates.find(next)
 	if index>=0 and (walls.has(next+dir) or crates.has(next+dir)):return
-	history.append([player,crates.duplicate()])
+	history.append([player,crates.duplicate(),score])
 	if index>=0:crates[index]=next+dir
 	player=next
 	var done=true
@@ -443,7 +459,9 @@ func take_bag() -> int:
 	return bag.pop_back()
 func spawn_piece() -> void:
 	piece_kind=next_kind;next_kind=take_bag();piece.assign(SHAPES[piece_kind]);piece_at=Vector2i(4,0);step_clock=0
-	if not piece_valid(piece,piece_at):complete(false,"THE SPAWN AREA FILLED. ROWS %d / 24." % lines_cleared)
+	if not piece_valid(piece,piece_at):
+		lives=0
+		complete(false,"THE SPAWN AREA FILLED. ROWS %d / 24." % lines_cleared)
 func piece_valid(shape: Array,at: Vector2i) -> bool:
 	for local in shape:
 		var cell:Vector2i=at+local
@@ -469,7 +487,10 @@ func stack_tick(delta: float) -> void:
 func lock_piece() -> void:
 	for at in piece:
 		var cell:Vector2i=piece_at+at
-		if cell.y<0:complete(false,"BLOCKS REACHED THE SPAWN AREA.");return
+		if cell.y<0:
+			lives=0
+			complete(false,"BLOCKS REACHED THE SPAWN AREA.")
+			return
 		grid[cell]=piece_kind
 	var removed=0
 	var row=17

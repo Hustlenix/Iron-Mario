@@ -50,6 +50,7 @@ func setup() -> void:
 func on_action(action: String) -> void:
 	if game_id == "dino_dash" and action in ["primary","up"] and runner_y>=445:
 		runner_v = -570
+		SoundFX.play_click()
 	elif game_id in ["paddle_panic","brick_burst"] and action == "primary" and ready_ball:
 		ready_ball = false
 		ball_v = Vector2(355,125) if game_id=="paddle_panic" else Vector2(180,-345)
@@ -90,7 +91,9 @@ func runner_tick(delta: float) -> void:
 	for obstacle in obstacles:
 		obstacle["rect"].position.x -= speed*delta
 		if player.intersects(obstacle["rect"].grow(-4)):
-			complete(false,"DISTANCE %d! TAP PLAY AGAIN TO BEAT YOUR BEST." % score)
+			invulnerable=0
+			damage("DISTANCE %d! TAP PLAY AGAIN TO BEAT YOUR BEST." % score)
+			return
 	obstacles = obstacles.filter(func(o):return o["rect"].end.x>0)
 	status = "DISTANCE %d    SPEED %d" % [score,int(speed)]
 func pong_tick(delta: float) -> void:
@@ -126,6 +129,7 @@ func award_point(player: bool) -> void:
 	cooldown = 0.8
 	bounces=[0,0]
 	ball_v=Vector2.ZERO
+	status="%d : %d   /   ACTION SERVES THE NEXT BALL" % [player_points,rival_points]
 	if player_points>=5: complete(true,"MATCH WON %d TO %d!" % [player_points,rival_points])
 	elif rival_points>=5: complete(false,"MATCH %d TO %d. TRY ANOTHER ANGLE!" % [player_points,rival_points])
 func make_bricks() -> void:
@@ -200,11 +204,13 @@ func tennis_tick(delta: float) -> void:
 			ready_ball=false
 			hit_tennis(true)
 		return
+	var previous=ball
 	ball_v.y+=530*delta
 	ball+=ball_v*delta
 	if down("primary") and swing_clock<=0 and absf(ball.x-player_x)<105 and ball.y>315 and ball.y<510: hit_tennis(true)
 	if rival_swing<=0 and absf(ball.x-rival_x)<90 and ball.y>325 and ball.y<490 and ball_v.x>0: hit_tennis(false)
-	if absf(ball.x-640)<12 and ball.y>405 and ball.y<510:
+	var crossed_net=(previous.x<640 and ball.x>=640) or (previous.x>640 and ball.x<=640)
+	if (absf(ball.x-640)<12 or crossed_net) and ball.y>405 and ball.y<510:
 		ball_v.x=-ball_v.x*0.6
 		ball.x=626 if ball_v.x<0 else 654
 	if ball.y>=505:
@@ -212,8 +218,12 @@ func tennis_tick(delta: float) -> void:
 		bounces[side]+=1
 		ball.y=504
 		ball_v.y=-absf(ball_v.y)*0.72
-		if bounces[side]>=2: award_point(side==1)
-	if ball.x<65 or ball.x>1215: award_point(last_hit==1)
+		if bounces[side]>=2:
+			award_point(side==1)
+			return
+	if ball.x<65 or ball.x>1215:
+		award_point(last_hit==1)
+		return
 	status="%d : %d   %s   /   HOLD SWING WHEN BALL IS IN REACH" % [player_points,rival_points,"LOB" if lob else "DRIVE"]
 func hit_tennis(player: bool) -> void:
 	if player:

@@ -10,7 +10,7 @@ const assert=require('node:assert/strict');
   page.on('console',m=>{
    const line=m.text().trim();
    if(/SCRIPT ERROR|ERROR:|Parse Error/.test(line))errors.push(line);
-   for(const key of ['HOME_READY','SCENE_READY','ARCADE_READY','ARCADE_PAUSE','LIBRARY_PAGE','FLAPPY_STATE']){
+   for(const key of ['HOME_READY','SCENE_READY','ARCADE_READY','ARCADE_STARTED','ARCADE_PAUSE','LIBRARY_PAGE','FLAPPY_STATE']){
     if(line.startsWith(key+' '))state[key]=line.slice(key.length+1);
    }
   });
@@ -52,13 +52,28 @@ const assert=require('node:assert/strict');
   const slot=index%6;
   await page.mouse.click(225+(slot%3)*415,270+Math.floor(slot/3)*195);
   await wait(page,'ARCADE_READY',ids[index]);
-  await page.waitForTimeout(180);
+  await page.screenshot({path:`docs/screenshots/briefing-${ids[index]}.png`});
+  await page.keyboard.press('Enter');await wait(page,'ARCADE_STARTED',ids[index]);
+  const playKeys={
+   dino_dash:['Space'],grid_x:['ArrowRight','Space'],sidecourt:['ArrowLeft','Space'],
+   orbit_duel:['ArrowRight','ArrowUp','Space'],paddle_panic:['ArrowUp','Space'],
+   dark_cavern:['ArrowRight','z','Space'],armored_arena:['ArrowRight','Space'],
+   brick_burst:['ArrowRight','Space'],byte_munch:['ArrowUp'],invader_patrol:['ArrowLeft','Space'],
+   rock_drift:['ArrowRight','ArrowUp','Space'],soft_landing:['ArrowRight','Space'],
+   flag_run:['ArrowRight','Space'],dot_gobbler:['ArrowRight'],sky_shield:[],
+   bug_blaster:['ArrowLeft','Space'],hopway:['Space'],color_steps:['ArrowLeft'],
+   crate_shift:['ArrowLeft'],stackfall:['ArrowRight','ArrowUp','Space']
+  }[ids[index]];
+  for(const key of playKeys)await page.keyboard.down(key);
+  if(ids[index]==='sky_shield')await page.mouse.click(650,300);
+  await page.waitForTimeout(160);
+  for(const key of playKeys)await page.keyboard.up(key);
   await page.screenshot({path:`docs/screenshots/cabinet-${ids[index]}.png`});
   await page.keyboard.press('Escape');await wait(page,'ARCADE_PAUSE',ids[index]+' true');
   await page.mouse.click(800,465);await wait(page,'SCENE_READY','res://scenes/arcade_library.tscn');
   await wait(page,'LIBRARY_PAGE','0');
  }
- console.log('PASS all 20 cabinets launch, draw, pause and return to Arcade');
+ console.log('PASS all 20 cabinet briefings, start, gameplay input, pause and return to Arcade');
  await page.mouse.click(160,50);await wait(page,'SCENE_READY','res://scenes/title_screen.tscn');
  await page.mouse.click(1000,480);await wait(page,'SCENE_READY','res://scenes/quick_games.tscn');
  await page.mouse.click(1000,535);await wait(page,'SCENE_READY','res://scenes/flappy_bird.tscn');
@@ -81,6 +96,7 @@ const assert=require('node:assert/strict');
  await tap(800,465);await wait(phone,'SCENE_READY','res://scenes/title_screen.tscn');
  await tap(620,480);await wait(phone,'SCENE_READY','res://scenes/arcade_library.tscn');
  await tap(640,270);await wait(phone,'ARCADE_READY','grid_x');
+ await tap(480,465);await wait(phone,'ARCADE_STARTED','grid_x');
  await tap(450,220);await phone.screenshot({path:'docs/screenshots/mobile-grid-x.png'});
  await phone.setViewportSize({width:390,height:844});assert.equal(await phone.locator('#rotate').isVisible(),true);
  await phone.screenshot({path:'docs/screenshots/mobile-rotate.png'});

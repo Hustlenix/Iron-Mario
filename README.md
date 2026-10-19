@@ -12,7 +12,7 @@ The images in this README are rendered previews of Godot drawing commands. GitHu
 
 Choose **START ADVENTURE** on Home. Saved stage progress changes this to **CONTINUE ADVENTURE**. **NEW ADVENTURE** starts at the workshop; existing arcade records remain intact.
 
-For Windows, extract the entire build ZIP and launch `Super-Micro-Heroes.exe` with its `.pck` beside it. The executable retains its historical filename; the game's title is IRON-MARIO.
+For Windows, extract the entire build ZIP and launch `Iron-Mario.exe` with its `.pck` beside it. GitHub Actions packages retain the historical `Super-Micro-Heroes.exe` filename; both builds show the IRON-MARIO title.
 
 From source, open `project.godot` in Godot **4.4.1**, then press F5. The main scene is `res://scenes/title_screen.tscn`. The core game avoids features newer than 4.4. The optional preserved Vault uses its own Godot 4.7.1 export.
 
@@ -49,7 +49,9 @@ Phone play is landscape. Turning upright or losing app focus pauses the game and
 
 ## Optional arcade: twenty cabinets
 
-Choose **ARCADE** from Home. All games are available immediately, in four pages with objectives, per-game records, and replay controls. Their lives, scores and timing are independent of the seven-game Tournament.
+Choose **ARCADE** from Home. All twenty games are available immediately, in four pages with objectives, per-game records, and replay controls. Each opens a short briefing with its own keyboard and phone controls. Press **Space / Enter** or tap **PLAY** when ready; gameplay stays frozen until then. Their lives, scores and timing are independent of the seven-game Tournament.
+
+On phones, the action button changes to **NEXT**, **RETRY PAD** or another suitable label between rounds. Tapping the playfield also continues a cleared round. Flag Run steers continuously toward a held finger; lifting it stops steering. Byte Munch uses the direction pad or directional dragging without an unused action button. Pause shows the game's controls again; Enter/Space resumes or replays a result.
 
 | Cabinet | Goal / progression |
 |---|---|
@@ -116,7 +118,7 @@ python tools/validate_project.py
 python tools/check_engine.py /absolute/path/to/godot
 ```
 
-The source suites cover the original gameplay, profiles and touch behavior, plus 105 adventure/cabinet assertions. The new suite checks legal puzzle inputs, physical scoring boundaries, save reloads, all three authored traversal paths and an automated boss pilot using legal movement/shots with three hulls. The crate solver independently searches all five room layouts.
+The source suites pass **315 assertions** on official Godot 4.4.1: 82 existing gameplay checks, 51 profile/touch checks, and 182 adventure/cabinet checks. The new suite covers all twenty frozen briefings and start inputs, legal puzzle inputs, scoring boundaries, touch continuation, drag-rate-independent driving, undo score restoration, save reloads, all three authored traversal paths and a boss pilot using legal movement/shots with three hulls. All 46 scenes also launch without engine errors. The crate solver independently searches all five room layouts.
 
 GitHub Actions validates and exports the core with Godot 4.4.1, launches source and native packages on Windows, and exercises the exported game in Chromium. Browser checks open all twenty cabinets, exercise adventure keyboard/two-finger input, pause and orientation, preserved Flappy, and the separate Vault. Actual phone/speaker/GPU combinations are outside automated coverage.
 

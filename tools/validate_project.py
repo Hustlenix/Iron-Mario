@@ -50,6 +50,12 @@ def main() -> int:
         errors.append("arcade catalog must contain 20 unique cabinets")
     if {scene.stem for scene in cabinet_scenes} != set(cabinet_ids):
         errors.append("arcade scenes and catalog IDs do not match")
+    guide_ids = re.findall(r'^\s*"([a-z_]+)":\["[^"]+","[^"]+"\]', catalog, re.MULTILINE)
+    if set(guide_ids) != set(cabinet_ids):
+        errors.append("every cabinet needs keyboard and touch controls")
+    for scene in cabinet_scenes:
+        if f'game_id = "{scene.stem}"' not in scene.read_text(encoding="utf-8"):
+            errors.append(f"{scene.relative_to(ROOT)} has the wrong cabinet ID")
 
     # Other checkouts can sit beside this project in a shared workspace.
     # Their res:// paths belong to their own project, not this one.
@@ -89,6 +95,7 @@ def main() -> int:
     print(f"- {len(minigame_scenes)} minigame scenes")
     print(f"- {len(minigame_scripts)} minigame scripts")
     print(f"- {len(cabinet_scenes)} arcade scenes match the catalog")
+    print("- every arcade scene has its matching ID and keyboard/touch guide")
     print("- adventure, movement, and arcade shared systems exist")
     print("- all res:// file references resolve")
     print("- required InputMap actions are registered")
