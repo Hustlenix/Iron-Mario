@@ -10,10 +10,23 @@ const assert=require('node:assert/strict');
   page.on('console',m=>{
    const line=m.text().trim();
    if(/SCRIPT ERROR|ERROR:|Parse Error/.test(line))errors.push(line);
-   for(const key of ['HOME_READY','SCENE_READY','ARCADE_READY','ARCADE_STARTED','ARCADE_PAUSE','LIBRARY_PAGE','FLAPPY_STATE']){
+   for(const key of ['HOME_READY','SCENE_READY','ARCADE_READY','ARCADE_STARTED','ARCADE_PAUSE','ARCADE_RESULT','LIBRARY_PAGE','FLAPPY_STATE']){
     if(line.startsWith(key+' '))state[key]=line.slice(key.length+1);
    }
   });
+ };
+ const waitForRoundOverlay=async(page,id)=>{
+  const until=Date.now()+15000;
+  while(true){
+   const state=states.get(page);
+   if(state.ARCADE_PAUSE===id+' true')return;
+   if(state.ARCADE_RESULT===id+' false'){
+    assert(['dino_dash','byte_munch','brick_burst'].includes(id),`${id} ended unexpectedly during its opening input check`);
+    return;
+   }
+   if(Date.now()>until)throw Error(`No pause/result overlay for ${id}: ${JSON.stringify(state)}`);
+   await page.waitForTimeout(100);
+  }
  };
  const wait=async(page,key,value)=>{
   const until=Date.now()+120000;
@@ -58,7 +71,7 @@ const assert=require('node:assert/strict');
    dino_dash:['Space'],grid_x:['ArrowRight','Space'],sidecourt:['ArrowLeft','Space'],
    orbit_duel:['ArrowRight','ArrowUp','Space'],paddle_panic:['ArrowUp','Space'],
    dark_cavern:['ArrowRight','z','Space'],armored_arena:['ArrowRight','Space'],
-   brick_burst:['ArrowRight','Space'],byte_munch:['ArrowUp'],invader_patrol:['ArrowLeft','Space'],
+   brick_burst:['ArrowRight','Space'],byte_munch:['ArrowRight'],invader_patrol:['ArrowLeft','Space'],
    rock_drift:['ArrowRight','ArrowUp','Space'],soft_landing:['ArrowRight','Space'],
    flag_run:['ArrowRight','Space'],dot_gobbler:['ArrowRight'],sky_shield:[],
    bug_blaster:['ArrowLeft','Space'],hopway:['Space'],color_steps:['ArrowLeft'],
@@ -69,7 +82,7 @@ const assert=require('node:assert/strict');
   await page.waitForTimeout(160);
   for(const key of playKeys)await page.keyboard.up(key);
   await page.screenshot({path:`docs/screenshots/cabinet-${ids[index]}.png`});
-  await page.keyboard.press('Escape');await wait(page,'ARCADE_PAUSE',ids[index]+' true');
+  await page.keyboard.press('Escape');await waitForRoundOverlay(page,ids[index]);
   await page.mouse.click(800,465);await wait(page,'SCENE_READY','res://scenes/arcade_library.tscn');
   await wait(page,'LIBRARY_PAGE','0');
  }

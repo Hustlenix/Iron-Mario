@@ -4,9 +4,9 @@ Iron Mario is an original red-and-gold armored hero who jumps, blasts scrap robo
 
 [Play in your browser](https://hustlenix.github.io/Iron-Mario/) · [Active source branch](https://github.com/Hustlenix/Iron-Mario/tree/classic-seven-games)
 
-![Iron Mario adventure-first home](docs/paint_title_screen.png)
+![Iron Mario adventure-first home](docs/screenshots/iron-mario-home.png)
 
-The images in this README are rendered previews of Godot drawing commands. GitHub Actions also captures actual browser screenshots of the exported game.
+The Home and Dino Dash images are actual screenshots of the exported Godot game captured in Chromium. The workshop image is a rendered preview of Godot drawing commands.
 
 ## Start playing
 
@@ -77,6 +77,8 @@ On phones, the action button changes to **NEXT**, **RETRY PAD** or another suita
 | Stackfall | Seven-piece bag, rotation and wall kicks, ghost, soft/hard drops; clear 24 rows |
 
 **Rockfall Mines** remains a future proposal; it has no playable cabinet yet.
+
+![Dino Dash running in the exported game](docs/screenshots/cabinet-dino_dash.png)
 
 ## Existing games and the larger Vault
 

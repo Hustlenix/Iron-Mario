@@ -44,4 +44,6 @@ func _draw()->void:
 	Paint.background(self,"workshop")
 	Paint.rect(self,Rect2(30,110,1220,60),Paint.PAPER)
 	Paint.text(self,"IRON MARIO'S ARCADE / PAGE %d OF 4" % (page+1),Vector2(50,150),27)
+	Paint.rect(self,Rect2(320,555,650,50),Paint.PAPER)
+	Paint.rect(self,Rect2(320,555,650,50),Paint.INK,false,2)
 	Paint.text(self,"YOUR BEST SCORES ARE SAVED ON THIS DEVICE",Vector2(345,589),19)
