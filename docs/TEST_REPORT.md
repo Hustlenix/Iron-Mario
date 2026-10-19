@@ -12,9 +12,24 @@ Official Godot 4.4.1 was subsequently downloaded and the complete source check
 passed: **316 assertions** (82 gameplay, 51 profile/touch, 183 adventure/arcade)
 and **51 engine checks**, including all 46 scenes and F5 startup. Windows, Linux
 and Web exports complete without engine diagnostics. The exported Linux package
-passes all 47 launch checks (F5 plus 46 scenes). Browser/Windows checks and
-publishing are recorded separately below when completed. Physical
+passes all 47 launch checks (F5 plus 46 scenes). Windows/browser checks and publication also pass, as recorded below. Physical
 phone and audible playback testing remain outstanding.
+
+## Published build
+
+[GitHub Actions run 39205435457](https://github.com/Hustlenix/Iron-Mario/actions/runs/39205435457) passes all five jobs: Vault, source/export build, Windows, browser, and deployment. Tested runtime commit: `19d6eec`.
+
+- Official Godot 4.4.1: 316 assertions and all 46 source scenes pass.
+- Exported Windows and Linux packages: F5 and all 46 scenes pass.
+- Chromium: all twenty briefings, PLAY, gameplay input, pause/result routing and library return pass.
+- Mobile emulation: simultaneous two-finger adventure input, Grid X taps, pause and orientation pass.
+- Preserved Flappy: start, collision, retry and exit pass.
+- The 105-game Vault loads and its return link reaches Iron Mario.
+- The browser artifact contains 48 actual exported-game screenshots. Home, cabinet, mobile and Vault images were visually inspected.
+
+The live root HTML, JavaScript, PCK, retirement worker and Vault HTML match the tested Web artifact; its WebAssembly URL responds successfully. Verified core runtime prefix: `classic-seven-70527326b452fb0e`.
+
+Physical phone and audible playback tests are still not claimed. The local sandbox's Chromium crashes during startup; the successful browser run above comes from GitHub's Linux runner.
 
 ## New coverage
 
@@ -62,7 +77,7 @@ Production builds now come from the official Godot 4.4.1 export templates. The W
 
 ## Automated coverage
 
-`tools/check_engine.py` fails on script/resource errors even if Godot exits with code zero. It uses an isolated save directory, imports the editor project, runs the mechanics suite, starts F5's configured title scene, and launches all 23 scene files (including the original bonus and legacy scenes).
+`tools/check_engine.py` fails on script/resource errors even if Godot exits with code zero. It uses an isolated save directory, imports the editor project, runs the mechanics suite, starts F5's configured title scene, and launches all 46 scene files (including the original bonus and legacy scenes).
 
 The runtime suite checks:
 - All seven success paths, keyboard movement and jump requests, mouse target clicks and chip drops.
@@ -83,7 +98,7 @@ Results of each commit are recorded in [GitHub Actions](https://github.com/Hustl
 
 ## Scope of verification
 
-Automated checks exercise keyboard/mouse events and game state headlessly. They do not replace a human testing a physical keyboard/mouse, hearing audio, or checking a particular Windows GPU/driver. Godot 4.7.1 itself has not been tested; 4.4.1 is the actual compatibility baseline.
+Automated checks exercise keyboard/mouse events and game state headlessly. They do not replace a human testing a physical keyboard/mouse, hearing audio, or checking a particular Windows GPU/driver. The core assertions use Godot 4.4.1. The optional preserved Vault is exported with Godot 4.7.1 and checked separately in the browser.
 
 Documentation previews are SVG/PNG renders of scene drawing commands, explicitly not live GPU screenshots. The game visuals are original programmatic artwork with an intentionally handmade MS Paint look.
 

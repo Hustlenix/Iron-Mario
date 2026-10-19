@@ -6,7 +6,7 @@ Iron Mario is an original red-and-gold armored hero who jumps, blasts scrap robo
 
 ![Iron Mario adventure-first home](docs/screenshots/iron-mario-home.png)
 
-The Home and Dino Dash images are actual screenshots of the exported Godot game captured in Chromium. The workshop image is a rendered preview of Godot drawing commands.
+The Home, arcade library and Dino Dash images are actual screenshots of the exported Godot game captured in Chromium. The workshop image is a rendered preview of Godot drawing commands.
 
 ## Start playing
 
@@ -52,6 +52,8 @@ Phone play is landscape. Turning upright or losing app focus pauses the game and
 Choose **ARCADE** from Home. All twenty games are available immediately, in four pages with objectives, per-game records, and replay controls. Each opens a short briefing with its own keyboard and phone controls. Press **Space / Enter** or tap **PLAY** when ready; gameplay stays frozen until then. Their lives, scores and timing are independent of the seven-game Tournament.
 
 On phones, the action button changes to **NEXT**, **RETRY PAD** or another suitable label between rounds. Tapping the playfield also continues a cleared round. Flag Run steers continuously toward a held finger; lifting it stops steering. Byte Munch uses the direction pad or directional dragging without an unused action button. Pause shows the game's controls again; Enter/Space resumes or replays a result.
+
+![The twenty-game arcade library](docs/screenshots/arcade-library.png)
 
 | Cabinet | Goal / progression |
 |---|---|
