@@ -97,3 +97,5 @@ AI assisted code, art generation through drawing commands, audio and tests. Auto
 **What should people know to test it?** Hold E, jump, and release Space early: Iron Mario should still make a short hop. In Byte Munch or Dot Gobbler, start an upward swipe anywhere in the playfield, then swipe sideways without lifting. In Soft Landing, check that the ship is visible at the start of every pad. The directional pad still works. Physical phone and audible playback testing remain outstanding.
 
 AI assisted implementation and automated regression testing. Actual human coding time for this update has not been recorded.
+
+Verification: GitHub Actions run 39217221876 passed source, native Windows/Linux launch checks, desktop/mobile browser tests, and deployment. The complete source suite passes 335 assertions. Phone screenshots were inspected; a real phone and speaker test is still needed.

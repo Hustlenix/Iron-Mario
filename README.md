@@ -6,7 +6,7 @@ Iron Mario is an original red-and-gold armored hero who jumps, blasts scrap robo
 
 ![Iron Mario adventure-first home](docs/screenshots/iron-mario-home.png)
 
-The Home, arcade library and Dino Dash images are actual screenshots of the exported Godot game captured in Chromium. The workshop image is a rendered preview of Godot drawing commands.
+The Home, arcade library, Dino Dash and phone landing images are actual screenshots of the exported Godot game captured in Chromium. The workshop image is a rendered preview of Godot drawing commands.
 
 ## Start playing
 
@@ -81,6 +81,8 @@ On phones, the action button changes to **NEXT**, **RETRY PAD** or another suita
 **Rockfall Mines** remains a future proposal; it has no playable cabinet yet.
 
 ![Dino Dash running in the exported game](docs/screenshots/cabinet-dino_dash.png)
+
+![Soft Landing with phone controls, captured in browser touch emulation](docs/screenshots/mobile-soft_landing.png)
 
 ## Existing games and the larger Vault
 

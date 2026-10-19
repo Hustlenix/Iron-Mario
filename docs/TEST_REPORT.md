@@ -17,7 +17,19 @@ phone and audible playback testing remain outstanding.
 
 ## Latest control fixes
 
-Adventure held-action polling now uses the same InputMap mapping as key events: holding Blast no longer keeps Jump held. Byte Munch and Dot Gobbler use finger displacement from the gesture origin, with a dead zone and release/focus cleanup. Soft Landing places its fuel gauge above the flight area. Nineteen regression assertions cover these changes. The updated source suite passes 202 assertions locally; exported browser and Windows verification for this update is pending.
+Adventure held-action polling now uses the same InputMap mapping as key events: holding Blast no longer keeps Jump held. Byte Munch and Dot Gobbler use finger displacement from the gesture origin, with a dead zone and release/focus cleanup. Soft Landing places its fuel gauge above the flight area. Nineteen regression assertions cover these changes. The updated source suite passes 202 assertions locally and in CI. The complete source check passes 335 assertions and all 46 scenes; Windows and Linux package checks and the expanded browser test also pass.
+
+## Current published build
+
+[GitHub Actions run 39217221876](https://github.com/Hustlenix/Iron-Mario/actions/runs/39217221876) passes Vault, build, Windows, browser and deployment for runtime commit `00c0a60`.
+
+- Source: 335 assertions and 51 engine checks, including F5 and all 46 scenes.
+- Exported Windows and Linux: F5 plus all 46 scene launches.
+- Browser: twenty cabinets, adventure, original quick-game navigation, Flappy, two-finger input, board taps, snake/maze swipes, the lander HUD, pause and orientation.
+- The screenshot artifact contains 51 PNG captures. The new phone snake, maze and lander images were visually inspected; the fuel gauge no longer covers the ship.
+- Renamed Linux download: starts with the adjacent `Iron-Mario.pck`. Delivered executables and game data are unchanged CI artifact bytes, with Linux execute permissions restored in the ZIP.
+
+The live root HTML, JavaScript, PCK, retirement worker and Vault HTML match the tested Web artifact byte for byte; its WebAssembly URL returns HTTP 200. The current Web runtime prefix is `classic-seven-3623fb5e0321385e`. Physical phone and audible playback checks remain outstanding.
 
 ## Previously published build
 
