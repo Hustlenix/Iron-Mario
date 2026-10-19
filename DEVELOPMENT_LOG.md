@@ -83,4 +83,4 @@ AI assisted code, art generation through drawing commands, audio and tests. Auto
 
 **What are you proud of?** The arcade is playable as a set of separate games with their own goals and controls, rather than twenty menu entries sharing a short timer. Players can read the controls before a snake, lander or enemy starts moving.
 
-**What should testers know?** Choose ARCADE, select a cabinet, then press Space/Enter or tap PLAY. Test a held road finger in Flag Run, tap to continue a cleared wave, and try undoing and re-solving the first crate room. The official Godot 4.4.1 source checks pass 315 assertions and launch every scene. Real phone and speaker testing is still needed. No actual human coding hours have been recorded for this update.
+**What should testers know?** Choose ARCADE, select a cabinet, then press Space/Enter or tap PLAY. Test a held road finger in Flag Run, tap to continue a cleared wave, and try undoing and re-solving the first crate room. The official Godot 4.4.1 source checks pass 316 assertions and launch every scene. Real phone and speaker testing is still needed. No actual human coding hours have been recorded for this update.

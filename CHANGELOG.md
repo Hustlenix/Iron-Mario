@@ -6,7 +6,7 @@
 - Added touch continuation between terminals, waves, fields, rooms and landing-pad retries, with contextual action labels.
 - Made held-finger driving continuous and independent of drag event frequency.
 - Fixed tennis double-scoring, crate-undo score farming, Grid X cursor wrapping and survival/top-out life displays.
-- Expanded source coverage to 182 adventure/arcade assertions; the complete source suite passes 315 assertions and all 46 scenes launch.
+- Expanded source coverage to 183 adventure/arcade assertions; the complete source suite passes 316 assertions and all 46 scenes launch.
 
 ## 3.0 — Iron Mario: The Reactor Rescue
 

@@ -333,6 +333,12 @@ func test_cabinet_regressions() -> void:
 	game.grid[Vector2i(4,0)]=0;game.spawn_piece()
 	check(game.ended and not game.won and game.lives==0,"Stackfall top-out consumes its single run and reaches the result screen")
 	game.free()
+	game=fresh("brick_burst")
+	game.on_action("primary")
+	var opening_speed:float=game.ball_v.length()
+	game.stage=3;game.make_bricks();game.on_action("primary")
+	check(game.ball_v.length()>opening_speed,"Later Brick Burst waves launch at a higher ball speed")
+	game.free()
 func paint_walk(game,seen: Dictionary) -> void:
 	if game.awaiting or game.ended:return
 	var origin:Vector2i=game.player

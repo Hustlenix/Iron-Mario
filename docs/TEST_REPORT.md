@@ -9,7 +9,7 @@ resource paths. All five warehouse layouts pass the independent solver, and the
 browser test script passes Node's syntax check.
 
 Official Godot 4.4.1 was subsequently downloaded and the complete source check
-passed: **315 assertions** (82 gameplay, 51 profile/touch, 182 adventure/arcade)
+passed: **316 assertions** (82 gameplay, 51 profile/touch, 183 adventure/arcade)
 and **51 engine checks**, including all 46 scenes and F5 startup. Windows, Linux
 and Web exports complete without engine diagnostics. The exported Linux package
 passes all 47 launch checks (F5 plus 46 scenes). Browser/Windows checks and
@@ -18,7 +18,7 @@ phone and audible playback testing remain outstanding.
 
 ## New coverage
 
-The new source suite passes 182 assertions covering all twenty cabinet scenes, frozen briefings, start inputs, pause, physical collision/scoring boundaries, AI, puzzles, save reloads, legal traversal of the three authored stages, and a boss pilot with three hulls. Regression checks cover touch-only wave/terminal/pad continuation, held-finger driving and release, drag-frequency-independent speed, tennis double-scoring, Grid X selection boundaries, crate undo score restoration, and survival/top-out lives. The independent warehouse solver finds legal solutions for all five rooms. Existing 82 gameplay and 51 hero/touch assertions also pass. The browser suite checks each cabinet's briefing, start, keyboard/pointer input, pause and return to the library, plus the adventure, Flappy, mobile controls and Vault.
+The new source suite passes 183 assertions covering all twenty cabinet scenes, frozen briefings, start inputs, pause, physical collision/scoring boundaries, AI, puzzles, save reloads, legal traversal of the three authored stages, and a boss pilot with three hulls. Regression checks cover touch-only wave/terminal/pad continuation, held-finger driving and release, drag-frequency-independent speed, tennis double-scoring, Grid X selection boundaries, crate undo score restoration, and survival/top-out lives. The independent warehouse solver finds legal solutions for all five rooms. Existing 82 gameplay and 51 hero/touch assertions also pass. The browser suite checks each cabinet's briefing, start, keyboard/pointer input, pause and return to the library, plus the adventure, Flappy, mobile controls and Vault.
 
 # Super-Micro Heroes verification
 

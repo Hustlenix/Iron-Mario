@@ -53,7 +53,7 @@ func on_action(action: String) -> void:
 		SoundFX.play_click()
 	elif game_id in ["paddle_panic","brick_burst"] and action == "primary" and ready_ball:
 		ready_ball = false
-		ball_v = Vector2(355,125) if game_id=="paddle_panic" else Vector2(180,-345)
+		ball_v = Vector2(355,125) if game_id=="paddle_panic" else Vector2(180,-345).normalized()*minf(590,390+(stage-1)*30)
 	elif game_id == "sidecourt":
 		if action in ["up","secondary"]: lob = true
 		elif action == "down": lob = false

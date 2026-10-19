@@ -118,7 +118,7 @@ python tools/validate_project.py
 python tools/check_engine.py /absolute/path/to/godot
 ```
 
-The source suites pass **315 assertions** on official Godot 4.4.1: 82 existing gameplay checks, 51 profile/touch checks, and 182 adventure/cabinet checks. The new suite covers all twenty frozen briefings and start inputs, legal puzzle inputs, scoring boundaries, touch continuation, drag-rate-independent driving, undo score restoration, save reloads, all three authored traversal paths and a boss pilot using legal movement/shots with three hulls. All 46 scenes also launch without engine errors. The crate solver independently searches all five room layouts.
+The source suites pass **316 assertions** on official Godot 4.4.1: 82 existing gameplay checks, 51 profile/touch checks, and 183 adventure/cabinet checks. The new suite covers all twenty frozen briefings and start inputs, legal puzzle inputs, scoring boundaries, touch continuation, drag-rate-independent driving, undo score restoration, save reloads, all three authored traversal paths and a boss pilot using legal movement/shots with three hulls. All 46 scenes also launch without engine errors. The crate solver independently searches all five room layouts.
 
 GitHub Actions validates and exports the core with Godot 4.4.1, launches source and native packages on Windows, and exercises the exported game in Chromium. Browser checks open all twenty cabinets, exercise adventure keyboard/two-finger input, pause and orientation, preserved Flappy, and the separate Vault. Actual phone/speaker/GPU combinations are outside automated coverage.
 
