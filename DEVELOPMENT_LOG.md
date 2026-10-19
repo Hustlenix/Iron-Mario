@@ -84,3 +84,16 @@ AI assisted code, art generation through drawing commands, audio and tests. Auto
 **What are you proud of?** The arcade is playable as a set of separate games with their own goals and controls, rather than twenty menu entries sharing a short timer. Players can read the controls before a snake, lander or enemy starts moving.
 
 **What should testers know?** Choose ARCADE, select a cabinet, then press Space/Enter or tap PLAY. Test a held road finger in Flag Run, tap to continue a cleared wave, and try undoing and re-solving the first crate room. The official Godot 4.4.1 source checks pass 316 assertions and launch every scene. Real phone and speaker testing is still needed. No actual human coding hours have been recorded for this update.
+
+
+## Controls and landing visibility — 19 October 2026
+
+**What did you make?** Fixed short jumps while holding Blast in the adventure, made swipe steering relative to the finger in Byte Munch and Dot Gobbler, and moved the lunar fuel gauge out of the flight area.
+
+**What was challenging?** Keyboard events and held-action polling used different mappings. Blast could therefore count as a held Jump even after releasing the jump key. Swipes also measured the finger against the character position, which made an upward swipe on the right side turn right.
+
+**What are you proud of?** These are small changes that remove surprising behaviour without changing the games or resetting anyone's progress.
+
+**What should people know to test it?** Hold E, jump, and release Space early: Iron Mario should still make a short hop. In Byte Munch or Dot Gobbler, start an upward swipe anywhere in the playfield, then swipe sideways without lifting. In Soft Landing, check that the ship is visible at the start of every pad. The directional pad still works. Physical phone and audible playback testing remain outstanding.
+
+AI assisted implementation and automated regression testing. Actual human coding time for this update has not been recorded.

@@ -80,8 +80,12 @@ func _physics_process(delta: float) -> void:
 	pressed.clear()
 	queue_redraw()
 
+func mapped_action(action: String) -> String:
+	if game_id == "adventure" and action in ["primary","secondary"]:
+		return "jump" if action == "primary" else "action"
+	return "arcade_"+action
 func down(action: String) -> bool:
-	return bool(held.get(action,false)) or Input.is_action_pressed("arcade_"+action)
+	return bool(held.get(action,false)) or Input.is_action_pressed(mapped_action(action))
 func just(action: String) -> bool:
 	return bool(pressed.get(action,false))
 func axis_x() -> float:
@@ -129,9 +133,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	for action in ["left","right","up","down","primary","secondary"]:
-		var mapped = "arcade_"+action
-		if game_id == "adventure" and action in ["primary","secondary"]:
-			mapped = "jump" if action == "primary" else "action"
+		var mapped = mapped_action(action)
 		if event.is_action(mapped):
 			action_event(action,event.is_pressed())
 			get_viewport().set_input_as_handled()
@@ -198,6 +200,7 @@ func toggle_pause() -> void:
 	release_controls()
 	queue_redraw()
 func release_controls() -> void:
+	if pointer_down: on_pointer(pointer,false)
 	held.clear()
 	pressed.clear()
 	fingers.clear()

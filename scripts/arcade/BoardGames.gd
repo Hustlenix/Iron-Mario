@@ -14,6 +14,8 @@ var found: Array = []
 var snake: Array[Vector2i] = []
 var direction = Vector2i.RIGHT
 var turns: Array[Vector2i] = []
+var gesture_origin = Vector2.ZERO
+var gesture_active = false
 var food = Vector2i(12,6)
 var step_clock = 0.0
 var meals = 0
@@ -156,6 +158,10 @@ func on_action(action: String) -> void:
 				while piece_valid(piece,piece_at+Vector2i.DOWN):piece_at.y+=1;score+=2
 				lock_piece()
 func on_pointer(at: Vector2,active: bool) -> void:
+	if game_id in ["dot_gobbler","byte_munch"]:
+		gesture_origin=at
+		gesture_active=active
+		return
 	if not active:return
 	match game_id:
 		"grid_x":
@@ -168,13 +174,13 @@ func on_pointer(at: Vector2,active: bool) -> void:
 			var diff=at-(HOP_ORIGIN+frog)
 			hop(Vector2i(signf(diff.x),0) if absf(diff.x)>absf(diff.y) else Vector2i(0,signf(diff.y)))
 func on_drag(at: Vector2) -> void:
-	if game_id in ["dot_gobbler","byte_munch"] and pointer_down:
-		var center=MAZE_ORIGIN+Vector2(player)*28 if game_id=="dot_gobbler" else Vector2(280,155)+Vector2(snake[0])*30
-		var diff=at-center
+	if game_id in ["dot_gobbler","byte_munch"] and pointer_down and gesture_active:
+		var diff=at-gesture_origin
 		if diff.length()>18:
 			var dir=Vector2i(signf(diff.x),0) if absf(diff.x)>absf(diff.y) else Vector2i(0,signf(diff.y))
 			if game_id=="dot_gobbler":requested=dir
 			else:queue_turn(dir)
+			gesture_origin=at
 func reset_x() -> void:
 	cells=[0,0,0,0,0,0,0,0,0]
 	awaiting=false

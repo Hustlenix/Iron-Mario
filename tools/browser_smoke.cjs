@@ -111,11 +111,27 @@ const assert=require('node:assert/strict');
  await tap(640,270);await wait(phone,'ARCADE_READY','grid_x');
  await tap(480,465);await wait(phone,'ARCADE_STARTED','grid_x');
  await tap(450,220);await phone.screenshot({path:'docs/screenshots/mobile-grid-x.png'});
+ for(const [id,targetPage,x,y] of [['byte_munch',1,1055,270],['dot_gobbler',2,640,270],['soft_landing',1,1055,465]]){
+  const previous=states.get(phone).ARCADE_READY;
+  await tap(1190,65);await waitForRoundOverlay(phone,previous);
+  await tap(800,465);await wait(phone,'SCENE_READY','res://scenes/arcade_library.tscn');
+  await wait(phone,'LIBRARY_PAGE','0');
+  for(let p=0;p<targetPage;p++){await tap(840,660);await wait(phone,'LIBRARY_PAGE',String(p+1));}
+  await tap(x,y);await wait(phone,'ARCADE_READY',id);
+  await tap(480,465);await wait(phone,'ARCADE_STARTED',id);
+  if(id!=='soft_landing'){
+   await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[pt(1000,420,4)]});
+   await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[pt(1000,380,4)]});
+   await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[pt(950,380,4)]});
+   await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  }
+  await phone.screenshot({path:`docs/screenshots/mobile-${id}.png`});
+ }
  await phone.setViewportSize({width:390,height:844});assert.equal(await phone.locator('#rotate').isVisible(),true);
  await phone.screenshot({path:'docs/screenshots/mobile-rotate.png'});
  await phone.setViewportSize({width:844,height:390});assert.equal(await phone.locator('#rotate').isVisible(),false);
  await mobile.close();
- console.log('PASS two-finger adventure controls, tap board, pause and orientation');
+ console.log('PASS two-finger adventure controls, board taps, snake/maze swipes, lander HUD, pause and orientation');
  const vault=await browser.newContext({viewport:{width:1280,height:720}});
  const archive=await vault.newPage();observe(archive);
  await archive.goto('http://127.0.0.1:8765/extended-arcade/');

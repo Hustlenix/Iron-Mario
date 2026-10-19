@@ -13,6 +13,7 @@ var fuel = 100.0
 var pad_x = 910.0
 var landed = false
 const SUN = Vector2(640,335)
+const FUEL_GAUGE = Rect2(985,120,220,20)
 func setup() -> void:
 	use_secondary=true
 	secondary_label="BRAKE"
@@ -176,5 +177,6 @@ func draw_lander() -> void:
 	dot(ship-Vector2(0,6),8,Paint.CYAN)
 	for side in [-1,1]:line(ship+Vector2(side*12,8).rotated(angle),ship+Vector2(side*23,20).rotated(angle),Paint.GOLD,5)
 	if (down("up") or down("primary")) and fuel>0 and not waiting:Paint.burst(self,ship+Vector2(0,28).rotated(angle),13,Paint.GOLD)
-	panel(Rect2(85,160,200,24),Paint.INK)
-	Paint.rect(self,Rect2(90,165,190*fuel/100,14),Paint.GOLD)
+	text("FUEL %d" % int(fuel),Vector2(855,137),18)
+	panel(FUEL_GAUGE,Paint.INK)
+	Paint.rect(self,Rect2(FUEL_GAUGE.position+Vector2(4,4),Vector2((FUEL_GAUGE.size.x-8)*fuel/100,12)),Paint.GOLD)

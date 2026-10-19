@@ -1,5 +1,12 @@
 # Changelog
 
+## Adventure and swipe-control polish
+
+- Fixed adventure held-action polling so Blast does not also hold Jump.
+- Made Byte Munch and Dot Gobbler swipes relative to finger movement, with jitter and release handling.
+- Moved Soft Landing's fuel gauge above the flight area.
+- Added nineteen input/HUD regressions and expanded exported mobile browser coverage.
+
 ## 3.0.1 — Finish the twenty-cabinet play flow
 
 - Added frozen start briefings and individual keyboard/phone guides for all twenty games.
